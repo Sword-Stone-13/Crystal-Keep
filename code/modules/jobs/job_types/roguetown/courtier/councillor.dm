@@ -22,13 +22,15 @@
 
 /datum/outfit/job/roguetown/councillor/pre_equip(mob/living/carbon/human/H)
 	..()
-	armor = /obj/item/clothing/suit/roguetown/armor/councillor
-	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
-	pants = /obj/item/clothing/under/roguetown/tights/black
+	armor = /obj/item/clothing/suit/roguetown/armor/gambeson/councillor
+	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
+	pants = /obj/item/clothing/under/roguetown/tights/random
 	shoes = /obj/item/clothing/shoes/roguetown/armor
+	head = /obj/item/clothing/head/roguetown/chaperon/councillor
 	backl = /obj/item/storage/backpack/rogue/satchel
-	belt = /obj/item/storage/belt/rogue/leather/black
+	belt = /obj/item/storage/belt/rogue/leather/plaquesilver
 	beltl = /obj/item/keyring/councillor
+	cloak = /obj/item/clothing/cloak/stabard/surcoat/councillor
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel = 1)
 	if(H.mind)

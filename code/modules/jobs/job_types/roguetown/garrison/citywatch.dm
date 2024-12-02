@@ -9,9 +9,9 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_TOLERATED_UP
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED)
-	tutorial = "Responsible for the safety of the city and the enforcement of the law, \
-	you walk among the downtrodden, delivering justice and pain. \
-	Bound to the commands of many lords, both the Church and the Sheriff hold great sway over your life."
+	tutorial = "Responsible for the safety of the town and the enforcement of the King's law, \
+	you are the vanguard of the city faced with punishing those who defy His Royal Majesty. \
+	Though you've many lords to obey, as both the Church and the Sheriff have great sway over your life."
 	display_order = JDO_TOWNGUARD
 	whitelist_req = TRUE
 
@@ -22,23 +22,35 @@
 
 	cmode_music = 'sound/music/combat_guard.ogg'
 
+
+/datum/job/roguetown/citywatch/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
+	. = ..()
+	if(ishuman(L))
+		var/mob/living/carbon/human/H = L
+		if(istype(H.cloak, /obj/item/clothing/cloak/stabard/guard))
+			var/obj/item/clothing/S = H.cloak
+			var/index = findtext(H.real_name, " ")
+			if(index)
+				index = copytext(H.real_name, 1,index)
+			if(!index)
+				index = H.real_name
+			S.name = "watchman tabard ([index])"
+
 /datum/outfit/job/roguetown/citywatch/pre_equip(mob/living/carbon/human/H)
 	. = ..()
-	head = /obj/item/clothing/head/roguetown/helmet/citywatch
-	neck = /obj/item/clothing/neck/roguetown/gorget
+	head = /obj/item/clothing/head/roguetown/helmet
 	pants = /obj/item/clothing/under/roguetown/chainlegs
-	cloak = /obj/item/clothing/cloak/citywatch
-	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
-	armor = /obj/item/clothing/suit/roguetown/armor/citywatch
-	gloves = /obj/item/clothing/gloves/roguetown/chain
-	shoes = /obj/item/clothing/shoes/roguetown/armor
+	cloak = /obj/item/clothing/cloak/stabard/guard
+	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
+	armor = /obj/item/clothing/suit/roguetown/armor/chainmail
+	neck = /obj/item/clothing/neck/roguetown/chaincoif
+	shoes = /obj/item/clothing/shoes/roguetown/boots
 	beltl = /obj/item/keyring/town_watch
 	belt = /obj/item/storage/belt/rogue/leather/black
-	beltr = /obj/item/rogueweapon/mace/stunmace
+	beltr = /obj/item/rogueweapon/mace/cudgel
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
 	backr = /obj/item/storage/backpack/rogue/satchel/black
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel = 1, /obj/item/rope/chain = 1)
-	backl = null
 	if(H.mind)
 		assign_skills(H)
 	H.verbs |= /mob/proc/haltyell

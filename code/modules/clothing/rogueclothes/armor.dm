@@ -338,6 +338,9 @@
 	l_sleeve_status = SLEEVE_NORMAL
 	armor_class = ARMOR_CLASS_LIGHT
 
+/obj/item/clothing/suit/roguetown/armor/gambeson/councillor
+	color = "#646464"
+
 /obj/item/clothing/suit/roguetown/armor/gambeson/lord
 	name = "arming jacket"
 	desc = "Similar to a gambeson, it is meant to be used under heavier armor."
@@ -458,6 +461,14 @@
 
 /obj/item/clothing/suit/roguetown/armor/leather/vest/black
 	color = "#3c3a38"
+
+/obj/item/clothing/suit/roguetown/armor/leather/vest/handcoat
+	name = "Hand's vest"
+	desc = "A soft vest of finest fabric."
+	icon_state = "handcoat"
+	color = null
+	allowed_sex = list(MALE, FEMALE)
+	allowed_race = list("human", "tiefling", "dwarf", "elf", "aasimar")
 
 /obj/item/clothing/suit/roguetown/armor/workervest
 	name = "striped tunic"

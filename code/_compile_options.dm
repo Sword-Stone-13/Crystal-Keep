@@ -6,7 +6,7 @@
 #define MATURESERVER
 //#define TESTSERVER
 #define ALLOWPLAY
-//#define LOWMEMORYMODE
+#define LOWMEMORYMODE
 
 #define RESPAWNTIME 0
 //0 test

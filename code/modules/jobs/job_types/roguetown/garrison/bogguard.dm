@@ -1,5 +1,5 @@
 /datum/job/roguetown/bogguardsman
-	title = "Vanguard"
+	title = "Bog Guard"
 	flag = BOGGUARD
 	department_flag = GARRISON
 	faction = "Station"
@@ -9,9 +9,8 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_VERY_SHUNNED_UP
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)
-	tutorial = "Either a fresh lowborn recruit or a veteran of the now defunct bog guard, you have been assigned to the newly established Vanguard. \
-	You have a roof over your head, coin in your pocket, and a thankless job protecting the outskirts of town against what lurks beyond.\
-	The Bastion must not fall."
+	tutorial = "You've handed your resume, which mostly consisted of showing up, and in exchange you have a spot among the Bog Guards. \
+	You have a roof over your head, coin in your pocket, and a thankless job protecting the outskirts of town against bandits and volfs."
 	display_order = JDO_TOWNGUARD
 	whitelist_req = TRUE
 	outfit = /datum/outfit/job/roguetown/bog
@@ -36,22 +35,23 @@
 	. = ..()
 	if(ishuman(L))
 		var/mob/living/carbon/human/H = L
-		if(istype(H.cloak, /obj/item/clothing/cloak/raincloak/vanguard))
+		if(istype(H.cloak, /obj/item/clothing/cloak/stabard/bog))
 			var/obj/item/clothing/S = H.cloak
 			var/index = findtext(H.real_name, " ")
 			if(index)
 				index = copytext(H.real_name, 1,index)
 			if(!index)
 				index = H.real_name
-			S.name = "vanguard cloak ([index])"
+			S.name = "bogman tabard ([index])"
+
 /datum/outfit/job/roguetown/bogguardsman
-	name = "Vanguard footman"
+	name = "Bog Guard"
 
 /datum/outfit/job/roguetown/ranger
-	name = "Vanguard archer"
+	name = "Bog Ranger"
 
 /datum/advclass/bogguard
-	name = "Vanguard footman"
+	name = "Bog Guard"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_VERY_SHUNNED_UP
 	outfit = /datum/outfit/job/roguetown/bogguardsman
@@ -60,7 +60,7 @@
 	category_tags = list(CTAG_BOG)
 
 /datum/advclass/bogranger
-	name = "Vanguard archer"
+	name = "Bog Ranger"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_VERY_SHUNNED_UP
 	outfit = /datum/outfit/job/roguetown/ranger
@@ -72,7 +72,7 @@
 /datum/outfit/job/roguetown/bog/pre_equip(mob/living/carbon/human/H)
 	head = /obj/item/clothing/head/roguetown/helmet/skullcap
 	armor = /obj/item/clothing/suit/roguetown/armor/gambeson
-	cloak = /obj/item/clothing/cloak/raincloak/vanguard
+	cloak = /obj/item/clothing/cloak/stabard/bog
 	neck = /obj/item/clothing/neck/roguetown/chaincoif
 	gloves = /obj/item/clothing/gloves/roguetown/leather
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather

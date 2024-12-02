@@ -79,7 +79,7 @@ GLOBAL_LIST_INIT(courtier_positions, list(
 
 GLOBAL_LIST_INIT(garrison_positions, list(
 	"Watchman",
-	"Vanguard",
+	"Bog Guard",
 	"Warden",
 	"Man at Arms",
 	"Dungeoneer",
