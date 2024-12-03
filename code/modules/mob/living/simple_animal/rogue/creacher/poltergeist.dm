@@ -11,6 +11,12 @@
 	icon_dead = "polter_initial"
 //End of sprite rant.
 	gender = PLURAL
+	STASTR = 5
+	STASKL = 12
+	STAMAG = 2
+	STACON = 5
+	STAEND = 5
+	STASPD = 20
 	emote_hear = null
 	emote_see = null
 	speak_chance = 1
@@ -24,17 +30,15 @@
 	maxHealth = 80
 	melee_damage_lower = 5
 	melee_damage_upper = 10
+	simpmob_attack = 30
+	simpmob_defend = 80
+	defdrain = 10
 	vision_range = 7
 	aggro_vision_range = 9
 	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
 	retreat_distance = 6
 	minimum_distance = 4
-	STACON = 5
-	STASTR = 5
-	STASPD = 20
 	deaggroprob = 0
-	defprob = 95
-	defdrain = 10
 	dodgetime = 30
 	aggressive = 1
 //Can't hit most of the time with thrown objects against prone mobs, so it's commented out. Maybe return later.

@@ -445,7 +445,6 @@ GLOBAL_VAR_INIT(mobids, 1)
 			target = "[src.p_their()] [A.loc.name]"
 		if(isliving(A))
 			var/mob/living/T = A
-			var/hitzone = T.simple_limb_hit(zone_selected)
 			var/behind = FALSE
 			var/grabbing = FALSE
 			var/defiancy = TRUE
@@ -462,6 +461,7 @@ GLOBAL_VAR_INIT(mobids, 1)
 						if(G.sublimb_grabbed == zone_selected)
 							grabbing = TRUE
 			if(!ishuman(T))
+				var/hitzone = T.simple_limb_hit(zone_selected)
 				target = "\the [T.name]'s [hitzone]"
 			else if(ishuman(T))
 				var/mob/living/carbon/human/target_human = T

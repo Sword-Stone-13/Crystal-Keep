@@ -3,6 +3,12 @@
 	name = "\improper chicken"
 	desc = ""
 	gender = FEMALE
+	STASTR = 6
+	STASKL = 3
+	STAMAG = 1
+	STACON = 6
+	STAEND = 3
+	STASPD = 6
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	icon_state = "chicken_brown"
 	icon_living = "chicken_brown"
@@ -24,7 +30,8 @@
 	response_harm_simple = "kick"
 	melee_damage_lower = 1
 	melee_damage_upper = 8
-	pooptype = /obj/item/natural/poo/horse
+	simpmob_attack = 5
+	simpmob_defend = 15
 	health = 15
 	maxHealth = 15
 	ventcrawler = VENTCRAWLER_ALWAYS
@@ -37,9 +44,6 @@
 	var/list/validColors = list("brown","black","white")
 	var/static/chicken_count = 0
 	footstep_type = FOOTSTEP_MOB_BAREFOOT
-	STACON = 6
-	STASTR = 6
-	STASPD = 1
 	tame = TRUE
 
 /mob/living/simple_animal/hostile/retaliate/rogue/chicken/get_sound(input)
@@ -50,7 +54,6 @@
 			return 'sound/vo/mobs/chikn/death.ogg'
 		if("idle")
 			return pick('sound/vo/mobs/chikn/idle (1).ogg','sound/vo/mobs/chikn/idle (2).ogg','sound/vo/mobs/chikn/idle (3).ogg','sound/vo/mobs/chikn/idle (4).ogg','sound/vo/mobs/chikn/idle (5).ogg','sound/vo/mobs/chikn/idle (6).ogg')
-
 
 /mob/living/simple_animal/hostile/retaliate/rogue/chicken/simple_limb_hit(zone)
 	if(!zone)
@@ -78,6 +81,12 @@
 			return "leg"
 		if(BODY_ZONE_PRECISE_R_FOOT)
 			return "leg"
+		if(BODY_ZONE_CHEST)
+			return "body"
+		if(BODY_ZONE_PRECISE_STOMACH)
+			return "body"
+		if(BODY_ZONE_PRECISE_GROIN)
+			return "body"
 		if(BODY_ZONE_HEAD)
 			return "head"
 		if(BODY_ZONE_R_LEG)
@@ -88,6 +97,9 @@
 			return "wing"
 		if(BODY_ZONE_L_ARM)
 			return "wing"
+		else
+			return "body"
+
 	return ..()
 
 /mob/living/simple_animal/hostile/retaliate/rogue/chicken/Initialize()

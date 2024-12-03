@@ -16,6 +16,7 @@
 	blocksound = SOFTHIT
 	body_parts_covered = NECK|HAIR|EARS|HEAD
 	armor = list("blunt" = 33, "slash" = 12, "stab" = 22, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	armor_class = ARMOR_CLASS_LIGHT
 	max_integrity = 125
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT)
 	adjustable = CAN_CADJUST
@@ -53,6 +54,7 @@
 	flags_inv = HIDEHAIR
 	resistance_flags = FIRE_PROOF
 	armor = list("blunt" = 30, "slash" = 60, "stab" = 45, "bullet" = 10, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	armor_class = ARMOR_CLASS_LIGHT
 	max_integrity = 200
 	resistance_flags = FIRE_PROOF
 	slot_flags = ITEM_SLOT_NECK|ITEM_SLOT_HEAD
@@ -106,6 +108,7 @@
 	desc = "A steel bevor that protects the lower part of the head, that being the neck, mouth and nose."
 	icon_state = "bervor"
 	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	armor_class = ARMOR_CLASS_MEDIUM
 	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 	max_integrity = 300
@@ -120,6 +123,7 @@
 	desc = "An iron gorget to protect the neck."
 	icon_state = "gorget"
 	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	armor_class = ARMOR_CLASS_MEDIUM
 	smeltresult = /obj/item/ingot/iron
 	anvilrepair = /datum/skill/craft/blacksmithing
 	max_integrity = 150
@@ -134,6 +138,7 @@
 	desc = "Sturdy, durable, flexible. Will protect your neck from some good lumbering."
 	icon_state = "lgorget"
 	armor = list("blunt" = 70, "slash" = 60, "stab" = 30, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	armor_class = ARMOR_CLASS_MEDIUM
 	max_integrity = 150
 	slot_flags = ITEM_SLOT_NECK
 	body_parts_covered = NECK

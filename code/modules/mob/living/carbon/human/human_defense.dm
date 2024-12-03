@@ -131,9 +131,11 @@
 
 				return BULLET_ACT_FORCE_PIERCE // complete projectile permutation
 
-		if(check_shields(P, P.damage, "the [P.name]", PROJECTILE_ATTACK, P.armor_penetration))
-			P.on_hit(src, 100, def_zone)
-			return BULLET_ACT_HIT
+		if(src.can_see_cone(P.firer))
+			if(P.speed > 0.1)
+				if(check_shields(P, P.damage, "the [P.name]", PROJECTILE_ATTACK, P.armor_penetration))
+					P.on_hit(src, 100, def_zone)
+					return BULLET_ACT_HIT
 	return ..(P, def_zone)
 
 /mob/living/carbon/human/proc/check_reflect(def_zone) //Reflection checks for anything in my l_hand, r_hand, or wear_armor based on the reflection chance of the object
@@ -378,12 +380,13 @@
 			apply_damage(damage, BRUTE, affecting, armor_block)
 
 
-/mob/living/carbon/human/attack_animal(mob/living/simple_animal/M)
+/mob/living/carbon/human/attack_animal(mob/living/simple_animal/M, zone_selected)
 	. = ..()
 	if(.)
 		var/damage = rand(M.melee_damage_lower, M.melee_damage_upper)
-		if(check_shields(M, damage, "the [M.name]", MELEE_ATTACK, M.armor_penetration))
-			return FALSE
+		if(src.can_see_cone(M))
+			if(check_shields(M, damage, "the [M.name]", MELEE_ATTACK, M.armor_penetration))
+				return FALSE
 		var/zones = M.zone_selected
 		if(!ckey)
 			zones = pick(BODY_ZONE_HEAD, BODY_ZONE_CHEST, BODY_ZONE_PRECISE_NECK, BODY_ZONE_PRECISE_L_HAND, BODY_ZONE_PRECISE_R_HAND, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
@@ -391,7 +394,7 @@
 		if(!dam_zone) //Dismemberment successful
 			return TRUE
 
-		var/obj/item/bodypart/affecting = get_bodypart(ran_zone(dam_zone))
+		var/obj/item/bodypart/affecting = get_bodypart(M.zone_selected)
 		if(!affecting)
 			affecting = get_bodypart(BODY_ZONE_CHEST)
 		var/armor = run_armor_check(affecting, M.d_type, armor_penetration = M.a_intent.penfactor, damage = damage)

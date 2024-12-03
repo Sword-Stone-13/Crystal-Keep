@@ -43,7 +43,14 @@
 /mob/living/proc/on_hit(obj/projectile/P)
 	return BULLET_ACT_HIT
 
-/mob/living/bullet_act(obj/projectile/P, def_zone = BODY_ZONE_CHEST)
+/mob/living/bullet_act(obj/projectile/P, def_zone)
+	var/mob/living/target = src
+	var/list/projacc = projectile_accuracy_check(def_zone, P, target)
+	def_zone = projacc[1]
+	var/goodhit = projacc[2]
+	if(goodhit == "Miss")
+		return BULLET_ACT_MISS
+
 	var/armor = run_armor_check(def_zone, P.flag, "", "",P.armor_penetration, damage = P.damage)
 
 	next_attack_msg.Cut()
@@ -231,7 +238,7 @@
 		combat_modifier += 0.25
 
 	if(!(mobility_flags & MOBILITY_STAND) && user.mobility_flags & MOBILITY_STAND)
-		combat_modifier += 0.05
+		combat_modifier += 0.1
 
 	if(user.cmode && !cmode)
 		combat_modifier += 0.3
@@ -242,7 +249,9 @@
 		if(G.chokehold == TRUE)
 			combat_modifier += 0.15
 	
-	var/probby =  clamp((((4 + (((user.STASTR - STASTR)/2) + skill_diff)) * 10 + rand(-5, 5)) * combat_modifier), 5, 95)
+	combat_modifier *= ((skill_diff * 0.1) + 1)
+
+	var/probby =  clamp((((4 + (((user.STASTR - STASTR)/2))) * 10 + rand(-5, 5)) * combat_modifier), 5, 95)
 
 	if(!prob(probby) && !instant && !stat)
 		visible_message(span_warning("[user] struggles with [src]!"),

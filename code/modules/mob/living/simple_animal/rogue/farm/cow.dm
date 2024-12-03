@@ -8,6 +8,12 @@
 	icon_dead = "cow_dead"
 	icon_gib = "cow_gib"
 	gender = FEMALE
+	STASTR = 16
+	STASKL = 4
+	STAMAG = 2
+	STACON = 20
+	STAEND = 20
+	STASPD = 6
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	emote_hear = list("brays.")
 	emote_see = list("shakes its head.", "chews her cud.")
@@ -32,9 +38,8 @@
 	attack_verb_simple = "headbutt"
 	melee_damage_lower = 10
 	melee_damage_upper = 25
-	STASPD = 2
-	STACON = 20
-	STASTR = 12
+	simpmob_attack = 5
+	candodge = FALSE
 	childtype = list(/mob/living/simple_animal/hostile/retaliate/rogue/cow/cowlet = 95, /mob/living/simple_animal/hostile/retaliate/rogue/cow/bullet = 5)
 	remains_type = /obj/effect/decal/remains/cow
 
@@ -64,6 +69,12 @@
 	icon_dead = "cowlet_dead"
 	icon_gib = "cowlet_gib"
 	animal_species = null
+	STASTR = 8
+	STASKL = 4
+	STAMAG = 2
+	STACON = 12
+	STAEND = 12
+	STASPD = 5
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 1)
 	base_intents = list(/datum/intent/simple/headbutt)
 	health = 20
@@ -73,10 +84,7 @@
 	milkies = FALSE
 	melee_damage_lower = 1
 	melee_damage_upper = 6
-	STACON = 5
-	STASTR = 5
-	STASPD = 5
-	defprob = 50
+	simpmob_defend = 50
 	adult_growth = /mob/living/simple_animal/hostile/retaliate/rogue/cow
 
 /mob/living/simple_animal/hostile/retaliate/rogue/cow/simple_limb_hit(zone)
@@ -105,6 +113,8 @@
 			return "leg"
 		if(BODY_ZONE_PRECISE_R_FOOT)
 			return "leg"
+		if(BODY_ZONE_CHEST)
+			return "body"
 		if(BODY_ZONE_PRECISE_STOMACH)
 			return "stomach"
 		if(BODY_ZONE_HEAD)
@@ -117,6 +127,8 @@
 			return "foreleg"
 		if(BODY_ZONE_L_ARM)
 			return "foreleg"
+		else
+			return "body"
 
 	return ..()
 
@@ -141,6 +153,12 @@
 	icon_dead = "bull_dead"
 	icon_gib = "bull_gib"
 	gender = MALE
+	STASTR = 24
+	STASKL = 5
+	STAMAG = 3
+	STACON = 20
+	STAEND = 20
+	STASPD = 12
 	emote_hear = list("chews.")
 	emote_see = list("shakes his head.", "chews his cud.")
 	speak_chance = 1
@@ -165,9 +183,6 @@
 	food_type = list(/obj/item/reagent_containers/food/snacks/grown/wheat,/obj/item/reagent_containers/food/snacks/grown/oat)
 	footstep_type = FOOTSTEP_MOB_SHOE
 	pooptype = /obj/item/natural/poo/cow
-	STACON = 20
-	STASTR = 12
-	STASPD = 2
 	remains_type = /obj/effect/decal/remains/cow
 
 /mob/living/simple_animal/hostile/retaliate/rogue/bull/get_sound(input)
@@ -213,6 +228,8 @@
 			return "leg"
 		if(BODY_ZONE_PRECISE_R_FOOT)
 			return "leg"
+		if(BODY_ZONE_CHEST)
+			return "body"
 		if(BODY_ZONE_PRECISE_STOMACH)
 			return "stomach"
 		if(BODY_ZONE_HEAD)
@@ -225,6 +242,9 @@
 			return "foreleg"
 		if(BODY_ZONE_L_ARM)
 			return "foreleg"
+		else
+			return "body"
+
 	return ..()
 
 /mob/living/simple_animal/hostile/retaliate/bull/taunted(mob/user)
@@ -236,6 +256,12 @@
 	name = "calf"
 	desc = ""
 	gender = MALE
+	STASTR = 8
+	STASKL = 4
+	STAMAG = 2
+	STACON = 12
+	STAEND = 12
+	STASPD = 5
 	icon_state = "bullet"
 	icon_living = "bullet"
 	icon_dead = "bullet_dead"
@@ -250,7 +276,4 @@
 	milkies = FALSE
 	melee_damage_lower = 1
 	melee_damage_upper = 6
-	STACON = 5
-	STASTR = 5
-	STASPD = 5
 	adult_growth = /mob/living/simple_animal/hostile/retaliate/rogue/bull

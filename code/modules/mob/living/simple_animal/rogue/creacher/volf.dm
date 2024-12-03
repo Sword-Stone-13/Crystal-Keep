@@ -5,6 +5,12 @@
 	icon_living = "vv"
 	icon_dead = "vvd"
 	gender = MALE
+	STASTR = 7
+	STASKL = 12
+	STAMAG = 2
+	STACON = 7
+	STAEND = 5
+	STASPD = 13
 	emote_hear = null
 	emote_see = null
 	speak_chance = 1
@@ -19,9 +25,13 @@
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	health = 120
 	maxHealth = 120
-	melee_damage_lower = 19
-	melee_damage_upper = 29
-	vision_range = 7
+	melee_damage_lower = 5
+	melee_damage_upper = 30
+	simpmob_attack = 25
+	simpmob_defend = 40
+	defdrain = 10
+	limb_destroyer = 1
+	vision_range = 12
 	aggro_vision_range = 9
 	environment_smash = ENVIRONMENT_SMASH_NONE
 	retreat_distance = 0
@@ -30,13 +40,8 @@
 	food_type = list(/obj/item/reagent_containers/food/snacks/rogue/meat, /obj/item/bodypart, /obj/item/organ)
 	footstep_type = FOOTSTEP_MOB_BAREFOOT
 	pooptype = null
-	STACON = 7
-	STASTR = 7
-	STASPD = 13
 	simple_detect_bonus = 20
-	deaggroprob = 0
-	defprob = 40
-	defdrain = 10
+	deaggroprob = 5
 	del_on_deaggro = 44 SECONDS
 	retreat_health = 0.3
 	food = 0
@@ -58,6 +63,12 @@
 	if(prob(33))
 		gender = FEMALE
 	update_icon()
+	STASTR += rand(0, 5)
+	STASKL += rand(-4, 4)
+	STAMAG += rand(-1, 1)
+	STACON += rand(-1, 4)
+	STAEND += rand(-1, 3)
+	STASPD += rand(-1, 5)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/wolf/death(gibbed)
 	..()
@@ -108,11 +119,11 @@
 		return ""
 	switch(zone)
 		if(BODY_ZONE_PRECISE_R_EYE)
-			return "head"
+			return "eye"
 		if(BODY_ZONE_PRECISE_L_EYE)
-			return "head"
+			return "eye"
 		if(BODY_ZONE_PRECISE_NOSE)
-			return "nose"
+			return "snout"
 		if(BODY_ZONE_PRECISE_MOUTH)
 			return "mouth"
 		if(BODY_ZONE_PRECISE_SKULL)
@@ -129,6 +140,8 @@
 			return "leg"
 		if(BODY_ZONE_PRECISE_R_FOOT)
 			return "leg"
+		if(BODY_ZONE_CHEST)
+			return "body"
 		if(BODY_ZONE_PRECISE_STOMACH)
 			return "stomach"
 		if(BODY_ZONE_PRECISE_GROIN)
@@ -143,5 +156,8 @@
 			return "foreleg"
 		if(BODY_ZONE_L_ARM)
 			return "foreleg"
+		else
+			return "body"
+
 	return ..()
 

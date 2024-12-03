@@ -141,9 +141,14 @@
 
 	var/surrendering = 0
 
+	/// Combat bonuses for Simple Mobs
+	var/simpmob_attack = 0
+	var/simpmob_defend = 0
+
 	var/defprob = 50 //base chance to defend against this mob's attacks, for simple mob combat
+
 	var/defdrain = 5
-	var/encumbrance = 0
+//	var/encumbrance = 0
 
 	var/eyesclosed = 0
 	var/fallingas = 0
@@ -178,6 +183,7 @@
 	/* Can be used to change the lighting threshholds at which players can sneak.*/
 	var/rogue_sneaking_light_threshhold = 0.15 //Default. Will be modified later~
 
+	var/domhand = 0
 
 	/// Voice pitch for audible emotes
 	var/voice_pitch
