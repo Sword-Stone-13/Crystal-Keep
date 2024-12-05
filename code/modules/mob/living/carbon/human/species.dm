@@ -1630,7 +1630,6 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	var/hit_area
 
 	var/list/accuracy_check = accuracy_check(user.zone_selected, user, H, I, I.associated_skill, user.used_intent)
-	selzone = accuracy_check(user.zone_selected, user, H, I.associated_skill, user.used_intent, I)
 	selzone = accuracy_check[1]
 	var/goodhit = accuracy_check[2]
 	if(goodhit == "Miss")

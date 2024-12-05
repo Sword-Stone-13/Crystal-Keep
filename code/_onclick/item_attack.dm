@@ -342,32 +342,41 @@
 	return TRUE
 
 /turf/proc/attacked_by(obj/item/I, mob/living/user)
-	var/newforce = get_complex_damage(I, user, blade_dulling)
-	if(!newforce)
-		testing("attack6")
-		return 0
-	if(newforce < damage_deflection)
-		testing("attack7")
-		return 0
-	if(user.used_intent.no_attack)
-		return 0
-	user.changeNext_move(CLICK_CD_MELEE)
-	log_combat(user, src, "attacked", I)
-	var/verbu = "hits"
-	verbu = pick(user.used_intent.attack_verb)
-	if(newforce > 1)
-		if(user.rogfat_add(5))
-			user.visible_message(span_danger("[user] [verbu] [src] with [I]!"))
+	if(istype(src, /turf/open/floor))
+		if(user.used_intent.blade_class)
+			var/bclass = user.used_intent.blade_class
+			if(bclass == BCLASS_CHOP)
+				if(!(istype(src, /turf/open/floor/rogue/wood) || istype(src, /turf/open/floor/rogue/woodturned) || istype(src, /turf/open/floor/rogue/twig) || istype(src, /turf/open/floor/rogue/ruinedwood)))
+					return FALSE
+			if(!(bclass == BCLASS_SMASH || bclass == BCLASS_PICK))
+				return FALSE
+	else
+		var/newforce = get_complex_damage(I, user, blade_dulling)
+		if(!newforce)
+			testing("attack6")
+			return 0
+		if(newforce < damage_deflection)
+			testing("attack7")
+			return 0
+		if(user.used_intent.no_attack)
+			return 0
+		user.changeNext_move(CLICK_CD_MELEE)
+		log_combat(user, src, "attacked", I)
+		var/verbu = "hits"
+		verbu = pick(user.used_intent.attack_verb)
+		if(newforce > 1)
+			if(user.rogfat_add(5))
+				user.visible_message(span_danger("[user] [verbu] [src] with [I]!"))
+			else
+				user.visible_message(span_warning("[user] [verbu] [src] with [I]!"))
+				newforce = 1
 		else
 			user.visible_message(span_warning("[user] [verbu] [src] with [I]!"))
-			newforce = 1
-	else
-		user.visible_message(span_warning("[user] [verbu] [src] with [I]!"))
 
-	take_damage(newforce, I.damtype, I.d_type, 1)
-	if(newforce > 1)
-		I.take_damage(1, BRUTE, I.d_type)
-	return TRUE
+		take_damage(newforce, I.damtype, I.d_type, 1)
+		if(newforce > 1)
+			I.take_damage(1, BRUTE, I.d_type)
+		return TRUE
 
 /mob/living/proc/simple_limb_hit(zone)
 	if(!zone)

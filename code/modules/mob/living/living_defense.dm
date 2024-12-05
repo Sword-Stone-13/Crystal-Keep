@@ -487,9 +487,7 @@
 		return FALSE
 	return TRUE
 
-/mob/living/ex_act(severity, target, origin)
-	if(origin && istype(origin, /datum/spacevine_mutation) && isvineimmune(src))
-		return
+/mob/living/ex_act(severity, target, epicenter, devastation_range, heavy_impact_range, light_impact_range, flame_range)
 	..()
 
 /mob/living/attack_paw(mob/living/carbon/monkey/M)

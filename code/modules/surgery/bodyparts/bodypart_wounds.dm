@@ -181,7 +181,9 @@
 	var/damage_dividend = (total_dam / max_damage)
 	var/resistance = HAS_TRAIT(owner, TRAIT_CRITICAL_RESISTANCE)
 	var/weapon_skill = /datum/skill/combat/unarmed
-	var/hand = user.get_active_held_item()
+	var/hand = null
+	if(user)
+		hand = user.get_active_held_item()
 	if(istype(hand, /obj/item/))
 		var/obj/item/weapon = hand
 		weapon_skill = weapon.associated_skill
@@ -249,7 +251,9 @@
 	var/damage_dividend = (total_dam / max_damage)
 	var/resistance = HAS_TRAIT(owner, TRAIT_CRITICAL_RESISTANCE)
 	var/weapon_skill = /datum/skill/combat/unarmed
-	var/hand = user.get_active_held_item()
+	var/hand = null
+	if(user)
+		hand = user.get_active_held_item()
 	if(istype(hand, /obj/item/))
 		var/obj/item/weapon = hand
 		weapon_skill = weapon.associated_skill
@@ -320,7 +324,9 @@
 	var/damage_dividend = (total_dam / max_damage)
 	var/resistance = HAS_TRAIT(owner, TRAIT_CRITICAL_RESISTANCE)
 	var/weapon_skill = /datum/skill/combat/unarmed
-	var/hand = user.get_active_held_item()
+	var/hand = null
+	if(user)
+		hand = user.get_active_held_item()
 	if(istype(hand, /obj/item/))
 		var/obj/item/weapon = hand
 		weapon_skill = weapon.associated_skill
