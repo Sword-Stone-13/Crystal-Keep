@@ -1,14 +1,14 @@
 /datum/job/roguetown/lady
-	title = "Queen"
+	title = "Queen Consort"
 	flag = LADY
 	department_flag = NOBLEMEN
 	faction = "Station"
-	total_positions = 0
+	total_positions = 1
 	spawn_positions = 1
 
 	allowed_sexes = list(FEMALE)
 	allowed_races = RACES_TOLERATED_UP
-	tutorial = "Picked out of your political value rather than likely any form of love, you have become the Lord's most trusted confidant and likely friend throughout your marriage. Your loyalty and, perhaps, love; will be tested this day. For the daggers that threaten your beloved are as equally pointed at your own throat."
+	tutorial = "Picked out of your political value rather than likely any form of love, you have become the King's most trusted confidant and likely friend throughout your marriage. Your loyalty and, perhaps, love; will be tested this day. For the daggers that threaten your beloved are as equally pointed at your own throat."
 
 	spells = list(/obj/effect/proc_holder/spell/self/convertrole/servant)
 	outfit = /datum/outfit/job/roguetown/lady
@@ -19,7 +19,7 @@
 	max_pq = null
 
 /datum/job/roguetown/exlady //just used to change the ladys title
-	title = "Queen Dowager"
+	title = "Queen Mother"
 	flag = LADY
 	department_flag = NOBLEMEN
 	faction = "Station"
@@ -42,9 +42,11 @@
 	beltl = /obj/item/keyring/royal
 	neck = /obj/item/storage/belt/rogue/pouch/coins/rich
 	belt = /obj/item/storage/belt/rogue/leather/cloth/lady
-	head = /obj/item/clothing/head/roguetown/queen_hood
-	backl = /obj/item/clothing/suit/roguetown/armor/leather/queen
-	gloves = /obj/item/clothing/gloves/roguetown/leather/black
+	if(isdwarf(H))
+		armor = /obj/item/clothing/suit/roguetown/shirt/dress
+	else
+		armor = /obj/item/clothing/suit/roguetown/armor/armordress
+	head = /obj/item/clothing/head/roguetown/hennin
 //		SSticker.rulermob = H
 
 	id = /obj/item/clothing/ring/silver
@@ -71,7 +73,7 @@
 	new_role = "Servant"
 	overlay_state = "recruit_servant"
 	recruitment_faction = "Servants"
-	recruitment_message = "Serve the duchy, %RECRUIT!"
-	accept_message = "Yes, your highness!"
+	recruitment_message = "Serve the crown, %RECRUIT!"
+	accept_message = "FOR THE CROWN!"
 	refuse_message = "I refuse."
 	charge_max = 100

@@ -10,7 +10,7 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_ages = list(AGE_ADULT)
 
-	tutorial = "You’ve never felt the gnawing of the winter, never known the bite of hunger and certainly have never known what the peasantry call a honest day's work. In your youth you were as free as any bird in the sky, but that is of the past. Your noble duties are fast approaching and you will soon have to choose: Continue to spend life leisurely, or stalwartly shoulder the duties you've been handed."
+	tutorial = "You've never felt the gnawing of the winter, never known the bite of hunger and certainly have never known what the peasantry call a honest day's work. In your youth you were as free as any bird in the sky, but that is of the past. Your noble duties are fast approaching and you will soon have to choose: Continue to spend life leisurely, or stalwartly shoulder the duties you've been handed."
 
 	outfit = /datum/outfit/job/roguetown/prince
 	display_order = JDO_PRINCE
@@ -26,8 +26,9 @@
 /datum/outfit/job/roguetown/prince/pre_equip(mob/living/carbon/human/H)
 	..()
 	if(H.gender == MALE)
-		shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
-		armor = /obj/item/clothing/suit/roguetown/armor/leather/heir
+		pants = /obj/item/clothing/under/roguetown/tights
+		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/guard
+		armor = /obj/item/clothing/suit/roguetown/armor/chainmail
 		shoes = /obj/item/clothing/shoes/roguetown/armor/nobleboot
 		belt = /obj/item/storage/belt/rogue/leather
 		beltl = /obj/item/keyring/royal
@@ -54,11 +55,14 @@
 			H.change_stat("mageability", 2)
 
 	else
+		pants = /obj/item/clothing/under/roguetown/tights/stockings/silk/white
 		beltl = /obj/item/keyring/royal
-		belt = /obj/item/storage/belt/rogue/leather/cloth/lady
 		beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
-		armor = /obj/item/clothing/suit/roguetown/armor/leather/heiress
-		shoes = /obj/item/clothing/shoes/roguetown/armor/nobleboot
+		head = /obj/item/clothing/head/roguetown/hennin
+		belt = /obj/item/storage/belt/rogue/leather/cloth/lady
+		armor = /obj/item/clothing/suit/roguetown/armor/silkcoat
+		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/silkdress
+		shoes = /obj/item/clothing/shoes/roguetown/shortboots
 		if(H.mind)
 			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)

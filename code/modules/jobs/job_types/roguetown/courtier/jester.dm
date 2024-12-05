@@ -42,6 +42,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/stealing, 5, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/music, 2, TRUE)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/mockery)
 		if(!isseelie(H))	
 			H.STASTR = clamp(roll("4d6-4"), 1, 20)
 			H.STASKL = clamp(roll("4d6-4"), 1, 20)
@@ -57,7 +58,6 @@
 		H.cmode_music = 'sound/music/combat_jester.ogg'
 	H.verbs |= /mob/living/carbon/human/proc/ventriloquate
 	H.verbs |= /mob/living/carbon/human/proc/ear_trick
-	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/mockery)
 
 	ADD_TRAIT(H, TRAIT_ZJUMP, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_LEAPER, TRAIT_GENERIC)

@@ -63,14 +63,15 @@ GLOBAL_LIST_EMPTY(lord_titles)
 /datum/outfit/job/roguetown/lord/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/roguetown/crown/serpcrown
+	cloak = /obj/item/clothing/cloak/lordcloak
 	l_hand = /obj/item/rogueweapon/lordscepter
-	belt = /obj/item/storage/belt/rogue/leather
+	belt = /obj/item/storage/belt/rogue/leather/plaquegold
 	beltl = /obj/item/storage/belt/rogue/pouch/coins/rich
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1)
 	id = /obj/item/clothing/ring/active/nomag	
 	pants = /obj/item/clothing/under/roguetown/tights/black
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
-	armor = /obj/item/clothing/suit/roguetown/armor/leather/king
+	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/black
 	shoes = /obj/item/clothing/shoes/roguetown/armor
 	
 	if(H.mind)
