@@ -9,20 +9,12 @@
 
 /datum/sprite_accessory/penis/get_icon_state(obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
 	var/obj/item/organ/penis/pp = organ
-	if(pp.sheath_type != SHEATH_TYPE_NONE && pp.erect_state != ERECT_STATE_HARD)
+	if(pp.sheath_type != SHEATH_TYPE_NONE)
 		switch(pp.sheath_type)
 			if(SHEATH_TYPE_NORMAL)
-				if(pp.erect_state == ERECT_STATE_NONE)
-					return "sheath_1"
-				else
-					return "sheath_2"
+				return "sheath_1"
 			if(SHEATH_TYPE_SLIT)
-				if(pp.erect_state == ERECT_STATE_NONE)
-					return "slit_1"
-				else
-					return "slit_2"
-	if(pp.erect_state == ERECT_STATE_HARD)
-		return "[icon_state]_2"
+				return "slit_1"
 	else
 		return "[icon_state]_1"
 

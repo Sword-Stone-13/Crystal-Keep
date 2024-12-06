@@ -118,10 +118,10 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		ORGAN_SLOT_LIVER = /obj/item/organ/liver,
 		ORGAN_SLOT_STOMACH = /obj/item/organ/stomach,
 		ORGAN_SLOT_APPENDIX = /obj/item/organ/appendix,
-		ORGAN_SLOT_TESTICLES = /obj/item/organ/testicles,
-		ORGAN_SLOT_PENIS = /obj/item/organ/penis,
-		ORGAN_SLOT_BREASTS = /obj/item/organ/breasts,
-		ORGAN_SLOT_VAGINA = /obj/item/organ/vagina,
+		ORGAN_SLOT_TESTICLES = null,
+		ORGAN_SLOT_PENIS = null,
+		ORGAN_SLOT_BREASTS = null,
+		ORGAN_SLOT_VAGINA = null,
 		)
 	/// List of bodypart features of this species
 	var/list/bodypart_features
