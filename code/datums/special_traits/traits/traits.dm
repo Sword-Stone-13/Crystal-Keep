@@ -133,7 +133,7 @@
 
 /datum/special_trait/cunning_linguist/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_GOODLOVER, "[type]")
-	switch(rand(1,5))
+	switch(rand(1,6))
 		if(1)
 			character.grant_language(/datum/language/elvish)
 		if(2)
@@ -144,7 +144,7 @@
 			character.grant_language(/datum/language/dwarvish)
 		if(5)
 			character.grant_language(/datum/language/orcish)
-		if(5)
+		if(6)
 			character.grant_language(/datum/language/celestial)
 
 /datum/special_trait/corn_fed
@@ -317,8 +317,8 @@
 /datum/special_trait/backproblems
 	name = "Giant"
 	greet_text = span_notice("I've always been called a giant. I am valued for my stature, but, this world made for smaller folk has forced me to move cautiously.")
-	req_text = "Not a kobold, seelie, verminvolk or a dwarf"
-	restricted_races = list(/datum/species/anthromorphsmall, /datum/species/dwarf/mountain, /datum/species/kobold, /datum/species/seelie)
+	req_text = "Not a kobold, seelie or a dwarf"
+	restricted_races = list(/datum/species/dwarf/mountain, /datum/species/kobold, /datum/species/seelie)
 	weight = 50
 
 /datum/special_trait/backproblems/on_apply(mob/living/carbon/human/character)

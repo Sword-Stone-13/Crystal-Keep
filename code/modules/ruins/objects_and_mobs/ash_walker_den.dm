@@ -33,7 +33,6 @@
 
 /obj/structure/lavaland/ash_walker/process()
 	consume()
-	spawn_mob()
 
 /obj/structure/lavaland/ash_walker/proc/consume()
 	for(var/mob/living/H in view(src, 1)) //Only for corpse right next to/on same tile
@@ -54,9 +53,3 @@
 					SEND_SIGNAL(L, COMSIG_ADD_MOOD_EVENT, "oogabooga", /datum/mood_event/sacrifice_good)
 				else
 					SEND_SIGNAL(L, COMSIG_ADD_MOOD_EVENT, "oogabooga", /datum/mood_event/sacrifice_bad)
-
-/obj/structure/lavaland/ash_walker/proc/spawn_mob()
-	if(meat_counter >= ASH_WALKER_SPAWN_THRESHOLD)
-		new /obj/effect/mob_spawn/human/ash_walker(get_step(loc, pick(GLOB.alldirs)), ashies)
-		visible_message(span_danger("One of the eggs swells to an unnatural size and tumbles free. It's ready to hatch!"))
-		meat_counter -= ASH_WALKER_SPAWN_THRESHOLD

@@ -90,7 +90,7 @@
 			return "regenerative core"
 	return slot
 
-/proc/parse_zone_fancy(zone, combat, combattarget, closeby, turnedaround, ontheground, grabbing, squinting, defiant, uncovered, dicked, pussied, strength, self = FALSE)
+/proc/parse_zone_fancy(zone, combat, combattarget, closeby, turnedaround, ontheground, grabbing, squinting, uncovered, strength, self = FALSE)
 	switch(zone)
 		if(BODY_ZONE_PRECISE_R_HAND)
 			if(closeby && !combat)
@@ -210,21 +210,8 @@
 				return "body"
 		if(BODY_ZONE_PRECISE_GROIN)
 			if((turnedaround && !self) || (self && !squinting && combat))
-				if(closeby && grabbing && squinting && ontheground && !defiant && !combat && uncovered && !self)
-					return "asshole"
 				return "ass"
 			if(closeby && !combat)
-				if(squinting && !defiant)
-					if(dicked)
-						if(uncovered)
-							return "cock"
-						else
-							return "bulge"
-					if(pussied)
-						if(uncovered)
-							return "slit"
-						else
-							return "camel toe"
 				return "crotch"
 			if(squinting && combat)
 				return "hips"
@@ -292,8 +279,6 @@
 			if(closeby && !turnedaround && uncovered)
 				if(!combat)
 					if(squinting)
-						if(!defiant && prob(1))
-							return "seductive lips"
 						return "lips"
 					return "mouth"
 				return "jaw"

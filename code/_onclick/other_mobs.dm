@@ -162,27 +162,6 @@
 	var/def_zone = user.zone_selected
 	var/do_bound_check = TRUE
 
-	if(user.sexcon && user.sexcon.target == src && !isnull(user.sexcon.current_action))
-		switch(user.sexcon.current_action)
-			if(/datum/sex_action/blowjob || /datum/sex_action/crotch_nuzzle || /datum/sex_action/cunnilingus || /datum/sex_action/rimming || /datum/sex_action/suck_balls)
-				dam2do *= 2 //Vrell - biting their junk hurts more
-				def_zone = BODY_ZONE_PRECISE_GROIN
-				do_bound_check = FALSE
-			if(/datum/sex_action/armpit_nuzzle)
-				dam2do *= 1.5 //Vrell - biting the soft of the armpit hurts more
-				def_zone = BODY_ZONE_CHEST
-				do_bound_check = FALSE
-	if(sexcon && sexcon.target == user && !isnull(sexcon.current_action))
-		switch(sexcon.current_action)
-			if(/datum/sex_action/throat_sex || /datum/sex_action/force_blowjob || /datum/sex_action/force_crotch_nuzzle || /datum/sex_action/force_cunnilingus || /datum/sex_action/facesitting || /datum/sex_action/force_rimming)
-				dam2do *= 2 //Vrell - biting their junk hurts more
-				def_zone = BODY_ZONE_PRECISE_GROIN
-				do_bound_check = FALSE
-			if(/datum/sex_action/force_armpit_nuzzle)
-				dam2do *= 1.5 //Vrell - biting the soft of the armpit hurts more
-				def_zone = BODY_ZONE_CHEST
-				do_bound_check = FALSE
-
 	if(do_bound_check && user.incapacitated())
 		return FALSE
 	if(HAS_TRAIT(user, TRAIT_PACIFISM))

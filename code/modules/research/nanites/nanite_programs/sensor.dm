@@ -443,7 +443,7 @@
 	var/list/static/allowed_species = list(
     	"Human" = /datum/species/human,
     	"Lizard" = /datum/species/lizard,
-		"Moth" = /datum/species/moth,
+		"Moth" = /datum/species/aasimar,
 		"Ethereal" = /datum/species/ethereal,
 		"Pod" = /datum/species/pod,
 		"Fly" = /datum/species/fly,

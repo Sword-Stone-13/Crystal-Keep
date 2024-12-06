@@ -1,4 +1,4 @@
-/datum/language/canilunzt
+/* /datum/language/canilunzt
 	name = "Canilunzt"
 	desc = "A somewhat simple language consisting of heavily articulate barks, growls, yaps, and combined movements of the tail and ears. It's natively spoken by the Lupian and Vulpkian. Its parlance has been loosely compared to the Grenzel language group."
 	speech_verb = "rrrfts"
@@ -20,3 +20,4 @@
 		"enem","zandt","tzch","noch","hel","ischt","far","wa","baram","iereng","tech","lach","sam",
 		"mak","lich","gen","or","ag","eck","gec","stag","onn","bin","ket","einech","cresthz","azunein","ghzth"
 	)
+*/

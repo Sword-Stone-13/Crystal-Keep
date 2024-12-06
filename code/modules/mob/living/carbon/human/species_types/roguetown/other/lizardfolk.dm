@@ -1,10 +1,16 @@
-/mob/living/carbon/human/species/dracon
-	race = /datum/species/dracon
+/mob/living/carbon/human/species/lizardfolk
+	race = /datum/species/lizardfolk
 
-/datum/species/dracon
-	name = "Drakian"
-	id = "dracon"
-	desc = "In time you will learn the history of this race"
+/datum/species/lizardfolk
+	name = "Sissean"
+	id = "lizardfolk"
+	desc = "<b>Sissean</b><br>\
+	Sisseans are semi-aquatic reptilian humanoids.\
+	Their skin is covered in scales and varied in color from dark green through to shades of brown and gray.\
+	Taller than humans and powerfully built, sisseans are often between 6 and 7 feet tall.\
+	Sisseans have non-prehensile muscular tails that grow to three or four feet in length, and these are used for balance.\
+	They also have sharp claws and teeth."
+	skin_tone_wording = "Skin Colors"
 	species_traits = list(EYECOLOR,LIPS,STUBBLE,MUTCOLORS)
 	inherent_traits = list(TRAIT_NOMOBSWAP)
 	possible_ages = ALL_AGES_LIST
@@ -28,14 +34,24 @@
 		OFFSET_SHIRT_F = list(0,0), OFFSET_ARMOR_F = list(0,0), OFFSET_UNDIES_F = list(0,0), \
 		)
 	specstats = list(
-		"strength" = 0,
-		"skill" = 0,
-		"mageability" = 1,
+		"strength" = 2,
+		"skill" = -2,
+		"mageability" = -4,
 		"constitution" = 1,
-		"endurance" = 0,
-		"speed" = -1,
+		"endurance" = 1,
+		"speed" = -2,
+		"faith" = -3,
 		"fortune" = 0
 		)
+	specstats_m = list(
+		"speed" = 1,
+		"endurance" = 1,
+
+	)
+	specstats_f = list(
+		"strength" = 1,
+		"constitution" = 1,
+	)
 	enflamed_icon = "widefire"
 	attack_verb = "slash"
 	attack_sound = 'sound/blank.ogg'
@@ -55,27 +71,26 @@
 		ORGAN_SLOT_TAIL_FEATURE = /obj/item/organ/tail_feature/lizard_spines,
 		ORGAN_SLOT_FRILLS = /obj/item/organ/frills/lizard,
 		ORGAN_SLOT_HORNS = /obj/item/organ/horns,
-		ORGAN_SLOT_WINGS = /obj/item/organ/wings/dracon,
 		ORGAN_SLOT_TESTICLES = /obj/item/organ/testicles,
-		ORGAN_SLOT_PENIS = /obj/item/organ/penis/tapered,
+		ORGAN_SLOT_PENIS = /obj/item/organ/penis,
 		ORGAN_SLOT_BREASTS = /obj/item/organ/breasts,
 		ORGAN_SLOT_VAGINA = /obj/item/organ/vagina,
 		)
 	customizers = list(
 		/datum/customizer/organ/eyes/humanoid,
-		/datum/customizer/bodypart_feature/hair/head/humanoid,
-		/datum/customizer/bodypart_feature/hair/facial/humanoid,
+		/datum/customizer/bodypart_feature/hair/head/humanoid/bald_default,
+		/datum/customizer/bodypart_feature/hair/facial/humanoid/shaved_default,
 		/datum/customizer/bodypart_feature/accessory,
 		/datum/customizer/bodypart_feature/face_detail,
 		/datum/customizer/organ/tail/lizard,
 		/datum/customizer/organ/tail_feature/lizard_spines,
 		/datum/customizer/organ/snout/lizard,
 		/datum/customizer/organ/frills/lizard,
-		/datum/customizer/organ/horns/humanoid,
-		/datum/customizer/organ/testicles/anthro,
-		/datum/customizer/organ/penis/lizard,
-		/datum/customizer/organ/breasts/animal,
-		/datum/customizer/organ/vagina/animal,
+		/datum/customizer/organ/horns/humanoid/sissean,
+		/datum/customizer/organ/testicles/human,
+		/datum/customizer/organ/penis/human,
+		/datum/customizer/organ/breasts/human,
+		/datum/customizer/organ/vagina/human,
 		)
 	body_marking_sets = list(
 		/datum/body_marking_set/none,
@@ -113,57 +128,45 @@
 		/datum/descriptor_choice/prominent_four,
 	)
 
-/datum/species/dracon/check_roundstart_eligible()
+/datum/species/lizardfolk/check_roundstart_eligible()
 	return TRUE
 
-/datum/species/dracon/qualifies_for_rank(rank, list/features)
+/datum/species/lizardfolk/qualifies_for_rank(rank, list/features)
 	return TRUE
 
-/datum/species/dracon/on_species_gain(mob/living/carbon/C, datum/species/old_species)
+/datum/species/lizardfolk/on_species_gain(mob/living/carbon/C, datum/species/old_species)
 	..()
 	RegisterSignal(C, COMSIG_MOB_SAY, PROC_REF(handle_speech))
 
-/datum/species/dracon/on_species_loss(mob/living/carbon/C)
+/datum/species/lizardfolk/on_species_loss(mob/living/carbon/C)
 	. = ..()
 	UnregisterSignal(C, COMSIG_MOB_SAY)
 
-/datum/species/dracon/get_random_body_markings(list/passed_features)
+/datum/species/lizardfolk/get_random_body_markings(list/passed_features)
 	return assemble_body_markings_from_set(GLOB.body_marking_sets_by_type[/datum/body_marking_set/bellyscale], passed_features, src)
 
-/datum/species/dracon/get_random_features()
+/datum/species/lizardfolk/get_random_features()
 	var/list/returned = MANDATORY_FEATURE_LIST
 	var/main_color
 	var/second_color
-	var/random = rand(1,9)
-	//Choose from a variety of draconic colors
+	var/random = rand(1,5)
+	//Choose from a variety of lizardish colors
 	switch(random)
 		if(1)
-			main_color = "e43900"
-			second_color = "ea673c"
+			main_color = "15921a"
+			second_color = "3a8f3d"
 		if(2)
-			main_color = "ea6f01"
-			second_color = "ea8e3c"
-		if(3)
-			main_color = "eaa501"
-			second_color = "e7b43a"
-		if(4)
 			main_color = "63d100"
 			second_color = "89d248"
-		if(5)
+		if(3)
 			main_color = "51aa01"
 			second_color = "70ae39"
-		if(6)
+		if(4)
 			main_color = "00b302"
 			second_color = "2eb62f"
-		if(7)
+		if(5)
 			main_color = "02c33c"
 			second_color = "3ac664"
-		if(8)
-			main_color = "00c170"
-			second_color = "3fbf89"
-		if(9)
-			main_color = "00bc94"
-			second_color = "3cbea2"
 	returned["mcolor"] = main_color
 	returned["mcolor2"] = second_color
 	returned["mcolor3"] = second_color
