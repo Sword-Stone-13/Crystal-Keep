@@ -6,13 +6,12 @@
 	allowed_patrons = ALL_NON_INHUMEN_PATRONS
 	total_positions = 1
 	spawn_positions = 1
-
 	allowed_races = RACES_TOLERATED_UP
-	allowed_sexes = list(MALE)
+	allowed_sexes = list(MALE, FEMALE)
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
-	tutorial = "You served your time gracefully as a soldier, and now you've grown into a role which many men dream to become. \
-				You are the Marshal's chosen, elevated to command His Highness' personal retinue. \
-				Keep your men in line, as for this realm to prosper, the king must be safe. \
+	tutorial = "You served your time gracefully as a soldier of His Royal Majesty, and now you've grown into a role which many men dream to become. \
+				You are the Marshal's chosen, elevated to command His Majesty's personal retinue. \
+				Keep your men in line, as for this kingdom to prosper, the crown must be safe. \
 				The Men at Arms and the Gatemaster are under your direct supervision."
 	display_order = JDO_GUARD_CAPTAIN
 	whitelist_req = FALSE

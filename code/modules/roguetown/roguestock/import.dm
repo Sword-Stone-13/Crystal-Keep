@@ -27,16 +27,16 @@
 	locked = TRUE
 	masterkey = TRUE
 
-/datum/roguestock/import/vanguard
-	name = "Vanguard Equipment Crate"
-	desc = "Starting kit for a new Vanguard."
-	item_type = /obj/structure/closet/crate/chest/steward/vanguard
+/datum/roguestock/import/bogguard
+	name = "Bog Guard Equipment Crate"
+	desc = "Starting kit for a new Bog Guard."
+	item_type = /obj/structure/closet/crate/chest/steward/bogguard
 	export_price = 50
 	importexport_amt = 1
 
-/obj/structure/closet/crate/chest/steward/vanguard/Initialize()
+/obj/structure/closet/crate/chest/steward/bogguard/Initialize()
 	. = ..()
-	new /obj/item/clothing/cloak/raincloak/vanguard(src)
+	new /obj/item/clothing/cloak/stabard/bog(src)
 	new /obj/item/keyring/bog_guard(src)
 	new /obj/item/clothing/suit/roguetown/armor/gambeson(src)
 	new /obj/item/rogueweapon/mace/cudgel(src)

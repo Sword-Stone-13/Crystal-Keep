@@ -32,7 +32,7 @@
 	name = "Stabalizing Syringe"
 	overlay_state = "stable"
 	range = 1
-	sound = 'modular/Smoker/sound/inject.ogg'
+	sound = 'sound/items/inject.ogg'
 	associated_skill = /datum/skill/misc/treatment
 	antimagic_allowed = TRUE
 	include_user = TRUE
@@ -1062,7 +1062,7 @@
 		has_cap = FALSE
 		icon_state = "[icon_state]_nocap"  // Update icon state for no cap
 		to_chat(user, span_notice("You thumb off the cork from [src]."))
-		playsound(src, 'modular/Smoker/sound/corkpop.ogg', 100, TRUE)
+		playsound(src, 'sound/items/corkpop.ogg', 100, TRUE)
 	else
 		to_chat(user, span_warning("[src] doesn't have a cork."))
 
@@ -1085,7 +1085,7 @@
 	reagents.maximum_volume = 0  // Makes them useless afterwards
 	reagents.flags = NONE  // Ensure reagents are deactivated
 	update_icon()
-	playsound(src, 'modular/Smoker/sound/chug.ogg', 100, TRUE)
+	playsound(src, 'sound/items/chug.ogg', 100, TRUE)
 	return TRUE
 
 /obj/item/reagent_containers/hypospray/medipen/sealbottle/attack(mob/user)
@@ -1113,7 +1113,7 @@
 		has_cap = FALSE
 		icon_state = "[icon_state]_nocap"  // Update icon state for no cap
 		to_chat(user, span_notice("You bite the cap off [src] and spit it out."))
-		playsound(src, 'modular/Smoker/sound/capoff.ogg', 100, TRUE)
+		playsound(src, 'sound/items/capoff.ogg', 100, TRUE)
 	else
 		to_chat(user, span_warning("[src] doesn't have a cap."))
 
@@ -1136,7 +1136,7 @@
 	reagents.maximum_volume = 0  // Makes them useless afterwards
 	reagents.flags = NONE  // Ensure reagents are deactivated
 	update_icon()
-	playsound(src, 'modular/Smoker/sound/inject.ogg', 100, TRUE)
+	playsound(src, 'sound/items/inject.ogg', 100, TRUE)
 	return TRUE
 
 /obj/item/reagent_containers/hypospray/medipen/sty/attack(mob/user)

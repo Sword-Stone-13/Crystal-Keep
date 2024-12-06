@@ -20,7 +20,7 @@
 	if(has_cap)
 		to_chat(user, span_warning("[src] has a cap on! You need to remove it first."))
 		return FALSE
-		playsound(src, 'modular/Smoker/sound/inject.ogg')
+		playsound(src, 'sound/items/inject.ogg')
 	inject(M, user)
 
 ///Handles all injection checks, injection and logging.
@@ -142,7 +142,7 @@
 		has_cap = FALSE
 		icon_state = "sty_nocap"  // Update icon state
 		to_chat(user, span_notice("You remove the cap from [src]."))
-		playsound(user, 'modular/Smoker/sound/capoff.ogg')
+		playsound(user, 'sound/items/capoff.ogg')
 	else
 		to_chat(user, span_warning("[src] doesn't have a cap."))
 		return FALSE

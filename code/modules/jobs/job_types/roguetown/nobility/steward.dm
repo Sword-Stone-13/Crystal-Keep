@@ -18,15 +18,18 @@
 /datum/outfit/job/roguetown/steward/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.virginity = TRUE
-	armor = /obj/item/clothing/suit/roguetown/armor/leather/steward
-	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/red
-	pants = /obj/item/clothing/under/roguetown/tights/black
+	if(H.gender == FEMALE)
+		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor
+		armor = /obj/item/clothing/suit/roguetown/shirt/dress/silkdress/green
+		cloak = /obj/item/clothing/cloak/tabard/knight
+		pants = /obj/item/clothing/under/roguetown/tights/stockings/silk/random
+	else
+		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor
+		pants = /obj/item/clothing/under/roguetown/tights/random
+		armor = /obj/item/clothing/cloak/tabard/knight
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
-	belt = /obj/item/storage/belt/rogue/leather
+	belt = /obj/item/storage/belt/rogue/leather/plaquesilver
 	beltr = /obj/item/keyring/steward
-
-	ADD_TRAIT(H, TRAIT_SEEPRICES, type)
-	
 
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 6, TRUE)
