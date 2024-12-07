@@ -118,10 +118,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		ORGAN_SLOT_LIVER = /obj/item/organ/liver,
 		ORGAN_SLOT_STOMACH = /obj/item/organ/stomach,
 		ORGAN_SLOT_APPENDIX = /obj/item/organ/appendix,
-		ORGAN_SLOT_TESTICLES = null,
 		ORGAN_SLOT_PENIS = null,
 		ORGAN_SLOT_BREASTS = null,
-		ORGAN_SLOT_VAGINA = null,
 		)
 	/// List of bodypart features of this species
 	var/list/bodypart_features
@@ -184,13 +182,9 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 /datum/species/proc/is_organ_slot_allowed(mob/living/carbon/human/human, organ_slot)
 	switch(organ_slot)
-		if(ORGAN_SLOT_VAGINA)
-			return (human.gender == FEMALE)
 		if(ORGAN_SLOT_BREASTS)
 			return (human.gender == FEMALE)
 		if(ORGAN_SLOT_PENIS)
-			return (human.gender == MALE)
-		if(ORGAN_SLOT_TESTICLES)
 			return (human.gender == MALE)
 	return TRUE
 

@@ -4,6 +4,7 @@
 	visible_organ = TRUE
 	zone = BODY_ZONE_PRECISE_GROIN
 	slot = ORGAN_SLOT_PENIS
+	exclude = TRUE
 	organ_dna_type = /datum/organ_dna/penis
 	accessory_type = /datum/sprite_accessory/penis/human
 	var/sheath_type = SHEATH_TYPE_NONE
@@ -64,35 +65,13 @@
 	sheath_type = SHEATH_TYPE_NORMAL
 	icon_state = "barbpenis"
 
-/obj/item/organ/vagina
-	name = "vagina"
-	icon_state = "womb"
-	visible_organ = TRUE
-	zone = BODY_ZONE_PRECISE_GROIN
-	slot = ORGAN_SLOT_VAGINA
-	accessory_type = /datum/sprite_accessory/vagina/human
-
 /obj/item/organ/breasts
 	name = "breasts"
 	icon_state = "breasts"
 	visible_organ = TRUE
 	zone = BODY_ZONE_CHEST
 	slot = ORGAN_SLOT_BREASTS
+	exclude = TRUE
 	organ_dna_type = /datum/organ_dna/breasts
 	accessory_type = /datum/sprite_accessory/breasts/pair
 	var/breast_size = DEFAULT_BREASTS_SIZE
-
-/obj/item/organ/testicles
-	name = "testicles"
-	icon_state = "testicles"
-	visible_organ = TRUE
-	zone = BODY_ZONE_PRECISE_GROIN
-	slot = ORGAN_SLOT_TESTICLES
-	organ_dna_type = /datum/organ_dna/testicles
-	accessory_type = /datum/sprite_accessory/testicles/pair
-	var/ball_size = DEFAULT_TESTICLES_SIZE
-
-/obj/item/organ/testicles/internal
-	name = "internal testicles"
-	visible_organ = FALSE
-	accessory_type = /datum/sprite_accessory/none

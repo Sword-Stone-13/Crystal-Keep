@@ -62,6 +62,9 @@
 		else //we're going to drop all bodyparts except chest, so the only organs that needs spilling are those inside it.
 			for(var/X in internal_organs)
 				var/obj/item/organ/O = X
+				if(O.exclude)
+					qdel(O)
+					continue
 				if(no_brain && istype(O, /obj/item/organ/brain))
 					qdel(O) //so the brain isn't transfered to the head when the head drops.
 					continue
@@ -73,6 +76,9 @@
 	else
 		for(var/X in internal_organs)
 			var/obj/item/organ/I = X
+			if(I.exclude)
+				qdel(I)
+				continue
 			if(no_brain && istype(I, /obj/item/organ/brain))
 				qdel(I)
 				continue
