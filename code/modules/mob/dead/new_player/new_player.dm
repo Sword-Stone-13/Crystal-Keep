@@ -723,6 +723,9 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 	client.prefs.copy_to(H, antagonist = is_antag)
 	H.dna.update_dna_identity()
 	if(mind)
+		// applies that character's preferred squad, this may be overridden by the chosen job squad however (if the job has a squad)
+		var/chosen_squad = client.prefs.pref_squad
+		mind.squad = chosen_squad
 		if(transfer_after)
 			mind.late_joiner = TRUE
 		mind.active = 0					//we wish to transfer the key manually

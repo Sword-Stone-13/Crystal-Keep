@@ -78,9 +78,13 @@
 #define ANTAG_HUD_OBSESSED	23
 #define ANTAG_HUD_FUGITIVE	24
 #define ANTAG_HUD_VAMPIRE	25
+#define ANTAG_HUD_WEREWOLF  26
 
 //rogue
-#define ROGUE_HUD_MARRIED	26
+#define ROGUE_HUD_MARRIED	27
+
+//squad hud defines
+#define SQUAD_HUD		28
 
 // Notification action types
 #define NOTIFY_JUMP "jump"
