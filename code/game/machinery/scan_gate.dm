@@ -223,7 +223,7 @@
 					if("Plasmaman")
 						detect_species = /datum/species/plasmaman
 					if("Mothmen")
-						detect_species = /datum/species/moth
+						detect_species = /datum/species/aasimar
 					if("Jellyperson")
 						detect_species = /datum/species/jelly
 					if("Podperson")

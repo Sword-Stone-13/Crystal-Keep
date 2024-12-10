@@ -22,9 +22,6 @@
 	desc = "A pair of fuzzy moth wings."
 	flight_for_species = list("moth")
 
-/obj/item/organ/wings/anthro
-	name = "wild-kin wings"
-
 /obj/item/organ/wings/flight
 	unconditional_flight = TRUE
 	can_open = TRUE
@@ -40,10 +37,6 @@
 /obj/item/organ/wings/flight/megamoth
 	name = "megamoth wings"
 	desc = "A pair of horrifyingly large, fuzzy wings. They look strong enough to lift you up in the air."
-
-/obj/item/organ/wings/dracon
-	name = "drakian wings"
-	accessory_type = /datum/sprite_accessory/wings/huge/dragon
 
 /obj/item/organ/wings/seelie
 	name = "seelie wings"

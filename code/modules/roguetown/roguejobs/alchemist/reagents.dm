@@ -67,11 +67,3 @@
 		M.add_nausea(9)
 		M.adjustToxLoss(3, 0)
 	return ..()
-
-/datum/reagent/erpjuice/cum
-	name = "Erotic Fluid"
-	description = "A thick, sticky, cream like fluid. produced during an orgasm."
-	reagent_state = LIQUID
-	color = "#ebebeb"
-	taste_description = "salty and tangy"
-	metabolization_rate = 0.1

@@ -35,23 +35,3 @@
 		/datum/sprite_accessory/neck_feature/moth_fluff/jungle,
 		/datum/sprite_accessory/neck_feature/moth_fluff/witchwing,
 		)
-
-/datum/customizer/organ/neck_feature/anthro
-	name = "Wild-Kin Fluff"
-	allows_disabling = TRUE
-	default_disabled = TRUE
-	customizer_choices = list(
-		/datum/customizer_choice/organ/neck_feature/anthro_fluff,
-		)
-
-/datum/customizer_choice/organ/neck_feature/anthro_fluff
-	name = "Wild-Kin Fluff"
-	organ_type = /obj/item/organ/neck_feature/anthro_fluff
-	sprite_accessories = list(
-		/datum/sprite_accessory/neck_feature/mammal_fluff/fluff,
-		/datum/sprite_accessory/neck_feature/mammal_fluff/fluff_front,
-		/datum/sprite_accessory/neck_feature/mammal_fluff/fluff_dual,
-		/datum/sprite_accessory/neck_feature/mammal_fluff/fluff_dual_front,
-		/datum/sprite_accessory/neck_feature/mammal_fluff/insect_m,
-		/datum/sprite_accessory/neck_feature/mammal_fluff/insect_f,
-		)

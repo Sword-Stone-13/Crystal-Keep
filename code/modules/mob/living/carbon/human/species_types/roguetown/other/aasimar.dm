@@ -71,10 +71,7 @@
 		ORGAN_SLOT_ANTENNAS = /obj/item/organ/antennas/moth,
 		ORGAN_SLOT_NECK_FEATURE = /obj/item/organ/neck_feature/moth_fluff,
 		ORGAN_SLOT_WINGS = /obj/item/organ/wings/moth,
-		ORGAN_SLOT_TESTICLES = /obj/item/organ/testicles,
 		ORGAN_SLOT_PENIS = /obj/item/organ/penis/tapered,
-		ORGAN_SLOT_BREASTS = /obj/item/organ/breasts,
-		ORGAN_SLOT_VAGINA = /obj/item/organ/vagina,
 		)
 	customizers = list(
 		/datum/customizer/organ/eyes/moth,
@@ -83,10 +80,6 @@
 		/datum/customizer/organ/wings/moth,
 		/datum/customizer/organ/antennas/moth,
 		/datum/customizer/organ/neck_feature/moth_fluff,
-		/datum/customizer/organ/testicles/anthro,
-		/datum/customizer/organ/penis/lizard,
-		/datum/customizer/organ/breasts/animal,
-		/datum/customizer/organ/vagina/animal,
 		)
 	body_marking_sets = list(
 		/datum/body_marking_set/moth/reddish,
@@ -179,6 +172,23 @@
 
 /datum/species/aasimar/random_surname()
 	return
+
+/datum/species/aasimar/get_random_body_markings(list/passed_features)
+	return assemble_body_markings_from_set(GLOB.body_marking_sets_by_type[pick(body_marking_sets)], passed_features, src)
+
+/datum/species/aasimar/get_random_features()
+	var/list/returned = MANDATORY_FEATURE_LIST
+	var/main_color
+	var/second_color
+	var/random = rand(1,1)
+	switch(random)
+		if(1)
+			main_color = "edcf7e"
+			second_color = "2b2a24"
+	returned["mcolor"] = main_color
+	returned["mcolor2"] = second_color
+	returned["mcolor3"] = second_color
+	return returned
 
 //Groups of Accents for each race set by associated 'skin_tone', see 'get_skin_list' above
 // "full" group in JSON lists
