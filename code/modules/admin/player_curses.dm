@@ -1,12 +1,12 @@
 
-#define CURSE_MASTER_LIST list("brokedick")
+#define CURSE_MASTER_LIST list("bitchmade")
 
 /proc/curse2trait(curse)
 	if(!curse)
 		return
 	switch(curse)
-		if("brokedick")
-			return TRAIT_LIMPDICK
+		if("bitchmade")
+			return TRAIT_PACIFISM
 
 /proc/has_player_curse(key,curse)
 	if(!key)

@@ -106,9 +106,9 @@
 	var/original_name = null
 
 	var/datum/devotion/devotion = null // Used for cleric_holder for priests
+	var/virginity = FALSE
 
 	var/headshot_link = null
-	var/nudeshot_link = null
 
 	var/received_resident_key = FALSE
 

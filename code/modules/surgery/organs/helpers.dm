@@ -44,5 +44,7 @@
 	for(var/obj/item/organ/organ as anything in internal_organs)
 		if(organ.zone != zone)
 			continue
+		if(organ.exclude)
+			continue
 		returnorg += organ
 	return returnorg

@@ -3,16 +3,9 @@
 	tutorial = "Experts, Professionals, Expensive. Those are the first words that come to mind when the emperiate Grenzelhoft mercenary guild is mentioned. While you may work for coin like any common sellsword, mantaining the prestige of the guild will be of utmost priority."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(
-		/datum/species/akula,
-		/datum/species/vulpkanin,
-		/datum/species/lupian,
-		/datum/species/dracon,
 		/datum/species/aasimar, //grenzelmoft?
 		/datum/species/dwarf/mountain,
 		/datum/species/human/northern,
-		/datum/species/demihuman,
-		/datum/species/anthromorph,
-		/datum/species/tabaxi
 	)
 	outfit = /datum/outfit/job/roguetown/mercenary/grenzelhoft
 	maximum_possible_slots = 9

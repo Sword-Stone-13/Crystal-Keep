@@ -31,27 +31,3 @@
 		/datum/sprite_accessory/frills/earlike_thick,
 		/datum/sprite_accessory/frills/earlike_angled,
 		)
-
-/datum/customizer/organ/frills/anthro
-	customizer_choices = list(/datum/customizer_choice/organ/frills/anthro)
-	default_disabled = TRUE
-
-/datum/customizer_choice/organ/frills/anthro
-	name = "Frills"
-	organ_type = /obj/item/organ/frills
-	generic_random_pick = TRUE
-	sprite_accessories = list(
-		/datum/sprite_accessory/frills/simple,
-		/datum/sprite_accessory/frills/short,
-		/datum/sprite_accessory/frills/aquatic,
-		/datum/sprite_accessory/frills/divinity,
-		/datum/sprite_accessory/frills/horns,
-		/datum/sprite_accessory/frills/horns_double,
-		/datum/sprite_accessory/frills/big,
-		/datum/sprite_accessory/frills/split,
-		/datum/sprite_accessory/frills/split_big,
-		/datum/sprite_accessory/frills/split_slim,
-		/datum/sprite_accessory/frills/earlike,
-		/datum/sprite_accessory/frills/earlike_thick,
-		/datum/sprite_accessory/frills/earlike_angled,
-		)
