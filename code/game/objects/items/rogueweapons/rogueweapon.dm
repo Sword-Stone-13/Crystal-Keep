@@ -28,7 +28,7 @@
 	experimental_onhip = TRUE
 	experimental_onback = TRUE
 	embedding = list(
-		"embed_chance" = 20, 
+		"embed_chance" = 2, 
 		"embedded_pain_multiplier" = 1, 
 		"embedded_fall_chance" = 0,
 	)
@@ -70,13 +70,13 @@
 		if(istype(user.rmb_intent, /datum/rmb_intent/weak))
 			nuforce = 0
 		else if(istype(user.rmb_intent, /datum/rmb_intent/strong))
-			nuforce *= 1.1
+			nuforce *= 1.25
 
 		if(user.used_intent.blade_class == BCLASS_CHOP) //chopping attacks always attempt dismembering
 			nuforce *= 1.1
 		else if(user.used_intent.blade_class == BCLASS_CUT)
 			if(!pristine_blade && (total_dam < affecting.max_damage * 0.8))
-				return 0
+				nuforce *= (blade_int / dismember_blade_int) / 4
 		else
 			return 0
 

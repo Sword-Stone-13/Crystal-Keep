@@ -14,6 +14,12 @@
 	robust_searching = 1
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	attack_sound = PUNCHWOOSH
+	STASTR = 5
+	STASKL = 5
+	STAMAG = 1
+	STACON = 5
+	STAEND = 5
+	STASPD = 12
 	health = 40
 	maxHealth = 40
 	move_to_delay = 5
@@ -233,7 +239,7 @@
 	mob_timers["aggro_time"] = world.time
 	..()
 
-/mob/living/simple_animal/hostile/retaliate/rogue/attackby(obj/item/O, mob/user, params)
+/mob/living/simple_animal/hostile/retaliate/rogue/attackby(obj/item/O, mob/living/user, params)
 	if(!stat && istype(O, /obj/item/reagent_containers/glass))
 		if(udder && tame)
 			udder.milkAnimal(O, user)

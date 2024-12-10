@@ -15,8 +15,20 @@
 		return
 
 	if(check_arm_grabbed(used_hand))
-		to_chat(src, span_warning("Someone is grabbing my arm!"))
-		return
+		var/mob/living/G = src.pulledby
+		var/mob/living/U = src
+		var/userskill = 1
+		if(U?.mind?.get_skill_level(/datum/skill/combat/wrestling))
+			userskill = ((U.mind.get_skill_level(/datum/skill/combat/wrestling) * 0.1) + 1)
+		var/grabberskill = 1
+		if(G?.mind?.get_skill_level(/datum/skill/combat/wrestling))
+			grabberskill = ((G.mind.get_skill_level(/datum/skill/combat/wrestling) * 0.1) + 1)
+		if(((U.STASTR + rand(1, 6)) * userskill) < ((G.STASTR + rand(1, 6)) * grabberskill))
+			to_chat(src, span_notice("I can't move my arm!"))
+			src.changeNext_move(CLICK_CD_GRABBING)
+			return
+		else
+			src.resist_grab()
 
 	// Special glove functions:
 	// If the gloves do anything, have them return 1 to stop
@@ -310,8 +322,20 @@
 				if(src.get_num_legs() < 2)
 					return
 				if(pulledby && pulledby != src)
-					to_chat(src, span_warning("I'm being grabbed."))
-					return
+					var/mob/living/G = src.pulledby
+					var/mob/living/U = src
+					var/userskill = 1
+					if(U?.mind?.get_skill_level(/datum/skill/combat/wrestling))
+						userskill = ((U.mind.get_skill_level(/datum/skill/combat/wrestling) * 0.1) + 1)
+					var/grabberskill = 1
+					if(G?.mind?.get_skill_level(/datum/skill/combat/wrestling))
+						grabberskill = ((G.mind.get_skill_level(/datum/skill/combat/wrestling) * 0.1) + 1)
+					if(((U.STASTR + rand(1, 6)) * userskill) < ((G.STASTR + rand(1, 6)) * grabberskill))
+						to_chat(src, span_warning("I'm being grabbed."))
+						src.changeNext_move(CLICK_CD_GRABBING)
+						return
+					else
+						src.resist_grab()
 				if(IsOffBalanced())
 					to_chat(src, span_warning("I haven't regained my balance yet."))
 					return

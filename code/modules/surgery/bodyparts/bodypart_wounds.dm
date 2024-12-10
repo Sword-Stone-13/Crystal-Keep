@@ -133,35 +133,35 @@
 	switch(bclass) //do stuff but only when we are a blade that adds wounds
 		if(BCLASS_SMASH, BCLASS_BLUNT)
 			switch(dam)
-				if(20 to INFINITY)
+				if(40 to INFINITY)
 					added_wound = /datum/wound/bruise/large
-				if(10 to 20)
+				if(15 to 40)
 					added_wound = /datum/wound/bruise
-				if(1 to 10)
+				if(1 to 15)
 					added_wound = /datum/wound/bruise/small
 		if(BCLASS_CUT, BCLASS_CHOP)
 			switch(dam)
-				if(20 to INFINITY)
+				if(40 to INFINITY)
 					added_wound = /datum/wound/slash/large
-				if(10 to 20)
+				if(15 to 40)
 					added_wound = /datum/wound/slash
-				if(1 to 10)
+				if(1 to 15)
 					added_wound = /datum/wound/slash/small
-		if(BCLASS_STAB, BCLASS_PICK)
+		if(BCLASS_STAB, BCLASS_PICK, BCLASS_ASSASSIN)
 			switch(dam)
-				if(20 to INFINITY)
+				if(40 to INFINITY)
 					added_wound = /datum/wound/puncture/large
-				if(10 to 20)
+				if(15 to 40)
 					added_wound = /datum/wound/puncture
-				if(1 to 10)
+				if(1 to 15)
 					added_wound = /datum/wound/puncture/small
 		if(BCLASS_BITE)
 			switch(dam)
-				if(20 to INFINITY)
+				if(40 to INFINITY)
 					added_wound = /datum/wound/bite/large
-				if(10 to 20)
+				if(15 to 40)
 					added_wound = /datum/wound/bite
-				if(1 to 10)
+				if(1 to 15)
 					added_wound = /datum/wound/bite/small
 	if(added_wound)
 		added_wound = add_wound(added_wound, silent, crit_message)
@@ -179,35 +179,60 @@
 	var/used
 	var/total_dam = get_damage()
 	var/damage_dividend = (total_dam / max_damage)
+	var/resistance = HAS_TRAIT(owner, TRAIT_CRITICAL_RESISTANCE)
+	var/weapon_skill = /datum/skill/combat/unarmed
+	var/hand = null
+	if(user)
+		hand = user.get_active_held_item()
+	if(istype(hand, /obj/item/))
+		var/obj/item/weapon = hand
+		weapon_skill = weapon.associated_skill
 	if (user && dam)
 		if(user.goodluck(2))
-			dam += 10
+			dam += 5
+	if ((bclass == BCLASS_PUNCH) && (user && dam))
+		if(user && HAS_TRAIT(user, TRAIT_CIVILIZEDBARBARIAN))
+			dam += 20
 	if(bclass in GLOB.dislocation_bclasses)
-		used = round(damage_dividend * 20 + (dam / 3), 1)
+		used = round(damage_dividend * ((user.STASTR * 0.3) + (dam * 0.3)), 1)
+		used += (user?.mind?.get_skill_level(/datum/skill/combat/wrestling) * 2)
 		if(user && istype(user.rmb_intent, /datum/rmb_intent/strong))
-			used += 10
+			used += user.STASTR
+		if(damage_dividend < (abs((owner.STACON * 0.03) + 0.1)))
+			return FALSE
 		if(prob(used))
 			if(HAS_TRAIT(src, TRAIT_BRITTLE))
 				attempted_wounds += /datum/wound/fracture
 			else
 				attempted_wounds += /datum/wound/dislocation
 	if(bclass in GLOB.fracture_bclasses)
-		used = round(damage_dividend * 20 + (dam / 3), 1)
+		used = round(damage_dividend * ((user.STASTR * 0.3) + (dam * 0.3)), 1)
+		used *= ((user?.mind?.get_skill_level(weapon_skill) * 0.15) + 1)
 		if(user)
 			if(istype(user.rmb_intent, /datum/rmb_intent/strong))
-				used += 10
+				used += user.STASTR
 		if(HAS_TRAIT(src, TRAIT_BRITTLE))
-			used += 10
+			used *= 1.5
+		if(resistance)
+			used *= 0.5
+		if(damage_dividend < (abs((owner.STACON * 0.03) + 0.1)))
+			return FALSE
 		if(prob(used))
 			attempted_wounds += /datum/wound/dislocation
 			attempted_wounds += /datum/wound/fracture
 	if(bclass in GLOB.artery_bclasses)
-		used = round(damage_dividend * 20 + (dam / 3), 1)
+		used = round(damage_dividend * ((user.STASKL * 0.25) + (dam * 0.5)), 1)
+		used += (user?.mind?.get_skill_level(/datum/skill/misc/treatment) * 0.5)
+		used *= ((user?.mind?.get_skill_level(weapon_skill) * 0.15) + 1)
 		if(user)
 			if((bclass in GLOB.artery_strong_bclasses) && istype(user.rmb_intent, /datum/rmb_intent/strong))
-				used += 10
+				used += (user.STASTR * 0.25)
 			else if(istype(user.rmb_intent, /datum/rmb_intent/aimed))
-				used += user.STASKL
+				used += (user.STASKL * 0.5)
+		if(resistance)
+			used *= 0.5
+		if(damage_dividend < (abs((owner.STACON * 0.03) + 0.1)))
+			return FALSE
 		if(prob(used))
 			attempted_wounds += /datum/wound/artery
 
@@ -225,39 +250,57 @@
 	var/total_dam = get_damage()
 	var/damage_dividend = (total_dam / max_damage)
 	var/resistance = HAS_TRAIT(owner, TRAIT_CRITICAL_RESISTANCE)
+	var/weapon_skill = /datum/skill/combat/unarmed
+	var/hand = null
+	if(user)
+		hand = user.get_active_held_item()
+	if(istype(hand, /obj/item/))
+		var/obj/item/weapon = hand
+		weapon_skill = weapon.associated_skill
 	if(user && dam)
 		if(user.goodluck(2))
 			dam += 10
 	if ((bclass == BCLASS_PUNCH) && (user && dam))
 		if(user && HAS_TRAIT(user, TRAIT_CIVILIZEDBARBARIAN))
-			dam += 15
+			dam += 20
 	if((bclass in GLOB.cbt_classes) && (zone_precise == BODY_ZONE_PRECISE_GROIN))
 		var/cbt_multiplier = 1
 		if(user && HAS_TRAIT(user, TRAIT_NUTCRACKER))
-			cbt_multiplier = 2
-		if(!resistance && prob(round(dam/5) * cbt_multiplier))
+			cbt_multiplier = 5
+		if(!resistance && prob(round(dam * 0.5) * cbt_multiplier))
 			attempted_wounds += /datum/wound/cbt
 		if(prob(dam * cbt_multiplier))
 			owner.emote("groin", TRUE)
-			owner.Stun(10)
+			owner.Stun(40)
 	if((bclass in GLOB.fracture_bclasses) && (zone_precise != BODY_ZONE_PRECISE_STOMACH))
-		used = round(damage_dividend * 20 + (dam / 3), 1)
+		used = round(damage_dividend * ((user.STASTR * 0.3) + (dam * 0.3)), 1)
+		used *= ((user?.mind?.get_skill_level(weapon_skill) * 0.15) + 1)
 		if(user && istype(user.rmb_intent, /datum/rmb_intent/strong))
-			used += 10
+			used += (user.STASTR * 0.5)
 		if(HAS_TRAIT(src, TRAIT_BRITTLE))
-			used += 10
+			used *= 1.5
 		var/fracture_type = /datum/wound/fracture/chest
 		if(zone_precise == BODY_ZONE_PRECISE_GROIN)
 			fracture_type = /datum/wound/fracture/groin
+		if(resistance)
+			used *= 0.5
+		if(damage_dividend < (abs((owner.STACON * 0.035) + 0.1)))
+			return FALSE
 		if(prob(used))
 			attempted_wounds += fracture_type
 	if(bclass in GLOB.artery_bclasses)
-		used = round(damage_dividend * 20 + (dam / 4), 1)
+		used = round(damage_dividend * ((user.STASKL * 0.25) + (dam * 0.5)), 1)
+		used += (user?.mind?.get_skill_level(/datum/skill/misc/treatment) * 0.1)
+		used *= ((user?.mind?.get_skill_level(weapon_skill) * 0.15) + 1)
 		if(user)
 			if((bclass in GLOB.artery_strong_bclasses) && istype(user.rmb_intent, /datum/rmb_intent/strong))
-				used += 10
+				used += (user.STASTR * 0.25)
 			else if(istype(user.rmb_intent, /datum/rmb_intent/aimed))
-				used += user.STASKL
+				used += (user.STASKL * 0.5)
+		if(resistance)
+			used *= 0.5
+		if(damage_dividend < (abs((owner.STACON * 0.035) + 0.1)))
+			return FALSE
 		if(prob(used))
 			if((zone_precise == BODY_ZONE_PRECISE_STOMACH) && !resistance)
 				attempted_wounds += /datum/wound/slash/disembowel
@@ -280,64 +323,91 @@
 	var/total_dam = get_damage()
 	var/damage_dividend = (total_dam / max_damage)
 	var/resistance = HAS_TRAIT(owner, TRAIT_CRITICAL_RESISTANCE)
+	var/weapon_skill = /datum/skill/combat/unarmed
+	var/hand = null
+	if(user)
+		hand = user.get_active_held_item()
+	if(istype(hand, /obj/item/))
+		var/obj/item/weapon = hand
+		weapon_skill = weapon.associated_skill
+	var/facing = relative_angular_facing(user, owner)
 	var/from_behind = FALSE
-	if(user && (owner.dir == turn(get_dir(owner,user), 180)))
+	if(user && facing == SOUTHEAST || user && facing == SOUTH || user && facing == SOUTHWEST)
 		from_behind = TRUE
 	if(user && dam)
 		if(user.goodluck(2))
 			dam += 10
+	if ((bclass == BCLASS_PUNCH) && (user && dam))
+		if(user && HAS_TRAIT(user, TRAIT_CIVILIZEDBARBARIAN))
+			dam += 20
 	if((bclass in GLOB.dislocation_bclasses) && (total_dam >= max_damage))
-		used = round(damage_dividend * 20 + (dam / 3), 1)
+		used = round(damage_dividend * ((user.STASTR * 0.3) + (dam * 0.3)), 1)
+		used *= ((user?.mind?.get_skill_level(/datum/skill/combat/wrestling) * 0.2) + 1)
+		if(resistance)
+			used *= 0.5
+		if(damage_dividend < (abs((owner.STACON * 0.025) + 0.1)))
+			return FALSE
 		if(prob(used))
 			if(HAS_TRAIT(src, TRAIT_BRITTLE))
 				attempted_wounds += /datum/wound/fracture/neck
-			else if (!resistance)
+			else
 				attempted_wounds += /datum/wound/dislocation/neck
 	if(bclass in GLOB.fracture_bclasses)
-		used = round(damage_dividend * 20 + (dam / 3), 1)
+		used = round(damage_dividend * ((user.STASTR * 0.3) + (dam * 0.3)), 1)
+		used *= ((user?.mind?.get_skill_level(weapon_skill) * 0.15) + 1)
 		if(HAS_TRAIT(src, TRAIT_BRITTLE))
-			used += 20
+			used *= 2
 		if(user)
 			if(istype(user.rmb_intent, /datum/rmb_intent/strong))
-				used += 10
-		if(!owner.stat && !resistance && (zone_precise in knockout_zones) && (bclass != BCLASS_CHOP) && prob(used))
+				used += (user.STASTR)
+		if(!owner.stat && !resistance && (zone_precise in knockout_zones) && (bclass != BCLASS_CHOP) && prob(used * 2))
 			owner.next_attack_msg += " <span class='crit'><b>Critical hit!</b> [owner] is knocked out[from_behind ? " FROM BEHIND" : ""]!</span>"
 			owner.flash_fullscreen("whiteflash3")
-			owner.Unconscious(5 SECONDS + (from_behind * 10 SECONDS))
+			owner.Unconscious(5 SECONDS + (from_behind * (round(user.STASTR * 0.25) * 10 SECONDS)))
 			if(owner.client)
 				winset(owner.client, "outputwindow.output", "max-lines=1")
 				winset(owner.client, "outputwindow.output", "max-lines=100")
 		var/dislocation_type
 		var/fracture_type = /datum/wound/fracture/head
-		var/necessary_damage = 0.9
+		var/necessary_damage = 1
 		if(resistance)
 			fracture_type = /datum/wound/fracture
 		else if(zone_precise == BODY_ZONE_PRECISE_SKULL)
-			necessary_damage = 0.8
-			used += 5
+			necessary_damage = 0.85
+			used += (user.STASTR * 0.5)
 		else if(zone_precise == BODY_ZONE_PRECISE_MOUTH)
 			fracture_type = /datum/wound/fracture/mouth
-			necessary_damage = 0.6
+			necessary_damage = 0.35
 		else if(zone_precise == BODY_ZONE_PRECISE_NECK)
 			fracture_type = /datum/wound/fracture/neck
 			dislocation_type = /datum/wound/dislocation/neck
-			necessary_damage = 0.9
+			necessary_damage = 0.75
+		if(resistance)
+			used *= 0.5
+		if(damage_dividend < ((abs((owner.STACON * 0.025) + 0.1)) * necessary_damage))
+			return FALSE
 		if(prob(used) && (damage_dividend >= necessary_damage))
 			if(dislocation_type)
 				attempted_wounds += dislocation_type
 			attempted_wounds += fracture_type
 	if(bclass in GLOB.artery_bclasses)
-		used = round(damage_dividend * 20 + (dam / 3), 1)
+		used = round(damage_dividend * ((user.STASKL * 0.25) + (dam * 0.5)), 1)
+		used += (user?.mind?.get_skill_level(/datum/skill/misc/treatment) * 0.2)
+		used *= ((user?.mind?.get_skill_level(weapon_skill) * 0.15) + 1)
 		if(user)
 			if(bclass == BCLASS_CHOP)
 				if(istype(user.rmb_intent, /datum/rmb_intent/strong))
-					used += 10
+					used += (user.STASTR * 0.5)
 			else
 				if(istype(user.rmb_intent, /datum/rmb_intent/aimed))
-					used += user.STASKL
+					used += (user.STASKL * 0.5)
 		var/artery_type = /datum/wound/artery
 		if(zone_precise == BODY_ZONE_PRECISE_NECK)
 			artery_type = /datum/wound/artery/neck
+		if(resistance)
+			used *= 0.5
+		if(damage_dividend < (abs((owner.STACON * 0.025) + 0.1)))
+			return FALSE
 		if(prob(used))
 			attempted_wounds += artery_type
 			if((bclass in GLOB.stab_bclasses) && !resistance)

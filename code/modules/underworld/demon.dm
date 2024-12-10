@@ -11,6 +11,13 @@
 	pass_flags = PASSTABLE|PASSGRILLE
 	base_intents = list(/datum/intent/simple/slash)
 	gender = MALE
+	STASTR = 10
+	STASKL = 12
+	STAMAG = 11
+	STACON = 12
+	STAEND = 14
+	STASPD = 16
+	STALUC = 11
 	speak_chance = 0
 	turns_per_move = 5
 	response_help_continuous = "passes through"
@@ -28,6 +35,9 @@
 	obj_damage = 1
 	melee_damage_lower = 25
 	melee_damage_upper = 35
+	simpmob_attack = 66
+	simpmob_defend = 66
+	defdrain = 20
 	attack_same = FALSE
 	attack_sound = 'sound/combat/wooshes/bladed/wooshmed (1).ogg'
 	dodge_sound = 'sound/combat/dodge.ogg'
@@ -36,13 +46,10 @@
 	speak_emote = list("growls")
 	limb_destroyer = 1
 	del_on_death = TRUE
-	STALUC = 11
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
 	faction = list("undead")
 	footstep_type = null
-	defprob = 50 //decently skilled
-	defdrain = 20
 	canparry = TRUE
 	retreat_health = null
 	var/obj/structure/bonepile/slavepile
@@ -76,6 +83,8 @@
 			return "tail"
 		if(BODY_ZONE_PRECISE_R_FOOT)
 			return "tail"
+		if(BODY_ZONE_CHEST)
+			return "chest"
 		if(BODY_ZONE_PRECISE_STOMACH)
 			return "body"
 		if(BODY_ZONE_PRECISE_GROIN)
@@ -94,8 +103,8 @@
 			return "arm"
 		if(BODY_ZONE_L_ARM)
 			return "arm"
-		if(BODY_ZONE_CHEST)
-			return "chest"
+		else
+			return "body"
 
 	return ..()
 

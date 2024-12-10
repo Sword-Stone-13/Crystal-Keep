@@ -82,7 +82,11 @@
 		if(iscarbon(affected))
 			var/mob/living/carbon/carbon_affected = affected
 			carbon_affected.update_disabled_bodyparts()
-	if(mortal || HAS_TRAIT(affected, TRAIT_CRITICAL_WEAKNESS))
+	if(prob(mortal))
+		affected.death()
+	if(dents_brain)
+		affected.apply_status_effect(/datum/status_effect/debuff/skullcrack)
+	if(HAS_TRAIT(affected, TRAIT_CRITICAL_WEAKNESS))
 		affected.death()
 
 /datum/wound/fracture/head/on_mob_loss(mob/living/affected)
@@ -94,6 +98,8 @@
 		if(iscarbon(affected))
 			var/mob/living/carbon/carbon_affected = affected
 			carbon_affected.update_disabled_bodyparts()
+	if(affected.has_status_effect(/datum/status_effect/debuff/skullcrack))
+		affected.remove_status_effect(/datum/status_effect/debuff/skullcrack)
 
 /datum/wound/fracture/head/on_life()
 	. = ..()
@@ -120,8 +126,8 @@
 		"The eye socket is pierced!",
 	)
 	embed_chance = 100
-	paralysis = TRUE
-	mortal = TRUE
+	paralysis = FALSE
+	mortal = FALSE
 	dents_brain = FALSE
 
 /datum/wound/fracture/head/ears
@@ -133,8 +139,8 @@
 		"The ear canal is pierced!",
 	)
 	embed_chance = 100
-	paralysis = TRUE
-	mortal = TRUE
+	paralysis = FALSE
+	mortal = FALSE
 	dents_brain = FALSE
 
 /datum/wound/fracture/head/nose

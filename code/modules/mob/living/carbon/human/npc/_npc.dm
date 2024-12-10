@@ -25,6 +25,7 @@
 	var/flee_in_pain = FALSE
 	var/stand_attempts = 0
 	var/ai_currently_active = FALSE
+	var/attack_speed = 0
 
 	var/returning_home = FALSE
 
@@ -311,17 +312,17 @@
 				monkey_attack(target)
 				if(flee_in_pain && (target.stat == CONSCIOUS))
 					var/paine = get_complex_pain()
-					if(paine >= ((STAEND * 10)*0.9))
+					if(paine >= ((STAEND * 10)*rand(0.6, 0.95)))
 //						mode = AI_FLEE
 						walk_away(src, target, 5, update_movespeed())
 				return TRUE
 			else								// not next to perp
 				frustration++
 
-		if(AI_FLEE)
-			back_to_idle()
-			return TRUE
 /*		if(AI_FLEE)
+			back_to_idle()
+			return TRUE */
+		if(AI_FLEE)
 			var/list/around = view(src, 7)
 			// flee from anyone who attacked us and we didn't beat down
 			for(var/mob/living/L in around)
@@ -332,19 +333,20 @@
 			if(target != null)
 				frustration++
 				if(Adjacent(target))
-					retalitate(target)
-					return TRUE
+					monkey_attack(target)
+
 				walk_away(src, target, 5, update_movespeed())
 			else
 				back_to_idle()
 
-			return TRUE*/
+			return TRUE
 
 	return IsStandingStill()
 
 
 /mob/living/carbon/human/proc/back_to_idle()
 	last_aggro_loss = world.time
+	cmode = 0
 	if(pulling)
 		stop_pulling()
 	myPath = list()
@@ -352,7 +354,7 @@
 	target = null
 	a_intent = INTENT_HELP
 	frustration = 0
-	walk_to(src,0)
+	walk_to(src,0,0,update_movespeed())
 
 // attack using a held weapon otherwise bite the enemy, then if we are angry there is a chance we might calm down a little
 /mob/living/carbon/human/proc/monkey_attack(mob/living/L)
@@ -388,7 +390,7 @@
 		used_intent = a_intent
 		UnarmedAttack(L,1)
 
-	var/adf = used_intent.clickcd
+	var/adf = ((used_intent.clickcd + 8) - round((src.STASPD - 10) / 2) - attack_speed)
 	if(istype(rmb_intent, /datum/rmb_intent/aimed))
 		adf = round(adf * 1.4)
 	if(istype(rmb_intent, /datum/rmb_intent/swift))
@@ -418,6 +420,7 @@
 	if(L == src)
 		return
 	if(mode != AI_OFF)
+		cmode = 1
 		if (L.alpha == 0 && L.rogue_sneaking)
 			// we just got hit by something hidden so try and find them
 			if (prob(5))

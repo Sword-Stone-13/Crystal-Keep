@@ -179,9 +179,9 @@
 /obj/projectile/magic/aoe/fireball/rogue
 	name = "fireball"
 	exp_heavy = 0
-	exp_light = 0
+	exp_light = 3
 	exp_flash = 0
-	exp_fire = 1
+	exp_fire = 3
 	damage = 10
 	damage_type = BURN
 	nodamage = FALSE
@@ -213,9 +213,9 @@
 	sound = list('sound/magic/fireball.ogg')
 	active = FALSE
 	releasedrain = 50
-	chargedrain = 1
+	chargedrain = 3
 	chargetime = 15
-	charge_max = 10 SECONDS
+	charge_max = 20 SECONDS
 	warnie = "spellwarning"
 	no_early_release = TRUE
 	movement_interrupt = TRUE
@@ -225,12 +225,12 @@
 
 /obj/projectile/magic/aoe/fireball/rogue/great
 	name = "fireball"
-	exp_heavy = 0
-	exp_light = 1
-	exp_flash = 2
-	exp_fire = 2
+	exp_heavy = 1
+	exp_light = 5
+	exp_flash = 0
+	exp_fire = 4
 	flag = "magic"
-	speed = 4
+	speed = 6
 
 /obj/effect/proc_holder/spell/invoked/projectile/spitfire
 	name = "Spitfire"

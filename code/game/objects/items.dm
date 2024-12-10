@@ -150,12 +150,16 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 
 	var/wlength = WLENGTH_NORMAL		//each weapon length class has its own inherent dodge properties
 	var/wbalance = 0
-	var/wdefense = 0 //better at defending
-	var/minstr = 0  //for weapons
+	var/wdefense = 0					//Flat bonus to defense
+	var/wdodgebonus = 0					//Bonus for dodging
+	var/wparrybonus = 0					//Bonus to parrying
+	var/wparryspeed = 0					//Minor reduction in parry cooldown time, for 
+	var/minstr = 0						//for weapons
 	var/minmag = 0
 	var/minfth = 0
 
-
+	var/can_assin = FALSE				//Weapon: Can Assassinate - Special flag for backstabbing weapons (Extra small, like daggers)
+	var/can_cdg = FALSE					//Weapon: Can Coup de Grace - Special flag for weapons that can be wedged under armor in a fight (short and portable)
 
 	var/sleeved = null
 	var/sleevetype = null

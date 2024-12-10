@@ -3,7 +3,7 @@
 	icon = 'icons/roguetown/mob/monster/werewolf.dmi'
 	icon_state = "wwolf_m"
 	gender = NEUTER
-	base_intents = list(/datum/intent/unarmed/help, /datum/intent/simple/bite/, /datum/intent/unarmed/grab, /datum/intent/unarmed/wwolf)
+	base_intents = list(/datum/intent/unarmed/help, /datum/intent/simple/bite/, /datum/intent/unarmed/grab, /datum/intent/simple/wereclaw)
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 10,
 						/obj/item/natural/hide = 10)
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST

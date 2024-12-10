@@ -74,7 +74,7 @@
 	if(BP)
 		testing("projwound")
 		var/newdam = P.damage * (100-blocked)/100
-		BP.bodypart_attacked_by(P.woundclass, newdam, zone_precise = def_zone, crit_message = TRUE)
+		BP.bodypart_attacked_by(P.woundclass, newdam, P.firer, zone_precise = def_zone, crit_message = TRUE)
 		return TRUE
 
 /mob/living/carbon/check_projectile_embed(obj/projectile/P, def_zone, blocked)
@@ -193,7 +193,11 @@
 
 /mob/living/carbon/attacked_by(obj/item/I, mob/living/user)
 	var/obj/item/bodypart/affecting
-	var/useder = user.zone_selected
+	var/list/accuracy_check = accuracy_check(user.zone_selected, user, src, I, I.associated_skill, user.used_intent)
+	var/useder = accuracy_check[1]
+	var/goodhit = accuracy_check[2]
+	if(goodhit == "Miss")
+		return FALSE
 	if(user.tempatarget)
 		useder = user.tempatarget
 		user.tempatarget = null
@@ -343,7 +347,7 @@
 /mob/living/carbon/proc/dismembering_strike(mob/living/attacker, dam_zone)
 	if(!attacker.limb_destroyer)
 		return dam_zone
-	if(attacker.a_intent.blade_class != BCLASS_CHOP && attacker.a_intent.blade_class != BCLASS_CUT)
+	if(attacker.a_intent.blade_class != BCLASS_CHOP && attacker.a_intent.blade_class != BCLASS_CUT && attacker.a_intent.blade_class != BCLASS_BITE)
 		return dam_zone
 	var/obj/item/bodypart/affecting
 	if(dam_zone && attacker.client)

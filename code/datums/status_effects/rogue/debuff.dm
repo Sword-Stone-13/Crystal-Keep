@@ -220,6 +220,10 @@
 	desc = "With some sleep in a coffin I feel like I could become better."
 	icon_state = "sleepy"
 
+/datum/status_effect/debuff/skullcrack
+	id = "skullcrack"
+	effectedstats = list("strength" = -10, "perception" = -10, "intelligence" = -20, "endurance" = -10, "speed" = -10)
+
 //Death debuff
 
 /datum/status_effect/debuff/death_weaken

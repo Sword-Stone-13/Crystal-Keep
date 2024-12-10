@@ -15,6 +15,7 @@
 	icon_state = "bracers"
 	item_state = "bracers"
 	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	armor_class = ARMOR_CLASS_MEDIUM
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	blocksound = PLATEHIT
 	max_integrity = 300
@@ -28,6 +29,7 @@
 	icon_state = "lbracers"
 	item_state = "lbracers"
 	armor = list("blunt" = 32, "slash" = 12, "stab" = 22, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	armor_class = ARMOR_CLASS_LIGHT
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT, BCLASS_TWIST)
 	resistance_flags = null
 	blocksound = SOFTHIT
@@ -45,6 +47,7 @@
 	desc = "Hardened leather braces that will keep your wrists safe from bludgeoning."
 	icon_state = "albracers"
 	armor = list("blunt" = 60, "slash" = 40, "stab" = 20, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	armor_class = ARMOR_CLASS_LIGHT
 	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST) //We're losing stab here
 	max_integrity = 250
 
@@ -52,6 +55,7 @@
 	name = "masterwork leather bracers"
 	desc = "These bracers are a craftsmanship marvel. Made with the finest leather. Strong, nimible, reliable."
 	armor = list("blunt" = 80, "slash" = 60, "stab" = 40, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	armor_class = ARMOR_CLASS_MEDIUM
 	prevent_crits = list(BCLASS_CUT, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST) //We're getting chop here
 	max_integrity = 300
 	filters = filter(type="drop_shadow", x=0, y=0, size=0.5, offset=1, color=rgb(218, 165, 32))
@@ -73,6 +77,7 @@
 	icon_state = "splintarms"
 	item_state = "splintarms"
 	armor = list("blunt" = 60, "slash" = 70, "stab" = 70, "bullet" = 60, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	armor_class = ARMOR_CLASS_MEDIUM
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT)
 	blocksound = SOFTHIT
 	max_integrity = 250
