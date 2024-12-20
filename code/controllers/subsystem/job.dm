@@ -689,8 +689,6 @@ SUBSYSTEM_DEF(job)
 	if(H.mind)
 		H.mind.assigned_role = rank
 
-	if(H.mind)
-		H.mind.assigned_role = rank
 
 		var/job_squad = job ? job.associated_squad : null
 		var/preferred_squad_datum_type = job_squad ? job_squad : GLOB.all_squads[H.mind.squad]
