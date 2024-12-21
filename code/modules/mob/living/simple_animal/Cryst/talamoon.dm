@@ -15,7 +15,7 @@
 	animal_species = /mob/living/simple_animal/hostile/retaliate/rogue/saiga/talamoon
 	butcher_results = list()
 	possible_mmb_intents = list(INTENT_JUMP, INTENT_KICK,)
-	base_intents = list(INTENT_HELP, /datum/intent/simple/bite/, /datum/intent/unarmed/wwolf, /datum/intent/simple/bigbite)
+	base_intents = list(INTENT_HELP, /datum/intent/simple/bite/, /datum/intent/simple/bigbite)
 	health = 350
 	maxHealth = 350
 	food_type = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak,/obj/item/reagent_containers/food/snacks/fat )
