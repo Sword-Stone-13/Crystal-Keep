@@ -28,6 +28,11 @@
 			return H
 
 
+/datum/antagonist/squad/none
+	name = "Unaffliated"
+	antag_hud_type = SQUAD_HUD
+	antag_hud_name = null
+	squad_type = SQUAD_NONE
 
 /datum/antagonist/squad/alrich
 	name = "Alrich Squad Member"
@@ -98,6 +103,9 @@
 /datum/antagonist/squad/remove_innate_effects(mob/living/mob_override)
 	var/mob/living/M = mob_override || owner.current
 	remove_antag_hud(antag_hud_type, M)
+
+/datum/antagonist/squad/none/greet()
+	to_chat(owner, "<span class='notice'>You are not affiliated with any house. You are a lone wolf.</span>")
 
 /datum/antagonist/squad/alrich/greet()
 	to_chat(owner, "<span class='notice'>House Alrich. The pride of Aurorus. Madame Aurorus Alrich.</span>")

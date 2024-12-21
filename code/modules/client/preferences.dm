@@ -145,7 +145,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 
 	var/crt = FALSE
 
-	var/pref_squad = null
+	var/pref_squad = SQUAD_NONE
 
 	var/list/customizer_entries = list()
 	var/list/list/body_markings = list()
@@ -1664,7 +1664,7 @@ Slots: [job.spawn_positions]</span>
 						prefered_security_department = department
 
 				if("squad_preference")
-					var/squad_preference = input(user, "Choose your preferred squad:", "Squad Preference") as null|anything in GLOB.all_squads
+					var/squad_preference = input(user, "Choose your preferred house:", "House Preference") as null|anything in GLOB.all_squads
 					if(squad_preference)
 						pref_squad = squad_preference
 

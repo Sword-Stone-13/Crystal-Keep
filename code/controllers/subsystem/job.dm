@@ -691,6 +691,9 @@ SUBSYSTEM_DEF(job)
 
 		var/job_squad = job ? job.associated_squad : null
 		var/preferred_squad_datum_type = job_squad ? job_squad : GLOB.all_squads[H.mind.squad]
+		if(!preferred_squad_datum_type)
+			preferred_squad_datum_type = SQUAD_NONE
+			
 		if(preferred_squad_datum_type)
 
 			H.mind.add_antag_datum(preferred_squad_datum_type)

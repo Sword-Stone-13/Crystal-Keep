@@ -1,3 +1,5 @@
+#define SQUAD_NONE "None"
+
 #define SQUAD_ALRICH "Alrich"
 #define SQUAD_BRAVADO "Bravado"
 #define SQUAD_CAESAR "Caesar"
