@@ -99,7 +99,7 @@
 	var/mob/living/M = mob_override || owner.current
 	remove_antag_hud(antag_hud_type, M)
 
-/datum/antagonist/squad/alpha/greet()
+/datum/antagonist/squad/alrich/greet()
 	to_chat(owner, "<span class='notice'>House Alrich. The pride of Aurorus. Madame Aurorus Alrich.</span>")
 
 /datum/antagonist/squad/bravado/greet() 
@@ -108,7 +108,7 @@
 /datum/antagonist/squad/caesar/greet()
 	to_chat(owner, "<span class='notice'>House Caesar. Caesar Concarne's men. A poet, a scholar, a champion, con carne.</span>")
 
-/datum/antagonist/squad/delta/greet()
+/datum/antagonist/squad/deleon/greet()
 	to_chat(owner, "<span class='notice'>Deleon's house. Dante D'leon's house. Also known as Dante Deldiablo, tiefling in all but physical.</span>")
 
 /datum/antagonist/squad/bog/greet()
