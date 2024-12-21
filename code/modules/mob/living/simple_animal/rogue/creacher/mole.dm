@@ -5,6 +5,12 @@
 	icon_living = "mole"
 	icon_dead = "mole_dead"
 	gender = MALE
+	STASTR = 20
+	STASKL = 1
+	STAMAG = 2
+	STACON = 7
+	STAEND = 17
+	STASPD = 13
 	emote_hear = null
 	emote_see = null
 	speak_chance = 1
@@ -21,6 +27,9 @@
 	maxHealth = 340
 	melee_damage_lower = 19
 	melee_damage_upper = 29
+	simpmob_defend = 40
+	simpmob_attack = -5
+	defdrain = 10
 	vision_range = 7
 	aggro_vision_range = 9
 	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
@@ -30,12 +39,7 @@
 	food_type = list(/obj/item/reagent_containers/food/snacks/rogue/meat, /obj/item/bodypart, /obj/item/organ)
 	footstep_type = FOOTSTEP_MOB_BAREFOOT
 	pooptype = null
-	STACON = 7
-	STASTR = 20
-	STASPD = 13
 	deaggroprob = 0
-	defprob = 40
-	defdrain = 10
 	del_on_deaggro = 44 SECONDS
 	retreat_health = 0.3
 	food = 0
@@ -97,11 +101,11 @@
 		return ""
 	switch(zone)
 		if(BODY_ZONE_PRECISE_R_EYE)
-			return "head"
+			return "eye"
 		if(BODY_ZONE_PRECISE_L_EYE)
-			return "head"
+			return "eye"
 		if(BODY_ZONE_PRECISE_NOSE)
-			return "nose"
+			return "snout"
 		if(BODY_ZONE_PRECISE_MOUTH)
 			return "mouth"
 		if(BODY_ZONE_PRECISE_SKULL)
@@ -118,6 +122,8 @@
 			return "leg"
 		if(BODY_ZONE_PRECISE_R_FOOT)
 			return "leg"
+		if(BODY_ZONE_CHEST)
+			return "body"
 		if(BODY_ZONE_PRECISE_STOMACH)
 			return "stomach"
 		if(BODY_ZONE_PRECISE_GROIN)
@@ -132,5 +138,8 @@
 			return "foreleg"
 		if(BODY_ZONE_L_ARM)
 			return "foreleg"
+		else
+			return "body"
+
 	return ..()
 

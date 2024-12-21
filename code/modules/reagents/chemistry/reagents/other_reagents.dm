@@ -613,7 +613,7 @@
 	name = "Moth Mutation Toxin"
 	description = "A glowing toxin."
 	color = "#5EFF3B" //RGB: 94, 255, 59
-	race = /datum/species/moth
+	race = /datum/species/aasimar
 	taste_description = "clothing"
 
 /datum/reagent/mutationtoxin/pod

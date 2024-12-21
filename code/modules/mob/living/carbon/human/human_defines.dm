@@ -72,6 +72,8 @@
 	var/obj/item/cloak = null
 	var/obj/item/clothing/wear_shirt = null
 
+	var/worn_armor_class = ARMOR_CLASS_NONE
+
 	var/special_voice = "" // For changing our voice. Used by a symptom.
 
 	var/name_override //For temporary visible name changes
@@ -106,9 +108,9 @@
 	var/original_name = null
 
 	var/datum/devotion/devotion = null // Used for cleric_holder for priests
+	var/virginity = FALSE
 
 	var/headshot_link = null
-	var/nudeshot_link = null
 
 	var/received_resident_key = FALSE
 

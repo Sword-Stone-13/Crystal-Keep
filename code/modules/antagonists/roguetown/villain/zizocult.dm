@@ -925,8 +925,6 @@ GLOBAL_LIST_EMPTY(ritualslist)
 		H.change_stat("constitution", -2)
 		if(H.gender == FEMALE)
 			H.change_stat("constitution", -1)
-		else
-			ADD_TRAIT(user, TRAIT_LIMPDICK, TRAIT_GENERIC)
 		break
 
 /datum/ritual/fleshform

@@ -6,16 +6,9 @@
 	The mercenaries of Gren rightfully fear and respect their Kommandant, walking to certain death on his one word."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(
-		/datum/species/akula,
-		/datum/species/vulpkanin,
-		/datum/species/lupian,
-		/datum/species/dracon,
 		/datum/species/aasimar, //grenzelmoft?
 		/datum/species/dwarf/mountain,
 		/datum/species/human/northern,
-		/datum/species/demihuman,
-		/datum/species/anthromorph,
-		/datum/species/tabaxi
 	)
 	outfit = /datum/outfit/job/roguetown/mercenary/grenzelhoft_kommandant
 	maximum_possible_slots = 1

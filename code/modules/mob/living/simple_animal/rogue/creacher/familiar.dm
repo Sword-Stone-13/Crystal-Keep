@@ -11,12 +11,13 @@
 	maxHealth = 120
 	melee_damage_lower = 10
 	melee_damage_upper = 20
+	simpmob_attack = 45
+	simpmob_defend = 40
+	defdrain = 10
 	food_type = list(/obj/item/reagent_containers/food/snacks/rogue/meat, /obj/item/bodypart, /obj/item/organ)
 	footstep_type = FOOTSTEP_MOB_BAREFOOT
 	pooptype = null
 	deaggroprob = 0
-	defprob = 40
-	defdrain = 10
 	retreat_health = 0.1
 	attack_sound = list('sound/vo/mobs/vw/attack (1).ogg','sound/vo/mobs/vw/attack (2).ogg','sound/vo/mobs/vw/attack (3).ogg','sound/vo/mobs/vw/attack (4).ogg')
 	dodgetime = 30

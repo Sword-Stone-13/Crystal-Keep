@@ -9,15 +9,6 @@
 	/datum/species/tieberian,\
 	/datum/species/aasimar,\
 	/datum/species/lizardfolk,\
-	/datum/species/lupian,\
-	/datum/species/tabaxi,\
-	/datum/species/vulpkanin,\
-	/datum/species/akula,\
-	/datum/species/moth,\
-	/datum/species/dracon,\
-	/datum/species/anthromorph,\
-	/datum/species/anthromorphsmall,\
-	/datum/species/demihuman,\
 	/datum/species/halforc,\
 	/datum/species/kobold,\
 	/datum/species/goblinp,\
@@ -30,22 +21,13 @@
 	/datum/species/human/halfelf,\
 	/datum/species/dwarf/mountain,\
 	/datum/species/aasimar,\
-	/datum/species/lupian,\
-	/datum/species/vulpkanin,\
-	/datum/species/moth,\
-	/datum/species/dracon,
 
 #define RACES_TOLERATED \
 	/datum/species/lizardfolk,\
-	/datum/species/tabaxi,\
-	/datum/species/akula,\
-	/datum/species/anthromorph,\
-	/datum/species/demihuman
 
 #define RACES_SHUNNED \
 	/datum/species/elf/dark,\
 	/datum/species/tieberian,\
-	/datum/species/anthromorphsmall,\
 	/datum/species/kobold
 
 #define RACES_VERY_SHUNNED \
@@ -79,15 +61,6 @@
 	/datum/species/tieberian,\
 	/datum/species/aasimar,\
 	/datum/species/lizardfolk,\
-	/datum/species/lupian,\
-	/datum/species/tabaxi,\
-	/datum/species/vulpkanin,\
-	/datum/species/akula,\
-	/datum/species/moth,\
-	/datum/species/dracon,\
-	/datum/species/anthromorph,\
-	/datum/species/anthromorphsmall,\
-	/datum/species/demihuman,\
 	/datum/species/kobold,\
 	/datum/species/goblinp,\
 	/datum/species/seelie,\
@@ -103,15 +76,6 @@
 	/datum/species/tieberian,\
 	/datum/species/aasimar,\
 	/datum/species/lizardfolk,\
-	/datum/species/lupian,\
-	/datum/species/tabaxi,\
-	/datum/species/vulpkanin,\
-	/datum/species/akula,\
-	/datum/species/moth,\
-	/datum/species/dracon,\
-	/datum/species/anthromorph,\
-	/datum/species/anthromorphsmall,\
-	/datum/species/demihuman,\
 	/datum/species/halforc,\
 	/datum/species/kobold,\
 	/datum/species/goblinp,\
@@ -127,14 +91,6 @@
 	/datum/species/tieberian,\
 	/datum/species/aasimar,\
 	/datum/species/lizardfolk,\
-	/datum/species/lupian,\
-	/datum/species/tabaxi,\
-	/datum/species/vulpkanin,\
-	/datum/species/akula,\
-	/datum/species/moth,\
-	/datum/species/dracon,\
-	/datum/species/anthromorph,\
-	/datum/species/demihuman,\
 	/datum/species/halforc,\
 	/datum/species/seelie,\
 )
@@ -145,14 +101,6 @@
 	/datum/species/tieberian,\
 	/datum/species/aasimar,\
 	/datum/species/lizardfolk,\
-	/datum/species/lupian,\
-	/datum/species/tabaxi,\
-	/datum/species/vulpkanin,\
-	/datum/species/akula,\
-	/datum/species/moth,\
-	/datum/species/dracon,\
-	/datum/species/anthromorph,\
-	/datum/species/demihuman,\
 )
 #define ALL_CLERIC_PATRONS list(\
 	/datum/patron/divine/astrata,\

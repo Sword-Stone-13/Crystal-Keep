@@ -10,6 +10,12 @@
 	maxHealth = 450
 	health = 450
 	gender = NEUTER
+	STASTR = 17
+	STASKL = 9
+	STAMAG = 2
+	STACON = 15
+	STAEND = 4
+	STASPD = 2
 	mob_biotypes = NONE
 	base_intents = list(/datum/intent/simple/bite)
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 2)
@@ -22,6 +28,8 @@
 	harm_intent_damage = 5
 	melee_damage_lower = 24
 	melee_damage_upper = 32
+	simpmob_attack = 60
+	simpmob_defend = 50
 	attack_verb_continuous = "bites"
 	attack_verb_simple = "bite"
 	attack_sound = list('sound/vo/mobs/mimic/mimic_attack1.ogg',
@@ -38,10 +46,6 @@
 	food_type = list(/obj/item/reagent_containers/food/snacks/rogue/meat, /obj/item/bodypart, /obj/item/organ)
 	food = 0
 	pooptype = null
-
-	STACON = 15
-	STASTR = 15
-	STASPD = 5
 
 /mob/living/simple_animal/hostile/retaliate/rogue/mimic/Initialize(mapload)
 	. = ..()
@@ -120,6 +124,8 @@
 			return "leg"
 		if(BODY_ZONE_PRECISE_R_FOOT)
 			return "leg"
+		if(BODY_ZONE_CHEST)
+			return "body"
 		if(BODY_ZONE_PRECISE_STOMACH)
 			return "stomach"
 		if(BODY_ZONE_PRECISE_GROIN)
@@ -134,6 +140,9 @@
 			return "foreleg"
 		if(BODY_ZONE_L_ARM)
 			return "foreleg"
+		else
+			return "body"
+
 	return ..()
 
 //////

@@ -118,10 +118,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		ORGAN_SLOT_LIVER = /obj/item/organ/liver,
 		ORGAN_SLOT_STOMACH = /obj/item/organ/stomach,
 		ORGAN_SLOT_APPENDIX = /obj/item/organ/appendix,
-		ORGAN_SLOT_TESTICLES = /obj/item/organ/testicles,
-		ORGAN_SLOT_PENIS = /obj/item/organ/penis,
-		ORGAN_SLOT_BREASTS = /obj/item/organ/breasts,
-		ORGAN_SLOT_VAGINA = /obj/item/organ/vagina,
+		ORGAN_SLOT_PENIS = null,
+		ORGAN_SLOT_BREASTS = null,
 		)
 	/// List of bodypart features of this species
 	var/list/bodypart_features
@@ -184,13 +182,9 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 /datum/species/proc/is_organ_slot_allowed(mob/living/carbon/human/human, organ_slot)
 	switch(organ_slot)
-		if(ORGAN_SLOT_VAGINA)
-			return (human.gender == FEMALE)
 		if(ORGAN_SLOT_BREASTS)
 			return (human.gender == FEMALE)
 		if(ORGAN_SLOT_PENIS)
-			return (human.gender == MALE)
-		if(ORGAN_SLOT_TESTICLES)
 			return (human.gender == MALE)
 	return TRUE
 
@@ -1138,6 +1132,13 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 						span_danger("I block [user]'s grab!"), span_hear("I hear a swoosh!"), COMBAT_MESSAGE_RANGE, user)
 		to_chat(user, span_warning("My grab at [target] was blocked!"))
 		return FALSE
+
+	if(!istype(target, /mob/living/simple_animal))
+		var/list/accuracy_check = accuracy_check(user.zone_selected, user, target, 0, /datum/skill/combat/wrestling, user.used_intent)
+		var/goodhit = accuracy_check[2]
+		if(goodhit == "Miss")
+			return FALSE
+
 	if(attacker_style && attacker_style.grab_act(user,target))
 		return TRUE
 	else
@@ -1194,6 +1195,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			return
 
 		var/damage = user.get_punch_dmg()
+		if(user.gloves)
+			damage *= (1 + (user.gloves.armor_class * 0.2))
 
 /*		var/miss_chance = 100//calculate the odds that a punch misses entirely. considers stamina and brute damage of the puncher. punches miss by default to prevent weird cases
 		if(user.dna.species.punchdamagelow)
@@ -1210,7 +1213,11 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			log_combat(user, target, "attempted to punch")
 			return FALSE
 */
-		var/selzone = accuracy_check(user.zone_selected, user, target, /datum/skill/combat/unarmed, user.used_intent)
+		var/list/accuracy_check = accuracy_check(user.zone_selected, user, target, 0, /datum/skill/combat/unarmed, user.used_intent)
+		var/selzone = accuracy_check[1]
+		var/goodhit = accuracy_check[2]
+		if(goodhit == "Miss")
+			return FALSE
 
 		var/obj/item/bodypart/affecting = target.get_bodypart(check_zone(selzone))
 
@@ -1412,8 +1419,23 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	if(user == target)
 		return FALSE
 	if(user.check_leg_grabbed(1) || user.check_leg_grabbed(2))
-		to_chat(user, span_notice("I can't move my leg!"))
-		return
+		if(user.check_leg_grabbed(1) && user.check_leg_grabbed(2))		//If both legs are grabbed
+			to_chat(user, span_notice("I can't move my leg!"))
+			return
+		else															//If only one leg is grabbed
+			var/mob/living/G = user.pulledby
+			var/userskill = 1
+			if(user.mind)
+				userskill = ((user.mind.get_skill_level(/datum/skill/combat/wrestling) * 0.1) + 1)
+			var/grabberskill = 1
+			if(G?.mind)
+				grabberskill = ((G.mind.get_skill_level(/datum/skill/combat/wrestling) * 0.1) + 1)
+			if(((user.STASTR + rand(1, 6)) * userskill) < ((G.STASTR + rand(1, 6)) * grabberskill))
+				to_chat(user, span_notice("I can't move my leg!"))
+				user.changeNext_move(CLICK_CD_GRABBING)
+				return
+			else
+				user.resist_grab()
 	if(user.rogfat >= user.maxrogfat)
 		return FALSE
 	if(!(user.mobility_flags & MOBILITY_STAND))
@@ -1427,9 +1449,15 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			target.lastattackerckey = user.ckey
 			if(target.mind)
 				target.mind.attackedme[user.real_name] = world.time
-			var/selzone = accuracy_check(user.zone_selected, user, target, /datum/skill/combat/unarmed, user.used_intent)
+			var/list/accuracy_check = accuracy_check(user.zone_selected, user, target, 0, /datum/skill/combat/unarmed, user.used_intent)
+			var/selzone = accuracy_check[1]
+			var/goodhit = accuracy_check[2]
+			if(goodhit == "Miss")
+				return FALSE
 			var/obj/item/bodypart/affecting = target.get_bodypart(check_zone(selzone))
-			var/damage = user.get_punch_dmg() * 1.4
+			var/damage = (user.get_punch_dmg() * 4)
+			if(user.shoes)
+				damage *= (1 + (user.shoes.armor_class * 0.2))
 			var/armor_block = target.run_armor_check(selzone, "blunt", blade_dulling = BCLASS_BLUNT, damage = damage)
 			if(HAS_TRAIT(user, TRAIT_MARTIALARTIST))
 				damage *= 1.5
@@ -1520,12 +1548,18 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			to_chat(user, span_danger("I kick [target.name]!"))
 			log_combat(user, target, "kicked")
 
-		var/selzone = accuracy_check(user.zone_selected, user, target, /datum/skill/combat/unarmed, user.used_intent)
+		var/list/accuracy_check = accuracy_check(user.zone_selected, user, target, 0, /datum/skill/combat/unarmed, user.used_intent)
+		var/selzone = accuracy_check[1]
+		var/goodhit = accuracy_check[2]
+		if(goodhit == "Miss")
+			return FALSE
 		var/obj/item/bodypart/affecting = target.get_bodypart(check_zone(selzone))
 		if(!affecting)
 			affecting = target.get_bodypart(BODY_ZONE_CHEST)
 		var/armor_block = target.run_armor_check(selzone, "blunt", blade_dulling = BCLASS_BLUNT)
-		var/damage = user.get_punch_dmg()
+		var/damage = (user.get_punch_dmg() * 2.5)
+		if(user.shoes)
+			damage *= (1 + (user.shoes.armor_class * 0.2))
 		if(!target.apply_damage(damage, user.dna.species.attack_type, affecting, armor_block))
 			target.next_attack_msg += " <span class='warning'>Armor stops the damage.</span>"
 		else
@@ -1579,8 +1613,9 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 /datum/species/proc/spec_attacked_by(obj/item/I, mob/living/user, obj/item/bodypart/affecting, intent, mob/living/carbon/human/H, selzone)
 	// Allows you to put in item-specific reactions based on species
 	if(user != H)
-		if(H.check_shields(I, I.force, "the [I.name]", MELEE_ATTACK, I.armor_penetration))
-			return 0
+		if(H.can_see_cone(user))
+			if(H.check_shields(I, I.force, "the [I.name]", MELEE_ATTACK, I.armor_penetration))
+				return 0
 	if(H.check_block())
 		H.visible_message(span_warning("[H] blocks [I]!"), \
 						span_danger("I block [I]!"))
@@ -1588,7 +1623,11 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 	var/hit_area
 
-	selzone = accuracy_check(user.zone_selected, user, H, I.associated_skill, user.used_intent, I)
+	var/list/accuracy_check = accuracy_check(user.zone_selected, user, H, I, I.associated_skill, user.used_intent)
+	selzone = accuracy_check[1]
+	var/goodhit = accuracy_check[2]
+	if(goodhit == "Miss")
+		return 0
 	affecting = H.get_bodypart(check_zone(selzone))
 
 	if(!affecting)
@@ -1604,7 +1643,21 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 //	var/armor_block = H.run_armor_check(affecting, "I.d_type", span_notice("My armor has protected my [hit_area]!"), span_warning("My armor has softened a hit to my [hit_area]!"),pen)
 
 	var/Iforce = get_complex_damage(I, user) //to avoid runtimes on the forcesay checks at the bottom. Some items might delete themselves if you drop them. (stunning yourself, ninja swords)
-	var/armor_block = H.run_armor_check(selzone, I.d_type, "", "",pen, damage = Iforce, blade_dulling=user.used_intent.blade_class)
+
+	var/blade_class = user.used_intent?.blade_class
+	if(get_dir(user, H) == H.dir && H.pulledby == user)							//Check for Assassination
+		if(I.can_assin && user.used_intent.ican_assin)
+			if(prob(user?.mind?.get_skill_level(I.associated_skill) * 15))		//Skill check, 15-95%
+				blade_class = BCLASS_ASSASSIN
+				pen = 100
+
+	if(!get_dist(user, H) && H.pulledby == user)								//Check for Coup de Grace
+		if(I.can_cdg && user.used_intent.ican_cdg)
+			if(prob(user?.mind?.get_skill_level(I.associated_skill) * 15))		//Skill check, 15-95%
+				blade_class = BCLASS_ASSASSIN
+				pen = 100
+
+	var/armor_block = H.run_armor_check(selzone, I.d_type, "", "",pen, damage = Iforce, blade_dulling=blade_class)
 
 	var/nodmg = FALSE
 
@@ -1619,7 +1672,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			if(I)
 				I.take_damage(1, BRUTE, I.d_type)
 		if(!nodmg)
-			var/datum/wound/crit_wound = affecting.bodypart_attacked_by(user.used_intent.blade_class, (Iforce * weakness) * ((100-(armor_block+armor))/100), user, selzone, crit_message = TRUE)
+			var/datum/wound/crit_wound = affecting.bodypart_attacked_by(blade_class, (Iforce * weakness) * ((100-(armor_block+armor))/100), user, selzone, crit_message = TRUE)
 			if(should_embed_weapon(crit_wound, I))
 				var/can_impale = TRUE
 				if(!affecting)
@@ -1644,7 +1697,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	//dismemberment
 	var/bloody = 0
 	var/probability = I.get_dismemberment_chance(affecting, user)
-	if(affecting.brute_dam && prob(probability) && affecting.dismember(I.damtype, user.used_intent?.blade_class, user, selzone))
+	if(affecting.brute_dam && prob(probability) && affecting.dismember(I.damtype, blade_class, user, selzone))
 		bloody = 1
 		I.add_mob_blood(H)
 		user.update_inv_hands()

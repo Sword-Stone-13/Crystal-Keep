@@ -15,8 +15,20 @@
 		return
 
 	if(check_arm_grabbed(used_hand))
-		to_chat(src, span_warning("Someone is grabbing my arm!"))
-		return
+		var/mob/living/G = src.pulledby
+		var/mob/living/U = src
+		var/userskill = 1
+		if(U?.mind?.get_skill_level(/datum/skill/combat/wrestling))
+			userskill = ((U.mind.get_skill_level(/datum/skill/combat/wrestling) * 0.1) + 1)
+		var/grabberskill = 1
+		if(G?.mind?.get_skill_level(/datum/skill/combat/wrestling))
+			grabberskill = ((G.mind.get_skill_level(/datum/skill/combat/wrestling) * 0.1) + 1)
+		if(((U.STASTR + rand(1, 6)) * userskill) < ((G.STASTR + rand(1, 6)) * grabberskill))
+			to_chat(src, span_notice("I can't move my arm!"))
+			src.changeNext_move(CLICK_CD_GRABBING)
+			return
+		else
+			src.resist_grab()
 
 	// Special glove functions:
 	// If the gloves do anything, have them return 1 to stop
@@ -161,27 +173,6 @@
 
 	var/def_zone = user.zone_selected
 	var/do_bound_check = TRUE
-
-	if(user.sexcon && user.sexcon.target == src && !isnull(user.sexcon.current_action))
-		switch(user.sexcon.current_action)
-			if(/datum/sex_action/blowjob || /datum/sex_action/crotch_nuzzle || /datum/sex_action/cunnilingus || /datum/sex_action/rimming || /datum/sex_action/suck_balls)
-				dam2do *= 2 //Vrell - biting their junk hurts more
-				def_zone = BODY_ZONE_PRECISE_GROIN
-				do_bound_check = FALSE
-			if(/datum/sex_action/armpit_nuzzle)
-				dam2do *= 1.5 //Vrell - biting the soft of the armpit hurts more
-				def_zone = BODY_ZONE_CHEST
-				do_bound_check = FALSE
-	if(sexcon && sexcon.target == user && !isnull(sexcon.current_action))
-		switch(sexcon.current_action)
-			if(/datum/sex_action/throat_sex || /datum/sex_action/force_blowjob || /datum/sex_action/force_crotch_nuzzle || /datum/sex_action/force_cunnilingus || /datum/sex_action/facesitting || /datum/sex_action/force_rimming)
-				dam2do *= 2 //Vrell - biting their junk hurts more
-				def_zone = BODY_ZONE_PRECISE_GROIN
-				do_bound_check = FALSE
-			if(/datum/sex_action/force_armpit_nuzzle)
-				dam2do *= 1.5 //Vrell - biting the soft of the armpit hurts more
-				def_zone = BODY_ZONE_CHEST
-				do_bound_check = FALSE
 
 	if(do_bound_check && user.incapacitated())
 		return FALSE
@@ -331,8 +322,20 @@
 				if(src.get_num_legs() < 2)
 					return
 				if(pulledby && pulledby != src)
-					to_chat(src, span_warning("I'm being grabbed."))
-					return
+					var/mob/living/G = src.pulledby
+					var/mob/living/U = src
+					var/userskill = 1
+					if(U?.mind?.get_skill_level(/datum/skill/combat/wrestling))
+						userskill = ((U.mind.get_skill_level(/datum/skill/combat/wrestling) * 0.1) + 1)
+					var/grabberskill = 1
+					if(G?.mind?.get_skill_level(/datum/skill/combat/wrestling))
+						grabberskill = ((G.mind.get_skill_level(/datum/skill/combat/wrestling) * 0.1) + 1)
+					if(((U.STASTR + rand(1, 6)) * userskill) < ((G.STASTR + rand(1, 6)) * grabberskill))
+						to_chat(src, span_warning("I'm being grabbed."))
+						src.changeNext_move(CLICK_CD_GRABBING)
+						return
+					else
+						src.resist_grab()
 				if(IsOffBalanced())
 					to_chat(src, span_warning("I haven't regained my balance yet."))
 					return

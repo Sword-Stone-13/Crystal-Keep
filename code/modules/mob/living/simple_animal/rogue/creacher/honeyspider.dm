@@ -5,6 +5,12 @@
 	icon_living = "spider"
 	icon_dead = "spider-dead"
 	gender = MALE
+	STASTR = 8
+	STASKL = 9
+	STAMAG = 1
+	STACON = 6
+	STAEND = 12
+	STASPD = 10
 	speak_chance = 1
 	turns_per_move = 3
 	see_in_dark = 6
@@ -21,6 +27,9 @@
 	maxHealth = 65
 	melee_damage_lower = 17
 	melee_damage_upper = 21
+	simpmob_attack = 60
+	simpmob_defend = 40
+	defdrain = 10
 	environment_smash = ENVIRONMENT_SMASH_NONE
 	retreat_distance = 0
 	minimum_distance = 0
@@ -28,12 +37,7 @@
 	food_type = list(/obj/item/bodypart, /obj/item/organ, /obj/item/reagent_containers/food/snacks/rogue/meat)
 	footstep_type = FOOTSTEP_MOB_BAREFOOT
 	pooptype = null
-	STACON = 6
-	STASTR = 9
-	STASPD = 10
 	deaggroprob = 0
-	defprob = 40
-	defdrain = 10
 	attack_same = 0
 	retreat_health = 0.3
 	attack_sound = list('sound/vo/mobs/spider/attack (1).ogg','sound/vo/mobs/spider/attack (2).ogg','sound/vo/mobs/spider/attack (3).ogg','sound/vo/mobs/spider/attack (4).ogg')
@@ -118,13 +122,13 @@
 		return ""
 	switch(zone)
 		if(BODY_ZONE_PRECISE_R_EYE)
-			return "head"
+			return "eyes"
 		if(BODY_ZONE_PRECISE_L_EYE)
-			return "head"
+			return "eyes"
 		if(BODY_ZONE_PRECISE_NOSE)
-			return "nose"
+			return "mandibles"
 		if(BODY_ZONE_PRECISE_MOUTH)
-			return "mouth"
+			return "mandibles"
 		if(BODY_ZONE_PRECISE_SKULL)
 			return "head"
 		if(BODY_ZONE_PRECISE_EARS)
@@ -139,10 +143,12 @@
 			return "leg"
 		if(BODY_ZONE_PRECISE_R_FOOT)
 			return "leg"
+		if(BODY_ZONE_CHEST)
+			return "abdomen"
 		if(BODY_ZONE_PRECISE_STOMACH)
-			return "stomach"
+			return "abdomen"
 		if(BODY_ZONE_PRECISE_GROIN)
-			return "stomach"
+			return "thorax"
 		if(BODY_ZONE_HEAD)
 			return "head"
 		if(BODY_ZONE_R_LEG)
@@ -153,5 +159,8 @@
 			return "foreleg"
 		if(BODY_ZONE_L_ARM)
 			return "foreleg"
+		else
+			return "body"
+
 	return ..()
 

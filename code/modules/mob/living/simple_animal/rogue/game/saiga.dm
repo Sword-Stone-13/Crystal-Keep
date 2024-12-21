@@ -44,6 +44,12 @@
 	icon_dead = "saiga_dead"
 	icon_gib = "saiga_gib"
 	gender = FEMALE
+	STASTR = 12
+	STASKL = 8
+	STAMAG = 2
+	STACON = 8
+	STAEND = 8
+	STASPD = 15
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	emote_see = list("looks around.", "chews some leaves.")
 	speak_chance = 1
@@ -60,6 +66,8 @@
 	food_type = list(/obj/item/reagent_containers/food/snacks/grown/wheat,/obj/item/reagent_containers/food/snacks/grown/oat,/obj/item/reagent_containers/food/snacks/grown/apple)
 	tame_chance = 25
 	bonus_tame_chance = 15
+	simpmob_attack = 5
+	simpmob_defend = 10
 	footstep_type = FOOTSTEP_MOB_SHOE
 	pooptype = /obj/item/natural/poo/horse
 	faction = list("saiga")
@@ -69,9 +77,6 @@
 	melee_damage_upper = 25
 	retreat_distance = 10
 	minimum_distance = 10
-	STASPD = 15
-	STACON = 8
-	STASTR = 12
 	childtype = list(/mob/living/simple_animal/hostile/retaliate/rogue/saiga/saigakid = 70, /mob/living/simple_animal/hostile/retaliate/rogue/saiga/saigaboy = 30)
 	pixel_x = -8
 	attack_sound = list('sound/vo/mobs/saiga/attack (1).ogg','sound/vo/mobs/saiga/attack (2).ogg')
@@ -117,10 +122,13 @@
 	melee_damage_lower = 1
 	melee_damage_upper = 6
 	gender = FEMALE
-	STACON = 5
 	STASTR = 5
+	STASKL = 3
+	STAMAG = 1
+	STACON = 5
+	STAEND = 5
 	STASPD = 5
-	defprob = 50
+	simpmob_defend = 50
 	pixel_x = -16
 	adult_growth = /mob/living/simple_animal/hostile/retaliate/rogue/saiga
 	tame = TRUE
@@ -153,6 +161,8 @@
 			return "leg"
 		if(BODY_ZONE_PRECISE_R_FOOT)
 			return "leg"
+		if(BODY_ZONE_CHEST)
+			return "body"
 		if(BODY_ZONE_PRECISE_STOMACH)
 			return "stomach"
 		if(BODY_ZONE_HEAD)
@@ -165,6 +175,8 @@
 			return "foreleg"
 		if(BODY_ZONE_L_ARM)
 			return "foreleg"
+		else
+			return "body"
 
 	return ..()
 
@@ -176,6 +188,12 @@
 	icon_dead = "buck_dead"
 	icon_gib = "buck_gib"
 	gender = MALE
+	STASTR = 12
+	STASKL = 9
+	STAMAG = 2
+	STACON = 15
+	STAEND = 12
+	STASPD = 18
 	emote_see = list("stares.")
 	speak_chance = 1
 	turns_per_move = 3
@@ -193,6 +211,8 @@
 	maxHealth = 400
 	melee_damage_lower = 60
 	melee_damage_upper = 90
+	simpmob_attack = 50
+	simpmob_defend = 35
 	environment_smash = ENVIRONMENT_SMASH_NONE
 	retreat_distance = 0
 	minimum_distance = 0
@@ -201,9 +221,6 @@
 	food_type = list(/obj/item/reagent_containers/food/snacks/grown/wheat,/obj/item/reagent_containers/food/snacks/grown/oat,/obj/item/reagent_containers/food/snacks/grown/apple)
 	footstep_type = FOOTSTEP_MOB_SHOE
 	pooptype = /obj/item/natural/poo/horse
-	STACON = 15
-	STASTR = 12
-	STASPD = 12
 	pixel_x = -8
 	attack_sound = list('sound/vo/mobs/saiga/attack (1).ogg','sound/vo/mobs/saiga/attack (2).ogg')
 	can_buckle = TRUE
@@ -227,7 +244,6 @@
 			var/mutable_appearance/mounted = mutable_appearance(icon, "buck_mounted", 4.3)
 			add_overlay(mounted)
 
-
 /mob/living/simple_animal/hostile/retaliate/rogue/saigabuck/get_sound(input)
 	switch(input)
 		if("aggro")
@@ -244,7 +260,6 @@
 	Retaliate()
 	GiveTarget(user)
 	return
-
 
 /mob/living/simple_animal/hostile/retaliate/rogue/saigabuck/tamed()
 	..()
@@ -295,6 +310,8 @@
 			return "leg"
 		if(BODY_ZONE_PRECISE_R_FOOT)
 			return "leg"
+		if(BODY_ZONE_CHEST)
+			return "body"
 		if(BODY_ZONE_PRECISE_STOMACH)
 			return "stomach"
 		if(BODY_ZONE_HEAD)
@@ -307,6 +324,9 @@
 			return "foreleg"
 		if(BODY_ZONE_L_ARM)
 			return "foreleg"
+		else
+			return "body"
+
 	return ..()
 
 
@@ -315,6 +335,12 @@
 	name = "saiga"
 	desc = ""
 	gender = MALE
+	STASTR = 5
+	STASKL = 4
+	STAMAG = 2
+	STACON = 5
+	STAEND = 5
+	STASPD = 5
 	icon_state = "saigaboy"
 	icon_living = "saigaboy"
 	icon_dead = "saigaboy_dead"
@@ -329,9 +355,6 @@
 	milkies = FALSE
 	melee_damage_lower = 1
 	melee_damage_upper = 6
-	STACON = 5
-	STASTR = 5
-	STASPD = 5
 	adult_growth = /mob/living/simple_animal/hostile/retaliate/rogue/saigabuck
 	tame = TRUE
 	can_buckle = FALSE

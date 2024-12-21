@@ -156,6 +156,13 @@ GLOBAL_VAR_INIT(underworld_coins, 0)
 	pass_flags = PASSTABLE|PASSGRILLE
 	base_intents = list(/datum/intent/simple/slash)
 	gender = MALE
+	STASTR = 20
+	STASKL = 6
+	STAMAG = 4
+	STACON = 20
+	STAEND = 16
+	STASPD = 7
+	STALUC = 11
 	speak_chance = 0
 	turns_per_move = 5
 	response_help_continuous = "passes through"
@@ -173,6 +180,9 @@ GLOBAL_VAR_INIT(underworld_coins, 0)
 	obj_damage = 1
 	melee_damage_lower = 30
 	melee_damage_upper = 45
+	simpmob_attack = 66
+	simpmob_defend = 66
+	defdrain = 20
 	attack_same = FALSE
 	attack_sound = 'sound/combat/wooshes/bladed/wooshmed (1).ogg'
 	dodge_sound = 'sound/combat/dodge.ogg'
@@ -181,13 +191,10 @@ GLOBAL_VAR_INIT(underworld_coins, 0)
 	speak_emote = list("growls")
 	limb_destroyer = 1
 	del_on_death = FALSE
-	STALUC = 11
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
 	faction = list("undead")
 	footstep_type = null
-	defprob = 50 //decently skilled
-	defdrain = 20
 	canparry = TRUE
 	retreat_health = null
 
@@ -220,6 +227,8 @@ GLOBAL_VAR_INIT(underworld_coins, 0)
 			return "tail"
 		if(BODY_ZONE_PRECISE_R_FOOT)
 			return "tail"
+		if(BODY_ZONE_CHEST)
+			return "chest"
 		if(BODY_ZONE_PRECISE_STOMACH)
 			return "body"
 		if(BODY_ZONE_PRECISE_GROIN)
@@ -238,8 +247,8 @@ GLOBAL_VAR_INIT(underworld_coins, 0)
 			return "arm"
 		if(BODY_ZONE_L_ARM)
 			return "arm"
-		if(BODY_ZONE_CHEST)
-			return "chest"
+		else
+			return "body"
 
 	return ..()
 

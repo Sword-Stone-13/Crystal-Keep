@@ -44,14 +44,6 @@
 	var/obj/item/organ/penis/penis_organ = organ
 	penis_organ.penis_size = penis_size
 
-/datum/organ_dna/testicles
-	var/ball_size = DEFAULT_TESTICLES_SIZE
-
-/datum/organ_dna/testicles/imprint_organ(obj/item/organ/organ)
-	..()
-	var/obj/item/organ/testicles/testicles_organ = organ
-	testicles_organ.ball_size = ball_size
-
 /datum/organ_dna/breasts
 	var/breast_size = DEFAULT_BREASTS_SIZE
 

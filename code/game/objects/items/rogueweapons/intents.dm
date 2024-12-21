@@ -18,6 +18,8 @@
 	var/list/hitsound = list('sound/combat/hits/blunt/bluntsmall (1).ogg', 'sound/combat/hits/blunt/bluntsmall (2).ogg')
 	var/canparry = TRUE
 	var/candodge = TRUE
+	var/iparrybonus = 0
+	var/idodgebonus = 0
 	var/chargetime = 0 //if above 0, this attack must be charged to reach full damage
 	var/chargedrain = 0 //how much fatigue is removed every second when at max charge
 	var/releasedrain = 1 //drain when we go off, regardless
@@ -45,6 +47,8 @@
 	var/reach = 1 //In tiles, how far this weapon can reach; 1 for adjacent, which is default
 	var/miss_text //THESE ARE FOR UNARMED MISSING ATTACKS
 	var/miss_sound //THESE ARE FOR UNARMED MISSING ATTACKS
+	var/ican_assin = FALSE			//Intent: Can Assassinate - Special flag for backstabbing weapons (Extra small, like daggers)
+	var/ican_cdg = FALSE			//Intent: Can Coup de Grace - Special flag for weapons that can be wedged under armor in a fight (short and portable)
 
 /datum/intent/Destroy()
 	if(chargedloop)
@@ -444,6 +448,8 @@
 	swingdelay = 0
 	candodge = TRUE
 	canparry = TRUE
+	miss_text = "thrusts their head at nothing!"
+	miss_sound = PUNCHWOOSH
 	item_d_type = "blunt"
 
 /datum/intent/simple/claw
@@ -459,6 +465,7 @@
 	candodge = TRUE
 	canparry = TRUE
 	miss_text = "slashes the air!"
+	miss_sound = BLADEWOOSH_SMALL
 	item_d_type = "slash"
 
 /datum/intent/simple/bite
@@ -466,14 +473,16 @@
 	icon_state = "instrike"
 	attack_verb = list("bites")
 	animname = "blank22"
-	blade_class = BCLASS_CUT
+	blade_class = BCLASS_BITE
 	hitsound = "smallslash"
 	chargetime = 0
 	penfactor = 0
 	swingdelay = 3
 	candodge = TRUE
 	canparry = TRUE
-
+	miss_text = "bites the air!"
+	miss_sound = PUNCHWOOSH
+	item_d_type = "stab"
 
 /datum/intent/unarmed/claw
 	name = "claw"
@@ -488,18 +497,37 @@
 	miss_text = "claws the air!"
 	miss_sound = "bluntwooshmed"
 
-/datum/intent/unarmed/wwolf
+/datum/intent/simple/wereclaw
 	name = "claw"
 	icon_state = "inchop"
 	attack_verb = list("claws", "mauls", "eviscerates")
 	animname = "cut"
 	blade_class = BCLASS_CHOP
 	hitsound = "genslash"
-	penfactor = 40
+	chargetime = 0
+	penfactor = 10
+	swingdelay = 3
 	candodge = TRUE
 	canparry = TRUE
 	miss_text = "slashes the air!"
-	miss_sound = "bluntwooshlarge"
+	miss_sound = BLADEWOOSH_LARGE
+	item_d_type = "slash"
+
+/datum/intent/simple/werebite
+	name = "bite"
+	icon_state = "instrike"
+	attack_verb = list("gnashes", "viciously bites", "chomps")
+	animname = "blank22"
+	blade_class = BCLASS_BITE
+	hitsound = "smallslash"
+	chargetime = 0
+	penfactor = 30
+	swingdelay = 3
+	candodge = TRUE
+	canparry = TRUE
+	miss_text = "bites the air!"
+	miss_sound = PUNCHWOOSH
+	item_d_type = "stab"
 
 /datum/intent/unarmed/ascendedclaw
 	name = "claw"

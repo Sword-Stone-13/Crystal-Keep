@@ -7,6 +7,8 @@
 	sheet_type = null
 	baseturfs = list(/turf/open/floor/rogue/dirt/road)
 	wallclimb = TRUE
+	explosion_block = 10
+	damage_deflection = 0
 	icon = 'icons/turf/roguewall.dmi'
 
 /turf/closed/wall/mineral/rogue/Initialize()
@@ -111,11 +113,13 @@
 	baseturfs = list(/turf/open/floor/rogue/ruinedwood)
 	neighborlay = "dirtedge"
 	climbdiff = 3
+	explosion_block = 4
 
 /turf/closed/wall/mineral/rogue/wood/window
 	name = "wooden window"
 	desc = "A window with rough hewn wood frame."
 	opacity = FALSE
+	explosion_block = 1
 	max_integrity = 550
 
 /turf/closed/wall/mineral/rogue/wood/window/CanPass(atom/movable/mover, turf/target)
@@ -143,6 +147,7 @@
 	baseturfs = list(/turf/open/floor/rogue/twig)
 	neighborlay = "dirtedge"
 	climbdiff = 99 //how are you even supposed to climb a tent??
+	explosion_block = 0
 
 /turf/closed/wall/mineral/rogue/wooddark
 	name = "dark wood wall"
@@ -158,6 +163,7 @@
 	baseturfs = list(/turf/open/floor/rogue/ruinedwood)
 	neighborlay = "dirtedge"
 	climbdiff = 3
+	explosion_block = 4
 
 /turf/closed/wall/mineral/rogue/wooddark/horizontal
 	icon_state = "horizwooddark"
@@ -175,6 +181,7 @@
 	name = "dark wood window"
 	icon_state = "subwindow"
 	opacity = FALSE
+	explosion_block = 1
 	max_integrity = 850
 
 /turf/closed/wall/mineral/rogue/wooddark/window/CanPass(atom/movable/mover, turf/target)
@@ -222,6 +229,7 @@
 	baseturfs = list(/turf/open/floor/rogue/ruinedwood)
 	neighborlay = "dirtedge"
 	climbdiff = 3
+	explosion_block = 4
 
 /turf/closed/wall/mineral/rogue/decowood/Initialize()
 	. = ..()
@@ -292,6 +300,7 @@
 	attacked_sound = list('sound/combat/hits/onvine/vinehit.ogg')
 	debris = list(/obj/item/grown/log/tree/stick = 1, /obj/item/natural/thorn = 2, /obj/item/natural/fibers = 1)
 	climbdiff = 0
+	explosion_block = 0
 	above_floor = /turf/open/floor/rogue/shroud
 	var/res = 0
 	var/res_replenish
