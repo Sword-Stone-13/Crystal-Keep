@@ -34,4 +34,4 @@ GLOBAL_VAR(bible_item_state)
 GLOBAL_VAR(holy_weapon_type)
 GLOBAL_VAR(holy_armor_type)
 
-GLOBAL_LIST_INIT(all_squads, list("None" = null, SQUAD_ALPHA = /datum/antagonist/squad/alpha, SQUAD_BRAVO = /datum/antagonist/squad/bravo, SQUAD_CHARLIE = /datum/antagonist/squad/charlie, SQUAD_DELTA = /datum/antagonist/squad/delta))
+GLOBAL_LIST_INIT(all_squads, list("None" = null, SQUAD_ALRICH = /datum/antagonist/squad/alrich, SQUAD_BRAVADO = /datum/antagonist/squad/bravado, SQUAD_CAESAR = /datum/antagonist/squad/caesar, SQUAD_DELEON = /datum/antagonist/squad/deleon))

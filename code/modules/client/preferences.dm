@@ -350,7 +350,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 //			dat += "<b>Family:</b> <a href='?_src_=prefs;preference=family'>Unknown</a><BR>" // Disabling until its working
 			dat += "<b>Dominance:</b> <a href='?_src_=prefs;preference=domhand'>[domhand == 1 ? "Left-handed" : "Right-handed"]</a><BR>"
 
-			dat += "<b>Squad:</b> <a href='?_src_=prefs;preference=squad_preference;task=input'>[pref_squad || "None"]</a><BR>"
+			dat += "<b>House:</b> <a href='?_src_=prefs;preference=squad_preference;task=input'>[pref_squad || "None"]</a><BR>"
 /*
 			dat += "<br><br><b>Special Names:</b><BR>"
 			var/old_group

@@ -183,7 +183,7 @@
 	action_icon_state = "shapeshift"
 	req_items = list(/obj/item/lagomorphstone)
 	chargetime = 5
-	shapeshift_type = /mob/living/horse/form/talamoon
+	shapeshift_type = /mob/living/simple_animal/hostile/retaliate/rogue/saiga/talamoon
 
 
 /obj/effect/proc_holder/spell/targeted/crystalmorph/dragon //for later just in case

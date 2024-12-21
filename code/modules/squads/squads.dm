@@ -28,52 +28,53 @@
 			return H
 
 
-/datum/antagonist/squad/alpha
-	name = "Alpha Squad Member"
-	antag_hud_type = SQUAD_HUD
-	antag_hud_name = "alpha"
-	squad_type = SQUAD_ALPHA
-	squad_leader = /datum/antagonist/squad/alpha/leader
 
-/datum/antagonist/squad/alpha/leader
-	name = "Alpha Squad Leader"
-	antag_hud_name = "alpha_leader"
+/datum/antagonist/squad/alrich
+	name = "Alrich Squad Member"
+	antag_hud_type = SQUAD_HUD
+	antag_hud_name = "alrich"
+	squad_type = SQUAD_ALRICH
+	squad_leader = /datum/antagonist/squad/alrich/leader
+
+/datum/antagonist/squad/alrich/leader
+	name = "Alrich Squad Leader"
+	antag_hud_name = "alrich_leader"
 	squad_leader = null
 
-/datum/antagonist/squad/bravo
-	name = "Bravo Squad Member" 
+/datum/antagonist/squad/bravado
+	name = "Bravado Squad Member" 
 	antag_hud_type = SQUAD_HUD
-	antag_hud_name = "bravo"
-	squad_type = SQUAD_BRAVO
-	squad_leader = /datum/antagonist/squad/bravo/leader
+	antag_hud_name = "bravado"
+	squad_type = SQUAD_BRAVADO
+	squad_leader = /datum/antagonist/squad/bravado/leader
 
-/datum/antagonist/squad/bravo/leader
-	name = "Bravo Squad Leader"
-	antag_hud_name = "bravo_leader"
+/datum/antagonist/squad/bravado/leader
+	name = "Bravado Squad Leader"
+	antag_hud_name = "bravado_leader"
 	squad_leader = null
 
-/datum/antagonist/squad/charlie
-	name = "Charlie Squad Member"
+/datum/antagonist/squad/caesar
+	name = "Caesar Squad Member"
 	antag_hud_type = SQUAD_HUD
-	antag_hud_name = "charlie"
-	squad_type = SQUAD_CHARLIE
-	squad_leader = /datum/antagonist/squad/charlie/leader
+	antag_hud_name = "caesar"
+	squad_type = SQUAD_CAESAR
+	squad_leader = /datum/antagonist/squad/caesar/leader
 
-/datum/antagonist/squad/charlie/leader
-	name = "Charlie Squad Leader"
-	antag_hud_name = "charlie_leader"
+/datum/antagonist/squad/caesar/leader
+	name = "Caesar Squad Leader"
+	antag_hud_name = "caesar_leader"
 	squad_leader = null
 
-/datum/antagonist/squad/delta
-	name = "Delta Squad Member"
+/datum/antagonist/squad/deleon
+	name = "Deleon Squad Member"
 	antag_hud_type = SQUAD_HUD
-	antag_hud_name = "delta"
-	squad_type = SQUAD_DELTA
-	squad_leader = /datum/antagonist/squad/delta/leader
+	antag_hud_name = "deleon"
+	squad_type = SQUAD_DELEON
+	squad_leader = /datum/antagonist/squad/deleon/leader
 
-/datum/antagonist/squad/delta/leader
-	name = "Delta Squad Leader"
-	antag_hud_name = "delta_leader"
+/datum/antagonist/squad/deleon/leader
+	name = "Deleon Squad Leader"
+	antag_hud_name = "deleon_leader"
 	squad_leader = null
 
 /datum/antagonist/squad/bog/bog_guard
@@ -99,16 +100,16 @@
 	remove_antag_hud(antag_hud_type, M)
 
 /datum/antagonist/squad/alpha/greet()
-	to_chat(owner, "<span class='notice'>You have been chosen for the Alpha Squad. First to engage, first to fall. Alpha Squad stands as the vanguard of battle.</span>")
+	to_chat(owner, "<span class='notice'>House Alrich. The pride of Aurorus. Madame Aurorus Alrich.</span>")
 
-/datum/antagonist/squad/bravo/greet() 
-	to_chat(owner, "<span class='notice'>You are now a member of the Bravo Squad. The steadfast support. Bravo Squad specializes in aid and the art of multiplication in force.</span>")
+/datum/antagonist/squad/bravado/greet() 
+	to_chat(owner, "<span class='notice'>House Bravado, of Bjorn's finest. Solid structure, solid men. As if carved by Bjorn Bravado himself.</span>")
 
-/datum/antagonist/squad/charlie/greet()
-	to_chat(owner, "<span class='notice'>You have been assigned to the Charlie Squad. The masters of tactics. Charlie Squad excels in covert operations and flanking maneuvers.</span>")
+/datum/antagonist/squad/caesar/greet()
+	to_chat(owner, "<span class='notice'>House Caesar. Caesar Concarne's men. A poet, a scholar, a champion, con carne.</span>")
 
 /datum/antagonist/squad/delta/greet()
-	to_chat(owner, "<span class='notice'>You are now part of the Delta Squad. The final bastion of defense. Delta Squad focus on the safeguarding of the stronghold and critical points of defense.</span>")
+	to_chat(owner, "<span class='notice'>Deleon's house. Dante D'leon's house. Also known as Dante Deldiablo, tiefling in all but physical.</span>")
 
 /datum/antagonist/squad/bog/greet()
 	to_chat(owner, "<span class='notice'>You are [name]. Thy charge is to guard the Bog against any and all threats.</span>")
