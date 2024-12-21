@@ -140,7 +140,8 @@
 */
 	var/PQ_boost_divider = 0
 
-	var/associated_squad = null // if this is set, this will override the squad the player is assigned to, and they'll be assigned to this squad
+	var/associated_squad = null // if this is set, this will override the squad the player is assigned to regardless of preference.
+	// Set to SQUAD_NONE to force this job to have no squad.
 
 
 /datum/job/proc/special_job_check(mob/dead/new_player/player)
