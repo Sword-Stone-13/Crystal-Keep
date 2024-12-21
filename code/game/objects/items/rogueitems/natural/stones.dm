@@ -144,8 +144,7 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 	stone_lore()
 
 /*
-	This right here is stone lore,
-	Yakub from BBC lore has inspired me
+	This right here is stone lore
 */
 /obj/item/natural/stone/proc/stone_lore()
 	var/stone_title = "stone" // Our stones title

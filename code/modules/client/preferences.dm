@@ -145,6 +145,8 @@ GLOBAL_LIST_EMPTY(chosen_names)
 
 	var/crt = FALSE
 
+	var/pref_squad = null
+
 	var/list/customizer_entries = list()
 	var/list/list/body_markings = list()
 	var/update_mutant_colors = TRUE
@@ -184,6 +186,8 @@ GLOBAL_LIST_EMPTY(chosen_names)
 		charflaw = pick(GLOB.character_flaws)
 		charflaw = GLOB.character_flaws[charflaw]
 		charflaw = new charflaw()
+	if(!pref_squad)
+		pref_squad = pick(GLOB.all_squads)
 	if(!selected_patron)
 		selected_patron = GLOB.patronlist[default_patron]
 	key_bindings = deepCopyList(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds and update their movement keys
@@ -343,6 +347,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 //			dat += "<b>Family:</b> <a href='?_src_=prefs;preference=family'>Unknown</a><BR>" // Disabling until its working
 			dat += "<b>Dominance:</b> <a href='?_src_=prefs;preference=domhand'>[domhand == 1 ? "Left-handed" : "Right-handed"]</a><BR>"
 
+			dat += "<b>House:</b> <a href='?_src_=prefs;preference=squad_preference;task=input'>[pref_squad || "None"]</a><BR>"
 /*
 			dat += "<br><br><b>Special Names:</b><BR>"
 			var/old_group
@@ -1657,6 +1662,11 @@ Slots: [job.spawn_positions]</span>
 					var/department = input(user, "Choose your preferred security department:", "Security Departments") as null|anything in GLOB.security_depts_prefs
 					if(department)
 						prefered_security_department = department
+
+				if("squad_preference")
+					var/squad_preference = input(user, "Choose your preferred squad:", "Squad Preference") as null|anything in GLOB.all_squads
+					if(squad_preference)
+						pref_squad = squad_preference
 
 				if ("preferred_map")
 					var/maplist = list()

@@ -689,6 +689,25 @@ SUBSYSTEM_DEF(job)
 	if(H.mind)
 		H.mind.assigned_role = rank
 
+		var/job_squad = job ? job.associated_squad : null
+		var/preferred_squad_datum_type = job_squad ? job_squad : GLOB.all_squads[H.mind.squad]
+		if(preferred_squad_datum_type)
+
+			H.mind.add_antag_datum(preferred_squad_datum_type)
+
+			
+
+			var/datum/antagonist/squad/squad_datum = H.mind.has_antag_datum(preferred_squad_datum_type)
+			if(squad_datum)
+			// Uncomment the following if you want the first person who joins the round with that squad to be promoted to leader,
+			// for now, leaders are only assignable through job roles.
+			/*
+				if(squad_datum.squad_leader && !squad_datum.has_leader())
+					squad_datum = squad_datum.promote_to_leader(H.mind)
+			*/
+				H.mind.squad = squad_datum.squad_type
+				squad_datum.greet()
+
 	if(job)
 		var/new_mob = job.equip(H, null, null, joined_late , null, M.client)
 		if(ismob(new_mob))

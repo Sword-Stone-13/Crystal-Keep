@@ -140,6 +140,8 @@
 */
 	var/PQ_boost_divider = 0
 
+	var/associated_squad = null // if this is set, this will override the squad the player is assigned to, and they'll be assigned to this squad
+
 
 /datum/job/proc/special_job_check(mob/dead/new_player/player)
 	return TRUE

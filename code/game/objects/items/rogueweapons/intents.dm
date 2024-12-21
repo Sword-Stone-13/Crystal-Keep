@@ -559,14 +559,14 @@
 
 /datum/intent/simple/bigbite
 	name = "big bite"
-	icon_state = "instrike"
+	icon_state = "inpick"
 	attack_verb = list("gnashes", "viciously bites")
 	animname = "blank22"
-	blade_class = BCLASS_CHOP
+	blade_class = BCLASS_STAB
 	hitsound = "smallslash"
 	chargetime = 0
-	penfactor = 20
-	swingdelay = 1
+	penfactor = 80
+	swingdelay = 12
 	candodge = TRUE
 	canparry = TRUE
 
