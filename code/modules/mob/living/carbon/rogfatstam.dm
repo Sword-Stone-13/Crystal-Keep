@@ -26,6 +26,10 @@
 
 /mob/proc/rogstam_add(added as num)
 	return
+	
+/mob/living/proc/getrogstamloss()
+	return maxrogstam - rogstam
+
 
 /mob/living/rogstam_add(added as num)
 	if(HAS_TRAIT(src, TRAIT_NOROGSTAM))
@@ -98,6 +102,15 @@
 		last_fatigued = world.time
 		update_health_hud()
 		return TRUE
+
+
+/mob/living/proc/apply_stun_effect(duration)
+	Stun(duration)
+	Paralyze(duration)
+	blur_eyes(duration/10)
+	flash_fullscreen("blackflash")
+	addtimer(CALLBACK(src, PROC_REF(clear_fullscreen), "blackflash"), duration)
+	addtimer(CALLBACK(src, PROC_REF(set_resting), FALSE, TRUE), (duration * 4))
 
 /mob/living/carbon
 	var/heart_attacking = FALSE

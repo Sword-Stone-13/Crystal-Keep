@@ -89,48 +89,106 @@
 
 /obj/vehicle/ridden/scooter/skateboard/post_buckle_mob(mob/living/M)//allows skateboards to be non-dense but still allows 2 skateboarders to collide with each other
 	density = TRUE
+	playsound(src, 'sound/items/firelight.ogg', 50, TRUE)
 	return ..()
 
 /obj/vehicle/ridden/scooter/skateboard/post_unbuckle_mob(mob/living/M)
 	if(!has_buckled_mobs())
 		density = FALSE
+	playsound(src, 'sound/items/firelight.ogg', 50, TRUE)
 	return ..()
 
 /obj/vehicle/ridden/scooter/skateboard/Bump(atom/A)
 	. = ..()
-	if(A.density && has_buckled_mobs())
-		var/mob/living/H = buckled_mobs[1]
-		H.adjustStaminaLoss(instability*6)
-		playsound(src, 'sound/blank.ogg', 40, TRUE)
-		if(!iscarbon(H) || H.getStaminaLoss() >= 100 || grinding || world.time < next_crash)
-			var/atom/throw_target = get_edge_target_turf(H, pick(GLOB.cardinals))
-			unbuckle_mob(H)
-			H.throw_at(throw_target, 3, 2)
-			var/head_slot = H.get_item_by_slot(SLOT_HEAD)
-			if(!head_slot || !(istype(head_slot,/obj/item/clothing/head/helmet) || istype(head_slot,/obj/item/clothing/head/hardhat)))
-				H.adjustOrganLoss(ORGAN_SLOT_BRAIN, 5)
-				H.updatehealth()
-			visible_message(span_danger("[src] crashes into [A], sending [H] flying!"))
-			H.Paralyze(80)
+	if(!has_buckled_mobs())
+		return
+		
+	var/mob/living/rider = buckled_mobs[1]
+	if(!istype(rider))
+		return
+		
+	if(iscarbon(A))
+		handle_carbon_collision(A, rider)
+	else if(A.density)
+		handle_dense_collision(A, rider)
+
+	return TRUE
+
+/obj/vehicle/ridden/scooter/skateboard/proc/handle_carbon_collision(mob/living/carbon/victim, mob/living/rider)
+	if(!victim.resting && !victim.buckled)
+		if(prob(50))
+			var/victim_throw_target = get_edge_target_turf(victim, pick(GLOB.cardinals))
+			victim.throw_at(victim_throw_target, 2, 2)
+			victim.apply_stun_effect(5)
+			visible_message(span_danger("[victim] topples to the ground as they are hit by [rider] riding \the [src]!"))
+			if(prob(50) || (rider.getrogstamloss() >= 100)) // 50% chance to affect the rider too, but will always affect the rider if they're exhausted
+				eject_rider(rider, victim)
+				visible_message(span_danger("[rider] loses balance and falls off \the [src]!"))
 		else
-			var/backdir = turn(dir, 180)
-			vehicle_move(backdir)
-			H.spin(4, 1)
-		next_crash = world.time + 10
+			shake_camera(victim, 5, 1)
+			visible_message(span_notice("[rider] narrowly misses [victim] while riding \the [src]!"))
+			playsound(src, 'sound/items/firelight.ogg', 50, TRUE)
+			var/turf/target_turf = get_step(victim, dir)
+			if(target_turf)
+				forceMove(target_turf)
+	else
+		shake_camera(rider, 15, 1)
+		rider.apply_stun_effect(5)
+
+	return TRUE
+
+
+/obj/vehicle/ridden/scooter/skateboard/proc/handle_dense_collision(atom/A, mob/living/rider)
+	if(!has_buckled_mobs() || world.time < next_crash || grinding)
+		return
+		
+	rider.rogstam_add(-instability * 6)
+	playsound(src, 'sound/blank.ogg', 40, TRUE)
+	
+	if(!iscarbon(rider) || rider.getrogstamloss() >= 100)
+		eject_rider(rider, A)
+	else
+		bounce_back(rider)
+	
+	next_crash = world.time + 10
+	return TRUE
+
+/obj/vehicle/ridden/scooter/skateboard/proc/eject_rider(mob/living/rider, atom/A)
+	var/atom/throw_target = get_edge_target_turf(rider, pick(GLOB.cardinals))
+	unbuckle_mob(rider)
+	rider.throw_at(throw_target, 3, 2)
+	
+	var/head_slot = rider.get_item_by_slot(SLOT_HEAD)
+	if(!head_slot || !(istype(head_slot, /obj/item/clothing/head/helmet) || istype(head_slot, /obj/item/clothing/head/hardhat)))
+		rider.adjustOrganLoss(ORGAN_SLOT_BRAIN, 5)
+		rider.updatehealth()
+		
+	visible_message(span_danger("[src] crashes into [A], sending [rider] flying!"))
+	shake_camera(rider, 15, 1)
+	rider.apply_stun_effect(5)
+	return TRUE
+
+/obj/vehicle/ridden/scooter/skateboard/proc/bounce_back(mob/living/rider)
+	var/backdir = turn(dir, 180)
+	vehicle_move(backdir)
+	playsound(src, 'sound/items/firelight.ogg', 50, TRUE)
+	rider.spin(4, 1)
+	return TRUE
 
 ///Moves the vehicle forward and if it lands on a table, repeats
 /obj/vehicle/ridden/scooter/skateboard/proc/grind()
 	vehicle_move(dir)
 	if(has_buckled_mobs() && locate(/obj/structure/table) in loc.contents)
 		var/mob/living/L = buckled_mobs[1]
-		L.adjustStaminaLoss(instability*0.5)
-		if (L.getStaminaLoss() >= 100)
+		L.rogstam_add(-instability*0.5)
+		if (L.getrogstamloss() >= 100)
 			playsound(src, 'sound/blank.ogg', 20, TRUE)
 			unbuckle_mob(L)
 			var/atom/throw_target = get_edge_target_turf(src, pick(GLOB.cardinals))
 			L.throw_at(throw_target, 2, 2)
 			visible_message(span_danger("[L] loses [L.p_their()] footing and slams on the ground!"))
-			L.Paralyze(40)
+			shake_camera(L, 15, 1)
+			L.apply_stun_effect(5)
 			grinding = FALSE
 			icon_state = board_icon
 			return
@@ -141,7 +199,8 @@
 				if(location)
 					location.hotspot_expose(1000,1000)
 				sparks.start() //the most radical way to start plasma fires
-			addtimer(CALLBACK(src, PROC_REF(grind)), 2)
+			shake_camera(L, 15, 1)
+			L.apply_stun_effect(5)
 			return
 	else
 		grinding = FALSE
@@ -287,8 +346,9 @@
 		var/atom/throw_target = get_edge_target_turf(H, pick(GLOB.cardinals))
 		unbuckle_mob(H)
 		H.throw_at(throw_target, 4, 3)
-		H.Paralyze(30)
-		H.adjustStaminaLoss(10)
+		H.apply_stun_effect(5)
+		shake_camera(H, 15, 1)
+		H.rogstam_add(-10)
 		var/head_slot = H.get_item_by_slot(SLOT_HEAD)
 		if(!head_slot || !(istype(head_slot,/obj/item/clothing/head/helmet) || istype(head_slot,/obj/item/clothing/head/hardhat)))
 			H.adjustOrganLoss(ORGAN_SLOT_BRAIN, 1)

@@ -194,7 +194,7 @@
 		if(user && HAS_TRAIT(user, TRAIT_CIVILIZEDBARBARIAN))
 			dam += 20
 	if(bclass in GLOB.dislocation_bclasses)
-		used = round(damage_dividend * ((user.STASTR * 0.3) + (dam * 0.3)), 1)
+		used = round(damage_dividend * ((user?.STASTR * 0.3) + (dam * 0.3)), 1)
 		used += (user?.mind?.get_skill_level(/datum/skill/combat/wrestling) * 2)
 		if(user && istype(user.rmb_intent, /datum/rmb_intent/strong))
 			used += user.STASTR
