@@ -92,6 +92,9 @@
 
 	var/funeral = FALSE // used for tracking funeral status between living/dead mobs and underworld spirits
 
+	var/alignment = ALIGNMENT_TRUE_NEUTRAL
+	var/aura_effect_last_trigger = 0 // the last aura effect that was triggered, in worldtime
+
 /datum/mind/New(key)
 	src.key = key
 	soulOwner = src

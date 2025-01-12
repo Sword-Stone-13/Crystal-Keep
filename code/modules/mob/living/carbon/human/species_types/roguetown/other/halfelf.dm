@@ -85,6 +85,8 @@
 		/datum/language/elvish
 	)
 
+	alignment_weights = HALFELF_WEIGHTS
+
 
 /datum/species/human/halfelf/get_skin_list()
 	return list(

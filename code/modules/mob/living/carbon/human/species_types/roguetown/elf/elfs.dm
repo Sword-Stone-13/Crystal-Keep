@@ -91,6 +91,8 @@
 	body_markings = list(
 	)
 
+	alignment_weights = WOODELF_WEIGHTS
+
 /datum/species/elf/wood/get_span_language(datum/language/message_language)
 	if(!message_language)
 		return

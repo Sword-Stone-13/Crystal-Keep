@@ -131,6 +131,20 @@
 			if(mind && mind.special_role == "Vampire Lord")
 				. += "<span class='userdanger'>A MONSTER!</span>"
 
+		
+		var/datum/alignment_aura/alignment = get_alignment()
+		var/datum/alignment_aura/user_alignment = null
+		if(ishuman(user))
+			var/mob/living/carbon/human/H = user
+			user_alignment = H.get_alignment()
+		if(alignment)
+			if(user == src)
+				. += span_info("I would be considered to have a [alignment.name] alignment, as I have a <font color='[alignment.color]'>[alignment.descriptor]</font> to me.")
+			else
+				. += span_info("They have a <font color='[alignment.color]'>[alignment.descriptor]</font>, as they have a [alignment.name] alignment.")
+				if(user_alignment && user_alignment.get_judgement(alignment.id))
+					. += span_info("You think... <font color='[user_alignment.color]'>\"[user_alignment.get_judgement(alignment.id)]\"</font>")
+
 
 		var/commie_text
 		if(mind)

@@ -84,6 +84,8 @@
 		/datum/body_marking/tonage,
 	)
 
+	alignment_weights = NYANDERTHAL_WEIGHTS
+
 /datum/species/human/northern/get_skin_list()
 	return list(
 		"Grenzelhoft" = SKIN_COLOR_GRENZELHOFT,

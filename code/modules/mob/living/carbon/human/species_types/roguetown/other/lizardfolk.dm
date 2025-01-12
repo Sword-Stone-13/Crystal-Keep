@@ -120,6 +120,8 @@
 		/datum/descriptor_choice/prominent_four,
 	)
 
+	alignment_weights = LIZARDFOLK_WEIGHTS
+
 /datum/species/lizardfolk/check_roundstart_eligible()
 	return TRUE
 
