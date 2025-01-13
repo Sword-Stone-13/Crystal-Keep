@@ -2328,7 +2328,9 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		Paralyze(15)
 
 /datum/species/proc/select_human_alignment(mob/living/carbon/human/H)
-	if(!H || !alignment_weights || !H.mind)
+	if(!H || !H.mind)
+		return
+	if(!alignment_weights || !LAZYLEN(alignment_weights))
 		return
 	var/selected_alignment = pick_weighted_alignment(alignment_weights)
 	H.mind.alignment = selected_alignment

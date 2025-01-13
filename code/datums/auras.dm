@@ -6,6 +6,7 @@
 	var/id
 	var/effect_cooldown = 3 MINUTES // how often the aura effects are applied
 	var/list/judgements = list() // how they see other alignments canonly, shows in flavourtext
+	var/list/species_reactions = list()
 
 /datum/alignment_aura/proc/on_life(mob/living/parent)
 	for(var/mob/living/carbon/human/H in view(8, parent))
@@ -20,6 +21,24 @@
 
 	return TRUE
 
+/datum/alignment_aura/proc/check_special_interactions(mob/living/carbon/human/H, mob/living/carbon/human/parent, datum/alignment_aura/other_aura)
+	// This will check if there are any species-specific reactions that should be triggered
+	// The format is: list(list(parent_species_path, other_species_path, other_aura_id, format_string))
+	// If the first two args are null/blank, it will be a wildcard for any species
+	// If there's no aura id or species reaction list, no reaction will happen
+
+	if(!parent.stat) // making sure they're not dead or unconcious before they make this message.
+		for(var/species_reaction in species_reactions)
+			if(species_reaction[3]) // Ensure other_aura_id is present
+				if((!species_reaction[1] || istype(parent.dna.species, species_reaction[1])) && (!species_reaction[2] || istype(H.dna.species, species_reaction[2])) && (other_aura.id == species_reaction[3]))
+					var/message = species_reaction[4]
+					message = replacetext(message, "${HOLDER}", parent.name)
+					message = replacetext(message, "${OTHER}", H.name)
+					message = replacetext(message, "${OTHER_AURA}", other_aura.descriptor)
+					
+					parent.visible_message(span_warning("[message]"))
+					SEND_SIGNAL(parent, COMSIG_ADD_MOOD_EVENT, "murderous rage", /datum/mood_event/murderous_rage)
+					return TRUE
 
 /datum/alignment_aura/proc/apply(mob/living/parent)
 	apply_visual_effects(parent)
@@ -30,16 +49,18 @@
 	return TRUE
 
 /datum/alignment_aura/proc/apply_visual_effects(mob/living/parent)
-	var/filter_id = "alignment_aura_outline"
-	parent.remove_filter(filter_id)
-	parent.add_filter(filter_id, 2, list("type" = "outline", "color" = color, "size" = 1, "alpha" = 80))
-	animate(parent.get_filter(filter_id), alpha = 100, time = 20, loop = -1, easing = SINE_EASING)
-	animate(alpha = 80, time = 20)
+	if(color) // it won't show an outline if there's no color
+		var/filter_id = "alignment_aura_outline"
+		parent.remove_filter(filter_id)
+		parent.add_filter(filter_id, 2, list("type" = "outline", "color" = color, "size" = 1, "alpha" = 80))
+		animate(parent.get_filter(filter_id), alpha = 100, time = 20, loop = -1, easing = SINE_EASING)
+		animate(alpha = 80, time = 20)
+
 /datum/alignment_aura/proc/remove_visual_effects(mob/living/parent)
 	parent.remove_filter("alignment_aura_outline")
 
-/datum/alignment_aura/proc/check_special_interactions(mob/living/carbon/human/H, mob/living/carbon/human/parent, datum/alignment_aura/other_aura)
-	return
+/datum/alignment_aura/proc/get_judgement(alignment_id)
+	return judgements[alignment_id]
 
 /datum/alignment_aura/lawful_good
 	name = "lawful good"
@@ -53,13 +74,7 @@
 					ALIGNMENT_LAWFUL_EVIL = "They understand order, but twist it for malevolent ends. Most disappointing.",
 					ALIGNMENT_LAWFUL_NEUTRAL = "Their neutrality is... confusing. But I respect that they understand order.",
 					ALIGNMENT_CHAOTIC_GOOD = "It's amusing that they think they can uphold righteousness without order.")
-
-/datum/alignment_aura/lawful_good/check_special_interactions(mob/living/carbon/human/H, mob/living/carbon/human/parent, datum/alignment_aura/other_aura)
-	if(istype(parent.dna.species, /datum/species/aasimar) && istype(H.dna.species, /datum/species/tieberian))
-		if(other_aura.type == /datum/alignment_aura/chaotic_evil)
-			parent.visible_message(span_warning("[parent] recoils at the corrupted presence of [H], their righteous essence driving them on guard at their presence!"))
-			SEND_SIGNAL(parent, COMSIG_ADD_MOOD_EVENT, "murderous rage", /datum/mood_event/murderous_rage)
-			return TRUE
+	species_reactions = list(list(/datum/species/aasimar, /datum/species/tieberian, ALIGNMENT_LAWFUL_EVIL, "${HOLDER} recoils reflexively at the ${OTHER_AURA} presence of ${OTHER}."))
 
 /datum/alignment_aura/neutral_good
 	name = "neutral good"
@@ -81,6 +96,7 @@
 	judgements = list(ALIGNMENT_LAWFUL_EVIL = "Another coward hiding behind their precious rules.",
 					ALIGNMENT_LAWFUL_GOOD = "Too rigid, too bound by rules to do what's truly right.",
 					ALIGNMENT_LAWFUL_NEUTRAL = "All those rules must be suffocating. Live a little!")
+	species_reactions = list(list(null, null, ALIGNMENT_LAWFUL_EVIL, "${HOLDER} glares skeptically at the ${OTHER_AURA} of ${OTHER}.")) // just an example of how null for species will make this any species
 
 /datum/alignment_aura/lawful_neutral
 	name = "lawful neutral"
@@ -123,6 +139,7 @@
 					ALIGNMENT_LAWFUL_GOOD = "Such wasted potential, using order to protect the weak.",
 					ALIGNMENT_CHAOTIC_EVIL = "Mindless destruction helps no one. Evil requires structure.",
 					ALIGNMENT_NEUTRAL_EVIL = "They need to be tamed, or else they'll destroy everything.")
+	species_reactions = list(list(null, null, ALIGNMENT_CHAOTIC_GOOD, "${HOLDER} dominatingly leers at the untamed ${OTHER_AURA} of ${OTHER}.")) // another example of non-species based alignment hatred
 
 /datum/alignment_aura/neutral_evil
 	name = "neutral evil"
@@ -145,12 +162,4 @@
 					ALIGNMENT_LAWFUL_NEUTRAL = "Rules are made to be broken, quite violently. Perhaps they will learn.",
 					ALIGNMENT_TRUE_NEUTRAL = "Balance? You're a liar.",
 					ALIGNMENT_CHAOTIC_GOOD = "They don't understand the true nature of chaos.")
-
-/datum/alignment_aura/chaotic_evil/check_special_interactions(mob/living/carbon/human/H, mob/living/carbon/human/parent, datum/alignment_aura/other_aura)
-	if(istype(parent.dna.species, /datum/species/tieberian) && istype(H.dna.species, /datum/species/aasimar))
-		if(other_aura.type == /datum/alignment_aura/lawful_good)
-			H.visible_message(span_warning("[parent] sneers at the self-righteous presence of [H], their sanctimonious aura driving them into a murderous rage!"))
-			SEND_SIGNAL(parent, COMSIG_ADD_MOOD_EVENT, "murderous rage", /datum/mood_event/murderous_rage)
-			return TRUE
-/datum/alignment_aura/proc/get_judgement(alignment_id)
-	return judgements[alignment_id]
+	species_reactions = list(list(null, null, ALIGNMENT_LAWFUL_GOOD, "${HOLDER} sneers at the self-righteous presence of ${OTHER}, their ${OTHER_AURA} driving them into rage!"))

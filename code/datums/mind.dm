@@ -92,7 +92,7 @@
 
 	var/funeral = FALSE // used for tracking funeral status between living/dead mobs and underworld spirits
 
-	var/alignment = ALIGNMENT_TRUE_NEUTRAL
+	var/alignment = null // alignment of the person, see alignments_auras.dm in defines for list of alignments
 	var/aura_effect_last_trigger = 0 // the last aura effect that was triggered, in worldtime
 
 /datum/mind/New(key)
