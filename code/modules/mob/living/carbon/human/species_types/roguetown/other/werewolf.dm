@@ -66,6 +66,8 @@
 		/datum/language/beast,
 	)
 
+	alignment_weights = WEREWOLF_WEIGHTS
+
 /datum/species/werewolf/send_voice(mob/living/carbon/human/H)
 	playsound(get_turf(H), pick('sound/vo/mobs/wwolf/wolftalk1.ogg','sound/vo/mobs/wwolf/wolftalk2.ogg'), 100, TRUE, -1)
 

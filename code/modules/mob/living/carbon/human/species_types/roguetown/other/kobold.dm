@@ -103,6 +103,8 @@
 		/datum/descriptor_choice/prominent_four,
 	)
 
+	alignment_weights = KOBOLD_WEIGHTS
+
 /datum/species/kobold/check_roundstart_eligible()
 	return TRUE
 

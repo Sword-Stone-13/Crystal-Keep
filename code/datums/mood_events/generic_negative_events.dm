@@ -213,3 +213,8 @@
 /datum/mood_event/nanite_sadness/add_effects(message)
 	description = "<span class='warning robot'>+++++++[message]+++++++</span>\n"
 
+/datum/mood_event/murderous_rage
+	description = "<span class='boldwarning'>I am overwhelmed with an uncontrollable rage!</span>\n"
+	mood_change = -10
+	timeout = 5 MINUTES
+

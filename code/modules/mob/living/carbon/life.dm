@@ -126,6 +126,15 @@
 				if(TRUE)
 					H.apply_status_effect(/datum/status_effect/buff/seelie/happy)
 					H.remove_status_effect(/datum/status_effect/buff/seelie/sad)
+
+	if(ishuman(src))
+		var/mob/living/carbon/human/H = src
+		// This handles the person's alignment aura effects and the like:
+		var/datum/alignment_aura/alignment = H.get_alignment()
+		if(alignment)
+			alignment.on_life(H)
+
+
 	//Updates the number of stored chemicals for powers
 //	handle_changeling()
 

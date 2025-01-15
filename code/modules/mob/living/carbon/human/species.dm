@@ -176,6 +176,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	var/stress_examine = FALSE
 	var/stress_desc = null
 
+	var/list/alignment_weights = HUMAN_WEIGHTS
+
 ///////////
 // PROCS //
 ///////////
@@ -2324,3 +2326,18 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	var/modifier = -distance
 	if(!prob(STASPD+skill_modifier+modifier))
 		Paralyze(15)
+
+/datum/species/proc/select_human_alignment(mob/living/carbon/human/H)
+	if(!H || !H.mind)
+		return
+	if(!alignment_weights || !LAZYLEN(alignment_weights))
+		return
+	var/selected_alignment = pick_weighted_alignment(alignment_weights)
+	H.mind.alignment = selected_alignment
+	var/datum/alignment_aura/alignment = H.get_alignment()
+	alignment.apply(H)
+	if(alignment)
+		to_chat(H, span_notice("You feel drawn towards a [alignment.name] alignment. [alignment.desc]"))
+
+
+

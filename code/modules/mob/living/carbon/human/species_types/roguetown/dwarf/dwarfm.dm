@@ -92,6 +92,8 @@
 	body_markings = list(
 	)
 
+	alignment_weights = DWARF_WEIGHTS
+
 /datum/species/dwarf/mountain/check_roundstart_eligible()
 	return TRUE
 

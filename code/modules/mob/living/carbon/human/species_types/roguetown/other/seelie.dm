@@ -88,6 +88,8 @@
 	stress_examine = TRUE
 	stress_desc = span_red("A tiny seelie, mischievous in nature.")
 
+	alignment_weights = SEELIE_WEIGHTS
+
 /datum/species/seelie/on_species_gain(mob/living/carbon/C, datum/species/old_species)
 	..()
 	RegisterSignal(C, COMSIG_MOB_SAY, PROC_REF(handle_speech))

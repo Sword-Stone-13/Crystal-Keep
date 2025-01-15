@@ -652,7 +652,6 @@ SUBSYSTEM_DEF(job)
 
 	SEND_SIGNAL(H, COMSIG_JOB_RECEIVED, H.job)
 
-
 	//If we joined at roundstart we should be positioned at our workstation
 	if(!joined_late)
 		var/obj/S = null
@@ -689,6 +688,7 @@ SUBSYSTEM_DEF(job)
 	if(H.mind)
 		H.mind.assigned_role = rank
 
+		// chooses squad
 		var/job_squad = job ? job.associated_squad : null
 		var/preferred_squad_datum_type = job_squad ? job_squad : GLOB.all_squads[H.mind.squad]
 		if(!preferred_squad_datum_type)
@@ -697,9 +697,6 @@ SUBSYSTEM_DEF(job)
 		if(preferred_squad_datum_type)
 
 			H.mind.add_antag_datum(preferred_squad_datum_type)
-
-			
-
 			var/datum/antagonist/squad/squad_datum = H.mind.has_antag_datum(preferred_squad_datum_type)
 			if(squad_datum)
 			// Uncomment the following if you want the first person who joins the round with that squad to be promoted to leader,
@@ -710,6 +707,11 @@ SUBSYSTEM_DEF(job)
 			*/
 				H.mind.squad = squad_datum.squad_type
 				squad_datum.greet()
+
+		// chooses alignment
+		if(ishuman(H))
+			var/mob/living/carbon/human/alignee = H
+			alignee.dna.species.select_human_alignment(alignee)
 
 	if(job)
 		var/new_mob = job.equip(H, null, null, joined_late , null, M.client)
@@ -745,6 +747,7 @@ SUBSYSTEM_DEF(job)
 //		H.add_memory("Your account ID is [wageslave.account_id].")
 	if(job && H)
 		job.after_spawn(H, M, joined_late) // note: this happens before the mob has a key! M will always have a client, H might not.
+
 
 	return H
 

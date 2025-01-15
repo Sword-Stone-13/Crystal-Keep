@@ -131,6 +131,8 @@
 		/datum/language/celestial
 	)
 
+	alignment_weights = AASIMAR_WEIGHTS
+
 /datum/species/aasimar/check_roundstart_eligible()
 	return TRUE
 
