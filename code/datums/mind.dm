@@ -95,17 +95,21 @@
 	var/alignment = null // alignment of the person, see alignments_auras.dm in defines for list of alignments
 	var/aura_effect_last_trigger = 0 // the last aura effect that was triggered, in worldtime
 
+	var/datum/soliloquy/soliloquy = null //soliloquy datum for the mind
+
 /datum/mind/New(key)
 	src.key = key
 	soulOwner = src
 	martial_art = default_martial_art
 	sleep_adv = new /datum/sleep_adv(src)
+	soliloquy = new
 
 /datum/mind/Destroy()
 	SSticker.minds -= src
 	QDEL_NULL(sleep_adv)
 	if(islist(antag_datums))
 		QDEL_LIST(antag_datums)
+	QDEL_NULL(soliloquy)
 	return ..()
 
 /proc/get_minds(role)

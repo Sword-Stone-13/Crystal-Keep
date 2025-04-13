@@ -155,6 +155,7 @@ SUBSYSTEM_DEF(vote)
 						log_game("LOG VOTE: ROUNDVOTEEND [REALTIMEOFDAY]")
 						to_chat(world, "\n<font color='purple'>[ROUND_END_TIME_VERBAL] remain.</font>")
 						C.roundvoteend = TRUE
+					select_soliloquy_choosers()
 	if(restart)
 		var/active_admins = 0
 		for(var/client/C in GLOB.admins)

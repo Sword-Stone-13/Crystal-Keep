@@ -144,6 +144,8 @@
 	var/last_droning_sound
 	var/sound/droning_sound
 
+	var/choosing_soliloquy = FALSE // if enabled, this player can vote for soliloquies
+
 /client/proc/update_weather(force)
 	if(!mob)
 		return

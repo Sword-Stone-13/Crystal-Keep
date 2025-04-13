@@ -708,6 +708,8 @@ SUBSYSTEM_DEF(job)
 				H.mind.squad = squad_datum.squad_type
 				squad_datum.greet()
 
+		H.mind.soliloquy.set_doll(H)
+
 		// chooses alignment
 		if(ishuman(H))
 			var/mob/living/carbon/human/alignee = H

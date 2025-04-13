@@ -239,6 +239,10 @@
 
 	stats_report()
 
+	sleep(10 SECONDS)
+
+	soliloquy_report()
+
 //	for(var/client/C in GLOB.clients)
 //		if(!C.credits)
 //			C.RollCredits()
@@ -378,8 +382,24 @@
 		if(last.show_in_roundend)
 			last.roundend_report_footer()
 
-
 	return
+
+
+/datum/controller/subsystem/ticker/proc/soliloquy_report()
+	var/datum/soliloquy/S = GLOB.chosen_soliloquy
+	if(!S)
+		var/datum/soliloquy/winning_soliloquy = get_winning_soliloquy()
+		if(!winning_soliloquy)
+			return FALSE
+
+		S = winning_soliloquy
+
+
+	for(var/mob/M in GLOB.player_list)
+		display_winning_soliloquy(S, M)
+
+	return TRUE
+
 
 /datum/controller/subsystem/ticker/proc/stats_report()
 	var/list/shit = list()
