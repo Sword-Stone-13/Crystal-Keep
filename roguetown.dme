@@ -3357,6 +3357,7 @@
 #include "code\modules\shuttle\supply.dm"
 #include "code\modules\shuttle\syndicate.dm"
 #include "code\modules\shuttle\white_ship.dm"
+#include "code\modules\soliloquy\soliloquy.dm"
 #include "code\modules\spells\spell.dm"
 #include "code\modules\spells\roguetown\_roguetown.dm"
 #include "code\modules\spells\roguetown\barbarian.dm"

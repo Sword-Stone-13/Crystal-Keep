@@ -82,6 +82,9 @@ GLOBAL_PROTECT(admin_verbs_admin)
 	/client/proc/cmd_admin_delete,		/*delete an instance/object/mob/etc*/
 	/client/proc/cmd_admin_check_contents,	/*displays the contents of an instance*/
 	/client/proc/centcom_podlauncher,/*Open a window to launch a Supplypod and configure it or it's contents*/
+	/client/verb/debug_soliloquys, 	/*add or remove dummy soliloquys for testing*/
+	/client/verb/view_and_display_soliloquys, /*view submitted soliloquys and display them on screen*/
+	/client/verb/select_chosen_soliloquy,	/*select a round end soliloquy from a list of submitted ones*/
 	/client/proc/check_antagonists,		/*shows all antags*/
 	/datum/admins/proc/access_news_network,	/*allows access of newscasters*/
 	/client/proc/jumptocoord,			/*we ghost and jump to a coordinate*/
@@ -204,6 +207,7 @@ GLOBAL_PROTECT(admin_verbs_debug)
 	/client/proc/cmd_display_overlay_log,
 	/client/proc/reload_configuration,
 	/datum/admins/proc/create_or_modify_area,
+	/client/verb/debug_soliloquys, 	/*add or remove dummy soliloquys for testing*/
 	/client/proc/returntolobby,
 	/client/proc/set_tod_override
 	)
@@ -277,6 +281,9 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 	/client/proc/toggle_nuke,
 	/client/proc/cmd_display_del_log,
 	/client/proc/toggle_combo_hud,
+	/client/verb/debug_soliloquys, 	/*add or remove dummy soliloquys for testing*/
+	/client/verb/view_and_display_soliloquys, /*view submitted soliloquys and display them on screen*/
+	/client/verb/select_chosen_soliloquy,	/*select a round end soliloquy from a list of submitted ones*/
 	/client/proc/debug_huds
 	))
 GLOBAL_PROTECT(admin_verbs_hideable)
