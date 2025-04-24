@@ -381,11 +381,16 @@
 /mob/living/proc/simple_limb_hit(zone)
 	if(!zone)
 		return ""
+	// This code below causes a recursion error, when simple mobs are examined it endlessly calls itself. 
+	// I've commented it out for safety/preventing lag. Maybe consider re-writing this if you want other things to return  from this proc?
+	/*
 	if(istype(src, /mob/living/simple_animal))
 		zone = src.simple_limb_hit(zone)
 		return zone
 	else
 		return "body"
+	*/
+	return "body"
 
 /obj/item/proc/funny_attack_effects(mob/living/target, mob/living/user, nodmg)
 	return
