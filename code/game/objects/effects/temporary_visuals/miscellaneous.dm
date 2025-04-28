@@ -468,3 +468,9 @@
 	else
 		return INITIALIZE_HINT_QDEL
 
+
+
+/obj/effect/temp_visual/dir_setting/sparkle/green
+	icon_state = "blessed"
+	duration = 3
+	color = list(0,1,0,0, 0,1,0,0, 0,1,0,0, 0,0,0,1)

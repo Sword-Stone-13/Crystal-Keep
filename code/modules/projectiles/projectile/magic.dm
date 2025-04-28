@@ -794,3 +794,52 @@
 		for(var/obj/structure/soil/affected_soil in view(area_of_effect, T))	//Loop again to check for all soil structures in 3x3 grid of hit area
 			affected_soil.adjust_water(150)										//Adjust water for those soil plants
 	qdel(K)		//Delete the water regeant
+
+
+/obj/projectile/magic/frogprince
+	name = "bolt of amphibius"
+	icon_state = "frogprince"
+	damage = 0
+	damage_type = STAMINA
+	nodamage = TRUE
+	flag = "magic"
+
+/obj/projectile/magic/frogprince/on_hit(target)
+	. = ..()
+	if(istype(target, /mob/living/carbon/human))	
+		turn_human_into_frog(target)
+
+/obj/projectile/magic/frogprince/proc/turn_human_into_frog(mob/living/carbon/human/H)
+	if(!ishuman(H))
+		return FALSE
+
+	H.unequip_everything()
+	
+	var/mob/living/simple_animal/hostile/retaliate/frog/human_frog/F = new /mob/living/simple_animal/hostile/retaliate/frog/human_frog(loc = H.loc)
+	
+	F.original_name = H.name
+	F.name = "[H.name] the frog"
+	F.original_mind = H.mind
+	F.original_ckey = H.ckey
+	F.original_human = H
+	
+	if(H.mind)
+		H.mind.transfer_to(F)
+	
+	H.forceMove(F)
+	H.status_flags |= GODMODE
+	H.alpha = 0
+	
+	var/datum/effect_system/spark_spread/magic = new
+	magic.set_up(8, 0, F)
+	magic.start()
+	
+	var/list/animate_targets = list()
+	for(var/i in 1 to 3)
+		var/obj/effect/temp_visual/dir_setting/sparkle/green/G = new(get_turf(F), pick(GLOB.alldirs))
+		animate_targets += G
+	for(var/obj/effect/temp_visual/dir_setting/sparkle/green/G in animate_targets)
+		animate(G, pixel_y = 32, time = 10)
+	
+	// Notify the player
+	to_chat(F, "<span class='notice'>You have been transformed into a frog! Find someone to kiss you to return to your human form.</span>")
