@@ -818,7 +818,7 @@
 	var/mob/living/simple_animal/hostile/retaliate/frog/human_frog/F = new /mob/living/simple_animal/hostile/retaliate/frog/human_frog(loc = H.loc)
 	
 	F.original_name = H.name
-	F.name = "[H.name] the frog"
+	F.name = "frog"
 	F.original_mind = H.mind
 	F.original_ckey = H.ckey
 	F.original_human = H
