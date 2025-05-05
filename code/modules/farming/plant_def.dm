@@ -374,3 +374,30 @@
 	produce_time = 2 MINUTES
 	weed_immune = TRUE
 	can_grow_underground = TRUE
+
+
+/datum/plant_def/poison_oak
+	name = "poison oak patch"
+	icon = 'icons/roguetown/misc/crops.dmi'
+	icon_state = "poison_oak" // placeholder
+	produce_type = /obj/item/reagent_containers/food/snacks/grown/poison_oak
+	produce_amount_min = 2
+	produce_amount_max = 4
+	maturation_nutrition = 25
+	produce_nutrition = 15
+	maturation_time = 4 MINUTES
+	produce_time = 2 MINUTES
+	weed_immune = TRUE
+
+/datum/plant_def/poison_ivy
+	name = "poison ivy patch"
+	icon = 'icons/roguetown/misc/crops.dmi'
+	icon_state = "tea" // placeholder
+	produce_type = /obj/item/reagent_containers/food/snacks/grown/poison_ivy
+	produce_amount_min = 2
+	produce_amount_max = 4
+	maturation_nutrition = 25
+	produce_nutrition = 15
+	maturation_time = 4 MINUTES
+	produce_time = 2 MINUTES
+	weed_immune = TRUE

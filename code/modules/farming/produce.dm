@@ -504,3 +504,28 @@
 	tastes = list("numb" = 1)
 	list_reagents = list(/datum/reagent/consumable/nutriment = 3, /datum/reagent/toxin/amanitin = 3)
 	grind_results = list(/datum/reagent/toxin/amanitin = 6)
+
+
+/obj/item/reagent_containers/food/snacks/grown/poison_oak
+	seed = /obj/item/seeds/poison_oak
+	name = "poison oak leaves"
+	icon_state = "sweetleafd" // placeholder
+	filling_color = "#2d5a27"
+	bitesize = 3
+	foodtype = TOXIC
+	tastes = list("burning" = 1)
+	list_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/toxin/urushiol = 4)
+	grind_results = list(/datum/reagent/toxin/urushiol = 8)
+	rotprocess = 20 MINUTES
+
+/obj/item/reagent_containers/food/snacks/grown/poison_ivy
+	seed = /obj/item/seeds/poison_ivy
+	name = "poison ivy leaves"
+	icon_state = "tea" // placeholder
+	filling_color = "#2d5a27"
+	bitesize = 3
+	foodtype = TOXIC
+	tastes = list("burning" = 1)
+	list_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/toxin/urushiol = 4)
+	grind_results = list(/datum/reagent/toxin/urushiol = 8)
+	rotprocess = 20 MINUTES

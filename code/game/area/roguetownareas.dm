@@ -59,6 +59,48 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	droning_sound_night = 'sound/music/area/sleeping.ogg'
 	converted_type = /area/rogue/indoors/shelter
 	soundenv = 16
+	// Flora spawning system
+	var/list/wild_flora = list() // List of flora types and their spawn chances, IE: list(/obj/structure/flora/poisonous_plant/poison_ivy = 50, /obj/structure/flora/poisonous_plant/poison_oak = 50)
+	var/list/wild_turf_types = list(/turf/open/floor/rogue/grass) // Turf types that count as "wild" for flora spawning
+	var/max_wild_flora = 0 // Maximum number of flora to spawn in this area (0 = no limit)
+	var/wild_flora_spawn_chance = 0 // Base chance for each valid turf to spawn flora (0 = no spawning)
+
+/area/rogue/outdoors/Initialize()
+	. = ..()
+	if(wild_flora_spawn_chance > 0 && wild_flora.len > 0 && wild_turf_types.len > 0)
+		spawn(10) // Wait a bit for the map to fully load
+			spawn_wild_flora()
+
+/area/rogue/outdoors/proc/spawn_wild_flora()
+	var/flora_count = 0
+	
+	// Get all turfs in this area
+	for(var/turf/T in src)
+		// Check if this turf is one of the valid wild turf types
+		var/is_valid_turf = FALSE
+		for(var/turf_type in wild_turf_types)
+			if(istype(T, turf_type))
+				is_valid_turf = TRUE
+				break
+		
+		if(!is_valid_turf)
+			continue
+		
+		// Check if there's already flora on this turf
+		if(locate(/obj/structure/flora) in T)
+			continue
+		
+		// Check if we've reached the maximum flora count
+		if(max_wild_flora > 0 && flora_count >= max_wild_flora)
+			break
+		
+		// Roll for spawning
+		if(prob(wild_flora_spawn_chance))
+			// Choose a flora type based on chances
+			var/selected_type = pickweight(wild_flora)
+			if(selected_type)
+				new selected_type(T)
+				flora_count++
 
 /area/rogue/indoors/shelter
 	icon_state = "shelter"
@@ -128,13 +170,26 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	droning_sound_dusk = 'sound/music/area/septimus.ogg'
 	droning_sound_night = 'sound/music/area/sleeping.ogg'
 	converted_type = /area/rogue/indoors/shelter/rtfield
+	// added flora spawning configuration
+	wild_flora = list(
+		/obj/structure/flora/poisonous_plant/poison_ivy = 50,
+		/obj/structure/flora/poisonous_plant/poison_oak = 50
+	)
+	wild_turf_types = list(/turf/open/floor/rogue/grass)
+	max_wild_flora = 10
+	wild_flora_spawn_chance = 2 // 2% chance for each grass tile to have a poison plant
+
 /area/rogue/indoors/shelter/rtfield
 	icon_state = "rtfield"
 	droning_sound = 'sound/music/area/field.ogg'
 	droning_sound_dusk = 'sound/music/area/septimus.ogg'
 	droning_sound_night = 'sound/music/area/sleeping.ogg'
 
-
+/area/rogue/indoors/shelter/woods
+	icon_state = "woods"
+	droning_sound = 'sound/music/area/forest.ogg'
+	droning_sound_dusk = 'sound/music/area/septimus.ogg'
+	droning_sound_night = 'sound/music/area/sleeping.ogg'
 /area/rogue/outdoors/woods
 	name = "wilderness"
 	icon_state = "woods"
@@ -157,12 +212,14 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 				/mob/living/carbon/human/species/deadite/npc/ambush = 40)
 	first_time_text = "THE MURDERWOOD"
 	converted_type = /area/rogue/indoors/shelter/woods
-/area/rogue/indoors/shelter/woods
-	icon_state = "woods"
-	droning_sound = 'sound/music/area/forest.ogg'
-	droning_sound_dusk = 'sound/music/area/septimus.ogg'
-	droning_sound_night = 'sound/music/area/sleeping.ogg'
 
+	wild_flora = list(
+		/obj/structure/flora/poisonous_plant/poison_ivy = 50,
+		/obj/structure/flora/poisonous_plant/poison_oak = 50
+	)
+	wild_turf_types = list(/turf/open/floor/rogue/grass)
+	max_wild_flora = 15
+	wild_flora_spawn_chance = 3 // 3% chance for each grass tile to have a poison plant
 
 /area/rogue/outdoors/river
 	name = "river"
