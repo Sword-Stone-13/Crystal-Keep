@@ -313,3 +313,16 @@
 	force = 25
 	minmag = 11 //for now, just to test
 //more to come after tests
+
+// Frog Prince
+/obj/item/gun/magic/spellbook/frogprince
+	name = "Frog Prince tome"
+	desc = "A whimsical tome decorated with lily pads and golden crowns. Contains ancient transformation magic."
+	max_charges = 3
+	recharge_rate = 15
+	damtype = STAMINA
+	can_parry = FALSE
+	force = 8
+	minmag = 12
+	ammo_type = /obj/item/ammo_casing/magic/frogprince
+
