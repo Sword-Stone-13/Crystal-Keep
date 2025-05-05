@@ -1,4 +1,3 @@
-
 //////////////////////////Poison stuff (Toxins & Acids)///////////////////////
 
 /datum/reagent/toxin
@@ -922,3 +921,34 @@
 		to_chat(M, span_notice("[tox_message]"))
 	. = 1
 	..()
+
+/datum/reagent/toxin/urushiol
+	name = "Urushiol"
+	description = "A toxic oil found in poison ivy, poison oak, and poison sumac. Causes severe itching and rashes."
+	color = "#8B4513" // Brown color
+	toxpwr = 0.5
+	taste_description = "bitter oil"
+	metabolization_rate = 0.2 * REAGENTS_METABOLISM
+	overdose_threshold = 25
+/datum/reagent/toxin/urushiol/on_mob_life(mob/living/carbon/M)
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		SEND_SIGNAL(H, COMSIG_ADD_MOOD_EVENT, "itching", /datum/mood_event/itching)
+		if(prob(30))
+			to_chat(H, span_danger(pick( // Added missing parenthesis after pick
+			"I scratch frantically at my skin!",
+			"The itching is driving me mad!",
+			"I can't stop scratching!",
+			"My skin feels like it's on fire!",
+			"The rash is spreading and itching intensely!")))  // Added missing parenthesis to close pick()
+			H.adjustBruteLoss(0.5*REM, 0)
+			H.do_jitter_animation(50)
+	return ..()
+
+/datum/reagent/toxin/urushiol/overdose_process(mob/living/M)
+	. = ..()
+	if(current_cycle >=33 && prob(15))
+		if(ishuman(M))
+			var/mob/living/carbon/human/H = M
+			SEND_SIGNAL(H, COMSIG_CLEAR_MOOD_EVENT, "itching")
+			SEND_SIGNAL(H, COMSIG_ADD_MOOD_EVENT, "unbearable_itching", /datum/mood_event/unbearable_itching)

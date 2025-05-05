@@ -182,3 +182,12 @@
 /obj/item/seeds/mycelium/amanita
 	seed_identity = "red mushroom spores"
 	plant_def_type = /datum/plant_def/amanita
+
+
+/obj/item/seeds/poison_oak
+	seed_identity = "poison oak seeds"
+	plant_def_type = /datum/plant_def/poison_oak
+
+/obj/item/seeds/poison_ivy
+	seed_identity = "poison ivy seeds" 
+	plant_def_type = /datum/plant_def/poison_ivy

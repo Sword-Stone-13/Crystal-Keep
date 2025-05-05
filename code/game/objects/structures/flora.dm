@@ -462,18 +462,79 @@
 /obj/structure/flora/rock/pile/largejungle/Initialize()
 	. = ..()
 	icon_state = "[initial(icon_state)][rand(1,3)]"
+// Base type for poisonous plants
+/obj/structure/flora/poisonous_plant
+	anchored = TRUE
+	var/poison_amount = 5
+	var/spread_chance = 5 // Chance to spread to adjacent tiles over time
+	var/poison_type = /datum/reagent/toxin/urushiol
 
+/obj/structure/flora/poisonous_plant/Initialize()
+	. = ..()
+	poison_amount = rand(3, 7)
+	addtimer(CALLBACK(src, .proc/try_spread), rand(300, 600))
 
+/obj/structure/flora/poisonous_plant/proc/try_spread()
+	if(!spread_chance || prob(100 - spread_chance))
+		return
 
+	var/list/valid_turfs = list()
+	for(var/turf/open/floor/rogue/grass/T in orange(1, src))
+		if(!locate(/obj/structure/flora) in T)
+			valid_turfs += T
 
+	if(valid_turfs.len)
+		var/turf/T = pick(valid_turfs)
+		new type(T)
 
+	addtimer(CALLBACK(src, .proc/try_spread), rand(300, 600))
 
+/obj/structure/flora/poisonous_plant/proc/poison_victim(mob/living/carbon/victim)
+	if(!ishuman(victim))
+		return
+	if(!victim.gloves || istype(victim.gloves, /obj/item/clothing/gloves/fingerless))
+		to_chat(victim, span_warning("Your skin starts to itch from touching the [name]!"))
+		victim.reagents.add_reagent(poison_type, poison_amount)
+		victim.do_jitter_animation(100)
 
+/obj/structure/flora/poisonous_plant/attack_hand(mob/living/carbon/user)
+	poison_victim(user)
+	return ..()
 
+/obj/structure/flora/poisonous_plant/Crossed(atom/movable/AM)
+	poison_victim(AM)
+	. = ..()
 
+/obj/structure/flora/poisonous_plant/attackby(obj/item/W, mob/user, params)
+	if(W.get_sharpness())
+		var/obj/item/harvest_result = get_harvest_result()
+		new harvest_result(get_turf(src))
+		qdel(src)
+		return
+	return ..()
 
+/obj/structure/flora/poisonous_plant/proc/get_harvest_result()
+	return null
 
+/obj/structure/flora/poisonous_plant/poison_oak
+	name = "poison oak"
+	desc = "A plant with leaves that cause severe itching and rashes when touched."
+	icon = 'icons/obj/flora/ausflora.dmi'
+	icon_state = "fernybush_2" // placeholder
+	poison_type = /datum/reagent/toxin/urushiol
+	poison_amount = 6
+	spread_chance = 4
+/obj/structure/flora/poisonous_plant/poison_oak/get_harvest_result()
+	return /obj/item/reagent_containers/food/snacks/grown/poison_oak
 
+/obj/structure/flora/poisonous_plant/poison_ivy
+	name = "poison ivy"
+	desc = "A climbing vine with leaves that cause severe itching and rashes when touched."
+	icon = 'icons/obj/flora/ausflora.dmi'
+	icon_state = "stalkybush_3" // placeholder
+	poison_type = /datum/reagent/toxin/urushiol
+	poison_amount = 3
+	spread_chance = 6
 
-
-
+/obj/structure/flora/poisonous_plant/poison_ivy/get_harvest_result()
+	return /obj/item/reagent_containers/food/snacks/grown/poison_ivy

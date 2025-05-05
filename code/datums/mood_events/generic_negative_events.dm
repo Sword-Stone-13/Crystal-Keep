@@ -218,3 +218,11 @@
 	mood_change = -10
 	timeout = 5 MINUTES
 
+/datum/mood_event/itching
+	description = span_warning("This rash is driving me crazy!")
+	mood_change = -6
+	timeout = 2 MINUTES 
+/datum/mood_event/unbearable_itching
+	description = "<span class='boldwarning'>I CAN'T STOP SCRATCHING! MAKE IT STOP!</span>\n"
+	mood_change = -12
+	timeout = 3 MINUTES
