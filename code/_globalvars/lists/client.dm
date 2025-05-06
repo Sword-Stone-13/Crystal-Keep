@@ -3,6 +3,7 @@ GLOBAL_LIST_EMPTY(hotkey_keybinding_list_by_key)
 GLOBAL_LIST_EMPTY(keybindings_by_name)
 
 GLOBAL_LIST_EMPTY(mouseicons_human)
+GLOBAL_LIST_EMPTY(admin_view_vars_clients) // Global list to track clients in view variables mode
 
 // This is a mapping from JS keys to Byond - ref: https://keycode.info/
 GLOBAL_LIST_INIT(_kbMap, list(
