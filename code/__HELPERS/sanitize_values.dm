@@ -78,3 +78,24 @@
 	HSL[3] = min(HSL[3],0.4)
 	var/list/RGB = hsl2rgb(arglist(HSL))
 	return "#[num2hex(RGB[1],2)][num2hex(RGB[2],2)][num2hex(RGB[3],2)]"
+
+
+/proc/validate_url(url)
+	if(!url)
+		return FALSE
+	
+	// Check if URL starts with http:// or https://
+	if(!findtext(url, "http://", 1, 8) && !findtext(url, "https://", 1, 9))
+		return FALSE
+		
+	// Check if URL ends with common image extensions
+	var/list/valid_extensions = list(".jpg", ".jpeg", ".png", ".gif")
+	var/valid_ext = FALSE
+	for(var/ext in valid_extensions)
+		if(findtext(url, ext, -length(ext)))
+			valid_ext = TRUE
+			break
+	if(!valid_ext)
+		return FALSE
+		
+	return TRUE

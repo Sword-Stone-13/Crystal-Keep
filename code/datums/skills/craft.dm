@@ -31,3 +31,11 @@
 	dreams = list(
 		"...you feel the forest's embrace as you drift into dreams, visions of stalking prey and the thrill of the hunt filling your mind.."
 	)
+
+/datum/skill/craft/engravement
+	name = "Engravement"
+	desc = "The art of carving intricate designs and patterns into various materials."
+	dreams = list(
+		"...you feel the steady rhythm of your hammer and chisel as you carefully carve intricate patterns into metal and stone, each stroke bringing your vision to life..."
+	)
+

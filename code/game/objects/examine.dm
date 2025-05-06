@@ -7,6 +7,20 @@
 /obj/item/examine(mob/user) //This might be spammy. Remove?
 	. = ..()
 
+	if(engraveable)
+		if(engraved_url)
+			var/quality_text = ""
+			switch(engraving_quality)
+				if(ENGRAVING_QUALITY_CRUDE)
+					quality_text = "crude"
+				if(ENGRAVING_QUALITY_DECENT)
+					quality_text = "decent"
+				if(ENGRAVING_QUALITY_MASTERFUL)
+					quality_text = "masterful"
+			. += span_notice("This item has been engraved with [quality_text] quality. <a href='?src=[REF(src)];show_engraving=1'>View engraving</a>")
+		else
+			. += span_notice("This item can be engraved with an engraving hammer.")
+
 	if(max_integrity)
 		if(obj_integrity < max_integrity)
 			var/meme = round(((obj_integrity / max_integrity) * 100), 1)

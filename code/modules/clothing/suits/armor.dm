@@ -10,6 +10,7 @@
 	max_integrity = 250
 	resistance_flags = NONE
 	armor = list("blunt" = 50, "slash" = 30, "stab" = 40, "bullet" = 30, "laser" = 30, "energy" = 40, "bomb" = 25, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 50)
+	engraveable = TRUE
 
 /obj/item/clothing/suit/armor/Initialize()
 	. = ..()

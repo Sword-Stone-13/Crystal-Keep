@@ -220,6 +220,10 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	/// Number of torn sleves, important for salvaging calculations and examine text
 	var/torn_sleeve_number = 0
 
+	var/engraveable = FALSE  // Whether this item can be engraved
+	var/engraved_url = null // URL of the engraved image
+	var/engraving_quality = ENGRAVING_QUALITY_DECENT // Quality of the engraving (1-3, higher is better)
+
 /obj/item/Initialize()
 	. = ..()
 	if(!pixel_x && !pixel_y && !bigboy)
@@ -468,6 +472,18 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 			inspec += "[meme]%"
 
 		to_chat(usr, "[inspec.Join()]")
+
+// ENGRAVING STUFF
+	if(href_list["show_engraving"])
+		if(!usr.canUseTopic(src, BE_CLOSE))
+			return
+		if(!engraved_url)
+			to_chat(usr, span_warning("[src] has no engraving!"))
+			return
+			
+		var/datum/browser/popup = new(usr, "engraving_[REF(src)]", "Engraving on [src]", 600, 600)
+		popup.set_content("<center><img src='[engraved_url]' width='550px'></center>")
+		popup.open()
 
 /obj/item
 	var/simpleton_price = FALSE
@@ -1276,3 +1292,9 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 
 /obj/item/proc/on_embed(obj/item/bodypart/bp)
 	return
+
+/obj/item/vv_get_dropdown()
+	. = ..()
+	VV_DROPDOWN_OPTION("", "---------")
+	if(engraveable)
+		VV_DROPDOWN_OPTION(VV_HK_MODIFY_ENGRAVING, "Modify Engraving") 

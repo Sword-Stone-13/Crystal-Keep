@@ -35,6 +35,7 @@
 	var/initial_sl
 	var/list/possible_enhancements
 	var/renamed_name
+	engraveable = TRUE
 
 /obj/item/rogueweapon/Initialize()
 	. = ..()
