@@ -123,6 +123,58 @@
 				admin_ticket_log(L, "<font color='blue'>[log_msg]</font>")
 				vv_update_display(L, Text, "[newamt]")
 
+		else if(href_list[VV_HK_MODIFY_ENGRAVING])
+			if(!check_rights(R_DEBUG))
+				return
+			var/obj/item/I = target
+			if(!istype(I) || !I.engraveable)
+				to_chat(usr, span_warning("[I] cannot be engraved!"))
+				return
+			
+			var/action = alert(usr, "What would you like to do with the engraving?", "Engraving Options", "View", "Add/Modify", "Remove")
+			if(!action)
+				return
+			
+			switch(action)
+				if("View")
+					if(I.engraved_url)
+						to_chat(usr, span_notice("Current engraving URL: [I.engraved_url]"))
+						to_chat(usr, span_notice("Engraving quality: [I.engraving_quality]"))
+					else
+						to_chat(usr, span_notice("No engraving present."))
+					
+				if("Add/Modify")
+					var/input = input(usr, "Enter the URL of the image to engrave (must be externally hosted):", "Engraving", I.engraved_url) as text|null
+					if(!input)
+						return
+					
+					if(!validate_url(input))
+						to_chat(usr, span_warning("Invalid image URL! URL must start with http:// or https:// and end with .jpg, .jpeg, .png or .gif"))
+						return
+					
+					var/quality = input(usr, "Select engraving quality:", "Engraving Quality", I.engraved_url ? I.engraving_quality : ENGRAVING_QUALITY_CRUDE) as null|anything in list("Crude", "Decent", "Masterful")
+					if(!quality)
+						return
+					
+					I.engraved_url = input
+					switch(quality)
+						if("Crude")
+							I.engraving_quality = ENGRAVING_QUALITY_CRUDE
+						if("Decent")
+							I.engraving_quality = ENGRAVING_QUALITY_DECENT
+						if("Masterful")
+							I.engraving_quality = ENGRAVING_QUALITY_MASTERFUL
+						
+					to_chat(usr, span_notice("Engraving modified successfully."))
+					
+				if("Remove")
+					if(!I.engraved_url)
+						to_chat(usr, span_warning("[I] has no engraving to remove!"))
+						return
+					
+					I.engraved_url = null
+					I.engraving_quality = 0
+					to_chat(usr, span_notice("Engraving removed successfully."))
 
 	//Finally, refresh if something modified the list.
 	if(href_list["datumrefresh"])

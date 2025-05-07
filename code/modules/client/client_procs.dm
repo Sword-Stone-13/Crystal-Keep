@@ -880,6 +880,11 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 	var/ab = FALSE
 	var/list/L = params2list(params)
 
+	if(src in GLOB.admin_view_vars_clients)
+		GLOB.admin_view_vars_clients -= src
+		debug_variables(object)
+		return
+
 	var/dragged = L["drag"]
 	if(dragged && !L[dragged])
 		return

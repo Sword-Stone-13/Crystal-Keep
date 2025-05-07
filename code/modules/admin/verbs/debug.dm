@@ -867,3 +867,23 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 		return
 	if(alert(usr, "Are you absolutely sure you want to reload the configuration from the default path on the disk, wiping any in-round modificatoins?", "Really reset?", "No", "Yes") == "Yes")
 		config.admin_reload()
+
+/client/proc/cmd_admin_view_vars()
+	set category = "Debug"
+	set name = "View Variables (Next Click)"
+	set desc = "Click any object/mob to view its variables"
+
+	if(!check_rights(R_DEBUG))
+		return
+
+	if(src in GLOB.admin_view_vars_clients)
+		GLOB.admin_view_vars_clients -= src
+		to_chat(src, span_adminnotice("View variables mode deactivated."))
+		return
+
+	// Store the client in a global list to track who is in view variables mode
+	GLOB.admin_view_vars_clients |= src
+
+	to_chat(src, span_adminnotice("Click any object/mob to view its variables. Use command again to deactivate."))
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "View Variables (Next Click)")
+
