@@ -2,6 +2,7 @@
 	/// A lazylist to store inhands data.
 	var/list/onprop
 	var/d_type = "blunt"
+	var/handle_movement = FALSE // if this is true, then the item will call step_action() when it's being held by a person moving.
 //#ifdef TESTSERVER
 	var/force_reupdate_inhand = TRUE
 //#else
@@ -14,6 +15,9 @@
 	if(!experimental_inhand)
 		inhand_x_dimension = 32
 		inhand_y_dimension = 32
+
+/obj/item/proc/step_action()
+	SEND_SIGNAL(src, COMSIG_ITEM_STEP_ACTION)
 /obj/item/inhand_tester
 	icon = 'icons/roguetown/items/misc.dmi'
 	icon_state = "inhand_test"
