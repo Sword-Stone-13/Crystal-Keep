@@ -952,3 +952,18 @@
 			var/mob/living/carbon/human/H = M
 			SEND_SIGNAL(H, COMSIG_CLEAR_MOOD_EVENT, "itching")
 			SEND_SIGNAL(H, COMSIG_ADD_MOOD_EVENT, "unbearable_itching", /datum/mood_event/unbearable_itching)
+
+/datum/reagent/toxin/blindness
+	name = "Blindness Toxin"
+	description = "A toxin that causes temporary blindness in its victim."
+	color = "#800080" // Purple color to match the evil carrot
+	toxpwr = 0.5
+	taste_description = "darkness"
+	metabolization_rate = 0.2 * REAGENTS_METABOLISM
+
+/datum/reagent/toxin/blindness/on_mob_life(mob/living/carbon/M)
+	M.blur_eyes(3)
+	if(current_cycle >= 3)
+		M.blind_eyes(2)
+		M.adjustToxLoss(0.5*REM, 0)
+	return ..()
