@@ -57,6 +57,11 @@
 		if(!has_gravity(loc))
 			return
 
+		if(LAZYLEN(held_items))
+			for(var/obj/item/I in held_items)
+				if(I.handle_movement)
+					I.step_action()
+
 		if(wear_armor)
 			if(mobility_flags & MOBILITY_STAND)
 				var/obj/item/clothing/C = wear_armor
