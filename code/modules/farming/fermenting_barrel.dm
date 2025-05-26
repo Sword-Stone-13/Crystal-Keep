@@ -115,3 +115,53 @@
 	. = ..()
 	reagents.add_reagent(/datum/reagent/water/gross,500)
 	update_icon()
+
+/obj/structure/fermenting_barrel/verb/toggle_barrel()
+	set name = "Toggle Barrel"
+	set category = "Object"
+	set src in view(1)
+
+	var/mob/living/user = usr
+	if(!istype(user))
+		return FALSE
+	if(!user.Adjacent(src))
+		return FALSE
+	if(user.lying || user.stat == DEAD)
+		return FALSE
+	if(!open)
+		playsound(src, 'sound/items/book_open.ogg', 50, TRUE)
+		to_chat(user, "<span class='notice'>You open [src].</span>")
+	else
+		playsound(src, 'sound/items/book_open.ogg', 50, TRUE)
+		to_chat(user, "<span class='notice'>You close [src].</span>")
+
+
+	open = !open
+	// the barrel icon would update. update_icon() isn't fully implemented for these barrels it seems, but when it is - uncomment the the below:
+	// update_icon()
+
+	return TRUE
+/obj/structure/fermenting_barrel/attack_hand(mob/user)
+	. = ..()
+	if(.)
+		return
+	if(!open)
+		to_chat(user, "<span class='warning'>The barrel is closed!</span>")
+		return
+	if(reagents.total_volume >= 50)
+		if(do_after(user, 20, target = src))
+			reagents.trans_to(user, 10)
+			playsound(src, 'sound/items/bucket_transfer (2).ogg', 50, TRUE)
+			user.visible_message("<span class='notice'>[user] washes themselves with the contents of [src].</span>", \
+								"<span class='notice'>You wash yourself with the contents of [src].</span>")
+			if(ishuman(user))
+				var/mob/living/carbon/human/H = user
+				if(H.on_fire && H.fire_stacks > 0)
+					H.fire_stacks = 0
+					H.ExtinguishMob()
+					H.visible_message("<span class='notice'>The liquid extinguishes the fire on [H]!</span>")
+			if(user.reagents.has_reagent(/datum/reagent/toxin/urushiol))
+				user.reagents.remove_reagent(/datum/reagent/toxin/urushiol, 30)
+				to_chat(user, "<span class='notice'>The water washes away the irritating oils from your skin.</span>")
+	else
+		to_chat(user, "<span class='warning'>There's not enough liquid in [src] to wash with!</span>")
