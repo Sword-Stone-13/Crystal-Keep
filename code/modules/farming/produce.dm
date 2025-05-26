@@ -362,6 +362,19 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/medicine/oculine = 1)
 	grind_results = list(/datum/reagent/medicine/oculine = 3)
 
+/obj/item/reagent_containers/food/snacks/grown/carrot/evil
+	name = "evil carrot"
+	desc = "A purple carrot that seems to pulse with dark energy. Eating it might not be the best idea..."
+	seed = /obj/item/seeds/carrot/evil
+	icon_state = "carrot"
+	tastes = list("carrot" = 1, "darkness" = 1)
+	filling_color = "#800080"
+	bitesize = 3
+	foodtype = VEGETABLES | TOXIC
+	rotprocess = 40 MINUTES
+	list_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/toxin/blindness = 3)
+	grind_results = list(/datum/reagent/toxin/blindness = 6)
+
 /obj/item/reagent_containers/food/snacks/grown/potato
 	name = "potato"
 	seed = /obj/item/seeds/potato

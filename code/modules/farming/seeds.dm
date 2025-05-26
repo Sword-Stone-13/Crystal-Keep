@@ -127,6 +127,10 @@
 	seed_identity = "carrot seeds"
 	plant_def_type = /datum/plant_def/carrot
 
+/obj/item/seeds/carrot/evil
+	seed_identity = "evil carrot seeds"
+	plant_def_type = /datum/plant_def/carrot/evil
+
 /obj/item/seeds/potato
 	seed_identity = "potato eyes"
 	plant_def_type = /datum/plant_def/potato
