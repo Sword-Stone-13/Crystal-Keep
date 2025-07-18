@@ -13,4 +13,4 @@
 	name = "large beak"
 
 /obj/item/organ/snout/lizard
-	name = "sissean snout"
+	name = "reptoid snout"

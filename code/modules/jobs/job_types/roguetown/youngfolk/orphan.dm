@@ -1,21 +1,23 @@
 /datum/job/roguetown/orphan
-	title = "Vagabond"
+	title = "Orphan"
 	flag = ORPHAN
 	department_flag = YOUNGFOLK
 	faction = "Station"
 	total_positions = 12
 	spawn_positions = 12
 
-	allowed_races = RACES_VERY_SHUNNED_UP
-	allowed_ages = list(AGE_ADULT)
+	allowed_races = RACES_ALL_KINDS
+	allowed_ages = list(AGE_YOUTH)
 
-	tutorial = "Dozens of people end up down on their luck in the kingdom of Psydonia every day. They sometimes make something of themselves but much more often die in the streets."
+	tutorial = "Dozens of people end up down on their luck in Enigma every day. They sometimes make something of themselves but much more often die in the streets."
 
 	outfit = /datum/outfit/job/roguetown/orphan
 	display_order = JDO_ORPHAN
 	show_in_credits = FALSE
 	min_pq = -30
 	max_pq = null
+	associated_squad = /datum/antagonist/squad/none
+
 
 	banned_leprosy = FALSE
 

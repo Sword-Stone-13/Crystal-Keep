@@ -17,9 +17,10 @@
 
 
 	display_order = JDO_BANDIT
+	associated_squad = /datum/antagonist/squad/none
 	show_in_credits = FALSE
 	announce_latejoin = FALSE
-	min_pq = 5
+	min_pq = 0
 	max_pq = null
 
 	advclass_cat_rolls = list(CTAG_BANDIT = 20)
@@ -28,7 +29,7 @@
 	wanderer_examine = TRUE
 	advjob_examine = TRUE
 	always_show_on_latechoices = TRUE
-	job_reopens_slots_on_death = FALSE //no endless stream of bandits, unless the migration waves deem it so
+	job_reopens_slots_on_death = TRUE
 	same_job_respawn_delay = 30 MINUTES
 
 

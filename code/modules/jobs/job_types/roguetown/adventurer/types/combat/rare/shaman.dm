@@ -1,7 +1,7 @@
 //shield
 /datum/advclass/shaman
 	name = "Shaman"
-	tutorial = "Shamans are the closest thing to clerics or healers that primitive or god forsaken creachers can muster."
+	tutorial = "Usually the creachers unwanted by greater gods, or favored by Dendor resort to Shamanism in hopes of greater favor."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(
 		/datum/species/halforc,
@@ -11,7 +11,7 @@
 	)
 	vampcompat = FALSE
 	outfit = /datum/outfit/job/roguetown/adventurer/cleric
-	category_tags = list(CTAG_ADVENTURER)
+	category_tags = list(CTAG_ADVENTURER, CTAG_PILGRIM)
 
 	cmode_music = 'sound/music/combat_clergy.ogg'
 

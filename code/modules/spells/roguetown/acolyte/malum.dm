@@ -10,7 +10,7 @@
 	no_early_release = TRUE
 	req_items = list(/obj/item/clothing/neck/roguetown/psicross)
 	sound = 'sound/items/bsmithfail.ogg'
-	invocation = "Through flame and ash, let vigor rise, by Malum’s hand, let strength reprise!"
+	invocation = "Through flame and ash, let vigor rise, by crafted hand, let strength reprise!"
 	invocation_type = "shout"
 	associated_skill = /datum/skill/magic/holy
 	antimagic_allowed = FALSE
@@ -337,7 +337,7 @@ world/New()
 	var/const/radius = 1 //Radius of the spell
 	var/const/shakeradius = 7 //Radius of the quake
 	var/diceroll = 0
-	var/const/dc = 42 //Code will roll 2d20 and add target's perception and Speed then compare to this to see if they fall down or not. 42 Means they need to roll 2x 20 with Speed and Perception at I
+	var/const/dc = 42 //Code will roll 2d20 and add target's perception and Speed then compare to this to see if they fall down or not. 42 Means they need to roll 2x 20 with Speed and Perception at I// I replaced PER with FTH -Ckeep
 	var/const/delay = 2 SECONDS // Delay between the ground marking appearing and the effect playing.
 	if (istype(targets[1], /turf/closed))
 		return
@@ -353,7 +353,7 @@ world/New()
 	for (var/mob/living/carbon/screenshaken in view(shakeradius, fallzone))
 		shake_camera(screenshaken, 5, 5)
 	for (var/mob/living/carbon/shaken in view(radius, fallzone))
-		diceroll = roll(2,20) + shaken.STASKL + shaken.STASPD
+		diceroll = roll(2,20) + shaken.STAFTH + shaken.STASPD
 		if (diceroll > dc)
 			shaken.apply_effect(1 SECONDS, EFFECT_IMMOBILIZE, 0)
 			show_visible_message(shaken, null, "The ground quakes but I manage to keep my footing.")

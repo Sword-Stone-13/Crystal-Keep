@@ -222,7 +222,7 @@
 
 /datum/status_effect/debuff/skullcrack
 	id = "skullcrack"
-	effectedstats = list("strength" = -10, "perception" = -10, "intelligence" = -20, "endurance" = -10, "speed" = -10)
+	effectedstats = list("strength" = -10, "skill" = -20, "endurance" = -10, "speed" = -10)
 
 //Death debuff
 
@@ -303,3 +303,15 @@
 	name = "Ravox's Burden"
 	desc = "Some divine power is straining my mind!"
 	icon_state = "muscles"
+
+/datum/status_effect/debuff/excomm
+	id = "Excommunicated follower of Ten!"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/excomm
+	effectedstats = list("fortune" = -2, "skill" = -2, "endurance" = -2)
+	duration = 999 MINUTES
+
+/atom/movable/screen/alert/status_effect/debuff/excomm
+	name = "Excommunicated follower of Ten!"
+	desc = "The Ten have forsaken me!"
+	icon_state = "muscles"
+	color ="#6d1313"

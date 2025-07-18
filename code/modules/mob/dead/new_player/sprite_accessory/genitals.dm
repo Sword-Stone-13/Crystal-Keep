@@ -1,4 +1,4 @@
-/datum/sprite_accessory/penis
+/datum/sprite_accessory/penis//for some reason, removing these breaks a lot of things
 	icon = 'icons/mob/sprite_accessory/genitals/penis.dmi'
 	color_keys = 2
 	color_key_names = list("Member", "Skin")

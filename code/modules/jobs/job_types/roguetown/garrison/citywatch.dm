@@ -14,7 +14,7 @@
 	Though you've many lords to obey, as both the Church and the Sheriff have great sway over your life."
 	display_order = JDO_TOWNGUARD
 	whitelist_req = TRUE
-
+	associated_squad = /datum/antagonist/squad/none
 	outfit = /datum/outfit/job/roguetown/citywatch
 	give_bank_account = 16
 	min_pq = 1
@@ -54,22 +54,20 @@
 	if(H.mind)
 		assign_skills(H)
 	H.verbs |= /mob/proc/haltyell
-	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 
 /datum/outfit/job/roguetown/citywatch/proc/assign_skills(mob/living/carbon/human/guard)
-	guard.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
+	guard.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
 	guard.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 	guard.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
 	guard.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
 	guard.mind.adjust_skillrank(/datum/skill/combat/polearms, pick(3,4), TRUE)
 	guard.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 3, TRUE)
-	guard.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
+	guard.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 	guard.mind.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
-	guard.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
+	guard.mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
 	guard.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
-	guard.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
-	guard.mind.adjust_skillrank(/datum/skill/misc/sneaking, 3, TRUE)
+	guard.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
 	guard.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 	guard.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 	guard.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)

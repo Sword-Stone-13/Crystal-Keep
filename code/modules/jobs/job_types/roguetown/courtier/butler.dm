@@ -14,6 +14,7 @@
 
 	outfit = /datum/outfit/job/roguetown/butler
 	display_order = JDO_BUTLER
+	associated_squad = /datum/antagonist/squad/none
 	give_bank_account = 30
 	min_pq = 0
 	max_pq = null

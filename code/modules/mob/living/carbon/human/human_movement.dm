@@ -119,9 +119,13 @@
 					if(effective > STAMAG)
 						if(prob(effective))
 							dropItemToGround(I, silent = FALSE)
-							/*// Instead of dropping the item, we make it not usable
-							I.unusable = TRUE // This is a new variable that you'll need to handle elsewhere
-							usr << "[I.name] is too difficult to use!"*/
+		if(held_items.len)
+			for(var/obj/item/I in held_items)
+				if(I.minfth)
+					var/effective = I.minfth
+					if(effective > STAFTH)
+						if(prob(effective))
+							dropItemToGround(I, silent = FALSE)
 
 /mob/living/carbon/human/Process_Spacemove(movement_dir = 0) //Temporary laziness thing. Will change to handles by species reee.
 	if(dna.species.space_move(src))

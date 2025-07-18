@@ -10,12 +10,12 @@
 /datum/outfit/job/roguetown/bandit/brigand/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/axes, 3, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/axes, 1, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
@@ -33,14 +33,13 @@
 	shoes = /obj/item/clothing/shoes/roguetown/armor
 	backr = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/needle/thorn = 1, /obj/item/natural/cloth = 1)
-	mask = /obj/item/clothing/mask/rogue/facemask/steel
+	mask = /obj/item/clothing/mask/rogue/facemask/hound
 	neck = /obj/item/clothing/neck/roguetown/coif
 	head = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/hide
-	H.change_stat("strength", 3)
-	H.change_stat("endurance", 2)
+	H.change_stat("endurance", 1)
 	H.change_stat("constitution", 2)
-	H.change_stat("skill", 1)
+	H.change_stat("skill", -2)
 	H.change_stat("mageability", -2)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	H.adjust_blindness(-3)
@@ -48,12 +47,18 @@
 	var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 	H.set_blindness(0)
 	switch(weapon_choice)
-		if("Axe & Cudgel") //one weapon to hurt people one weapon to kill people
+		if("Axe") //one weapon to hurt people one weapon to kill people
 			backl= /obj/item/rogueweapon/stoneaxe/woodcut
-			beltr = /obj/item/rogueweapon/mace/cudgel
-		if("Flail & Shield") //plate users beware, you're in for a scare!
-			backl= /obj/item/rogueweapon/shield/wood
+			H.mind.adjust_skillrank(/datum/skill/combat/axes, 2, TRUE)
+			H.change_stat("strength", 2)
+		if("Flail") //plate users beware, you're in for a scare!
 			beltr = /obj/item/rogueweapon/flail
+			H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 2, TRUE)
+			H.change_stat("strength", 1)
+		if("Mace")
+			beltr = /obj/item/rogueweapon/mace
+			H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
+			H.change_stat("endurance", 1)
 
 	H.verbs |= /mob/proc/haltyell
 	H.ambushable = FALSE

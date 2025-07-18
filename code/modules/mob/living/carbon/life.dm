@@ -962,3 +962,25 @@ GLOBAL_LIST_INIT(ballmer_windows_me_msg, list("Yo man, what if, we like, uh, put
 		animate(src, pixel_y = pixel_y - 2, time = 5, loop = -1)
 
 	//animate(src, pixel_x = rand(-2, 2), pixel_y = rand(-2, 2), time = 20)
+
+
+//CKEEP 
+/mob/living/carbon/human/death(gibbed)
+	if(stat == DEAD)
+		return
+	..()
+	// Restore visibility if invisible due to The One Ring
+	if(alpha == 0)
+		alpha = 255
+		visible_message(span_notice("[src] reappears in death!"))
+	// Check for The One Ring and apply blood loss if killed by it
+	var/obj/item/clothing/ring/one_ring/ring = locate() in get_equipped_items()
+	if(ring && ring.killed_by_ring)
+		blood_volume = 0
+		heart_attacking = FALSE // Reset heart attack state
+		remove_stress(/datum/stressevent/Zizotec)
+		remove_stress(/datum/stressevent/demonview)
+		remove_stress(/datum/stressevent/pain)
+/*		remove_stress(/datum/stressevent/ring_doom_visions)
+		remove_stress(/datum/stressevent/ring_betrayal)*/
+		visible_message(span_warning("[src]'s body collapses, heart seized by the ring’s curse!"))

@@ -57,6 +57,7 @@
 
 /datum/special_trait/underworldassassin/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_LIGHT_STEP, "[type]")
+	ADD_TRAIT(character, TRAIT_SILENT_FIGHTER, "[type]")
 	character.change_stat("strength", -1)
 	character.change_stat("endurance", 2)
 	character.change_stat("speed", 2)
@@ -100,8 +101,9 @@
 /datum/special_trait/duelist/on_apply(mob/living/carbon/human/character, silent)
 	character.cmode_music = 'sound/music/combat_duelist.ogg'
 	character.change_stat("speed", 2)
-	character.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 6, TRUE) //will make a unique trait later on
+	character.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 5, TRUE) //will make a unique trait later on
 	character.mind.special_items["Rapier"] = /obj/item/rogueweapon/sword/rapier
+	ADD_TRAIT(character, TRAIT_SILENT_FIGHTER, "[type]")
 
 /datum/special_trait/eagle_eyed
 	name = "Eagle Eyed"
@@ -132,7 +134,7 @@
 	weight = 100
 
 /datum/special_trait/cunning_linguist/on_apply(mob/living/carbon/human/character, silent)
-	ADD_TRAIT(character, TRAIT_GOODLOVER, "[type]")
+	ADD_TRAIT(character, TRAIT_BEAUTIFUL, "[type]")
 	switch(rand(1,6))
 		if(1)
 			character.grant_language(/datum/language/elvish)
@@ -186,7 +188,7 @@
 	name = "Psydon's Drunkest Rider"
 	greet_text = span_notice("I ride! None of the laws shall stop me for that is Psydon's divine will!")
 	req_text = "Worship Psydon"
-	allowed_patrons = list(/datum/patron/psydon)
+	allowed_patrons = list(/datum/patron/inhumen/psydon)
 	weight = 100
 
 /datum/special_trait/psydons_rider/on_apply(mob/living/carbon/human/character, silent)
@@ -215,6 +217,16 @@
 
 /datum/special_trait/spring_in_my_step/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_ZJUMP, "[type]")
+
+/datum/special_trait/elf_born
+	name = "Elf Born"
+	greet_text = span_notice("I was raised by a pack of wood elves!")
+	weight = 25
+
+/datum/special_trait/elf_born/on_apply(mob/living/carbon/human/character, silent)
+	ADD_TRAIT(character, TRAIT_LEAF_WALKER, "[type]")
+	character.change_stat("speed", 2)
+	character.change_stat("constitution", -2)
 
 /datum/special_trait/thief
 	name = "Thief"
@@ -259,6 +271,8 @@
 /datum/special_trait/mastercraftsmen/on_apply(mob/living/carbon/human/character)
 	character.mind.adjust_skillrank_up_to(/datum/skill/craft/crafting, 2, TRUE)
 	character.mind.adjust_skillrank_up_to(/datum/skill/craft/blacksmithing, 2, TRUE)
+	character.mind.adjust_skillrank_up_to(/datum/skill/craft/dwarfsmithing, 2, TRUE)
+	character.mind.adjust_skillrank_up_to(/datum/skill/craft/koboldsmithing, 2, TRUE)
 	character.mind.adjust_skillrank_up_to(/datum/skill/craft/carpentry, 2, TRUE)
 	character.mind.adjust_skillrank_up_to(/datum/skill/craft/masonry, 2, TRUE)
 	character.mind.adjust_skillrank_up_to(/datum/skill/craft/cooking, 2, TRUE)
@@ -266,9 +280,10 @@
 	character.mind.adjust_skillrank_up_to(/datum/skill/craft/hunting, 2, TRUE)
 
 /datum/special_trait/bleublood
-	name = "Noble Lineage"
-	greet_text = span_notice("I come of noble blood.")
+	name = "Eora Blessed"
+	greet_text = span_notice("My veins carry Eora's blessing (must be an Eora approved race, Humen, Elf, Dwarf).")
 	restricted_traits = list(TRAIT_NOBLE)
+	allowed_races = list(/datum/species/dwarf/mountain, /datum/species/human/northern, /datum/species/elf/wood)
 	weight = 100
 
 /datum/special_trait/bleublood/on_apply(mob/living/carbon/human/character, silent)
@@ -305,13 +320,13 @@
 
 /datum/special_trait/lucky
 	name = "Fortune's Grace"
-	greet_text = span_notice("Xylix favor me, I am extremely lucky.")
-	req_text = "Have Xylix as your Patron"
-	allowed_patrons = list(/datum/patron/divine/xylix)
+	greet_text = span_notice("Psydon favor me, I am extremely lucky.")
+	req_text = "Have Psydon as your Patron"
+	allowed_patrons = list(/datum/patron/inhumen/psydon)
 	weight = 7
 
 /datum/special_trait/lucky/on_apply(mob/living/carbon/human/character, silent)
-	character.STALUC = rand(15, 20) //In other words, In the next round following the special, you are effectively lucky.
+	character.change_stat("fortune", 6)
 
 //neutral
 /datum/special_trait/backproblems
@@ -339,6 +354,7 @@
 
 /datum/special_trait/atheism/on_apply(mob/living/carbon/human/character, silent)
 	character.set_patron(/datum/patron/godless)
+	character.change_stat("mageability", -2)
 
 //negative
 /datum/special_trait/nimrod
@@ -376,7 +392,7 @@
 	else
 		employer_gender = FEMALE
 	if(employer_gender == MALE)
-		employer = pick(list("Baron", "Lord", "Nobleman", "Heir"))
+		employer = pick(list("King", "Lord", "Nobleman", "Heir"))
 	else
 		employer = pick(list("Queen", "Lady", "Noblelady", "Heiress"))
 	employer = "[employer] [random_human_name(employer_gender, FALSE, FALSE)]"
@@ -387,7 +403,7 @@
 		if(2)
 			reason = "Kinslaying"
 		if(3)
-			reason = "Besmirching a Noble's name"
+			reason = "Besmirching a Noble"
 		if(4)
 			reason = "Treason"
 		if(5)
@@ -419,11 +435,11 @@
 
 /datum/special_trait/unlucky
 	name = "Unlucky"
-	greet_text = span_boldwarning("Ever since you knocked over that glass vase, you just feel... off.")
+	greet_text = span_boldwarning("You had a dream once, a woman surrounded by 13 ornery men. She called your name.")
 	weight = 25
 
 /datum/special_trait/unlucky/on_apply(mob/living/carbon/human/character, silent)
-	character.STALUC -= rand(1, 10)
+	character.change_stat("fortune", -6)
 
 
 /datum/special_trait/jesterphobia
@@ -436,11 +452,12 @@
 
 /datum/special_trait/xenophobic
 	name = "Xenophobic"
-	greet_text = span_boldwarning("Lesser races pollute our land!")
+	greet_text = span_boldwarning("Lesser races pollute our land! Eora guard me!")
 	weight = 200
 
 /datum/special_trait/xenophobic/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_XENOPHOBIC, "[type]")
+	character.set_patron(/datum/patron/divine/eora)
 
 /datum/special_trait/wild_night
 	name = "Wild Night"
@@ -498,6 +515,7 @@
 
 /datum/special_trait/loveless/on_apply(mob/living/carbon/human/character, silent)
 	character.add_curse(/datum/curse/eora, TRUE)
+	ADD_TRAIT(character, TRAIT_BAD_MOOD, "[type]")
 
 /datum/special_trait/pacifist
 	name = "Pacifist"
@@ -536,8 +554,6 @@
 	character.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
 	character.mind.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
 	character.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
-	character.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
-	character.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 	character.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
 	character.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 	character.mind.adjust_skillrank(/datum/skill/misc/reading, -2, TRUE)
@@ -614,3 +630,176 @@
 	character.mind.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
 	character.mind.special_items["The Bag"] = /obj/item/storage/roguebag/seedfeed
 	character.mind.special_items["The Sickle"] = /obj/item/rogueweapon/sickle
+
+///CRYSTAL KEEP///
+
+///Kobold Smith///
+///Dwarf smith///
+///Elf smith (farmer)///
+///exceptional wrestler///
+///Magic beans///
+
+
+///Rare Bad///
+/datum/special_trait/cursedman
+	name = "cursed by God"
+	greet_text = span_notice("For my sins, I was cursed long ago.")
+	weight = 10
+
+/datum/special_trait/cursedman/on_apply(mob/living/carbon/human/character, silent)
+	ADD_TRAIT(character, TRAIT_LEPROSY, "[type]")
+
+/datum/special_trait/fiveeleven
+	name = "Tiny"
+	greet_text = span_notice("Even among the small, I am tiny.")
+	req_text = "Not an aasimar or Lizardfolk"
+	restricted_races = list(/datum/species/aasimar, /datum/species/lizardfolk,)
+	weight = 50
+
+/datum/special_trait/fiveeleven/on_apply(mob/living/carbon/human/character)
+	character.mob_size -= 1
+	character.change_stat("strength", -2)
+	character.change_stat("constitution", -2)
+	character.change_stat("speed", 2)
+	character.transform = character.transform.Scale(0.75, 0.75)
+	character.transform = character.transform.Translate(0, -(0.25 * 16))
+	character.update_transform()
+
+/datum/special_trait/fatty
+	name = "Plus Sized"
+	greet_text = span_notice("I'm beautiful, just the way I am.")
+	weight = 50
+
+/datum/special_trait/fatty/on_apply(mob/living/carbon/human/character, silent)
+	ADD_TRAIT(character, TRAIT_NORUN, "[type]") //for your own safety//
+	character.change_stat("strength", -1)
+	character.change_stat("endurance", -1)
+	character.change_stat("speed", -3)
+
+/datum/special_trait/crispy
+	name = "Burn Victim"
+	greet_text = span_notice("As a youth I suffered a terrible scarring where much of my body was charred.")
+	weight = 50
+
+/datum/special_trait/crispy/on_apply(mob/living/carbon/human/character, silent)
+	ADD_TRAIT(character, TRAIT_MISSING_NOSE, "[type]")
+	ADD_TRAIT(character, TRAIT_DISFIGURED, "[type]") 
+	character.change_stat("constitution", -1)
+	character.change_stat("endurance", -2)
+
+///Uncommon Bad///
+
+/datum/special_trait/tubby
+	name = "Hefty"
+	greet_text = span_notice("I've always been a little... large.")
+	weight = 100
+
+/datum/special_trait/tubby/on_apply(mob/living/carbon/human/character, silent)
+	character.change_stat("strength", -1)
+	character.change_stat("speed", -1)
+
+/datum/special_trait/ugly
+	name = "Ugly"
+	greet_text = span_notice("I'm unpleasant looking. Very unpleasant looking.")
+	weight = 100
+
+/datum/special_trait/ugly/on_apply(mob/living/carbon/human/character, silent)
+	ADD_TRAIT(character, TRAIT_DISFIGURED, "[type]") 
+	character.change_stat("luck", -2)
+
+
+/datum/special_trait/foreigner
+	name = "Complete Foreigner"
+	greet_text = span_notice("I travel from afar, unfortunately I still haven't picked up on the local language (can't be a hooman).")
+	weight = 100
+	restricted_races = list(/datum/species/human/northern/)
+
+/datum/special_trait/foreigner/on_apply(mob/living/carbon/human/character, silent)
+	character.remove_language(/datum/language/common)
+
+
+///Neutralish///
+
+/datum/special_trait/achillesheel
+	name = "Mother's Blessing"
+	greet_text = span_notice("When I was a baby, my mother dipped me into a troph of pure Crystal Keep Crystal Liquid by the ankle. I was blessed, but there was a catch...")
+	weight = 50
+
+/datum/special_trait/achillesheel/on_apply(mob/living/carbon/human/character, silent)
+	character.change_stat("luck", 2)
+	ADD_TRAIT(character, TRAIT_CRITICAL_RESISTANCE, "[type]") //There's this interaction from having both, we'll test it out first. Essentially you get crit more often but it's less lethal (?) we'll see.
+	ADD_TRAIT(character, TRAIT_CRITICAL_WEAKNESS, "[type]") 
+
+
+
+///Uncommon Good///
+
+/datum/special_trait/athletic
+	name = "Athletic"
+	greet_text = span_notice("One day I decided to rise up to the challenge.")
+	weight = 100
+
+/datum/special_trait/athletic/on_apply(mob/living/carbon/human/character, silent)
+	ADD_TRAIT(character, TRAIT_BREADY, "[type]")
+	character.change_stat("strength", 2)
+	character.change_stat("endurance", 2)
+	character.change_stat("mageability", 1)
+	character.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
+	character.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
+
+/datum/special_trait/sealegs
+	name = "Sea Legs"
+	greet_text = span_notice("My time sailing taught me plenty.")
+	weight = 100
+
+/datum/special_trait/sealegs/on_apply(mob/living/carbon/human/character, silent)
+	character.change_stat("constitution", 1)
+	character.change_stat("endurance", 2)
+	character.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
+	character.mind.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
+
+/datum/special_trait/magminus
+	name = "Magic Training"
+	greet_text = span_notice("Along my life I learned to cast a spell or two.")
+	weight = 100
+
+/datum/special_trait/magminus/on_apply(mob/living/carbon/human/character, silent)
+	character.change_stat("mageability", 2)
+	character.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
+	character.mind.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
+	character.mind.adjust_spellpoints(2)
+	character.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/learnspell)
+
+
+/datum/special_trait/hunter
+	name = "hunter"
+	greet_text = span_notice("Unlike most hunters, I was one since my youth. It gave me time to learn more therefore.")
+	weight = 100
+
+/datum/special_trait/hunter/on_apply(mob/living/carbon/human/character, silent)
+	character.change_stat("skill", 2)
+	character.mind.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
+	ADD_TRAIT(character, TRAIT_SILENT_FIGHTER, "[type]")
+
+///Rare Good///
+
+/datum/special_trait/chopper
+	name = "Gladitorial Prodige"
+	greet_text = span_notice("I was once a student to a renowned gladiator, and I was their favored student.")
+	weight = 20
+
+/datum/special_trait/chopper/on_apply(mob/living/carbon/human/character, silent)
+	character.change_stat("strength", 2)
+	character.mind.adjust_skillrank_up_to(/datum/skill/combat/axes, 5, TRUE)
+	character.mind.special_items["Battle Axe"] = /obj/item/rogueweapon/stoneaxe/battle
+	ADD_TRAIT(character, TRAIT_SILENT_FIGHTER, "[type]")
+
+/datum/special_trait/phalynx
+	name = "Born Soldier"
+	greet_text = span_notice("I picked up a spear as a youngling and there were no shortage of capable teachers.")
+	weight = 20
+
+/datum/special_trait/phalynx/on_apply(mob/living/carbon/human/character, silent)
+	character.change_stat("skill", 2)
+	character.mind.adjust_skillrank_up_to(/datum/skill/combat/polearms, 5, TRUE)
+	ADD_TRAIT(character, TRAIT_SILENT_FIGHTER, "[type]")

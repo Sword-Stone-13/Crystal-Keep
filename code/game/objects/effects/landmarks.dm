@@ -260,8 +260,8 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	name = "Nightmaster"
 	icon_state = "arrow"
 
-/obj/effect/landmark/start/nightmaiden
-	name = "Bath Swain"
+/obj/effect/landmark/start/actor
+	name = "Actor"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/merchant
@@ -338,7 +338,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/prisonerr
-	name = "Prisoner (Rockhill)"
+	name = "Prisoner (Crystal Keep)"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/prisonerb
@@ -423,6 +423,55 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 
 /obj/effect/landmark/start/goblinsmith
 	name = "Goblin Smith"
+	icon_state = "arrow"
+
+//house spawns
+/obj/effect/landmark/start/redbaron
+	name = "House Alrich Baron"
+	icon_state = "arrow"
+
+/obj/effect/landmark/start/redknight
+	name = "Alrich Knight"
+	icon_state = "arrow"
+
+/obj/effect/landmark/start/redmage
+	name = "Alrich Witch"
+	icon_state = "arrow"
+
+/obj/effect/landmark/start/yellowbaron
+	name = "House Bravado Baron"
+	icon_state = "arrow"
+
+/obj/effect/landmark/start/yellowknight
+	name = "Bravado Knight"
+	icon_state = "arrow"
+
+/obj/effect/landmark/start/yellowmage
+	name = "Bravado Witch"
+	icon_state = "arrow"
+
+/obj/effect/landmark/start/purplebaron
+	name = "House Caesar Baron"
+	icon_state = "arrow"
+
+/obj/effect/landmark/start/purpleknight
+	name = "Caesar Knight"
+	icon_state = "arrow"
+
+/obj/effect/landmark/start/purplemage
+	name = "Caesar Witch"
+	icon_state = "arrow"
+
+/obj/effect/landmark/start/bluebaron
+	name = "House Deleon Baron"
+	icon_state = "arrow"
+
+/obj/effect/landmark/start/blueknight
+	name = "Deleon Knight"
+	icon_state = "arrow"
+
+/obj/effect/landmark/start/bluemage
+	name = "Deleon Witch"
 	icon_state = "arrow"
 
 // START LANDMARKS FOLLOW. Don't change the names unless

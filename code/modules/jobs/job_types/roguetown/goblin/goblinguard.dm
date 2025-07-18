@@ -13,6 +13,7 @@
 	outfit = /datum/outfit/job/roguetown/goblinguard
 	min_pq = 1
 	max_pq = null
+	associated_squad = /datum/antagonist/squad/none
 
 /datum/outfit/job/roguetown/goblinguard/pre_equip(mob/living/carbon/human/H)
 	. = ..()

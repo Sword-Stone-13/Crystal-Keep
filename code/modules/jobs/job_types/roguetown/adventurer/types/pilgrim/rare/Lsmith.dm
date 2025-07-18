@@ -25,7 +25,7 @@
 	cloak = /obj/item/clothing/cloak/apron/blacksmith
 
 	backl = /obj/item/storage/backpack/rogue/backpack
-	backpack_contents = list(/obj/item/flint = 1, /obj/item/rogueore/coal=2, /obj/item/rogueore/iron=3, /obj/item/rogueore/silver=2, /obj/item/riddleofsteel = 1, /obj/item/roguegem/yellow = 1, /obj/item/roguegem/violet = 1, /obj/item/roguegem/diamond = 1, /obj/item/roguegem/blue = 1, /obj/item/roguegem/green = 1)
+	backpack_contents = list(/obj/item/flint = 1, /obj/item/rogueore/coal=2, /obj/item/rogueore/iron=3, /obj/item/rogueore/silver=2, /obj/item/riddleofsteel = 1,, /obj/item/engraving_hammer = 1, /obj/item/roguegem/violet = 1, /obj/item/roguegem/diamond = 1, /obj/item/roguegem/blue = 1, /obj/item/roguegem/green = 1)
 
 	if(H.gender == MALE)
 		
@@ -39,6 +39,11 @@
 			H.mind.adjust_skillrank(/datum/skill/craft/masonry, 5)
 			H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 2)
 			H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 6)
+			H.mind.adjust_skillrank(/datum/skill/craft/armorsmithing, 6)
+			H.mind.adjust_skillrank(/datum/skill/craft/weaponsmithing, 6)
+			H.mind.adjust_skillrank(/datum/skill/craft/engravement, 6)
+			H.mind.adjust_skillrank(/datum/skill/craft/dwarfsmithing, 2)
+			H.mind.adjust_skillrank(/datum/skill/craft/koboldsmithing, 2)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 1)
 			if(H.age == AGE_OLD)
 				H.mind.adjust_skillrank(/datum/skill/craft/masonry, 1)

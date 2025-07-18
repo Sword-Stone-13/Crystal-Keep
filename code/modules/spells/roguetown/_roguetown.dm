@@ -86,9 +86,17 @@
 	return TRUE
 
 /obj/effect/proc_holder/spell/invoked/projectile/proc/fire_projectile(mob/living/user, atom/target)
+	if(!user || !target || !isturf(user.loc))
+		return FALSE
+	if(!ispath(projectile_type, /obj/projectile))
+		return FALSE
+
 	current_amount--
 	for(var/i in 1 to projectiles_per_fire)
 		var/obj/projectile/P = new projectile_type(user.loc)
+		if(!istype(P, /obj/projectile))
+			qdel(P) // Clean up invalid projectile
+			continue
 		if(istype(P, /obj/projectile/magic/bloodsteal))
 			var/obj/projectile/magic/bloodsteal/B = P
 			B.sender = user

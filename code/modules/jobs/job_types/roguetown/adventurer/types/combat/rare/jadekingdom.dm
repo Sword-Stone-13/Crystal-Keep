@@ -4,7 +4,7 @@
 	tutorial = "You are the proud Emperor of the Jade Kingdom \
 	but why did you come to the Crystal Keep?"
 	allowed_sexes = list(MALE)
-	allowed_races = RACES_TOLERATED_UP
+	allowed_races = RACES_EORA_APPROVED
 	outfit = /datum/outfit/job/roguetown/adventurer/jkemperor
 	maximum_possible_slots = 1
 	pickprob = 100

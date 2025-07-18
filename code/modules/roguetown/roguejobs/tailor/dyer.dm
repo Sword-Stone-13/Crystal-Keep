@@ -28,7 +28,10 @@
 			/obj/item/storage/belt/rogue/leather/cloth,
 			/obj/item/clothing/shoes/roguetown/simpleshoes,
 			/obj/item/clothing/suit/roguetown/armor/gambeson,
-			/obj/item/clothing/suit/roguetown/armor/armordress
+			/obj/item/clothing/suit/roguetown/armor/armordress,
+			/obj/item/bedroll,
+			/obj/item/clothing/head/roguetown/roguehood/shalalblank,
+			/obj/item/clothing/cloak/half/house/
 			)
 	var/activecolor = "#FFFFFF"
 	var/static/list/selectable_colors = list(
@@ -55,7 +58,7 @@
 		"Teal" = "#249589",
 		"Periwinkle Blue" = "#8f99fb",
 		"Woad Blue" = "#597fb9",
-		"Royal Purple" = "#8747b1",
+		"Pansy Purple" = "#8747b1",
 		"Magenta" = "#962e5c",
 		"Orchil" = "#66023C",
 		"Red Ochre" = "#913831",
@@ -64,7 +67,13 @@
 		"Peasant Brown" = "#685542",
 		"Dirt" = "#7c6d5c",
 		"Chestnut" = "#613613",
-		"Russet" = "#7f461b"
+		"Russet" = "#7f461b",
+		"Tyrian Red" = "#700539",
+		"Alrich Blood" = "#a3343c",
+		"Bravado Gold" = "#d3b54d",
+		"Caesar Rain" = "#8b308f",
+		"Deleon Blue" = "#343da3"	
+
 		)
 
 /obj/structure/dye_bin/examine(mob/user)
@@ -93,6 +102,9 @@
 		qdel(I)
 		return
 	if(is_type_in_list(I, allowed_types))
+		if(contents.len)
+			to_chat(user, "<span class='warning'>Something is in \the [name]!</span>")
+			return
 		if(!user.transferItemToLoc(I, src))
 			to_chat(user, "<span class='warning'>[I] is stuck to your hand!</span>")
 			return
@@ -106,21 +118,21 @@
 	return FALSE
 
 /obj/structure/dye_bin/ui_interact(mob/user)
-	var/list/dat = list("<TITLE>dye bucket</TITLE><BR>")
+	var/list/dat = list("<center>")
 	if(!inserted)
-		dat += "Nothing inside."
+		dat += "<font color='#D25050'>Nothing is inside the bin.</font>"
 	else
-		dat += "Item inserted: [inserted]<BR>"
-		dat += "<A href='?src=\ref[src];eject=1'>Take [inserted] out.</A><BR><BR>"
+		dat += "<font color='#777777'> Item inserted:</font> <i><font color='#C3C3C3'<i>[inserted.name]</i></font> "
+		dat += "<A href='?src=\ref[src];eject=1'>(Remove)</A><BR><BR>"
 		if(berry_charges <= 0)
-			dat += "No dye inside."
+			dat += "<font color='#D25050'>There's no dye...</font>"
 		else
-			dat += "<A href='?src=\ref[src];select=1'>Mix a color.</A><BR>"
-			dat += "Color: <font color='[activecolor]'>&#9899;</font>"
-			dat += "<A href='?src=\ref[src];paint=1'>Rub the dyes in.</A><BR><BR>"
-			dat += "<A href='?src=\ref[src];clear=1'>Bleach it.</A><BR><BR>"
-
-	var/datum/browser/menu = new(user, "colormate","dye bucket", 400, 400, src)
+			dat += "<b> <font color='[activecolor]'>&#10070 ACTIVE COLOR &#10070</font></b><BR>"
+			dat += "<A href='?src=\ref[src];select=1'>(Mix a color)</A> -- "
+			dat += "<A href='?src=\ref[src];paint=1'>(Rub the dyes in)</A>--"
+			dat += "<font color='#EFEFEF'><A href='?src=\ref[src];clear=1'>(Bleach it)</A></font>"
+	dat += "</center>"
+	var/datum/browser/menu = new(user, "colormate","<center> Dye Bucket</center>", 400, 170, src)
 	menu.set_content(dat.Join(""))
 	menu.open()
 

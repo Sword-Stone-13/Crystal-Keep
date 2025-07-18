@@ -92,12 +92,12 @@
 
 /datum/curse/astrata
 	name = "Astrata's Curse"
-	description = "I am forsaken by the Sun. Healing miracles have no effect on me."
+	description = "Astrata curses me. Healing miracles have lost their effect on me."
 	trait = TRAIT_ASTRATA_CURSE
 
 /datum/curse/noc
 	name = "Noc's Curse"
-	description = "Magical knowledge is now beyond my grasp."
+	description = "Noc has grafted insurmountable knowledge to my soul. It is more than I can bear."
 	trait = TRAIT_NOC_CURSE
 
 /datum/curse/ravox
@@ -107,12 +107,12 @@
 
 /datum/curse/necra
 	name = "Necra's Curse"
-	description = "Necra has claimed my soul. No one will bring me back from the dead."
+	description = "I owe a debt to Necra, I will not pass until I pay it."
 	trait = TRAIT_NECRA_CURSE
 
 /datum/curse/xylix
 	name = "Xylix's Curse"
-	description = "Fortune is no longer on my side."
+	description = "I know now of Xylix, and he- or she has stilled my tongue."
 	trait = TRAIT_XYLIX_CURSE
 
 /datum/curse/pestra
@@ -122,8 +122,24 @@
 
 /datum/curse/eora
 	name = "Eora's Curse"
-	description = "I am unable to show any kind of affection or love, whether carnal or platonic."
+	description = "My loved one's no longer know me, and my blood is now worthless."
 	trait = TRAIT_EORA_CURSE
+
+/datum/curse/dendor
+	name = "Dendor's Curse"
+	description = "I can no longer bear witness to violence, I am weak."
+	trait = TRAIT_DENDOR_CURSE
+	
+/datum/curse/mallum
+	name = "Mallum's Curse"
+	description = "Beauty eludes me..."
+	trait = TRAIT_MALLUM_CURSE
+	
+/datum/curse/abyssor
+	name = "Abyssor's Curse"
+	description = "I am racked with fear, pain, and unimaginable torment on my heart."
+	trait = TRAIT_ABYSSOR_CURSE
+
 
 //////////////////////
 /// INHUMEN CURSES ///
@@ -140,10 +156,10 @@
 	description = "I am engulfed by unspeakable rage. I cannot stop myself from harming others. When that's not an option, my rage is directed inward."
 	trait = TRAIT_GRAGGAR_CURSE
 
-/datum/curse/matthios
-	name = "Matthios' Curse"
+/datum/curse/nyatthios
+	name = "Nyatthios' Curse"
 	description = "I hate the sight of wealth, and I cannot have anything to do with mammons."
-	trait = TRAIT_MATTHIOS_CURSE	
+	trait = TRAIT_NYATTHIOS_CURSE	
 
 /datum/curse/baotha
 	name = "Baotha's Curse"
@@ -176,10 +192,63 @@
 /datum/curse/xylix/on_gain(mob/living/carbon/human/owner)
 	. = ..()
 	owner.STALUC -= 10
+	ADD_TRAIT(owner, TRAIT_MUTE, TRAIT_EMOTEMUTE)
 
 /datum/curse/xylix/on_loss(mob/living/carbon/human/owner)
 	. = ..()
 	owner.STALUC += 10
+	REMOVE_TRAIT(owner, TRAIT_MUTE, TRAIT_EMOTEMUTE)
+
+
+/datum/curse/noc/on_gain(mob/living/carbon/human/owner)
+	. = ..()
+	owner.hairstyle = "Afro (Large)"
+	owner.hair_color = KEY_SKIN_COLOR
+	owner.update_hair()
+	
+
+/datum/curse/noc/on_loss(mob/living/carbon/human/owner)
+	. = ..()
+	owner.hairstyle = "Bald"
+	owner.update_hair()
+
+/datum/curse/eora/on_gain(mob/living/carbon/human/owner)
+	. = ..()
+	ADD_TRAIT(owner, TRAIT_DISFIGURED, TRAIT_GENERIC)
+	REMOVE_TRAIT(owner, TRAIT_NOBLE, TRAIT_GENERIC)
+
+/datum/curse/eora/on_loss(mob/living/carbon/human/owner)
+	. = ..()
+	REMOVE_TRAIT(owner, TRAIT_DISFIGURED, TRAIT_GENERIC)
+
+/datum/curse/dendor/on_gain(mob/living/carbon/human/owner, silent)
+	. = ..()
+	ADD_TRAIT(owner, TRAIT_PACIFISM, TRAIT_GENERIC)
+	if(!silent)
+		to_chat(owner, span_warning("The thought of violence sickens me!"))
+
+/datum/curse/dendor/on_loss(mob/living/carbon/human/owner, silent)
+	. = ..()
+	REMOVE_TRAIT(owner, TRAIT_PACIFISM, TRAIT_GENERIC)
+	if(!silent)
+		to_chat(owner, span_notice("I feel free to act as I must!"))
+
+/datum/curse/abyssor/on_gain(mob/living/carbon/human/owner, silent)
+	. = ..()
+	ADD_TRAIT(owner, TRAIT_BAD_MOOD, TRAIT_GENERIC)
+
+
+/datum/curse/abyssor/on_loss(mob/living/carbon/human/owner, silent)
+	. = ..()
+	REMOVE_TRAIT(owner, TRAIT_BAD_MOOD, TRAIT_GENERIC)
+
+/datum/curse/mallum/on_gain(mob/living/carbon/human/owner, silent)
+	. = ..()
+	owner.become_blind()
+
+/datum/curse/mallum/on_loss(mob/living/carbon/human/owner, silent)
+	. = ..()
+	owner.cure_blind()
 
 
 //////////////////////

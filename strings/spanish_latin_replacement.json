@@ -1,0 +1,42 @@
+{
+    "full": {
+        "hello": "quiubo",
+        "goodbye": "adiós",
+        "bye": "adiós",
+        "my": "mi",
+        "it": "et",
+        "is": "es",
+        "in": "en",
+        "the": "el",
+        "form of": "forma de",
+        "shape of": "forma de",
+		"well": "orale",
+        "queer": "fresa",
+        "cool": "chido",
+        "bro": "guey",
+        "real": "neta",
+        "fucking": "pinche",
+		"jerk": "guey",
+		"tavern": "cantina",
+		"lame": "gacho",
+
+		"tiefling": "malnacido"
+
+    },
+    "start": {
+        "fool": "baboso",
+        "idiot": "pendejo",
+		"nimrod": "tarazo",
+        "gnerd": "nerdazo"
+    },
+    "end": {
+
+    },
+    "syllable": {
+        "shi": "chee",
+        "thi": "thee",
+        "sh": "ch",
+        "s": "ss",
+        "r": "rr"
+    }
+}

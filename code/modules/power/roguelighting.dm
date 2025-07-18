@@ -57,12 +57,13 @@
 
 /obj/effect/sunlight/ultra
 	brightness = 30
-
+//NOTE FROM CRYSTAL KEEP, I DONT KNOW HOW TO DO END TURF X Y ETC. IN THE CASE YOU WANT TO USE A DIFFERENT MAP IM GOING TO LEAVE THE OG ENDTURF X Y FOR OLD ROCK HILL, GOD HELP ME
+//SOMEONE HELP THIS COMPLETELY AMATURE CODER
 //genstuff
 /obj/effect/landmark/mapGenerator/sunlights
 	mapGeneratorType = /datum/mapGenerator/sunlights
-	endTurfX = 255
-	endTurfY = 400
+	endTurfX = 177//255
+	endTurfY = 256//400
 	startTurfX = 1
 	startTurfY = 1
 

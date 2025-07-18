@@ -10,30 +10,14 @@
 	cost = 3
 	contains = list(/obj/item/clothing/mask/cigarette/rollie/nicotine)
 
-/datum/supply_pack/rogue/luxury/coolersigs
-	name = "Swamp Weed Zig"
-	cost = 8
-	contains = list(/obj/item/clothing/mask/cigarette/rollie/cannabis)
+
 
 /datum/supply_pack/rogue/luxury/perfume
 	name = "Perfume"
 	cost = 15
 	contains = list(/obj/item/perfume/random)
 
-/datum/supply_pack/rogue/luxury/ozium
-	name = "Ozium"
-	cost = 5
-	contains = list(/obj/item/reagent_containers/powder/ozium)
 
-/datum/supply_pack/rogue/luxury/moondust
-	name = "Moon Dust"
-	cost = 30
-	contains = list(/obj/item/reagent_containers/powder/moondust)
-
-/datum/supply_pack/rogue/luxury/spice
-	name = "Spice"
-	cost = 20
-	contains = list(/obj/item/reagent_containers/powder/spice)
 
 /*/datum/supply_pack/rogue/luxury/westspice
 	name = "Western Herbs"
@@ -94,13 +78,10 @@
 	name = "Gemerald Choker"
 	cost = 250
 	contains = list(/obj/item/listenstone)
-
+/*
 /datum/supply_pack/rogue/luxury/riddleofsteel
 	name = "Riddle of Steel"
 	cost = 400
 	contains = list(/obj/item/riddleofsteel)
+*/
 
-/datum/supply_pack/rogue/luxury/lovepotion
-	name = "Love Potion"
-	cost = 600
-	contains = list(/obj/item/slimepotion/lovepotion)

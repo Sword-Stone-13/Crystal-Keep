@@ -16,7 +16,7 @@ Within this file:
 	chargedloop = null
 	req_items = list(/obj/item/clothing/neck/roguetown/psicross)
 	sound = 'sound/magic/timestop.ogg'
-	invocation = "In Ravox's name, stand and fight, coward!"
+	invocation = "Stand and fight, coward!"
 	invocation_type = "shout"
 	associated_skill = /datum/skill/magic/holy
 	antimagic_allowed = TRUE

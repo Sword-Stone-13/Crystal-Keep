@@ -220,7 +220,7 @@
 	i_type = "Ammunition"
 
 /datum/artificer_recipe/ammunition/bolts
-	name = "Crossbow Bolts 5x (+1 Iron)"
+	name = "Iron Crossbow Bolts 5x (+1 Iron)"
 	required_item = /obj/item/natural/wood/plank
 	additional_items = list(/obj/item/ingot/iron)
 	created_item = list(/obj/item/ammo_casing/caseless/rogue/bolt, /obj/item/ammo_casing/caseless/rogue/bolt, /obj/item/ammo_casing/caseless/rogue/bolt, /obj/item/ammo_casing/caseless/rogue/bolt, /obj/item/ammo_casing/caseless/rogue/bolt)
@@ -228,12 +228,39 @@
 	craftdiff = 2
 
 /datum/artificer_recipe/ammunition/arrows
-	name = "Arrows 5x (+1 Iron)"
+	name = "Iron Arrows 5x (+1 Iron)"
 	required_item = /obj/item/natural/wood/plank
 	additional_items = list(/obj/item/ingot/iron)
-	created_item = list(/obj/item/ammo_casing/caseless/rogue/arrow/iron,/obj/item/ammo_casing/caseless/rogue/arrow/iron,/obj/item/ammo_casing/caseless/rogue/arrow/iron, /obj/item/ammo_casing/caseless/rogue/arrow/iron, /obj/item/ammo_casing/caseless/rogue/arrow/iron)
+	created_item = list(/obj/item/ammo_casing/caseless/rogue/arrow/iron, /obj/item/ammo_casing/caseless/rogue/arrow/iron,/obj/item/ammo_casing/caseless/rogue/arrow/iron, /obj/item/ammo_casing/caseless/rogue/arrow/iron, /obj/item/ammo_casing/caseless/rogue/arrow/iron)
 	hammers_per_item = 6
 	craftdiff = 2
+
+//Ckeep//
+
+/datum/artificer_recipe/ammunition/bolts/steel
+	name = "Steel Crossbow Bolts 5x (+1 Steel)"
+	required_item = /obj/item/natural/wood/plank
+	additional_items = list(/obj/item/ingot/steel)
+	created_item = list(/obj/item/ammo_casing/caseless/rogue/bolt/steel, /obj/item/ammo_casing/caseless/rogue/bolt/steel, /obj/item/ammo_casing/caseless/rogue/bolt/steel, /obj/item/ammo_casing/caseless/rogue/bolt/steel, /obj/item/ammo_casing/caseless/rogue/bolt/steel)
+	hammers_per_item = 6
+	craftdiff = 3
+
+/datum/artificer_recipe/ammunition/arrows/steel
+	name = "Steel Arrows 5x (+1 Steel)"
+	required_item = /obj/item/natural/wood/plank
+	additional_items = list(/obj/item/ingot/steel)
+	created_item = list(/obj/item/ammo_casing/caseless/rogue/arrow/steel, /obj/item/ammo_casing/caseless/rogue/arrow/steel,/obj/item/ammo_casing/caseless/rogue/arrow/steel, /obj/item/ammo_casing/caseless/rogue/arrow/steel, /obj/item/ammo_casing/caseless/rogue/arrow/steel)
+	hammers_per_item = 6
+	craftdiff = 3
+
+/datum/artificer_recipe/ammunition/arrows/hollowpoint
+	name = "Hollowpoint Arrows 3x (+1 Steel)"
+	required_item = /obj/item/natural/wood/plank
+	additional_items = list(/obj/item/ingot/steel)
+	created_item = list(/obj/projectile/bullet/reusable/arrow/steel/hollowpoint, /obj/projectile/bullet/reusable/arrow/steel/hollowpoint, /obj/projectile/bullet/reusable/arrow/steel/hollowpoint)
+	hammers_per_item = 6
+	craftdiff = 4
+
 
 // --------- PROSTHETICS -----------
 

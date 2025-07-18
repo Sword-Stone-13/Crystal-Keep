@@ -255,6 +255,7 @@
 	icon_state = "center-leaf1"
 	density = FALSE
 	max_integrity = 10
+	climbable = TRUE//just a quick fix for elves wanting to climb up trees, I don't know how to make them climb down, and it frankly took too long to figure out how to make them climb at all, double it, give it to the next guy
 
 /obj/structure/flora/newleaf/Initialize()
 	. = ..()

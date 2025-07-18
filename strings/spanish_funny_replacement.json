@@ -1,0 +1,43 @@
+{
+    "full": {
+        "hello": "hola",
+        "goodbye": "adiós",
+        "bye": "adiós",
+        "my": "mi",
+        "it": "et",
+        "is": "es",
+        "in": "en",
+        "the": "el",
+        "form of": "forma de",
+        "shape of": "forma de",
+		"bro": "tio",
+		"pleasant": "majo",
+		"freaky": "friki",
+
+		"aasimar": "gilipolla",
+		"moff": "capullo"
+
+
+    },
+    "start": {
+		"jerk": "weón",
+        "fool": "weón",
+        "idiot": "imbecil",
+		"nimrod": "weón",
+        "gnerd": "weón"
+    },
+    "end": {
+
+    },
+    "syllable": {
+        "shi": "thee",
+        "thi": "thee",
+        "sh": "ch",
+        "s": "th",
+        "r": "rr",
+		"ci": "thi",
+		"ce": "the"
+
+
+    }
+}

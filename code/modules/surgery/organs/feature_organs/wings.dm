@@ -18,8 +18,8 @@
 //TODO: Well you know what this flight stuff is a bit complicated and hardcoded, this is enough for now
 
 /obj/item/organ/wings/moth
-	name = "fluvian wings"
-	desc = "A pair of fuzzy moth wings."
+	name = "aasimar wings"
+	desc = "A pair of fuzzy wings. More like a cape than anything."
 	flight_for_species = list("moth")
 
 /obj/item/organ/wings/flight

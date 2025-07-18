@@ -548,3 +548,21 @@
     dir = SOUTH
     debris = list(/obj/item/natural/thorn = 3, /obj/item/grown/log/tree/stick = 1)
 //WIP
+
+//CRYSTAL KEEPU
+//just a test for now
+/obj/structure/flora/roguetree/ckeep/shorter
+	icon = 'icons/roguetown/misc/tree64x64.dmi'
+	name = "tree"
+	icon_state = "t1"
+	stump_type = /obj/structure/flora/roguetree/stump/ckeep
+
+/obj/structure/flora/roguetree/stump/ckeep
+	icon = 'icons/roguetown/misc/tree64x64.dmi'
+
+
+/obj/structure/flora/roguetree/ckeep/taller
+	icon = 'icons/roguetown/misc/tree96x96.dmi'
+	name = "tree"
+	icon_state = "t1"
+	stump_type = /obj/structure/flora/roguetree/stump/ckeep

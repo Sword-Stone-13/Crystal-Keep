@@ -25,7 +25,7 @@
 	wdefense = 3
 	wbalance = 1
 	thrown_bclass = BCLASS_CUT
-	anvilrepair = /datum/skill/craft/blacksmithing
+	anvilrepair = /datum/skill/craft/weaponsmithing
 	smeltresult = /obj/item/ingot/iron
 	can_cdg = TRUE
 
@@ -243,7 +243,6 @@
 	icon_state = "sildagger"
 	sellprice = 50
 	smeltresult = /obj/item/ingot/silver
-	var/last_used = 0
 
 /obj/item/rogueweapon/huntingknife/idagger/silver/pickup(mob/user)
 	. = ..()
@@ -366,7 +365,7 @@
 	name = "elvish dagger"
 	desc = "This beautiful dagger is of intricate, elvish design. Sharper, too."
 	force = 19
-	icon_state = "elfdagger"
+	icon_state = "elfnutdaggersilver"
 	item_state = "elfdag"
 	can_cdg = TRUE
 	can_assin = TRUE
@@ -375,3 +374,57 @@
 	name = "nite elf dagger"
 	desc = "This ominous, dark handled dagger was crafted by the assassin race of nite elves."
 	force = 25
+	icon_state = "elfdagger"
+
+///Crystal Keep///
+
+
+///Elfnut///
+
+/obj/item/rogueweapon/huntingknife/elfnut//this is just an steel variant
+	force = 15
+	possible_item_intents = list(/datum/intent/dagger/thrust,/datum/intent/dagger/cut, /datum/intent/dagger/thrust/pick)
+	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_MOUTH
+	name = "Elvish Hunter blade"
+	desc = "This survival knife might be able to get you through the wild."
+	icon_state = "elfnutdagger"
+	icon = 'icons/roguetown/weapons/32.dmi'
+	item_state = "bone_dagger"
+	lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/weapons/swords_righthand.dmi'
+	anvilrepair = /datum/skill/craft/blacksmithing
+	smeltresult = /obj/item/ingot/steel
+
+///Bluesteel///
+
+/obj/item/rogueweapon/huntingknife/cleaver/bluesteel
+	force = 17
+	name = "cleaver"
+	desc = "A dwarven cooking knife that doubles as an emergency pick."
+	possible_item_intents = list(/datum/intent/dagger/chop/cleaver, /datum/intent/pick)
+	icon_state = "bluesteelcleaver"
+	parrysound = list('sound/combat/parry/bladed/bladedmedium (1).ogg','sound/combat/parry/bladed/bladedmedium (2).ogg','sound/combat/parry/bladed/bladedmedium (3).ogg')
+	swingsound = list('sound/combat/wooshes/bladed/wooshmed (1).ogg','sound/combat/wooshes/bladed/wooshmed (2).ogg','sound/combat/wooshes/bladed/wooshmed (3).ogg')
+	throwforce = 15
+	slot_flags = ITEM_SLOT_HIP
+	thrown_bclass = BCLASS_CHOP
+	w_class = WEIGHT_CLASS_NORMAL
+	smeltresult = /obj/item/ingot/bluesteel
+	can_cdg = FALSE
+	wbalance = -1
+	max_integrity = 600
+	anvilrepair = /datum/skill/craft/dwarfsmithing ///Most armors need this to repair, not most weapons, in this case because of the pick part, yes.
+
+///Redsteel///
+
+/obj/item/rogueweapon/huntingknife/idagger/redsteel
+	force = 10
+	name = "Redsteel Dagger"
+	desc = "A kobold dagger, slender. Brittle."
+	icon_state = "redsteeldagger"
+	max_integrity = 50
+	smeltresult = /obj/item/ingot/iron
+	throwforce = 25 //the main draw might bump up
+	embedding = list("embedded_pain_multiplier" = 2, "embed_chance" = 70, "embedded_fall_chance" = 0)
+	crit_bonus = 25
+	can_crit_throw = TRUE

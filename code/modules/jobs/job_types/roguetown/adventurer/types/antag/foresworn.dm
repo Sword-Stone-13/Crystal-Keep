@@ -9,12 +9,12 @@
 
 /datum/outfit/job/roguetown/bandit/foresworn/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/axes, 2, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/axes, 1, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
@@ -33,11 +33,10 @@
 	shoes = /obj/item/clothing/shoes/roguetown/armor
 	backr = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/needle/thorn = 1, /obj/item/natural/cloth = 1)
-	mask = /obj/item/clothing/mask/rogue/facemask/steel
+	mask = /obj/item/clothing/mask/rogue/facemask/hound
 	neck = /obj/item/clothing/neck/roguetown/gorget
-	H.change_stat("strength", 2) //less buffs than brigand but less int debuff also somewhat faster
+	H.change_stat("strength", 1) //less buffs than brigand but less int debuff also somewhat faster
 	H.change_stat("endurance", 2)
-	H.change_stat("constitution", 2)
 	H.change_stat("mageability", -2)
 	H.change_stat("speed", 2)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
@@ -49,9 +48,12 @@
 		if("Spear") //Deserter watchman. Maybe should be shield and spear? plenty of shields at the bandit hideout though.
 			r_hand = /obj/item/rogueweapon/spear
 			head = /obj/item/clothing/head/roguetown/helmet/skullcap
+			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
 		if("Sword & Shield") //Mercenary on the wrong side of the law
 			backl= /obj/item/rogueweapon/shield/wood
 			beltr = /obj/item/rogueweapon/sword/iron //iron sword like literally every adventurer gets
 			head = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
+			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
+
 	H.verbs |= /mob/proc/haltyell
 	H.ambushable = FALSE

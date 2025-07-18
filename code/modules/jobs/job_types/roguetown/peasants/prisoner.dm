@@ -1,5 +1,5 @@
 /datum/job/roguetown/prisonerr
-	title = "Prisoner (Rockhill)"
+	title = "Prisoner (Crystal Keep)"
 	flag = PRISONERR
 	department_flag = NOBLEMEN
 	faction = "Station"
@@ -7,8 +7,8 @@
 	spawn_positions = 4
 
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = RACES_ALL_KINDS_PLUS_SEELIE
-	tutorial = "How does it feel to be the rat in the cage? You're alone and at the mercy of your captors, kept around as a hostage. You spend your days waiting for the oft chance someone comes to pay your ransom. Might as well start praying to whatever god you find solace in."
+	allowed_races = RACES_ALL_KINDS
+	tutorial = "How does it feel to be the rat in the cage? You're alone and at the mercy of your captors, kept around as a hostage. You spend your days waiting for the oft chance someone comes to pay your ransom. All you have is the tales of your village, maybe the lore of your people. If anyone will believe you."
 
 	outfit = /datum/outfit/job/roguetown/prisonerr
 	banned_leprosy = FALSE
@@ -17,6 +17,8 @@
 	min_pq = -14
 	max_pq = null
 	can_random = FALSE
+	associated_squad = /datum/antagonist/squad/none
+
 
 	cmode_music = 'sound/music/combat_bum.ogg'
 

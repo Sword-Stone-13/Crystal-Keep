@@ -69,7 +69,6 @@ GLOBAL_LIST_INIT(turfs_without_ground, typecacheof(list(
 #define isluminescent(A) (is_species(A, /datum/species/jelly/luminescent))
 #define iszombie(A) (is_species(A, /datum/species/zombie))
 #define isskeleton(A) (is_species(A, /datum/species/skeleton))
-#define ismoth(A) (is_species(A, /datum/species/aasimar))
 #define ishumanbasic(A) (is_species(A, /datum/species/human))
 #define isfelinid(A) (is_species(A, /datum/species/human/felinid))
 #define isethereal(A) (is_species(A, /datum/species/ethereal))
@@ -88,6 +87,10 @@ GLOBAL_LIST_INIT(turfs_without_ground, typecacheof(list(
 #define isgoblinp(A) (is_species(A, /datum/species/goblinp))
 #define isseelie(A) (is_species(A, /datum/species/seelie))
 #define isnyanderthal(A) (is_species(A, /datum/species/human/nyanderthal))
+#define isnuppy(A) (is_species(A, /datum/species/nuppies))
+#define iskobold(A) (is_species(A, /datum/species/kobold))
+#define ismoth(A) (is_species(A, /datum/species/aasimar))
+
 
 //more carbon mobs
 #define ismonkey(A) (istype(A, /mob/living/carbon/monkey))

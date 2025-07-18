@@ -6,7 +6,7 @@
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	allowed_races = RACES_ALL_KINDS_PLUS_SEELIE
+	allowed_races = RACES_SHUNNED_UP
 	tutorial = "You are the Seamster. Be it repairing a brigand's leather armour, a Lord's cape, the garnments of common folk and clergy alike, you have done it all. \
 				Through many sleepless nights and by the sweat of your brow you have now managed to purchase your own workshop. \
 				What you do now is up to you, a needle, and a thread..."
@@ -15,6 +15,8 @@
 	selection_color = JCOLOR_MERCENARY
 	give_bank_account = 2
 	max_pq = null
+	associated_squad = /datum/antagonist/squad/none
+
 
 /datum/outfit/job/roguetown/seamster/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -46,5 +48,4 @@
 		H.change_stat("speed", 2)  
 		H.change_stat("skill", 1)
 		H.change_stat("strength", -1)
-		if(isseelie(H))
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/summon_berry)
+

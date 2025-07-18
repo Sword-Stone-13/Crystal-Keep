@@ -16,7 +16,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_HIP | ITEM_SLOT_BACK
 	associated_skill = /datum/skill/combat/maces
-	anvilrepair = /datum/skill/craft/blacksmithing
+	anvilrepair = /datum/skill/craft/weaponsmithing
 	smeltresult = /obj/item/ingot/iron
 	gripped_intents = list(/datum/intent/mace/strike,/datum/intent/mace/smash)
 	parrysound = list('sound/combat/parry/parrygen.ogg')
@@ -376,3 +376,13 @@
 /obj/item/rogueweapon/mace/steel/morningstar
 	icon_state = "morningstar"
 
+
+/obj/item/rogueweapon/mace/warhammer/bluesteel
+	force = 30
+	possible_item_intents = list(/datum/intent/mace/strike, /datum/intent/mace/smash, /datum/intent/mace/warhammer/pick, /datum/intent/mace/warhammer/stab)
+	name = "steel warhammer"
+	desc = "The proper weapon for every dwarf."
+	icon_state = "bluesteelhammer"
+	smeltresult = /obj/item/ingot/bluesteel
+	wdefense = 6
+	minstr = 12

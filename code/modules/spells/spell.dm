@@ -198,7 +198,7 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 		//skill block
 		newtime = newtime - (chargetime * (ranged_ability_user.mind.get_skill_level(associated_skill) * 0.05))
 		//int block
-		if(ranged_ability_user.STASKL > 10)
+		if(ranged_ability_user.STASKL > 10)//not an accident, gotta have STAMAG not be the wizard dump stat, if this is too lame, we try STAFTH next
 			newtime = newtime - (chargetime * (ranged_ability_user.STASKL * 0.02))
 		else if(ranged_ability_user.STASKL < 10)
 			var/diffy = 10 - ranged_ability_user.STASKL
@@ -215,11 +215,11 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 		var/newdrain = releasedrain
 		//skill block
 		newdrain = newdrain - (releasedrain * (ranged_ability_user.mind.get_skill_level(associated_skill) * 0.05))
-		//int block
-		if(ranged_ability_user.STASKL > 10)
-			newdrain = newdrain - (releasedrain * (ranged_ability_user.STASKL * 0.02))
-		else if(ranged_ability_user.STASKL < 10)
-			var/diffy = 10 - ranged_ability_user.STASKL
+		//FTH block
+		if(ranged_ability_user.STAFTH > 10)
+			newdrain = newdrain - (releasedrain * (ranged_ability_user.STAFTH * 0.02))
+		else if(ranged_ability_user.STAFTH < 10)
+			var/diffy = 10 - ranged_ability_user.STAFTH
 			newdrain = newdrain + (releasedrain * (diffy * 0.02))
 		if(ishuman(ranged_ability_user))
 			var/mob/living/carbon/human/ranger = ranged_ability_user

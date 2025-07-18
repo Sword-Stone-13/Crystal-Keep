@@ -5,17 +5,13 @@
 	name = "Elf"
 	id = "elfw"
 	desc = "<b>Elf</b><br>\
-	Elves, or Wood-Elf by the Elder races, are a generic term for tall, pointy-eared \
-	humanoids that trace their original heritage to the ancient mysterious Snow Elves. \
-	Considering their diverse history, it is extremely difficult for other mortals \
-	to even concept the various intricacies found in elven society, and the hundreds \
-	if not thousands of tribes that exist within their culture! \
-	Elves tend to be looked poorly upon by humans, as historically the two races have \
-	been rivals in various conflicts and territorial disputes. This however does not stop \
-	many humans and elves from forming relationships, which are capable of producing child.\
-	Elves are known for their intelligence and sharp eyes, but their graceful nature does \
-	not lend itself to the concepts of strength or durability... \
-	There are elves from a small smattering of tribes in these parts."
+	Elves are a generic term for tall, pointy-eared \
+	folk closely resembling humen. They usually live longer than humen, up to thrice the length. \
+	Scattered among small and large tribes, they usually maintain a healthy distance from one another, since most claim Dendor as their god, larger civilizations often irk them. \
+	Humen often look down upon most elves , as the two races have been rivals in various conflicts and territorial disputes. \
+	Only recently has a large tribe has posed a challenge to Humen, \
+	Walnutians of the Walnut Woods, creating a treaty with the Crystal Keep Royal Courts that commits an uneasy allyship in exchange for peace among the land. \
+	As such, a myriad of other tribes of elves have arrived to Crystal Keep in curiousity. Marking one of the few peaceful interactions between the two folk."
 
 	skin_tone_wording = "Tribal Identity"
 
@@ -47,7 +43,7 @@
 		OFFSET_FACE_F = list(0,-1), OFFSET_BELT_F = list(0,0), OFFSET_BACK_F = list(0,-1), \
 		OFFSET_NECK_F = list(0,-1), OFFSET_MOUTH_F = list(0,-1), OFFSET_PANTS_F = list(0,0), \
 		OFFSET_SHIRT_F = list(0,0), OFFSET_ARMOR_F = list(0,0), OFFSET_UNDIES_F = list(0,0), \
-		)
+	)
 	specstats = list(
 		"strength" = 0,
 		"skill" = 2,
@@ -57,7 +53,7 @@
 		"speed" = 2,
 		"faith" = 2,
 		"fortune" = 0
-		)
+	)
 	specstats_f = list(
 		"strength" = -2,
 		"mageability" = 1,
@@ -76,7 +72,7 @@
 		ORGAN_SLOT_APPENDIX = /obj/item/organ/appendix,
 		ORGAN_SLOT_PENIS = /obj/item/organ/penis,
 		ORGAN_SLOT_BREASTS = /obj/item/organ/breasts,
-		)
+	)
 	bodypart_features = list(
 		/datum/bodypart_feature/hair/head,
 		/datum/bodypart_feature/hair/facial,
@@ -87,12 +83,44 @@
 		/datum/customizer/bodypart_feature/hair/facial/humanoid,
 		/datum/customizer/bodypart_feature/accessory,
 		/datum/customizer/bodypart_feature/face_detail,
-		)
-	body_markings = list(
 	)
+	languages = list(
+		/datum/language/common,
+		/datum/language/elvish
+	)
+	body_markings = list()
+
+/datum/species/elf/wood/on_species_gain(mob/living/carbon/C, datum/species/old_species)
+	..()
+	var/mob/living/carbon/human/species/elf/wood/H = C
+	if(H.skin_tone == SKIN_COLOR_WALNUT_WOODS)
+		H.grant_language(/datum/language/beachbum)
+		to_chat(H, span_info("I can speak deep elf with ,l before my speech."))
+
+
+	if(H.age == AGE_YOUTH)
+		offset_features = list(
+			OFFSET_ID = list(0,0), OFFSET_GLOVES = list(0,-2), OFFSET_WRISTS = list(0,-1),
+			OFFSET_CLOAK = list(0,0), OFFSET_FACEMASK = list(0,0), OFFSET_HEAD = list(0,-1),
+			OFFSET_FACE = list(0,-1), OFFSET_BELT = list(0,-1), OFFSET_BACK = list(0,0),
+			OFFSET_NECK = list(0,-1), OFFSET_MOUTH = list(0,0), OFFSET_PANTS = list(0,0),
+			OFFSET_SHIRT = list(0,0), OFFSET_ARMOR = list(0,0), OFFSET_HANDS = list(0,0), OFFSET_UNDIES = list(0,-2),
+			OFFSET_ID_F = list(0,-1), OFFSET_GLOVES_F = list(0,-1), OFFSET_WRISTS_F = list(0,-1), OFFSET_HANDS_F = list(0,-2),
+			OFFSET_CLOAK_F = list(0,-1), OFFSET_FACEMASK_F = list(0,-2), OFFSET_HEAD_F = list(0,-2),
+			OFFSET_FACE_F = list(0,-2), OFFSET_BELT_F = list(0,-1), OFFSET_BACK_F = list(0,-2),
+			OFFSET_NECK_F = list(0,-2), OFFSET_MOUTH_F = list(0,-2), OFFSET_PANTS_F = list(0,-1),
+			OFFSET_SHIRT_F = list(0,-1), OFFSET_ARMOR_F = list(0,-1), OFFSET_UNDIES_F = list(0,-1)
+		)
+		limbs_icon_m = 'icons/roguetown/mob/bodies/m/mem.dmi'
+		limbs_icon_f = 'icons/roguetown/mob/bodies/f/fs.dmi'
+		hairyness = null
+		H.has_stubble = FALSE
+		H.facial_hairstyle = "None"
+		H.update_hair()
+		H.update_body()
+	ADD_TRAIT(C, TRAIT_LEAF_WALKER, TRAIT_GENERIC)
 
 	alignment_weights = WOODELF_WEIGHTS
-
 /datum/species/elf/wood/get_span_language(datum/language/message_language)
 	if(!message_language)
 		return
@@ -172,16 +200,36 @@
 //Groups of Accents for each race set by associated 'skin_tone', see 'get_skin_list' above
 // "full" group in JSON lists
 /datum/species/elf/wood/get_accent(mob/living/carbon/human/H)
-		return strings("russian_replacement.json", "full")
+		switch(H.skin_tone)
+				if(SKIN_COLOR_WALNUT_WOODS) //Psydon's little elves
+						return strings("walnut_woods_replacement.json", "full")
+				else////cute speech impediment elves
+						return strings("Elvish.json", "full")
+		return null
 
 // "start" group in JSON lists
 /datum/species/elf/wood/get_accent_start(mob/living/carbon/human/H)
-		return strings("russian_replacement.json", "start")
+		switch(H.skin_tone)
+				if(SKIN_COLOR_WALNUT_WOODS) //neighboring elves
+						return strings("walnut_woods_replacement.json", "start")
+				else // All Other Elves
+						return strings("Elvish.json", "start")
+		return null
 
 // "end" group in JSON lists
 /datum/species/elf/wood/get_accent_end(mob/living/carbon/human/H)
-		return strings("russian_replacement.json", "end")
+		switch(H.skin_tone)
+				if(SKIN_COLOR_WALNUT_WOODS) //neighboring
+						return strings("walnut_woods_replacement.json", "end")
+				else // All Other Elves
+						return strings("Elvish.json", "end")
+		return null
 
 // "syllable" group in JSON lists
 /datum/species/elf/wood/get_accent_any(mob/living/carbon/human/H)
-		return strings("russian_replacement.json", "syllable")
+		switch(H.skin_tone)
+				if(SKIN_COLOR_WALNUT_WOODS) //neighboring
+						return strings("walnut_woods_replacement.json", "syllable")
+				else // All Other Elves
+						return strings("Elvish.json", "syllable")
+		return null

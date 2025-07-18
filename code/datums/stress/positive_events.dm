@@ -137,3 +137,14 @@
 	stressadd = -5
 	desc = span_green("A nice modern entertainmant.")
 	timer = 10 MINUTES
+
+/datum/stressevent/vvizard_lean
+	stressadd = -10
+	desc = span_boldgreen("I feel energized yet focused!")
+	timer = 4 MINUTES
+
+/datum/stressevent/gazeuponme
+
+	timer = 999 MINUTES
+	stressadd = -5
+	desc = span_green("I am a heretic under Ten's gaze... My patron is proud of me!")

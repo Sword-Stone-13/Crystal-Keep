@@ -165,7 +165,7 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 				/mob/living/simple_animal/hostile/retaliate/rogue/wolf = 30,
 				/mob/living/carbon/human/species/skeleton/npc/ambush = 50,
 				/mob/living/carbon/human/species/deadite/npc/ambush = 50)
-	first_time_text = "ROCKHILL BASIN"
+	first_time_text = "Crystal Keep"
 	droning_sound = 'sound/music/area/field.ogg'
 	droning_sound_dusk = 'sound/music/area/septimus.ogg'
 	droning_sound_night = 'sound/music/area/sleeping.ogg'
@@ -210,7 +210,7 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 				/mob/living/carbon/human/species/skeleton/npc/ambush = 10,
 				/mob/living/carbon/human/species/goblin/npc/ambush = 30,
 				/mob/living/carbon/human/species/deadite/npc/ambush = 40)
-	first_time_text = "THE MURDERWOOD"
+	first_time_text = "THE WOODS"
 	converted_type = /area/rogue/indoors/shelter/woods
 
 	wild_flora = list(
@@ -256,7 +256,7 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 				/mob/living/simple_animal/hostile/retaliate/rogue/spider = 40,
 				/mob/living/carbon/human/species/goblin/npc/ambush/cave = 30,
 				/mob/living/carbon/human/species/deadite/npc/ambush = 50)
-	first_time_text = "THE TERRORBOG"
+	first_time_text = "THE BYOND"
 	converted_type = /area/rogue/indoors/shelter/bog
 
 /area/rogue/indoors/shelter/bog
@@ -454,7 +454,7 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	droning_sound_dusk = null
 	droning_sound_night = null
 	converted_type = /area/rogue/outdoors/exposed/manorgarri
-	first_time_text = "THE KEEP OF ROCKHILL"
+	first_time_text = "THE CRYSTAL KEEP'S KEEP"
 /area/rogue/outdoors/exposed/manorgarri
 	icon_state = "manorgarri"
 	droning_sound = 'sound/music/area/manorgarri.ogg'
@@ -579,7 +579,7 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	return FALSE
 
 /area/rogue/indoors/town/entrance
-	first_time_text = "Roguetown"
+	first_time_text = "Crystal Keep"
 	icon_state = "entrance"
 
 /area/rogue/indoors/town/dwarfin
@@ -606,7 +606,7 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	droning_sound_dusk = 'sound/music/area/septimus.ogg'
 	droning_sound_night = 'sound/music/area/sleeping.ogg'
 	converted_type = /area/rogue/indoors/shelter/town
-	first_time_text = "THE TOWN OF ROCKHILL"
+	first_time_text = "THE TOWN OF CRYSTAL KEEP"
 /area/rogue/indoors/shelter/town
 	icon_state = "town"
 	droning_sound = 'sound/music/area/townstreets.ogg'
@@ -739,7 +739,7 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	droning_sound = 'sound/music/area/underworlddrone.ogg'
 	droning_sound_dusk = null
 	droning_sound_night = null
-	first_time_text = "The Forest of Repentence"
+	first_time_text = "PURGATORY"
 
 /area/rogue/under/deep_caverns
     name = "Deep Caverns"

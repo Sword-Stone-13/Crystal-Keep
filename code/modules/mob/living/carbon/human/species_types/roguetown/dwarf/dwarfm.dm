@@ -9,16 +9,13 @@
 	A proud and robust race of short mountain folk, \
 	the dwarves are known for their pride in martial strength \
 	and their tenacity towards their ancient traditions.\
-	A Dwarf, much like the rock that they carve their fortress out of \
-	is stubborn and ancient, with their race being the longest lived of all \
-	of the weeping gods creation. They, like stone: also rarely change \
-	and tend to shun the modernization of the world around them. \
-	Instead, a Dwarf looks to his ancestorial heritage for guidance on \
-	the various challenges they face. Even if, in some irony: this behaviour \
-	leads the race towards technological advacement as they continue \
-	to improve their craft through powerful mechanization and forging \
-	Dwarves are hearty, but are not known for their speed or eyesight... \
-	Each dwarf hails from a ancient fortress named after the most plentiful mineral."
+	They share habitation and origin with kobolds, leading to a \
+	many violent wars and battles. Tales tell of the once peaceful \
+	times between the two folk. This tale is the poem and recipe to the \
+	riddle of steel. This tale detailed the invention of steel, but, \
+	it's an incomplete tale, as it doesn't credit directly either folk. \
+	Legend says it was the dwarves and that they have right to the mountains, \
+	kobolds nay say, and the rest is history."
 
 	skin_tone_wording = "Dwarf Fortress"
 
@@ -96,6 +93,19 @@
 
 /datum/species/dwarf/mountain/check_roundstart_eligible()
 	return TRUE
+
+/datum/species/dwarf/mountain/on_species_gain(mob/living/carbon/C, datum/species/old_species)
+	..()
+	var/mob/living/carbon/human/species/dwarf/mountain/H = C
+	if(H.age == AGE_YOUTH)
+		hairyness = null
+
+//		soundpack_m = new /datum/voicepack/male/young() //might add
+		H.has_stubble = FALSE
+		H.facial_hairstyle = "None"
+		H.update_hair()
+		H.update_body()
+
 
 /datum/species/dwarf/mountain/get_span_language(datum/language/message_language)
 	if(!message_language)

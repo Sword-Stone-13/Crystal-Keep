@@ -13,7 +13,7 @@
 	tutorial = "Goblin King is a fatty lazy pig who wishes to do nothing but eat apple pies and fart while sitting on his stone throne."
 	whitelist_req = FALSE
 	outfit = /datum/outfit/job/roguetown/goblinking
-
+	associated_squad = /datum/antagonist/squad/none
 	display_order = JDO_GOBLINKING
 	min_pq = 2
 	max_pq = null

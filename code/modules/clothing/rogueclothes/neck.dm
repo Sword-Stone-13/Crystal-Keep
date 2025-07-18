@@ -63,7 +63,7 @@
 	adjustable = CAN_CADJUST
 	toggle_icon_state = TRUE
 	blocksound = CHAINHIT
-	anvilrepair = /datum/skill/craft/blacksmithing
+	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/steel
 
 /obj/item/clothing/neck/roguetown/chaincoif/AdjustClothes(mob/user)
@@ -90,14 +90,14 @@
 
 /obj/item/clothing/neck/roguetown/chaincoif/iron
 	icon_state = "ichaincoif"
-	anvilrepair = /datum/skill/craft/blacksmithing
+	anvilrepair = /datum/skill/craft/armorsmithing
 	desc = "An iron chain coif, composed of interlinked metal rings, that barely absorb impacts from arrows that protects the head, ears and neck, and is sadly too uncomfortable to sleep in."
 	smeltresult = /obj/item/ingot/iron
 	max_integrity = 150
 
 /obj/item/clothing/neck/roguetown/chaincoif/ironb
 	icon_state = "ichaincoif"
-	anvilrepair = /datum/skill/craft/blacksmithing
+	anvilrepair = /datum/skill/craft/armorsmithing
 	desc = "An iron chain coif, composed of interlinked metal rings, that barely absorb impacts from arrows that protects the head, ears and neck, and is sadly too uncomfortable to sleep in. blackened iron."
 	smeltresult = /obj/item/ingot/iron
 	color = "#151615"
@@ -109,7 +109,7 @@
 	icon_state = "bervor"
 	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	armor_class = ARMOR_CLASS_MEDIUM
-	anvilrepair = /datum/skill/craft/blacksmithing
+	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/steel
 	max_integrity = 300
 	resistance_flags = FIRE_PROOF
@@ -125,7 +125,7 @@
 	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	armor_class = ARMOR_CLASS_MEDIUM
 	smeltresult = /obj/item/ingot/iron
-	anvilrepair = /datum/skill/craft/blacksmithing
+	anvilrepair = /datum/skill/craft/armorsmithing
 	max_integrity = 150
 	resistance_flags = FIRE_PROOF
 	slot_flags = ITEM_SLOT_NECK
@@ -166,15 +166,15 @@
 	icon_state = "iwolfcollar"
 
 /obj/item/clothing/neck/roguetown/psicross
-	name = "psycross"
+	name = "psycross"//why are they spelled different...
 	desc = ""
-	icon_state = "psicross"
+	icon_state = "psicrossiron"
 	//dropshrink = 0.75
 	resistance_flags = FIRE_PROOF
 	slot_flags = ITEM_SLOT_NECK|ITEM_SLOT_HIP|ITEM_SLOT_WRISTS
 	sellprice = 10
 	experimental_onhip = TRUE
-	anvilrepair = /datum/skill/craft/blacksmithing
+	anvilrepair = /datum/skill/craft/armorsmithing
 
 /obj/item/clothing/neck/roguetown/psicross/astrata
 	name = "amulet of Astrata"
@@ -210,14 +210,37 @@
 	desc = ""
 
 /obj/item/clothing/neck/roguetown/psicross/wood
-	name = "wooden psycross"
+	name = "wooden amulet"
 	icon_state = "psicrossw"
+	sellprice = 0
+
+/obj/item/clothing/neck/roguetown/psicross/wood/aasimar
+	name = "aasimarian amulet"
+	icon_state = "villager_m1_neck"
+	item_state = "villager_m1_neck"
 	sellprice = 0
 
 /obj/item/clothing/neck/roguetown/psicross/silver
 	name = "silver psycross"
-	icon_state = "psicrossiron"
+	icon_state = "psicross"
+	item_state = "psicross"
 	sellprice = 50
+
+/obj/item/clothing/neck/roguetown/psicross/gold
+	name = "gold psycross"
+	icon_state = "psicrossg"
+	item_state = "psicrossg"
+	sellprice = 200
+
+/obj/item/clothing/neck/roguetown/psicross/silver/aasimar
+	name = "silver aasimarian psycross"
+	icon_state = "psicross_elfnut"
+	item_state = "psicross_elfnut"
+
+/obj/item/clothing/neck/roguetown/psicross/silver/gold/aasimar//lmao
+	name = "gold aasimarian psycross"
+	icon_state = "psicross_elfnutg"
+	item_state = "psicross_elfnutg"
 
 /obj/item/clothing/neck/roguetown/psicross/silver/pickup(mob/user)
 	. = ..()
@@ -235,7 +258,7 @@
 			H.fire_act(1,5)
 		if(V_lord)
 			if(V_lord.vamplevel < 4 && !H.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser))
-				to_chat(H, span_userdanger("I can't pick up the silver, it is my BANE!"))
+				to_chat(H, span_userdanger("I can't pick up the silver, God despises me!"))
 				H.Knockdown(10)
 				H.Paralyze(10)
 		if(W && W.transformed == TRUE)
@@ -284,7 +307,7 @@
 	resistance_flags = FIRE_PROOF
 	allowed_race = CLOTHED_RACES_TYPES
 	sellprice = 98
-	anvilrepair = /datum/skill/craft/blacksmithing
+	anvilrepair = /datum/skill/craft/armorsmithing
 
 /obj/item/clothing/neck/roguetown/horus
 	name = "eye of horuz"
@@ -293,7 +316,7 @@
 	//dropshrink = 0.75
 	resistance_flags = FIRE_PROOF
 	sellprice = 30
-	anvilrepair = /datum/skill/craft/blacksmithing
+	anvilrepair = /datum/skill/craft/armorsmithing
 
 /obj/item/clothing/neck/roguetown/shalal
 	name = "desert rider medal"
@@ -302,4 +325,118 @@
 	//dropshrink = 0.75
 	resistance_flags = FIRE_PROOF
 	sellprice = 15
-	anvilrepair = /datum/skill/craft/blacksmithing
+	anvilrepair = /datum/skill/craft/armorsmithing
+
+
+///CRYSTAL KEEP///
+
+
+/obj/item/clothing/neck/roguetown/walnutian
+	name = "gold piece necklace"
+	desc = ""
+	icon_state = "villager_w1_neck"
+	item_state = "villager_w1_neck"
+	sellprice = 300
+
+///ELFNUT///
+/obj/item/clothing/neck/roguetown/bervor/elfnut
+	name = "elfnut bervor"
+	desc = ""
+	icon_state = "elfnut_bervor"
+	item_state = "elfnut_bervor"
+	armor_class = ARMOR_CLASS_LIGHT
+	anvilrepair = /datum/skill/craft/armorsmithing
+	smeltresult = /obj/item/ingot/iron
+	max_integrity = 250
+
+
+/obj/item/clothing/neck/roguetown/bervor/elfnut/silverwood
+	name = "elfnut silver bervor"
+	desc = ""
+	icon_state = "elfnut_var_bervor"
+	item_state = "elfnut_var_bervor"
+	armor_class = ARMOR_CLASS_LIGHT
+	anvilrepair = /datum/skill/craft/armorsmithing
+	smeltresult = /obj/item/ingot/silver
+	max_integrity = 300
+
+
+/obj/item/clothing/neck/roguetown/bling
+	name = "solid gold bling"
+	desc = "It reads 'Wizard Federation'"
+	icon_state = "shadowwiz_neck"
+	item_state = "shadowwiz_neck"
+	sellprice = 600
+
+///BLUESTEEL///
+/*
+/obj/item/clothing/neck/roguetown/bervor/bluesteel
+	name = "Bluesteel Ring Bervor"
+	desc = "A thick ring around the neck for protection."
+	armor_class = ARMOR_CLASS_HEAVY
+	anvilrepair = /datum/skill/craft/armorsmithing
+	smeltresult = /obj/item/ingot/bluesteel
+	max_integrity = 400
+	icon_state = "ichaincoif"
+	item_state = "ichaincoif"
+	color = "#4bcdfc"
+*/
+///REDSTEEL///
+/obj/item/clothing/neck/roguetown/bervor/redsteel
+	name = "Redsteel Haunch"
+	desc = "A redsteel haunch, scaly, shifts around to pressure, inner part clips in and the outer is someone fluid."
+	icon_state = "redsteel_bervor"
+	item_state = "redsteel_bervor"
+	armor = list("blunt" = 90, "slash" = 100, "stab" = 100, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 0)
+	armor_class = ARMOR_CLASS_LIGHT
+	anvilrepair = /datum/skill/craft/armorsmithing
+	smeltresult = /obj/item/ingot/redsteel
+	max_integrity = 500
+
+///The houses///
+
+
+/obj/item/clothing/neck/roguetown/bervor/bravado
+	name = "Bronze plated bervor"
+	desc = ""
+	icon_state = "house_yellow_bervor"
+	item_state = "house_yellow_bervor"
+
+/obj/item/clothing/neck/roguetown/bervor/alrich
+	name = "alrich bervor"
+	desc = ""
+	icon_state = "house_red_bervor"
+	item_state = "house_red_bervor"
+
+/obj/item/clothing/neck/roguetown/bervor/bravado
+	name = "Bronze plated bervor"
+	desc = ""
+	icon_state = "house_yellow_bervor"
+	item_state = "house_yellow_bervor"
+
+/*
+/obj/item/clothing/neck/roguetown/bervor/caesar
+	name = "Caesar bervor"
+	desc = ""
+	icon_state = "plate_purple"
+
+/obj/item/clothing/neck/roguetown/bervor/deleon
+	name = "Deleon bervor"
+	desc = ""
+	icon_state = "plate_blue"
+
+/obj/item/clothing/neck/roguetown/bervor/echarus
+	name = "Echarus bervor"
+	desc = ""
+	icon_state = "plate_green"
+
+/obj/item/clothing/neck/roguetown/bervor/black
+	name = "Black House bervor"
+	desc = ""
+	icon_state = "plate_black"
+*/
+
+/obj/item/clothing/neck/roguetown/bervor/white
+	name = "White House bervor"
+	desc = ""
+	icon_state = "plate_white"

@@ -24,7 +24,7 @@
 			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, pick(2,3,3), TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/knives, 4, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
@@ -51,6 +51,7 @@
 			backl = /obj/item/storage/backpack/rogue/satchel
 			beltr = /obj/item/rogueweapon/huntingknife/idagger
 			beltl = /obj/item/rogueweapon/huntingknife/idagger
+			backpack_contents = list(/obj/item/storage/roguebag/rogueration)
 			H.change_stat("strength", -1)
 			H.change_stat("skill", 2)
 			H.change_stat("speed", pick(3,4))
@@ -91,4 +92,4 @@
 			H.change_stat("speed", 3)
 			H.change_stat("mageability", 1)
 			H.cmode_music = 'sound/music/combat_duelist.ogg'
-	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)

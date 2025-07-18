@@ -1,3 +1,4 @@
+/*
 /obj/machinery/nuclearbomb
 	name = "nuclear fission explosive"
 	desc = ""
@@ -657,3 +658,4 @@ This is here to make the tiles around the station mininuke change when it's arme
 /obj/item/disk/nuclear/fake/obvious
 	name = "cheap plastic imitation of the nuclear authentication disk"
 	desc = ""
+*/

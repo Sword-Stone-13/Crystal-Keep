@@ -10,8 +10,8 @@
 	display_order = JDO_MERCENARY
 	selection_color = JCOLOR_MERCENARY
 	faction = "Station"
-	total_positions = 10
-	spawn_positions = 10 //subject to change, was originally 6
+	total_positions = 8 //might make higher idk
+	spawn_positions = 4
 	min_pq = 0
 	max_pq = null
 	advclass_cat_rolls = list(CTAG_MERCENARY = 20)
@@ -21,6 +21,7 @@
 	always_show_on_latechoices = TRUE
 	job_reopens_slots_on_death = TRUE
 	same_job_respawn_delay = 15 MINUTES
+	associated_squad = /datum/antagonist/squad/none
 
 /datum/job/roguetown/mercenary/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
 	..()

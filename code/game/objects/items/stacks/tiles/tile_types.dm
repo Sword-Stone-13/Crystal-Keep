@@ -181,6 +181,197 @@
 	tableVariant = /obj/structure/table/wood/fancy/royalblue
 
 
+
+//Crystal Keep houses. Woe the huge code block, thanks babe
+
+/obj/item/stack/tile/carpet/house
+	icon_state = "tile-carpet"
+	item_state = "tile-carpet"
+	turf_type = /turf/open/floor/rogue/carpet/house
+	resistance_flags = FLAMMABLE
+
+// Black variations
+/obj/item/stack/tile/carpet/house/black/simple
+	name = "black house carpet"
+	icon_state = "tile-carpet-house-black-simple"
+	turf_type = /turf/open/floor/rogue/carpet/house/black/simple
+
+/obj/item/stack/tile/carpet/house/black/gold/diagonal
+	name = "black gold diagonal house carpet"
+	icon_state = "tile-carpet-house-black-gold-diagonal"
+	turf_type = /turf/open/floor/rogue/carpet/house/black/gold/diagonal
+
+/obj/item/stack/tile/carpet/house/black/gold/fancy
+	name = "black gold fancy house carpet"
+	icon_state = "tile-carpet-house-black-gold-fancy"
+	turf_type = /turf/open/floor/rogue/carpet/house/black/gold/fancy
+
+/obj/item/stack/tile/carpet/house/black/silver/diagonal
+	name = "black silver diagonal house carpet"
+	icon_state = "tile-carpet-house-black-silver-diagonal"
+	turf_type = /turf/open/floor/rogue/carpet/house/black/silver/diagonal
+
+/obj/item/stack/tile/carpet/house/black/silver/fancy
+	name = "black silver fancy house carpet"
+	icon_state = "tile-carpet-house-black-silver-fancy"
+	turf_type = /turf/open/floor/rogue/carpet/house/black/silver/fancy
+
+// Red variations
+/obj/item/stack/tile/carpet/house/red/simple
+	name = "red house carpet"
+	icon_state = "tile-carpet-house-red-simple"
+	turf_type = /turf/open/floor/rogue/carpet/house/red/simple
+
+/obj/item/stack/tile/carpet/house/red/gold/diagonal
+	name = "red gold diagonal house carpet"
+	icon_state = "tile-carpet-house-red-gold-diagonal"
+	turf_type = /turf/open/floor/rogue/carpet/house/red/gold/diagonal
+
+/obj/item/stack/tile/carpet/house/red/gold/fancy
+	name = "red gold fancy house carpet"
+	icon_state = "tile-carpet-house-red-gold-fancy"
+	turf_type = /turf/open/floor/rogue/carpet/house/red/gold/fancy
+
+/obj/item/stack/tile/carpet/house/red/silver/diagonal
+	name = "red silver diagonal house carpet"
+	icon_state = "tile-carpet-house-red-silver-diagonal"
+	turf_type = /turf/open/floor/rogue/carpet/house/red/silver/diagonal
+
+/obj/item/stack/tile/carpet/house/red/silver/fancy
+	name = "red silver fancy house carpet"
+	icon_state = "tile-carpet-house-red-silver-fancy"
+	turf_type = /turf/open/floor/rogue/carpet/house/red/silver/fancy
+
+// Yellow variations
+/obj/item/stack/tile/carpet/house/yellow/simple
+	name = "yellow house carpet"
+	icon_state = "tile-carpet-house-yellow-simple"
+	turf_type = /turf/open/floor/rogue/carpet/house/yellow/simple
+
+/obj/item/stack/tile/carpet/house/yellow/gold/diagonal
+	name = "yellow gold diagonal house carpet"
+	icon_state = "tile-carpet-house-yellow-gold-diagonal"
+	turf_type = /turf/open/floor/rogue/carpet/house/yellow/gold/diagonal
+
+/obj/item/stack/tile/carpet/house/yellow/gold/fancy
+	name = "yellow gold fancy house carpet"
+	icon_state = "tile-carpet-house-yellow-gold-fancy"
+	turf_type = /turf/open/floor/rogue/carpet/house/yellow/gold/fancy
+
+/obj/item/stack/tile/carpet/house/yellow/silver/diagonal
+	name = "yellow silver diagonal house carpet"
+	icon_state = "tile-carpet-house-yellow-silver-diagonal"
+	turf_type = /turf/open/floor/rogue/carpet/house/yellow/silver/diagonal
+
+/obj/item/stack/tile/carpet/house/yellow/silver/fancy
+	name = "yellow silver fancy house carpet"
+	icon_state = "tile-carpet-house-yellow-silver-fancy"
+	turf_type = /turf/open/floor/rogue/carpet/house/yellow/silver/fancy
+
+// Purple variations
+/obj/item/stack/tile/carpet/house/purple/simple
+	name = "purple house carpet"
+	icon_state = "tile-carpet-house-purple-simple"
+	turf_type = /turf/open/floor/rogue/carpet/house/purple/simple
+
+/obj/item/stack/tile/carpet/house/purple/gold/diagonal
+	name = "purple gold diagonal house carpet"
+	icon_state = "tile-carpet-house-purple-gold-diagonal"
+	turf_type = /turf/open/floor/rogue/carpet/house/purple/gold/diagonal
+
+/obj/item/stack/tile/carpet/house/purple/gold/fancy
+	name = "purple gold fancy house carpet"
+	icon_state = "tile-carpet-house-purple-gold-fancy"
+	turf_type = /turf/open/floor/rogue/carpet/house/purple/gold/fancy
+
+/obj/item/stack/tile/carpet/house/purple/silver/diagonal
+	name = "purple silver diagonal house carpet"
+	icon_state = "tile-carpet-house-purple-silver-diagonal"
+	turf_type = /turf/open/floor/rogue/carpet/house/purple/silver/diagonal
+
+/obj/item/stack/tile/carpet/house/purple/silver/fancy
+	name = "purple silver fancy house carpet"
+	icon_state = "tile-carpet-house-purple-silver-fancy"
+	turf_type = /turf/open/floor/rogue/carpet/house/purple/silver/fancy
+
+// Blue variations
+/obj/item/stack/tile/carpet/house/blue/simple
+	name = "blue house carpet"
+	icon_state = "tile-carpet-house-blue-simple"
+	turf_type = /turf/open/floor/rogue/carpet/house/blue/simple
+
+/obj/item/stack/tile/carpet/house/blue/gold/diagonal
+	name = "blue gold diagonal house carpet"
+	icon_state = "tile-carpet-house-blue-gold-diagonal"
+	turf_type = /turf/open/floor/rogue/carpet/house/blue/gold/diagonal
+
+/obj/item/stack/tile/carpet/house/blue/gold/fancy
+	name = "blue gold fancy house carpet"
+	icon_state = "tile-carpet-house-blue-gold-fancy"
+	turf_type = /turf/open/floor/rogue/carpet/house/blue/gold/fancy
+
+/obj/item/stack/tile/carpet/house/blue/silver/diagonal
+	name = "blue silver diagonal house carpet"
+	icon_state = "tile-carpet-house-blue-silver-diagonal"
+	turf_type = /turf/open/floor/rogue/carpet/house/blue/silver/diagonal
+
+/obj/item/stack/tile/carpet/house/blue/silver/fancy
+	name = "blue silver fancy house carpet"
+	icon_state = "tile-carpet-house-blue-silver-fancy"
+	turf_type = /turf/open/floor/rogue/carpet/house/blue/silver/fancy
+
+// Green variations
+/obj/item/stack/tile/carpet/house/green/simple
+	name = "green house carpet"
+	icon_state = "tile-carpet-house-green-simple"
+	turf_type = /turf/open/floor/rogue/carpet/house/green/simple
+
+/obj/item/stack/tile/carpet/house/green/gold/diagonal
+	name = "green gold diagonal house carpet"
+	icon_state = "tile-carpet-house-green-gold-diagonal"
+	turf_type = /turf/open/floor/rogue/carpet/house/green/gold/diagonal
+
+/obj/item/stack/tile/carpet/house/green/gold/fancy
+	name = "green gold fancy house carpet"
+	icon_state = "tile-carpet-house-green-gold-fancy"
+	turf_type = /turf/open/floor/rogue/carpet/house/green/gold/fancy
+
+/obj/item/stack/tile/carpet/house/green/silver/diagonal
+	name = "green silver diagonal house carpet"
+	icon_state = "tile-carpet-house-green-silver-diagonal"
+	turf_type = /turf/open/floor/rogue/carpet/house/green/silver/diagonal
+
+/obj/item/stack/tile/carpet/house/green/silver/fancy
+	name = "green silver fancy house carpet"
+	icon_state = "tile-carpet-house-green-silver-fancy"
+	turf_type = /turf/open/floor/rogue/carpet/house/green/silver/fancy
+
+// White variations
+/obj/item/stack/tile/carpet/house/white/simple
+	name = "white house carpet"
+	icon_state = "tile-carpet-house-white-simple"
+	turf_type = /turf/open/floor/rogue/carpet/house/white/simple
+
+/obj/item/stack/tile/carpet/house/white/gold/diagonal
+	name = "white gold diagonal house carpet"
+	icon_state = "tile-carpet-house-white-gold-diagonal"
+	turf_type = /turf/open/floor/rogue/carpet/house/white/gold/diagonal
+
+/obj/item/stack/tile/carpet/house/white/gold/fancy
+	name = "white gold fancy house carpet"
+	icon_state = "tile-carpet-house-white-gold-fancy"
+	turf_type = /turf/open/floor/rogue/carpet/house/white/gold/fancy
+
+/obj/item/stack/tile/carpet/house/white/silver/diagonal
+	name = "white silver diagonal house carpet"
+	icon_state = "tile-carpet-house-white-silver-diagonal"
+	turf_type = /turf/open/floor/rogue/carpet/house/white/silver/diagonal
+
+/obj/item/stack/tile/carpet/house/white/silver/fancy
+	name = "white silver fancy house carpet"
+	icon_state = "tile-carpet-house-white-silver-fancy"
+	turf_type = /turf/open/floor/rogue/carpet/house/white/silver/fancy
+
 /obj/item/stack/tile/carpet/fifty
 	amount = 50
 

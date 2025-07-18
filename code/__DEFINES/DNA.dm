@@ -154,7 +154,7 @@
 
 #define MIN_PENIS_SIZE 1
 #define MAX_PENIS_SIZE 3
-#define DEFAULT_PENIS_SIZE 2
+#define DEFAULT_PENIS_SIZE 3
 
 #define PENIS_TYPE_PLAIN 1
 #define PENIS_TYPE_KNOTTED 2
@@ -172,5 +172,5 @@
 
 #define MIN_BREASTS_SIZE 0
 #define MAX_BREASTS_SIZE 10
-#define DEFAULT_BREASTS_SIZE 4
+#define DEFAULT_BREASTS_SIZE 0//should be ten but ok
 

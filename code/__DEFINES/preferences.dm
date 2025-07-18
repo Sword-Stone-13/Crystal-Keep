@@ -107,11 +107,12 @@
 #define RANDOM_EYE_COLOR "random_eye_color"
 
 //Age ranges
+#define AGE_YOUTH			"Youth" //we're bringing back the orphans
 #define AGE_ADULT			"Adult"
 #define AGE_MIDDLEAGED		"Middle-Aged"
 #define AGE_OLD				"Old"
 
-#define ALL_AGES_LIST list(AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)
+#define ALL_AGES_LIST list(AGE_YOUTH, AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)
 
 //Voice ranges
 #define MIN_VOICE_PITCH		0.8

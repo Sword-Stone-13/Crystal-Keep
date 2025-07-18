@@ -1,8 +1,8 @@
 //genstuff
 /obj/effect/landmark/mapGenerator/rogue/forest
 	mapGeneratorType = /datum/mapGenerator/forest
-	endTurfX = 255
-	endTurfY = 255
+	endTurfX = 177//255
+	endTurfY = 95//255
 	startTurfX = 1
 	startTurfY = 1
 
@@ -47,7 +47,9 @@
 	allowed_turfs = list(/turf/open/floor/rogue/grass)
 	excluded_turfs = list()
 	allowed_areas = list(/area/rogue/outdoors/woods)
-	spawnableAtoms = list(/obj/structure/flora/roguetree = 30,
+	spawnableAtoms = list(/obj/structure/flora/roguetree/ckeep/shorter = 5,
+							/obj/structure/flora/roguetree/ckeep/taller = 25,
+							///obj/structure/flora/roguetree = 30,
 							/obj/structure/flora/roguetree/wise=1,
 							/obj/structure/flora/roguegrass/bush = 25,
 							/obj/structure/flora/roguegrass = 44,

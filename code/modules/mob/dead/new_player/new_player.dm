@@ -614,6 +614,10 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 	omegalist += list(GLOB.peasant_positions)
 	omegalist += list(GLOB.mercenary_positions)
 	omegalist += list(GLOB.youngfolk_positions)
+	omegalist += list(GLOB.alrich_positions)
+	omegalist += list(GLOB.bravado_positions)
+	omegalist += list(GLOB.caesar_positions)
+	omegalist += list(GLOB.deleon_positions)
 
 	if(istype(SSticker.mode, /datum/game_mode/chaosmode))
 		var/datum/game_mode/chaosmode/C = SSticker.mode
@@ -661,7 +665,14 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 					cat_name = "Mercenaries"
 				if (GOBLIN)
 					cat_name = "Goblins"
-
+				if (HOUSE_ALRICH)
+					cat_name = "House Alrich"
+				if (HOUSE_BRAVADO)
+					cat_name = "House Bravado"
+				if (HOUSE_CAESAR)
+					cat_name = "House Caesar"
+				if (HOUSE_DELEON)
+					cat_name = "House Deleon"
 			dat += "<fieldset style='width: 185px; border: 2px solid [cat_color]; display: inline'>"
 			dat += "<legend align='center' style='font-weight: bold; color: [cat_color]'>[cat_name]</legend>"
 			var/datum/game_mode/chaosmode/C = SSticker.mode

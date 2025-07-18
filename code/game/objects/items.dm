@@ -178,7 +178,6 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 
 	var/firefuel = 0 //add this idiot
 
-	var/thrown_bclass = BCLASS_BLUNT
 
 	var/icon/experimental_inhand = TRUE
 	var/icon/experimental_onhip = FALSE
@@ -412,10 +411,6 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		if(!usr.canUseTopic(src, be_close=TRUE))
 			return
 		var/list/inspec = list(span_notice("Properties of [src.name]"))
-		if(minmag)
-			inspec += "\n<b>MIN.MAG:</b> [minmag]"
-		if(minfth)
-			inspec += "\n<b>MIN.MAG:</b> [minfth]"
 
 		if(wbalance)
 			inspec += "\n<b>BALANCE: </b>"

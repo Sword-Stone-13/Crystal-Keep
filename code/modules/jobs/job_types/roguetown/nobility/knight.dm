@@ -5,7 +5,7 @@
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
-	allowed_races = RACES_TOLERATED_UP
+	allowed_races = RACES_EORA_APPROVED
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED)
 	allowed_patrons = ALL_NON_INHUMEN_PATRONS
@@ -16,6 +16,8 @@
 	give_bank_account = 22
 	min_pq = 8
 	max_pq = null
+	associated_squad = /datum/antagonist/squad/none
+
 
 	cmode_music = 'sound/music/combat_guard2.ogg'
 
@@ -77,6 +79,16 @@
 		H.change_stat("constitution", 3)
 		H.change_stat("endurance", 2)
 		H.change_stat("speed", -1)
+	if(H.gender == MALE)
+		var/acceptable = list("80s-style Hair","Bowlcut", "Bowlcut2", "Hime Cut (Short)")
+		if(!(H.hairstyle in acceptable))
+			H.hairstyle = pick(acceptable)
+			H.update_hair()
+	if(H.gender == FEMALE)
+		var/acceptable = list("Tomboy", "Bob", "Curly Short")
+		if(!(H.hairstyle in acceptable))
+			H.hairstyle = pick(acceptable)
+			H.update_hair()
 	H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
 
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)

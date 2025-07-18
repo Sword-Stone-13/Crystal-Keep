@@ -88,6 +88,9 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 		return FALSE
 	if(direction == DOWN)
 		testing("dir=down")
+		for(var/obj/structure/flora/newleaf/leaf in contents)
+			if(isliving(A) && HAS_TRAIT(A, TRAIT_LEAF_WALKER))
+				return FALSE
 		for(var/obj/O in contents)
 			if(O.obj_flags & BLOCK_Z_OUT_DOWN)
 				testing("noout")

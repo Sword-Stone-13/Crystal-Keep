@@ -24,6 +24,35 @@
 //	base_icon_state = "chestweird2"
 //	update_icon()
 
+//house paraphernelia
+
+/obj/structure/closet/crate/chest/house
+	icon = 'icons/roguetown/misc/housemisc/structure.dmi'
+	icon_state = "chest1green"
+	base_icon_state = "chest1green"
+
+/obj/structure/closet/crate/chest/house/green
+	icon_state = "chest1green"
+	base_icon_state = "chest1green"
+
+/obj/structure/closet/crate/chest/house/red
+	icon_state = "chest1red"
+	base_icon_state = "chest1red"
+
+/obj/structure/closet/crate/chest/house/yellow
+	icon_state = "chest1yellow"
+	base_icon_state = "chest1yellow"
+
+/obj/structure/closet/crate/chest/house/purple
+	icon_state = "chest1purple"
+	base_icon_state = "chest1purple"
+
+/obj/structure/closet/crate/chest/house/blue
+	icon_state = "chest1blue"
+	base_icon_state = "chest1blue"
+
+
+
 /obj/structure/closet/crate/chest/merchant
 	lockid = "shop"
 	locked = TRUE
@@ -89,6 +118,31 @@
 /obj/structure/closet/crate/roguecloset/inn/chest
 	base_icon_state = "woodchest"
 	icon_state = "woodchest"
+
+/obj/structure/closet/crate/roguecloset/house
+	icon = 'icons/roguetown/misc/housemisc/structure.dmi'
+	icon_state = "chest2green"
+	base_icon_state = "chest2green"
+
+/obj/structure/closet/crate/roguecloset/house/green
+	icon_state = "chest2green"
+	base_icon_state = "chest2green"
+
+/obj/structure/closet/crate/roguecloset/house/red
+	icon_state = "chest2red"
+	base_icon_state = "chest2red"
+
+/obj/structure/closet/crate/roguecloset/house/yellow
+	icon_state = "chest2yellow"
+	base_icon_state = "chest2yellow"
+
+/obj/structure/closet/crate/roguecloset/house/purple
+	icon_state = "chest2purple"
+	base_icon_state = "chest2purple"
+
+/obj/structure/closet/crate/roguecloset/house/blue
+	icon_state = "chest2blue"
+	base_icon_state = "chest2blue"
 
 /obj/structure/closet/crate/roguecloset/dark
 	base_icon_state = "closetdark"

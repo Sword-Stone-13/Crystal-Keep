@@ -116,6 +116,45 @@
 		else if(adjustable == CADJUSTED)
 			ResetAdjust(user)
 
+/obj/item/clothing/head/roguetown/roguehood/shalalblank
+	name = "zybantine keffiyeh"
+	desc = "A protective covering worn by those native to the deserts of Zybantine."
+	color = null
+	icon_state = "shalalblank"
+	item_state = "shalalblank"
+	flags_inv = HIDEHAIR
+	sleevetype = null
+	sleeved = null
+	icon = 'icons/roguetown/clothing/head.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/head.dmi' //Overrides slot icon behavior
+	alternate_worn_layer  = 8.9 //On top of helmet
+	body_parts_covered = HEAD|HAIR|EARS|NECK
+	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_MASK
+	armor = list("blunt" = 20, "slash" = 20, "stab" = 15, "bullet" = 1, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	armor_class = ARMOR_CLASS_LIGHT
+	dynamic_hair_suffix = ""
+	edelay_type = 1
+	adjustable = CAN_CADJUST
+	toggle_icon_state = TRUE
+	blocksound = SOFTHIT
+	max_integrity = 100
+
+/obj/item/clothing/head/roguetown/roguehood/shalalblank/AdjustClothes(mob/user)
+	if(loc == user)
+		if(adjustable == CAN_CADJUST)
+			adjustable = CADJUSTED
+			icon_state = "shalalblank_t"
+			body_parts_covered = HEAD|EARS|HAIR|NECK|NOSE|MOUTH
+			flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
+			flags_cover = null
+			if(ishuman(user))
+				var/mob/living/carbon/H = user
+				H.update_inv_head()
+			block2add = null
+		else if(adjustable == CADJUSTED)
+			ResetAdjust(user)
+
+
 /obj/item/clothing/head/roguetown/roguehood/astrata
 	name = "sun hood"
 	desc = "A hood worn by those who favor Astrata. Praise the firstborn sun!"
@@ -263,6 +302,9 @@
 	icon_state = "strawhat"
 	salvage_result = /obj/item/natural/fibers
 
+/obj/item/clothing/head/roguetown/strawhat/baron
+	color = "#d3b54d"
+
 /obj/item/clothing/head/roguetown/puritan
 	name = "buckled hat"
 	icon_state = "puritan_hat"
@@ -354,7 +396,7 @@
 
 /obj/item/clothing/head/roguetown/headband
 	name = "headband"
-	desc = "A simple headband to keep sweat out of your eyes."
+	desc = ""
 	icon_state = "headband"
 	item_state = "headband"
 	fiber_salvage = FALSE
@@ -364,8 +406,16 @@
 /obj/item/clothing/head/roguetown/headband/red
 	color = CLOTHING_RED
 
+/obj/item/clothing/head/roguetown/headband/caesar
+	color = "#8b308f"
+
+/obj/item/clothing/head/roguetown/headband/bravado
+	name = "bravado headband"
+	desc = "Used by well set pyromantics."
+	color = "#d3b54d"
+
 /obj/item/clothing/head/roguetown/crown //Holds vars for children
-	name = "crown of rockhill"
+	name = "crown of Crystal Keep"
 	desc = ""
 	icon_state = "serpcrown"
 	dynamic_hair_suffix = null
@@ -381,7 +431,7 @@
 	SSroguemachine.crown = src
 
 /obj/item/clothing/head/roguetown/crown/serpcrown/proc/anti_stall()
-	src.visible_message(span_warning("The Crown of Rockhill crumbles to dust, the ashes spiriting away in the direction of the Keep."))
+	src.visible_message(span_warning("The Crown of Crystal Keep crumbles to dust, the ashes spiriting away in the direction of the Keep."))
 	SSroguemachine.crown = null //Do not harddel.
 	qdel(src) //Anti-stall
 
@@ -471,7 +521,7 @@
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	dynamic_hair_suffix = "+generic"
 	bloody_icon_state = "helmetblood"
-	anvilrepair = /datum/skill/craft/blacksmithing
+	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/steel
 	blocksound = PLATEHIT
 	max_integrity = 200
@@ -950,3 +1000,69 @@
 	block2add = FOV_RIGHT|FOV_LEFT
 	max_integrity = 425
 	smeltresult = /obj/item/ingot/blacksteel
+
+
+//JADE KINGDOM (didn't know where else to use a base for now for this)
+
+/obj/item/clothing/head/roguetown/helmet/heavy/jadish
+	name = "Kabuto"
+	desc = "A steel helm in the face of a ferocious...kitten."
+	icon_state = "hounskull"
+	item_state = "hounskull"
+	emote_environment = 3
+	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
+	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
+	block2add = FOV_RIGHT|FOV_LEFT
+
+
+///ELFNUT (in case code breaks for adding it higher)///
+/obj/item/clothing/head/roguetown/helmet/bascinet/elfnut
+	name = "Elfnut Helmet"
+	desc = "Regal. Dashing."
+	icon_state = "elfnut_pinhead_helm"
+	item_state = "elfnut_pinhead_helm"
+	max_integrity = 200
+	body_parts_covered = HEAD|HAIR
+	armor_class = ARMOR_CLASS_LIGHT
+
+/obj/item/clothing/head/roguetown/helmet/bascinet/elfnut/silver
+	name = "Elfnut Helmet"
+	desc = "More Regal. More Dashing."
+	icon_state = "elfnut_silver_pinhead_helm"
+	item_state = "elfnut_silver_pinhead_helm"
+	max_integrity = 250
+
+
+///Steppe///
+
+//Gronn
+/obj/item/clothing/head/roguetown/helmet/nomadhelmet
+	name = "nomad helmet"
+	desc = "An iron helmet with leather to help protect the neck."
+	icon_state = "nomadhelmet"
+	item_state = "nomadhelmet"
+	flags_inv = HIDEHAIR
+	body_parts_covered = HEAD|HAIR|EARS|NOSE|NECK
+	armor = list("blunt" = 50, "slash" = 30, "stab" = 40, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST)
+	max_integrity = 250
+	anvilrepair = TRUE
+	smeltresult = /obj/item/ingot/iron
+
+/obj/item/clothing/head/roguetown/helmet/nomadhelmet/purple
+	icon_state = "nomadhelmet_purple"
+	item_state = "nomadhelmet_purple"
+
+/obj/item/clothing/head/roguetown/helmet/nomadhelmet/orange
+	icon_state = "nomadhelmet_orange"
+	item_state = "nomadhelmet_orange"
+
+
+///BLACKSTONE///
+
+/obj/item/clothing/head/roguetown/inqhat
+	name = "inquisitorial hat"
+	desc = "Redemption is your currency."
+	icon_state = "inqhat"
+	item_state = "inqhat"
+	sewrepair = TRUE

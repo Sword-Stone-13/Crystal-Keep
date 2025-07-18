@@ -14,6 +14,8 @@
 	give_bank_account = 8
 	min_pq = -10
 	max_pq = null
+	associated_squad = /datum/antagonist/squad/none
+
 
 /datum/outfit/job/roguetown/cook/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -24,6 +26,7 @@
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/hunting, 2, TRUE)
+		H.change_stat("constitution", 2)
 		if(H.age == AGE_OLD)
 			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
@@ -36,11 +39,9 @@
 		cloak = /obj/item/clothing/cloak/apron/cook
 		head = /obj/item/clothing/head/roguetown/cookhat
 		neck = /obj/item/storage/belt/rogue/pouch/coins/poor
-		H.change_stat("constitution", 2)
 	else
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 		cloak = /obj/item/clothing/cloak/apron/cook
 		head = /obj/item/clothing/head/roguetown/cookhat
 		shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 		neck = /obj/item/storage/belt/rogue/pouch/coins/poor
-		H.change_stat("constitution", 2)

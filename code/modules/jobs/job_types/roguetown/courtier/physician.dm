@@ -16,7 +16,7 @@
 		Now you serve in the King's court ensuring the good health of those inhabiting the keep."
 	outfit = /datum/outfit/job/roguetown/physician
 	whitelist_req = TRUE
-
+	associated_squad = /datum/antagonist/squad/none
 	give_bank_account = 25
 	min_pq = 2
 	max_pq = null
@@ -51,7 +51,7 @@
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 5, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
@@ -65,13 +65,13 @@
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/debride)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/cpr)
 		H.change_stat("strength", -1)
-		H.change_stat("constitution", -1)
-		H.change_stat("mageability", 3)
+		H.change_stat("constitution", -2)
+		H.change_stat("skill", 3)
 		H.change_stat("fortune", 1)
-		H.change_stat("endurance", 1)
+		H.change_stat("endurance", -2)
 		if(H.age == AGE_OLD)
 			H.change_stat("speed", -1)
-			H.change_stat("mageability", 1)
+			H.change_stat("skill", 1)
 			H.change_stat("skill", 1)
 			H.change_stat("faith", -3)
 

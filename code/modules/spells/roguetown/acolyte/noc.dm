@@ -40,7 +40,8 @@
 	warnie = "sydwarning"
 	movement_interrupt = FALSE
 	invocation_type = "whisper"
-	sound = 'sound/misc/area.ogg' //This sound doesnt play for some reason. Fix me.
+	sound = 'sound/misc/area.ogg'//should play now
+	// active_sound = 'sound/misc/area.ogg' // Optional: include if you also want sound on activation
 	associated_skill = /datum/skill/magic/holy
 	antimagic_allowed = TRUE
 	miracle = TRUE
@@ -51,6 +52,7 @@
 		var/mob/living/target = targets[1]
 		if(target.anti_magic_check(TRUE, TRUE))
 			return FALSE
+		playsound(user, sound, 50, 1) // Play the sound when the spell is cast
 		target.visible_message(span_warning("[target] starts to fade into thin air!"), span_notice("You start to become invisible!"))
 		animate(target, alpha = 0, time = 1 SECONDS, easing = EASE_IN)
 		target.mob_timers[MT_INVISIBILITY] = world.time + 15 SECONDS

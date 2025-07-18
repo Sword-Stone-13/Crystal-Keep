@@ -3,7 +3,7 @@
 	flag = GRABBER
 	department_flag = MERCENARIES
 	faction = "Station"
-	total_positions = 2
+	total_positions = 0 //Don't see their purpose tbh
 	spawn_positions = 2
 
 	allowed_races = RACES_VERY_SHUNNED_UP
@@ -18,6 +18,7 @@
 	give_bank_account = TRUE
 	min_pq = 0
 	max_pq = null
+	associated_squad = /datum/antagonist/squad/none
 
 	cmode_music = 'sound/music/combat_giza.ogg'
 

@@ -7,7 +7,7 @@
 	total_positions = 6
 	spawn_positions = 6
 
-	allowed_races = RACES_SHUNNED_UP_PLUS_SEELIE
+	allowed_races = RACES_SHUNNED_UP
 	allowed_ages = ALL_AGES_LIST
 
 	tutorial = "Granted a life of comfortable servitute in the King's manor, you follow the Head Butler/Maid's commands and spend your day performing necessary but menial tasks."
@@ -17,6 +17,8 @@
 	give_bank_account = TRUE
 	min_pq = -10
 	max_pq = null
+	associated_squad = /datum/antagonist/squad/none
+
 
 /datum/outfit/job/roguetown/servant/pre_equip(mob/living/carbon/human/H)
 	..()

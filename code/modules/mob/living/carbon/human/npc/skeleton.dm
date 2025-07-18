@@ -88,7 +88,7 @@
 
 /datum/outfit/job/roguetown/npc/skeleton/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.STASTR = rand(8, 14)
+	H.STASTR = 12
 	H.STASKL = rand(1, 6)
 	H.STAMAG = 1
 	H.STACON = rand(12, 18)

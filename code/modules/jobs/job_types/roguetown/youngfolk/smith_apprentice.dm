@@ -7,7 +7,7 @@
 	spawn_positions = 2
 
 	allowed_races = RACES_VERY_SHUNNED_UP
-	allowed_ages = list(AGE_ADULT)
+	allowed_ages = list(AGE_YOUTH, AGE_ADULT)
 
 	tutorial = "Long hours and back-breaking work wouldnt even describe a quarter of what you do in a day for your Master. Its exhausting, filthy and you dont get much freetime: but someday youll get your own smithy, and youll have TWICE as many apprentices as your master does."
 
@@ -16,6 +16,8 @@
 	give_bank_account = TRUE
 	min_pq = -10
 	max_pq = null
+	associated_squad = /datum/antagonist/squad/none
+
 
 /datum/outfit/job/roguetown/bapprentice/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -24,6 +26,8 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/axes, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/armorsmithing, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/weaponsmithing, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 	if(H.gender == MALE)

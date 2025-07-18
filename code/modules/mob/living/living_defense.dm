@@ -608,3 +608,57 @@
 		used_item = get_active_held_item()
 	..()
 	setMovetype(movement_type & ~FLOATING) // If we were without gravity, the bouncing animation got stopped, so we make sure we restart the bouncing after the next movement.
+
+//CKEEP Stone toss competition
+/mob/living/hitby(atom/movable/AM, skipcatch, hitpush = TRUE, blocked = FALSE, datum/thrownthing/throwingdatum, d_type = "blunt")
+	if(istype(AM, /obj/item))
+		var/obj/item/I = AM
+		var/dtype = BRUTE
+		var/zone = ran_zone(BODY_ZONE_CHEST, 65)//Hits a random part of the body, geared towards the chest
+		SEND_SIGNAL(I, COMSIG_MOVABLE_IMPACT_ZONE, src, zone)
+		dtype = I.damtype
+		if(!blocked)
+			var/mob/living/thrower = throwingdatum?.thrower
+			var/is_crit = FALSE
+			var/crit_multiplier = 1.0
+			var/force_crit = FALSE
+
+			// Critical hit check
+			if(thrower && isliving(thrower) && I.can_crit_throw)
+				var/crit_chance = (thrower.STALUC * 1) + (thrower.STASKL * 0.5) + I.crit_bonus // 10% at STALUC=10, +5% at STASKL=10, +item bonus
+				if(rand(1, 100) <= crit_chance)
+					is_crit = TRUE
+					crit_multiplier = 2.0 // Double damage on crit
+					force_crit = TRUE
+					if(thrower.client?.prefs.showrolls)
+						to_chat(thrower, span_boldwarning("Critical throw!"))
+					visible_message(span_boldwarning("[src] is critically struck by [I]!"), \
+									span_danger("I'm critically struck by [I]!"), \
+									null, COMBAT_MESSAGE_RANGE)
+
+			var/armor = run_armor_check(zone, d_type, "", "",I.armor_penetration, damage = I.throwforce * crit_multiplier)
+			next_attack_msg.Cut()
+			var/nodmg = FALSE
+			if(!apply_damage(I.throwforce * crit_multiplier, dtype, zone, armor))
+				nodmg = TRUE
+				next_attack_msg += " <span class='warning'>Armor stops the damage.</span>"
+			if(!nodmg)
+				if(iscarbon(src))
+					var/obj/item/bodypart/affecting = get_bodypart(zone)
+					if(affecting)
+						affecting.bodypart_attacked_by(I.thrown_bclass, I.throwforce * crit_multiplier, isliving(thrower) ? thrower : null, affecting.body_zone, silent = FALSE, crit_message = is_crit, force_crit = force_crit)
+				else
+					simple_woundcritroll(I.thrown_bclass, I.throwforce * crit_multiplier, isliving(thrower) ? thrower : null, zone, silent = FALSE, crit_message = is_crit, force_crit = force_crit)
+					if(((throwingdatum ? throwingdatum.speed : I.throw_speed) >= EMBED_THROWSPEED_THRESHOLD) || I.embedding.embedded_ignore_throwspeed_threshold)
+						if(can_embed(I) && prob(I.embedding.embed_chance) && HAS_TRAIT(src, TRAIT_SIMPLE_WOUNDS) && !HAS_TRAIT(src, TRAIT_PIERCEIMMUNE))
+							simple_add_embedded_object(I, silent = FALSE, crit_message = is_crit)
+			visible_message(span_danger("[src] is hit by [I]![next_attack_msg.Join()]"), \
+							span_danger("I'm hit by [I]![next_attack_msg.Join()]"))
+			next_attack_msg.Cut()
+			if(I.thrownby)
+				log_combat(I.thrownby, src, "threw and hit", I)
+		else
+			return 1
+	else
+		playsound(loc, 'sound/blank.ogg', 50, TRUE, -1) //Item sounds are handled in the item itself
+	..()

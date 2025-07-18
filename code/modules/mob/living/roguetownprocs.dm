@@ -46,7 +46,7 @@
 		else if(used_intent.blade_class == BCLASS_PUNCH)			//It is easiest to aim your fists
 			chance2hit += (30 + user.STASKL)
 		else if(used_intent == INTENT_GRAB)
-			chance2hit += (30 + user.STASKL)
+			chance2hit += (25 + user.STASKL)
 		else if(used_intent == INTENT_KICK)
 			chance2hit += (20 + user.STASKL)
 		else if(used_intent == INTENT_BITE)
@@ -77,11 +77,11 @@
 	if(istype(user.rmb_intent, /datum/rmb_intent/aimed))			//Taking time to aim attacks gives Perception + 10
 		chance2hit += (user.STASKL + 10)
 	if(istype(user.rmb_intent, /datum/rmb_intent/swift))			//Swinging as fast as you can reduces your To-Hit
-		chance2hit -= (35 - user.STASPD)
+		chance2hit -= (30 - user.STASPD)
 
 																	//Being cracked out on hyper cocaine doesn't mean you're going to be accurate
 	if(user.has_status_effect(/datum/status_effect/buff/moondust) || user.has_status_effect(/datum/status_effect/buff/moondust_purest))
-		chance2hit *= 0.4
+		chance2hit *= 0.6
 	if(user.has_status_effect(/datum/status_effect/debuff/moondust_crash))
 		chance2hit *= 0.8
 

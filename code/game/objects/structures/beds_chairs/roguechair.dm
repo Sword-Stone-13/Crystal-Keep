@@ -80,6 +80,108 @@
 /obj/structure/chair/bench/couchablack/r
 	icon_state = "couchablackaright"
 
+//House Couches send help
+/obj/structure/chair/bench/house/couch
+	name = "bench"
+	icon_state = "couch1greenl"
+	icon = 'icons/roguetown/misc/housemisc/structure.dmi'
+
+//typical lounge couches
+
+/obj/structure/chair/bench/house/couch/green/l
+	icon_state = "couch1greenl"
+
+/obj/structure/chair/bench/house/couch/green/r
+	icon_state = "couch1greenr"
+
+/obj/structure/chair/bench/house/couch/red/l
+	icon_state = "couch1redl"
+
+/obj/structure/chair/bench/house/couch/red/r
+	icon_state = "couch1redr"
+
+/obj/structure/chair/bench/house/couch/yellow/l
+	icon_state = "couch1yellowl"
+
+/obj/structure/chair/bench/house/couch/yellow/r
+	icon_state = "couch1yellowr"
+
+/obj/structure/chair/bench/house/couch/purple/l
+	icon_state = "couch1purplel"
+
+/obj/structure/chair/bench/house/couch/purple/r
+	icon_state = "couch1purpler"
+
+/obj/structure/chair/bench/house/couch/blue/l
+	icon_state = "couch1bluel"
+
+/obj/structure/chair/bench/house/couch/blue/r
+	icon_state = "couch1bluer"
+
+//Sofas, proper ones, comfortable.
+
+/obj/structure/chair/bench/house/couch/green/sofa/l
+	icon_state = "couch2greenl"
+
+/obj/structure/chair/bench/house/couch/green/sofa/r
+	icon_state = "couch2greenr"
+
+/obj/structure/chair/bench/house/couch/red/sofa/l
+	icon_state = "couch2redl"
+
+/obj/structure/chair/bench/house/couch/red/sofa/r
+	icon_state = "couch2redr"
+
+/obj/structure/chair/bench/house/couch/yellow/sofa/l
+	icon_state = "couch2yellowl"
+
+/obj/structure/chair/bench/house/couch/yellow/sofa/r
+	icon_state = "couch2yellowr"
+
+/obj/structure/chair/bench/house/couch/purple/sofa/l
+	icon_state = "couch2purplel"
+
+/obj/structure/chair/bench/house/couch/purple/sofa/r
+	icon_state = "couch2purpler"
+
+/obj/structure/chair/bench/house/couch/blue/sofa/l
+	icon_state = "couch2bluel"
+
+/obj/structure/chair/bench/house/couch/blue/sofa/r
+	icon_state = "couch2bluer"
+
+//And now, proper, flat, guest couches. 
+
+/obj/structure/chair/bench/house/couch/green/fancy/l
+	icon_state = "couch3greenl"
+
+/obj/structure/chair/bench/house/couch/green/fancy/r
+	icon_state = "couch3greenr"
+
+/obj/structure/chair/bench/house/couch/red/fancy/l
+	icon_state = "couch3redl"
+
+/obj/structure/chair/bench/house/couch/red/fancy/r
+	icon_state = "couch3redr"
+
+/obj/structure/chair/bench/house/couch/yellow/fancy/l
+	icon_state = "couch3yellowl"
+
+/obj/structure/chair/bench/house/couch/yellow/fancy/r
+	icon_state = "couch3yellowr"
+
+/obj/structure/chair/bench/house/couch/purple/fancy/l
+	icon_state = "couch3purplel"
+
+/obj/structure/chair/bench/house/couch/purple/fancy/r
+	icon_state = "couch3purpler"
+
+/obj/structure/chair/bench/house/couch/blue/fancy/l
+	icon_state = "couch3bluel"
+
+/obj/structure/chair/bench/house/couch/blue/fancy/r
+	icon_state = "couch3bluer"
+
 
 /obj/structure/chair/bench/couch/Initialize()
 	. = ..()
@@ -124,6 +226,25 @@
 	destroy_sound = 'sound/combat/hits/onwood/destroyfurniture.ogg'
 	attacked_sound = "woodimpact"
 	item_chair = null
+
+/obj/structure/chair/wood/rogue/throne/house
+	icon_state = "thronered"
+	icon = 'icons/roguetown/misc/housemisc/structure.dmi'
+//if you're reading this, this is the head coder, my wife is holding the project hostage until I add all these house variations of random shit because teehee 4 houses :3, send help.
+/obj/structure/chair/wood/rogue/throne/house/green
+	icon_state = "thronegreen"
+
+/obj/structure/chair/wood/rogue/throne/house/red
+	icon_state = "thronered"
+
+/obj/structure/chair/wood/rogue/throne/house/yellow
+	icon_state = "throneyellow"
+
+/obj/structure/chair/wood/rogue/throne/house/purple
+	icon_state = "thronepurple"
+
+/obj/structure/chair/wood/rogue/throne/house/red
+	icon_state = "thronered"
 
 /obj/item/chair/rogue
 	name = "chair"
@@ -203,14 +324,99 @@
 	else
 		..()
 
+//HOUSE CHAIRS
+
+/obj/structure/chair/wood/rogue/green
+	icon_state = "chair2green"
+	icon = 'icons/roguetown/misc/housemisc/structure.dmi'
+	item_chair = /obj/item/chair/rogue/green
+
+/obj/item/chair/rogue/green
+	icon_state = "chair2green"
+	icon = 'icons/roguetown/items/houseitems/chairs.dmi'
+	origin_type = /obj/structure/chair/wood/rogue/green
+
+/obj/structure/chair/wood/rogue/red
+	icon_state = "chair2red"
+	icon = 'icons/roguetown/misc/housemisc/structure.dmi'
+	item_chair = /obj/item/chair/rogue/red
+
+/obj/item/chair/rogue/red
+	icon_state = "chair2red"
+	icon = 'icons/roguetown/items/houseitems/chairs.dmi'
+	origin_type = /obj/structure/chair/wood/rogue/red
+
+/obj/structure/chair/wood/rogue/purple
+	icon_state = "chair2purple"
+	icon = 'icons/roguetown/misc/housemisc/structure.dmi'
+	item_chair = /obj/item/chair/rogue/purple
+
+/obj/item/chair/rogue/purple
+	icon_state = "chair2purple"
+	icon = 'icons/roguetown/items/houseitems/chairs.dmi'
+	origin_type = /obj/structure/chair/wood/rogue/purple
+
+/obj/structure/chair/wood/rogue/blue
+	icon_state = "chair2blue"
+	icon = 'icons/roguetown/misc/housemisc/structure.dmi'
+	item_chair = /obj/item/chair/rogue/blue
+
+/obj/item/chair/rogue/blue
+	icon_state = "chair2blue"
+	icon = 'icons/roguetown/items/houseitems/chairs.dmi'
+	origin_type = /obj/structure/chair/wood/rogue/blue
+
+//FANCY STUFF
 
 /obj/structure/chair/wood/rogue/fancy
-	icon_state = "chair1"
+	icon_state = "chair1green"
+	icon = 'icons/roguetown/misc/housemisc/structure.dmi'
 	item_chair = /obj/item/chair/rogue/fancy
 
 /obj/item/chair/rogue/fancy
-	icon_state = "chair1"
+	icon_state = "chair1green"
+	icon = 'icons/roguetown/items/houseitems/chairs.dmi'
 	origin_type = /obj/structure/chair/wood/rogue/fancy
+
+/obj/structure/chair/wood/rogue/fancy/green
+	icon_state = "chair1green"
+	item_chair = /obj/item/chair/rogue/fancy/green
+
+/obj/item/chair/rogue/fancy/green
+	icon_state = "chair1green"
+	origin_type = /obj/structure/chair/wood/rogue/fancy/green
+
+/obj/structure/chair/wood/rogue/fancy/red
+	icon_state = "chair1red"
+	item_chair = /obj/item/chair/rogue/fancy/red
+
+/obj/item/chair/rogue/fancy/red
+	icon_state = "chair1red"
+	origin_type = /obj/structure/chair/wood/rogue/fancy/red
+
+/obj/structure/chair/wood/rogue/fancy/yellow
+	icon_state = "chair1yellow"
+	item_chair = /obj/item/chair/rogue/fancy/yellow
+
+/obj/item/chair/rogue/fancy/yellow
+	icon_state = "chair1yellow"
+	origin_type = /obj/structure/chair/wood/rogue/fancy/yellow
+
+/obj/structure/chair/wood/rogue/fancy/purple
+	icon_state = "chair1purple"
+	item_chair = /obj/item/chair/rogue/fancy/purple
+
+/obj/item/chair/rogue/fancy/purple
+	icon_state = "chair1purple"
+	origin_type = /obj/structure/chair/wood/rogue/fancy/purple
+
+/obj/structure/chair/wood/rogue/fancy/blue
+	icon_state = "chair1blue"
+	item_chair = /obj/item/chair/rogue/fancy/blue
+
+/obj/item/chair/rogue/fancy/blue
+	icon_state = "chair1blue"
+	origin_type = /obj/structure/chair/wood/rogue/fancy/blue
 
 /obj/structure/chair/wood/rogue/attack_right(mob/user)
 	var/datum/component/simple_rotation/rotcomp = GetComponent(/datum/component/simple_rotation)
@@ -409,3 +615,47 @@
 	buckle_lying = 90
 	pixel_y = 5
 	sleepy = 3
+
+//Crystal Keep (azureport)///
+
+/obj/structure/bed/rogue/bedroll
+	name = "bedroll"
+	desc = "So you can sleep on the ground in relative peace."
+	icon_state = "bedroll"
+	attacked_sound = 'sound/foley/cloth_rip.ogg'
+	break_sound = 'sound/foley/cloth_rip.ogg'
+	sleepy = 2
+
+/obj/structure/bed/rogue/bedroll/attack_hand(mob/user, params)
+	..()
+	user.visible_message("<span class='notice'>[user] begins rolling up \the [src].</span>")
+	if(do_after(user, 2 SECONDS, TRUE, src))
+		var/obj/item/bedroll/new_bedroll = new /obj/item/bedroll(get_turf(src))
+		new_bedroll.color = src.color
+		qdel(src)
+
+/obj/item/bedroll
+	name = "rolled bedroll"
+	icon = 'icons/roguetown/items/misc.dmi'
+	icon_state = "bedroll_r"
+	w_class = WEIGHT_CLASS_BULKY
+	slot_flags = ITEM_SLOT_BACK
+
+/obj/item/bedroll/attack_self(mob/user, params)
+	..()
+	var/turf/T = get_turf(loc)
+	if(!isfloorturf(T))
+		to_chat(user, "<span class='warning'>I need ground to plant this on!</span>")
+		return
+	for(var/obj/A in T)
+		if(istype(A, /obj/structure))
+			to_chat(user, "<span class='warning'>I need some free space to deploy a [src] here!</span>")
+			return
+		if(A.density && !(A.flags_1 & ON_BORDER_1))
+			to_chat(user, "<span class='warning'>There is already something here!</span>")
+			return
+	user.visible_message("<span class='notice'>[user] begins placing \the [src] down on the ground.</span>")
+	if(do_after(user, 2 SECONDS, TRUE, src))
+		var/obj/structure/bed/rogue/bedroll/new_bedroll = new /obj/structure/bed/rogue/bedroll(get_turf(src))
+		new_bedroll.color = src.color
+		qdel(src)

@@ -15,10 +15,13 @@
 	give_bank_account = 11
 	min_pq = 1
 	max_pq = null
+	associated_squad = /datum/antagonist/squad/none
+
 
 /datum/outfit/job/roguetown/guildsmith/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/roguetown/hatfur
+	r_hand = /obj/item/engraving_hammer
 	if(prob(50))
 		head = /obj/item/clothing/head/roguetown/hatblu
 	if(H.mind)
@@ -26,11 +29,18 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/engravement, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/armorsmithing, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/weaponsmithing, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/engravement, 3)
+
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 		if(H.age == AGE_OLD)
 			H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/armorsmithing, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/weaponsmithing, 1, TRUE)
 
 	if(H.gender == MALE)
 		pants = /obj/item/clothing/under/roguetown/trou

@@ -19,7 +19,7 @@
 	give_bank_account = 22
 	min_pq = 6
 	max_pq = null
-
+	associated_squad = /datum/antagonist/squad/none
 	cmode_music = 'sound/music/combat_guard2.ogg'
 
 /datum/job/roguetown/manorguard/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
@@ -72,4 +72,5 @@
 		H.change_stat("endurance", 1)
 		H.change_stat("speed", 1)
 	H.verbs |= /mob/proc/haltyell
+	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)

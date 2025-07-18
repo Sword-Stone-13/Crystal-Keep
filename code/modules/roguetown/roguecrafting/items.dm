@@ -235,7 +235,7 @@
 	req_table = TRUE
 
 /datum/crafting_recipe/roguetown/poisonarrow
-	name = "poisoned arrow"
+	name = "poisoned iron arrow"
 	result = /obj/item/ammo_casing/caseless/rogue/arrow/poison
 	reqs = list(
 				/obj/item/ammo_casing/caseless/rogue/arrow/iron = 1,
@@ -252,17 +252,15 @@
 				)
 	req_table = TRUE
 
-/*
-/datum/crafting_recipe/roguetown/poisonbolt //Coded, but commented out pending balance discussion.
-	name = "poisoned bolt"
+/datum/crafting_recipe/roguetown/poisonbolt 
+	name = "poisoned iron bolt"
 	result = /obj/item/ammo_casing/caseless/rogue/bolt/poison
 	reqs = list(/obj/item/ammo_casing/caseless/rogue/bolt = 1,
-				/datum/reagent/berrypoison = 5)
-
+				/datum/reagent/berrypoison = 10)
 	req_table = TRUE
-*/
-/datum/crafting_recipe/roguetown/poisonarrow_five //Arrows and bolts can be smithed in batches of five. Makes sense for them to be dipped in batches of five, too
-	name = "poisoned arrow (x5)"
+
+/datum/crafting_recipe/roguetown/poisonarrow_five
+	name = "poisoned iron arrow (x5)"
 	result = list(
 				/obj/item/ammo_casing/caseless/rogue/arrow/poison,
 				/obj/item/ammo_casing/caseless/rogue/arrow/poison,
@@ -274,17 +272,15 @@
 				/obj/item/ammo_casing/caseless/rogue/arrow/iron = 5,
 				/datum/reagent/berrypoison = 25
 				)
-
 	req_table = TRUE
-/*
+
 /datum/crafting_recipe/roguetown/poisonbolt_five //Coded, but commented out pending balance discussion.
 	name = "poisoned bolts (x5)"
 	result = list(/obj/item/ammo_casing/caseless/rogue/bolt/poison = 5)
 	reqs = list(/obj/item/ammo_casing/caseless/rogue/bolt = 5,
-				/datum/reagent/berrypoison = 25)
-
+				/datum/reagent/berrypoison = 50)
 	req_table = TRUE
-*/
+
 /datum/crafting_recipe/roguetown/poisonarrow_five_stone
 	name = "poisoned stone arrow (x5)"
 	result = list(
@@ -298,12 +294,122 @@
 				/obj/item/ammo_casing/caseless/rogue/arrow/stone = 5,
 				/datum/reagent/berrypoison = 25
 				)
-
 	req_table = TRUE
+
+// === CUSTOM ADDITIONS: Poisoned Steel Ammo Recipes ===
+
+/datum/crafting_recipe/roguetown/poisonarrow/steel
+	name = "poisoned steel arrow"
+	result = /obj/item/ammo_casing/caseless/rogue/arrow/poison/steel
+	reqs = list(
+				/obj/item/ammo_casing/caseless/rogue/arrow/steel = 1,
+				/datum/reagent/berrypoison = 5
+				)
+	req_table = TRUE
+	craftdiff = 2 
+
+/datum/crafting_recipe/roguetown/poisonarrow/steel/hollowpoint
+	name = "poisoned hollowpoint steel arrow"
+	result = /obj/item/ammo_casing/caseless/rogue/arrow/poison/steel/hollowpoint
+	reqs = list(
+				/obj/item/ammo_casing/caseless/rogue/arrow/steel/hollowpoint = 1,
+				/datum/reagent/berrypoison = 10 // Higher cost for stronger poison
+				)
+	req_table = TRUE
+	craftdiff = 3
+
+/datum/crafting_recipe/roguetown/poisonbolt/steel
+	name = "poisoned steel bolt"
+	result = /obj/item/ammo_casing/caseless/rogue/bolt/poison/steel
+	reqs = list(
+				/obj/item/ammo_casing/caseless/rogue/bolt/steel = 1,
+				/datum/reagent/berrypoison = 10
+				)
+	req_table = TRUE
+	craftdiff = 2 
+
+
+// Bulk Poisoned Steel Recipes
+/datum/crafting_recipe/roguetown/poisonarrow_five/steel
+	name = "poisoned steel arrow (x5)"
+	result = list(
+				/obj/item/ammo_casing/caseless/rogue/arrow/poison/steel,
+				/obj/item/ammo_casing/caseless/rogue/arrow/poison/steel,
+				/obj/item/ammo_casing/caseless/rogue/arrow/poison/steel,
+				/obj/item/ammo_casing/caseless/rogue/arrow/poison/steel,
+				/obj/item/ammo_casing/caseless/rogue/arrow/poison/steel
+				)
+	reqs = list(
+				/obj/item/ammo_casing/caseless/rogue/arrow/steel = 5,
+				/datum/reagent/berrypoison = 25 
+				)
+	req_table = TRUE
+	craftdiff = 2 
+
+/datum/crafting_recipe/roguetown/poisonarrow_five/steel/hollowpoint
+	name = "poisoned hollowpoint steel arrow (x5)"
+	result = list(
+				/obj/item/ammo_casing/caseless/rogue/arrow/poison/steel/hollowpoint,
+				/obj/item/ammo_casing/caseless/rogue/arrow/poison/steel/hollowpoint,
+				/obj/item/ammo_casing/caseless/rogue/arrow/poison/steel/hollowpoint,
+				/obj/item/ammo_casing/caseless/rogue/arrow/poison/steel/hollowpoint,
+				/obj/item/ammo_casing/caseless/rogue/arrow/poison/steel/hollowpoint
+				)
+	reqs = list(
+				/obj/item/ammo_casing/caseless/rogue/arrow/steel/hollowpoint = 5,
+				/datum/reagent/berrypoison = 50 
+				)
+	req_table = TRUE
+	craftdiff = 3 // Higher difficulty due to hollowpoint complexity
+
+/datum/crafting_recipe/roguetown/poisonbolt_five/steel
+	name = "poisoned steel bolts (x5)"
+	result = list(
+				/obj/item/ammo_casing/caseless/rogue/bolt/poison/steel,
+				/obj/item/ammo_casing/caseless/rogue/bolt/poison/steel,
+				/obj/item/ammo_casing/caseless/rogue/bolt/poison/steel,
+				/obj/item/ammo_casing/caseless/rogue/bolt/poison/steel,
+				/obj/item/ammo_casing/caseless/rogue/bolt/poison/steel
+				)
+	reqs = list(
+				/obj/item/ammo_casing/caseless/rogue/bolt/steel = 5,
+				/datum/reagent/berrypoison = 50 // 5x single recipe cost
+				)
+	req_table = TRUE
+	craftdiff = 2 // Matches /datum/crafting_recipe/roguetown/poisonbolt_five
+
+// === END CUSTOM ADDITIONS ===
+
+//CKEEP STUFF
+
+//DWARF CORE
+/datum/crafting_recipe/roguetown/riddleofsteeldwarf
+	name = "Dwarven Catalyst"
+	result = /obj/item/riddleofsteel
+	reqs = list(/obj/item/roguegem/red = 1)
+	skillcraft = /datum/skill/craft/dwarfsmithing
+	craftdiff = 3
+
+//KOBOLD CORE
+/datum/crafting_recipe/roguetown/riddleofsteelkobold
+	name = "Koboldic Catalyst"
+	result = /obj/item/riddleofsteel
+	reqs = list(/obj/item/roguegem/blue = 1) //for now just red gems 
+	skillcraft = /datum/skill/craft/koboldsmithing
+	craftdiff = 3
+
+/datum/crafting_recipe/roguetown/paddedarrow
+	name = "padded arrow"
+	result = /obj/item/ammo_casing/caseless/rogue/arrow/padded
+	reqs = list(/obj/item/storage/roguebag = 1,
+				/obj/item/grown/log/tree/stick = 1,
+				/obj/item/natural/fibers = 2)
+	verbage_simple = "stuff together"
+	verbage = "stuff together"
+	craftdiff = 1
 
 /obj/item/storage/roguebag/crafted
 	sellprice = 4
-
 
 /datum/crafting_recipe/roguetown/bait
 	name = "bait"
@@ -394,10 +500,10 @@
 /datum/crafting_recipe/roguetown/paperscroll
 	name = "scroll of parchment (x5)"
 	result = list(/obj/item/paper/scroll,
-				  /obj/item/paper/scroll,
-				  /obj/item/paper/scroll,
-				  /obj/item/paper/scroll,
-				  /obj/item/paper/scroll)
+				/obj/item/paper/scroll,
+				/obj/item/paper/scroll,
+				/obj/item/paper/scroll,
+				/obj/item/paper/scroll)
 	reqs = list(/obj/item/grown/log/tree/small = 1,
 	/datum/reagent/water = 50)
 	tools = list(/obj/item/rogueweapon/huntingknife = 1)
@@ -407,13 +513,13 @@
 /datum/crafting_recipe/roguetown/parchment
 	name = "paper parchment (x8)"
 	result = list(/obj/item/paper,
-				  /obj/item/paper,
-				  /obj/item/paper,
-				  /obj/item/paper,
-				  /obj/item/paper,
-				  /obj/item/paper,
-				  /obj/item/paper,
-				  /obj/item/paper)
+				/obj/item/paper,
+				/obj/item/paper,
+				/obj/item/paper,
+				/obj/item/paper,
+				/obj/item/paper,
+				/obj/item/paper,
+				/obj/item/paper)
 	reqs = list(/obj/item/grown/log/tree/small = 1,
 	/datum/reagent/water = 30)
 	tools = list(/obj/item/rogueweapon/huntingknife = 1)

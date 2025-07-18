@@ -18,7 +18,9 @@
 		/datum/language/beast,
 		/datum/language/orcish,
 		/datum/language/draconic,
-		/datum/language/faexin
+		/datum/language/faexin,
+		/datum/language/beachbum,
+		/datum/language/aphasia
 	))
 
 /obj/item/organ/tongue/Initialize(mapload)

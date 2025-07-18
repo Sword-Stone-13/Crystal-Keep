@@ -28,7 +28,18 @@
 		for(var/X in GLOB.mercenary_positions)
 			peopleiknow += X
 			peopleknowme += X
-
+		for(var/X in GLOB.alrich_positions)
+			peopleiknow += X
+			peopleknowme += X
+		for(var/X in GLOB.bravado_positions)
+			peopleiknow += X
+			peopleknowme += X
+		for(var/X in GLOB.caesar_positions)
+			peopleiknow += X
+			peopleknowme += X
+		for(var/X in GLOB.deleon_positions)
+			peopleiknow += X
+			peopleknowme += X
 /datum/outfit/job/roguetown
 	uniform = null
 	id = null

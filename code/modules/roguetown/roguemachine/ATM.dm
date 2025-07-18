@@ -1,6 +1,6 @@
 /obj/structure/roguemachine/atm
 	name = "SHYLOCK"
-	desc = "Stores and withdraws currency for accounts managed by the Kingdom of Rockhill."
+	desc = "On its face, etched, 'I'll have my bond.'"
 	icon = 'icons/roguetown/misc/machines.dmi'
 	icon_state = "atm"
 	density = FALSE
@@ -12,7 +12,7 @@
 		return
 	var/mob/living/carbon/human/H = user
 
-	if(HAS_TRAIT(user, TRAIT_MATTHIOS_CURSE))
+	if(HAS_TRAIT(user, TRAIT_NYATTHIOS_CURSE))
 		to_chat(H, "<span class='warning'>The idea repulses me!</span>")
 		H.cursed_freak_out()
 		return
@@ -75,7 +75,7 @@
 /obj/structure/roguemachine/atm/attackby(obj/item/P, mob/user, params)
 	if(ishuman(user))
 
-		if(HAS_TRAIT(user, TRAIT_MATTHIOS_CURSE))
+		if(HAS_TRAIT(user, TRAIT_NYATTHIOS_CURSE))
 			var/mob/living/carbon/human/H = user
 			to_chat(H, "<span class='warning'>The idea repulses me!</span>")
 			H.cursed_freak_out()
@@ -97,5 +97,5 @@
 
 /obj/structure/roguemachine/atm/examine(mob/user)
 	. += ..()
-	. += span_info("The current tax rate on deposits is [SStreasury.tax_value * 100] percent. Nobles exempt.")
+	. += span_info("The current tax rate on deposits is [SStreasury.tax_value * 100] percent, or a pound of flesh. Nobles exempt.")
 

@@ -101,11 +101,18 @@
 /////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////
 
-#define UPGRADE_NOTAX		(1<<0)
-#define UPGRADE_ARMOR		(1<<1)
-#define UPGRADE_WEAPONS		(1<<2)
-#define UPGRADE_FOOD		(1<<3)
-#define UPGRADE_WARDROBE	(1<<4)
+#define UPGRADE_NOTAX            (1<<0)
+#define UPGRADE_ARMOR           (1<<1)
+#define UPGRADE_WEAPONS         (1<<2)
+#define UPGRADE_FOOD            (1<<3)
+#define UPGRADE_WARDROBE        (1<<4)
+#define UPGRADE_WALNUTIAN       (1<<5)
+#define UPGRADE_AVARIKYO        (1<<6)
+#define UPGRADE_ARTISANS        (1<<7)
+#define UPGRADE_ZYBANTIUM       (1<<8)
+#define UPGRADE_FENCER          (1<<9)
+#define UPGRADE_MUNITIONS       (1<<10)
+#define UPGRADE_STEEL           (1<<11)
 
 /obj/structure/roguemachine/merchantvend
 	name = "GOLDFACE"
@@ -237,6 +244,20 @@
 			options += "Purchase Pantry License (50)"
 		if(!(upgrade_flags & UPGRADE_WARDROBE))
 			options += "Purchase Wardrobe License (50)"
+		if(!(upgrade_flags & UPGRADE_WALNUTIAN))
+			options += "Purchase Walnutian Imports License (350)"
+		if(!(upgrade_flags & UPGRADE_AVARIKYO))
+			options += "Purchase Avarikyo Imports License (350)"
+		if(!(upgrade_flags & UPGRADE_ARTISANS))
+			options += "Purchase Commissioned Artisans Connection (200)"
+		if(!(upgrade_flags & UPGRADE_ZYBANTIUM))
+			options += "Purchase Zybantium Imports License (250)"
+		if(!(upgrade_flags & UPGRADE_FENCER))
+			options += "Purchase Fencer Connection (500)"
+		if(!(upgrade_flags & UPGRADE_MUNITIONS))
+			options += "Purchase Import Munitions License (100)"
+		if(!(upgrade_flags & UPGRADE_STEEL))
+			options += "Purchase Steel Imports License (1000)"
 		var/select = input(usr, "Please select an option.", "", null) as null|anything in options
 		if(!select)
 			return
@@ -289,6 +310,83 @@
 				budget -= 50
 				upgrade_flags |= UPGRADE_WARDROBE
 				playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
+			if("Purchase Walnutian Imports License (350)")
+				if(upgrade_flags & UPGRADE_WALNUTIAN)
+					return
+				if(budget < 350)
+					say("Ask again when you're serious.")
+					playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+					return
+				budget -= 350
+				upgrade_flags |= UPGRADE_WALNUTIAN
+				playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
+			if("Purchase Avarikyo Imports License (350)")
+				if(upgrade_flags & UPGRADE_AVARIKYO)
+					return
+				if(budget < 350)
+					say("Ask again when you're serious.")
+					playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+					return
+				budget -= 350
+				upgrade_flags |= UPGRADE_AVARIKYO
+				playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
+			if("Purchase Commissioned Artisans Connection (200)")
+				if(upgrade_flags & UPGRADE_ARTISANS)
+					return
+				if(budget < 200)
+					say("Ask again when you're serious.")
+					playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+					return
+			if("Purchase Commissioned Artisans Connection (200)")
+				if(upgrade_flags & UPGRADE_ARTISANS)
+					return
+				if(budget < 200)
+					say("Ask again when you're serious.")
+					playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+					return
+				budget -= 200
+				upgrade_flags |= UPGRADE_ARTISANS
+				playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
+			if("Purchase Zybantium Imports License (250)")
+				if(upgrade_flags & UPGRADE_ZYBANTIUM)
+					return
+				if(budget < 250)
+					say("Ask again when you're serious.")
+					playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+					return
+				budget -= 250
+				upgrade_flags |= UPGRADE_ZYBANTIUM
+				playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
+			if("Purchase Fencer Connection (500)")
+				if(upgrade_flags & UPGRADE_FENCER)
+					return
+				if(budget < 500)
+					say("Ask again when you're serious.")
+					playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+					return
+				budget -= 500
+				upgrade_flags |= UPGRADE_FENCER
+				playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
+			if("Purchase Import Munitions License (100)")
+				if(upgrade_flags & UPGRADE_MUNITIONS)
+					return
+				if(budget < 100)
+					say("Ask again when you're serious.")
+					playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+					return
+				budget -= 100
+				upgrade_flags |= UPGRADE_MUNITIONS
+				playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
+			if("Purchase Steel Imports License (2000)")
+				if(upgrade_flags & UPGRADE_STEEL)
+					return
+				if(budget < 2000)
+					say("Ask again when you're serious.")
+					playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+					return
+				budget -= 2000
+				upgrade_flags |= UPGRADE_STEEL
+				playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
 	return attack_hand(usr)
 
 /obj/structure/roguemachine/merchantvend/attack_hand(mob/living/user)
@@ -325,6 +423,20 @@
 		unlocked_cats+="Consumable"
 	if(upgrade_flags & UPGRADE_WARDROBE)
 		unlocked_cats+="Wardrobe"
+	if(upgrade_flags & UPGRADE_WALNUTIAN)
+		unlocked_cats+="Walnutian Imports"
+	if(upgrade_flags & UPGRADE_AVARIKYO)
+		unlocked_cats+="Avarikyo Imports"
+	if(upgrade_flags & UPGRADE_ARTISANS)
+		unlocked_cats+="Artisan Goods"
+	if(upgrade_flags & UPGRADE_ZYBANTIUM)
+		unlocked_cats+="Zybantium Imports"
+	if(upgrade_flags & UPGRADE_FENCER)
+		unlocked_cats+="Fencer Goods"
+	if(upgrade_flags & UPGRADE_MUNITIONS)
+		unlocked_cats+="Munitions"
+	if(upgrade_flags & UPGRADE_STEEL)
+		unlocked_cats+="Steel Imports"
 
 	if(current_cat == "1")
 		contents += "<center>"
@@ -367,6 +479,6 @@
 	. = ..()
 	update_icon()
 //	held_items[/obj/item/reagent_containers/glass/bottle/rogue/wine] = list("PRICE" = rand(23,33),"NAME" = "vino")
-//	held_items[/obj/item/dmusicbox] = list("PRICE" = rand(444,777),"NAME" = "Music Box")
+	held_items[/obj/item/dmusicbox] = list("PRICE" = rand(444,777),"NAME" = "Music Box")
 
 #undef UPGRADE_NOTAX

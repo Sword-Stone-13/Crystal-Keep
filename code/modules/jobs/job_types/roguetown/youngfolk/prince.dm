@@ -6,17 +6,18 @@
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
-	allowed_races = RACES_TOLERATED_UP 
+	allowed_races = RACES_EORA_APPROVED 
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_ages = list(AGE_ADULT)
+	allowed_ages = list(AGE_YOUTH, AGE_ADULT)
 
-	tutorial = "You've never felt the gnawing of the winter, never known the bite of hunger and certainly have never known what the peasantry call a honest day's work. In your youth you were as free as any bird in the sky, but that is of the past. Your noble duties are fast approaching and you will soon have to choose: Continue to spend life leisurely, or stalwartly shoulder the duties you've been handed."
+	tutorial = "You've never felt the gnawing of the winter, never known the bite of hunger and certainly have never known what the peasantry call a honest day's work. Eora even had you take after your father. At least, externally. In your youth you were as free as any bird in the sky, but that is of the past. Your noble duties are fast approaching and you will soon have to choose: Continue to spend life leisurely, or stalwartly shoulder the duties you've been handed."
 
 	outfit = /datum/outfit/job/roguetown/prince
 	display_order = JDO_PRINCE
 	give_bank_account = TRUE
 	min_pq = -10
 	max_pq = null
+	associated_squad = /datum/antagonist/squad/none
 
 /datum/job/roguetown/prince/after_spawn(mob/living/H, mob/M, latejoin)
 	. = ..()
@@ -26,6 +27,7 @@
 /datum/outfit/job/roguetown/prince/pre_equip(mob/living/carbon/human/H)
 	..()
 	if(H.gender == MALE)
+		var/acceptable = list("80s-style Hair","Bowlcut", "Bowlcut2", "Hime Cut (Short)")
 		pants = /obj/item/clothing/under/roguetown/tights
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/guard
 		armor = /obj/item/clothing/suit/roguetown/armor/chainmail
@@ -34,6 +36,9 @@
 		beltl = /obj/item/keyring/royal
 		beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
 		backr = /obj/item/storage/backpack/rogue/satchel
+		if(!(H.hairstyle in acceptable))
+			H.hairstyle = pick(acceptable)
+			H.update_hair()
 		if(H.mind)
 			H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
@@ -73,6 +78,7 @@
 			H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
+			H.mind.squad = null
 			H.change_stat("skill", 2)
 			H.change_stat("endurance", -2)
 			H.change_stat("strength", -1)

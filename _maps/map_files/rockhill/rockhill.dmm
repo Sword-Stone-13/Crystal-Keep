@@ -780,7 +780,6 @@
 /obj/structure/table/wood{
 	icon_state = "tablewood1"
 	},
-/obj/item/reagent_containers/hypospray/medipen/sty/snekbt,
 /obj/structure/fluff/walldeco/bigpainting/lake{
 	pixel_x = -4;
 	pixel_y = 31
@@ -1221,16 +1220,6 @@
 /area/rogue/indoors/town/tavern)
 "baO" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/cloak/raincloak/vanguard,
-/obj/item/clothing/cloak/raincloak/vanguard,
-/obj/item/clothing/cloak/raincloak/vanguard,
-/obj/item/clothing/cloak/raincloak/vanguard,
-/obj/item/clothing/cloak/raincloak/vanguard,
-/obj/item/clothing/cloak/raincloak/vanguard,
-/obj/item/clothing/cloak/raincloak/vanguard,
-/obj/item/clothing/cloak/raincloak/vanguard,
-/obj/item/clothing/cloak/raincloak/vanguard,
-/obj/item/clothing/cloak/raincloak/vanguard,
 /turf/open/floor/rogue/concrete,
 /area/rogue/under/town/basement)
 "baS" = (
@@ -2094,7 +2083,7 @@
 "bLh" = (
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
-	lockid = "nightmaiden";
+	lockid = "actor";
 	name = "Dungeon Room";
 	dir = 1
 	},
@@ -2242,12 +2231,6 @@
 /obj/structure/bed/rogue/inn/hay,
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/rtfield)
-"bUK" = (
-/obj/structure/rack/rogue,
-/obj/item/clothing/head/roguetown/helmet/citywatch,
-/obj/item/clothing/head/roguetown/helmet/citywatch,
-/turf/open/floor/rogue/woodturned,
-/area/rogue/indoors/town/garrison)
 "bUY" = (
 /obj/structure/chair/bench/church/mid{
 	dir = 4
@@ -2412,7 +2395,7 @@
 /area/rogue/outdoors/town/roofs)
 "cdO" = (
 /obj/structure/mineral_door/wood/towner{
-	lockid = "nightmaiden";
+	lockid = "actor";
 	locked = 0
 	},
 /turf/open/floor/rogue/cobble/mossy,
@@ -4718,7 +4701,7 @@
 /obj/item/key/blacksmith,
 /obj/item/key/blacksmith,
 /obj/item/key/tavern,
-/obj/item/key/nightmaiden,
+/obj/item/key/actor,
 /obj/item/key/bog_gatehouse,
 /obj/item/key/town_armory,
 /obj/item/key/town_armory,
@@ -4928,7 +4911,7 @@
 /area/rogue/indoors/town)
 "eij" = (
 /obj/structure/mineral_door/wood/red{
-	lockid = "nightmaiden";
+	lockid = "actor";
 	name = "Bath Wench Quarters"
 	},
 /turf/open/floor/rogue/cobble/mossy,
@@ -5133,7 +5116,7 @@
 	dir = 9;
 	icon_state = "largetable"
 	},
-/obj/item/key/nightmaiden,
+/obj/item/key/actor,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/bath)
 "erA" = (
@@ -5759,8 +5742,6 @@
 /area/rogue/indoors/town/manor)
 "eQT" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/suit/roguetown/armor/citywatch,
-/obj/item/clothing/suit/roguetown/armor/citywatch,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/garrison)
 "eSc" = (
@@ -6244,7 +6225,7 @@
 /area/rogue/outdoors/bog)
 "fig" = (
 /obj/structure/mineral_door/wood/red{
-	lockid = "nightmaiden";
+	lockid = "actor";
 	name = "Bath Wench Quarters";
 	locked = 1
 	},
@@ -7959,7 +7940,7 @@
 /area/rogue/indoors/town/church/chapel)
 "gGJ" = (
 /obj/structure/mineral_door/wood/red{
-	lockid = "nightmaiden"
+	lockid = "actor"
 	},
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/indoors/town/bath)
@@ -8633,7 +8614,7 @@
 /area/rogue/outdoors/bog)
 "hmN" = (
 /obj/structure/mineral_door/wood/red{
-	lockid = "nightmaiden";
+	lockid = "actor";
 	name = "Sewer Room";
 	locked = 1
 	},
@@ -10246,7 +10227,7 @@
 "iKa" = (
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
-	lockid = "nightmaiden";
+	lockid = "actor";
 	name = "Bath Room 02";
 	dir = 8
 	},
@@ -12699,7 +12680,7 @@
 /area/rogue/outdoors/bog)
 "kQW" = (
 /obj/structure/roguethrone{
-	name = "Throne of Rockhill"
+	name = "Throne of Crystal Keep"
 	},
 /obj/effect/landmark/start/lord,
 /obj/structure/roguemachine/titan{
@@ -12812,7 +12793,7 @@
 "kXV" = (
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
-	lockid = "nightmaiden";
+	lockid = "actor";
 	dir = 8;
 	name = "Bath Room 01"
 	},
@@ -13893,7 +13874,7 @@
 /area/rogue/indoors/town/magician)
 "lQU" = (
 /obj/structure/mineral_door/wood/red{
-	lockid = "nightmaiden";
+	lockid = "actor";
 	name = "Service Room";
 	locked = 1
 	},
@@ -14134,7 +14115,7 @@
 /area/rogue/under/town/basement)
 "mbA" = (
 /obj/structure/fluff/statue/pillar,
-/obj/effect/landmark/start/nightmaiden{
+/obj/effect/landmark/start/actor{
 	dir = 4
 	},
 /turf/open/floor/rogue/hexstone,
@@ -14971,7 +14952,7 @@
 "mMJ" = (
 /obj/structure/mineral_door/bars{
 	name = "Cell Door";
-	lockid = "nightmaiden"
+	lockid = "actor"
 	},
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/indoors/town/bath)
@@ -15003,7 +14984,7 @@
 	},
 /area/rogue/indoors/town)
 "mOj" = (
-/obj/effect/landmark/start/nightmaiden{
+/obj/effect/landmark/start/actor{
 	dir = 4
 	},
 /turf/open/floor/rogue/herringbone,
@@ -18015,7 +17996,6 @@
 "pmk" = (
 /obj/structure/closet/crate/roguecloset,
 /obj/item/clothing/under/roguetown/tights/stockings/silk/black,
-/obj/item/clothing/suit/roguetown/armor/leather/vest/hand,
 /obj/item/rogueweapon/sword/rapier,
 /obj/item/perfume/random,
 /turf/open/floor/rogue/wood,
@@ -18748,7 +18728,7 @@
 /turf/open/floor/rogue/concrete,
 /area/rogue/under/town/basement)
 "pSC" = (
-/obj/effect/landmark/start/nightmaiden,
+/obj/effect/landmark/start/actor,
 /turf/open/floor/rogue/church,
 /area/rogue/indoors/town/bath)
 "pSN" = (
@@ -27481,7 +27461,7 @@
 /area/rogue/indoors)
 "xtG" = (
 /obj/structure/mineral_door/wood/donjon{
-	lockid = "nightmaiden";
+	lockid = "actor";
 	name = "Bath House";
 	dir = 8
 	},
@@ -414063,7 +414043,7 @@ xen
 cxX
 iqj
 kIh
-bUK
+eQT
 tNj
 lCv
 hob

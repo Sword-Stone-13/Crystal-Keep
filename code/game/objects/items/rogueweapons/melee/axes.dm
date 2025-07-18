@@ -157,6 +157,9 @@
 	smeltresult = /obj/item/ingot/iron
 	gripped_intents = null
 	wdefense = 2
+	thrown_bclass = BCLASS_CHOP // Applies bruise wounds, fractures on crit
+	crit_bonus = 10 // No crit bonus by default
+	can_crit_throw = TRUE // Allows critical hits when thrown
 
 /obj/item/rogueweapon/stoneaxe/woodcut/steel
 	icon_state = "saxe"
@@ -179,3 +182,47 @@
 			if("onbelt")
 				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
+
+/obj/item/rogueweapon/stoneaxe/battle/bluesteel
+	force = 32
+	force_wielded = 36 
+	possible_item_intents = list(/datum/intent/axe/chop/battle/bluesteel, /datum/intent/axe/smash)
+	name = "Bluesteel Battleaxe"
+	desc = "A dwarvish battle axe, blunt, heavy, ugly."
+	icon_state = "bluesteelbattleaxe"
+	max_blade_int = 400
+	smeltresult = /obj/item/ingot/bluesteel
+	gripped_intents = list(/datum/intent/axe/chop/battle/bluesteel, /datum/intent/axe/smash)
+	minstr = 15
+	wdefense = 5
+	wparrybonus = 5
+	wparryspeed = -2
+	wbalance = -2
+
+/datum/intent/axe/chop/battle/bluesteel
+	penfactor = 10
+	damfactor = 1.2 //36 on battleaxe
+
+
+/datum/intent/axe/smash
+	name = "smash"
+	icon_state = "insmash"
+	blade_class = BCLASS_SMASH
+	damfactor = 1.2
+	attack_verb = list("chops", "hacks")
+	animname = "chop"
+	hitsound = list('sound/combat/hits/bladed/genchop (1).ogg', 'sound/combat/hits/bladed/genchop (2).ogg', 'sound/combat/hits/bladed/genchop (3).ogg')
+	penfactor = 80 //probably op, we'll see later.
+	swingdelay = 20 //Big fucking axe, blunt ass hunk of metal.
+	item_d_type = "blunt"
+	chargetime = 5
+	chargedrain = 1
+
+/obj/item/rogueweapon/stoneaxe/battle/bluesteel/childsize
+	force = 26
+	force_wielded = 32
+	name = "Bluesteel Axe"
+	desc = "A bluesteel axe, more humane sized."
+	icon_state = "bluesteelaxe"
+	possible_item_intents = list(/datum/intent/axe/cut/battle, /datum/intent/axe/chop/battle)
+	minstr = 13

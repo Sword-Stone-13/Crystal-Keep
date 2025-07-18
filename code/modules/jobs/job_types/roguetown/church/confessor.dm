@@ -8,7 +8,7 @@
 
 	allowed_races = RACES_TOLERATED_UP
 	allowed_patrons = list(
-		/datum/patron/psydon
+		/datum/patron/divine/ravox
 	)
 	allowed_sexes = list(MALE)
 
@@ -20,6 +20,7 @@
 //	spells = list(/obj/effect/proc_holder/spell/invoked/heal, /obj/effect/proc_holder/spell/invoked/shepherd)
 	whitelist_req = TRUE
 	display_order = JDO_SHEPHERD
+	associated_squad = /datum/antagonist/squad/none
 	give_bank_account = 3
 	min_pq = 0
 	max_pq = null
@@ -27,14 +28,13 @@
 /datum/outfit/job/roguetown/shepherd
 	name = "Confessor"
 	jobtype = /datum/job/roguetown/shepherd
-
 /datum/outfit/job/roguetown/shepherd/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/roguetown/puritan
 	cloak = /obj/item/clothing/cloak/cape/puritan
 	belt = /obj/item/storage/belt/rogue/leather
 	shoes = /obj/item/clothing/shoes/roguetown/armor
-	neck = /obj/item/clothing/neck/roguetown/psicross/silver
+	neck = /obj/item/clothing/neck/roguetown/horus
 	pants = /obj/item/clothing/under/roguetown/tights/black
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
 	mask = /obj/item/clothing/mask/rogue/shepherd

@@ -18,3 +18,9 @@
 
 /obj/item/reagent_containers/glass/bottle/rogue/water
 	list_reagents = list(/datum/reagent/water = 45)
+
+obj/item/reagent_containers/glass/bottle/rogue/moonster
+	list_reagents = list(/datum/reagent/moondust_liquid = 10)
+
+obj/item/reagent_containers/glass/bottle/rogue/cleanlean
+	list_reagents = list(/datum/reagent/moondust_liquid = 20, /datum/reagent/medicine/vvizardlean = 25)

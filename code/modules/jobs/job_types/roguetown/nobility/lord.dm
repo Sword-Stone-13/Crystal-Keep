@@ -10,26 +10,29 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	total_positions = 0
 	spawn_positions = 1
 	selection_color = JCOLOR_NOBLE
-	allowed_races = RACES_TOLERATED_UP
+	allowed_races = RACES_EORA_APPROVED
 	allowed_sexes = list(MALE)
 
 	spells = list(
 		/obj/effect/proc_holder/spell/self/grant_title,
-		/obj/effect/proc_holder/spell/self/grant_nobility,
 		/obj/effect/proc_holder/spell/self/convertrole/servant,
 		/obj/effect/proc_holder/spell/self/convertrole/guard,
 		/obj/effect/proc_holder/spell/self/convertrole/bog,
 	)
+///obj/effect/proc_holder/spell/self/grant_nobility maybe later when I make it races eora approved, for now I just don't think it's necessary
+
 	outfit = /datum/outfit/job/roguetown/lord
 	visuals_only_outfit = /datum/outfit/job/roguetown/lord/visuals
 
 	display_order = JDO_LORD
-	tutorial = "Elevated upon your throne through a web of intrigue and political upheaval, you are the absolute authority of these lands and at the center of every plot within it. Every man, woman and child is envious of your position and would replace you in less than a heartbeat: Show them the error in their ways."
+	tutorial = "Elevated upon your throne through a web of intrigue and political upheaval, you are the absolute authority of these lands. You are the Noble's noble. Eora chose your blood to rule, and Astrata's chosen chose you to to rule among your blood. The gods chose you, and damned will the kingdom be if you just let anyone else touch the crown."
 	whitelist_req = FALSE
-	min_pq = 10
+	min_pq = 0
 	max_pq = null
 	give_bank_account = 1000
 	required = TRUE
+	associated_squad = /datum/antagonist/squad/none
+
 
 /datum/job/roguetown/exlord //just used to change the lords title
 	title = "King Emeritus"
@@ -54,10 +57,10 @@ GLOBAL_LIST_EMPTY(lord_titles)
 			GLOB.lordsurname = "of [L.real_name]"
 		SSticker.rulermob = L
 		if(L.gender != FEMALE)
-			to_chat(world, "<b><span class='notice'><span class='big'>[L.real_name] is King of Rockhill.</span></span></b>")
+			to_chat(world, "<b><span class='notice'><span class='big'>[L.real_name] is King of Crystal Keep.</span></span></b>")
 			addtimer(CALLBACK(L, TYPE_PROC_REF(/mob, lord_color_choice)), 50)
 		else
-			to_chat(world, "<b><span class='notice'><span class='big'>[L.real_name] is Queen of Rockhill.</span></span></b>")
+			to_chat(world, "<b><span class='notice'><span class='big'>[L.real_name] is Queen of Crystal Keep.</span></span></b>")
 			addtimer(CALLBACK(L, TYPE_PROC_REF(/mob, lord_color_choice)), 50)
 
 /datum/outfit/job/roguetown/lord/pre_equip(mob/living/carbon/human/H)

@@ -3,7 +3,7 @@
 	/// Name of the role
 	var/name = "MIGRANT ROLE"
 	/// Restricts species if the list is not null
-	var/list/allowed_races = RACES_VERY_SHUNNED_UP	//QUICK FIX TO EXCLUDE SEELIE
+	var/list/allowed_races = RACES_ALL_KINDS	//QUICK FIX TO EXCLUDE SEELIE
 	/// Restricts sexes if list is not null
 	var/list/allowed_sexes
 	/// Restricts ages if list is not null
@@ -24,17 +24,20 @@
 	var/banned_leprosy = TRUE
 	var/banned_lunatic = TRUE
 
+	var/associated_squad = /datum/antagonist/squad/none
+
 /datum/migrant_role/proc/after_spawn(mob/living/carbon/human/character)
+	if(character.mind && associated_squad)
+		var/preferred_squad_datum_type = associated_squad
+		character.mind.add_antag_datum(preferred_squad_datum_type)
+		var/datum/antagonist/squad/squad_datum = character.mind.has_antag_datum(preferred_squad_datum_type)
+		if(squad_datum)
+			character.mind.squad = squad_datum.squad_type
+			squad_datum.greet()
+	else
+		// Explicitly clear squad if no associated squad
+		character.mind.squad = null
+		var/datum/antagonist/squad/squad_datum = character.mind.has_antag_datum(/datum/antagonist/squad)
+		if(squad_datum)
+			character.mind.remove_antag_datum(squad_datum)
 	return
-
-/datum/migrant_role/adventurer
-	name = "Adventurer"
-	advclass_cat_rolls = list(CTAG_ADVENTURER = 5)
-
-
-/datum/migrant_role/bandit
-	name = "Bandit"
-	antag_datum = /datum/antagonist/bandit
-	advclass_cat_rolls = list(CTAG_BANDIT = 20)
-	grant_lit_torch = TRUE
-

@@ -1,6 +1,6 @@
 /datum/advclass/amazon
 	name = "Amazon"
-	tutorial = "Amazons are warrior-women from the mysterious isle of Issa. These rare fighters are so tough they can beat ten average men!"
+	tutorial = "Amazons are warrior-women from the mysterious isle of Avarikyo. These rare fighters are so tough they can beat ten average men!"
 	allowed_sexes = list(FEMALE)
 	allowed_races = list(
 		/datum/species/human/northern,
@@ -14,9 +14,7 @@
 	pickprob = 25
 	maximum_possible_slots = 3
 	category_tags = list(CTAG_ADVENTURER)
-
 	traits_applied = list(TRAIT_CRITICAL_RESISTANCE, TRAIT_NOPAINSTUN)
-	cmode_music = 'sound/music/combat_gronn.ogg'
 
 /datum/outfit/job/roguetown/adventurer/amazon/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -63,3 +61,7 @@
 		H.dropItemToGround(H.wear_mask, TRUE)
 		qdel(I)
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/barbarian_rage)
+	if(prob(20))
+		H.cmode_music = 'sound/music/combat_amazunt.ogg'
+	else
+		H.cmode_music = 'sound/music/combat_gronn.ogg'

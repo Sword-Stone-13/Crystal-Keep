@@ -97,3 +97,42 @@
 	result = /obj/item/rogue/instrument/drum
 	reqs = list(/obj/item/natural/hide/cured = 1,/obj/item/grown/log/tree/small = 1)
 	sellprice = 5
+
+///CRYSTAL KEEPU
+
+/datum/crafting_recipe/roguetown/hunting/bracers
+	name = "leather mask"
+	result = list(/obj/item/clothing/mask/rogue/facemask/leather)
+	reqs = list(/obj/item/natural/hide/cured = 1)
+
+/datum/crafting_recipe/roguetown/hunting/bracers
+	name = "leather mask"
+	result = list(/obj/item/clothing/mask/rogue/facemask/leather)
+	reqs = list(/obj/item/natural/hide/cured = 1)
+
+/datum/crafting_recipe/roguetown/hunting/quiver/greater
+	name = "Greater Quiver"
+	result = /obj/item/ammo_holder/quiver/greatquiver
+	reqs = list(/obj/item/natural/hide/cured = 4,
+				/obj/item/natural/fibers = 2,
+				/obj/item/natural/cured/essence = 1)
+	sellprice = 28
+
+/datum/crafting_recipe/roguetown/hunting/quiver/giant
+	name = "Giant's Quiver"
+	result = /obj/item/ammo_holder/quiver/greatquiver
+	reqs = list(/obj/item/natural/hide/cured = 8,
+				/obj/item/rope = 2)
+
+///azure port///
+
+/datum/crafting_recipe/roguetown/leather/bedroll
+	name = "bedroll"
+	result = /obj/item/bedroll
+	reqs = list(/obj/item/natural/hide = 2,
+				/obj/item/rope = 1)
+	tools = list(/obj/item/needle)
+	verbage_simple = "construct"
+	verbage = "constructs"
+	craftdiff = 0
+

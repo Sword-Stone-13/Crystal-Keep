@@ -726,14 +726,27 @@
 	metalizer_result = /obj/structure/mineral_door/wood/donjon
 
 /obj/structure/mineral_door/wood/Initialize()
-	if(icon_state =="woodhandle")
-		if(icon_state != "wcv")
-			if(prob(10))
+	if(icon_state == "woodhandle" && icon_state != "wcv")
+		var/rand_choice = rand(1, 8)
+		switch(rand_choice)
+			if(1)
 				icon_state = "wcg"
-			else if(prob(10))
+			if(2)
 				icon_state = "wcr"
+			if(3)
+				icon_state = "woodlight"
+			if(4)
+				icon_state = "wooddark"
+			if(5)
+				icon_state = "woodmed"
+			if(6)
+				icon_state = "woodlighthandle"
+			if(7)
+				icon_state = "wooddarkhandle"
+			if(8)
+				icon_state = "woodmedhandle"
 	if(over_state)
-		add_overlay(mutable_appearance(icon, "[over_state]", ABOVE_MOB_LAYER))
+		add_overlay(mutable_appearance(icon, over_state, ABOVE_MOB_LAYER))
 	. = ..()
 
 /obj/structure/mineral_door/wood/blue
@@ -742,6 +755,19 @@
 	icon_state = "wcr"
 /obj/structure/mineral_door/wood/violet
 	icon_state = "wcv"
+/obj/structure/mineral_door/wood/light
+	icon_state = "woodlight"
+/obj/structure/mineral_door/wood/dark
+	icon_state = "wooddark"
+/obj/structure/mineral_door/wood/med
+	icon_state = "woodmed"
+/obj/structure/mineral_door/wood/lighthandle
+	icon_state = "woodlighthandle"
+/obj/structure/mineral_door/wood/darkhandle
+	icon_state = "wooddarkhandle"
+/obj/structure/mineral_door/wood/medhandle
+	icon_state = "woodmedhandle"
+
 
 
 /obj/structure/mineral_door/wood/pickaxe_door(mob/living/user, obj/item/I)
@@ -801,6 +827,10 @@
 	desc = ""
 	over_state = "fancy_woodopen"
 	metalizer_result = null
+
+/obj/structure/mineral_door/wood/fancywood/light
+	icon_state = "fancy_wood2"
+	over_state = "fancy_wood2open"
 
 /obj/structure/mineral_door/wood/deadbolt
 	desc = "This door comes with a deadbolt."
@@ -868,6 +898,19 @@
 	repair_cost_second = /obj/item/natural/stone
 	repair_skill = /datum/skill/craft/masonry
 	smeltresult = null
+
+/obj/structure/mineral_door/wood/donjon/gray
+	desc = "dungeon door"
+	icon_state = "donjongraydir"
+	base_state = "donjongray"
+	over_state = "dunjongrayopen"
+
+/obj/structure/mineral_door/wood/donjon/stone/alt
+	desc = "stone door"
+	icon_state = "stone2"
+	base_state = "stone2"
+	over_state = "stone2open"
+
 
 /obj/structure/mineral_door/wood/donjon/stone/view_toggle(mob/user)
 	return
@@ -1006,3 +1049,81 @@
 	closeSound = 'modular/Neu_Food/sound/blindsclose.ogg'
 	dir = NORTH
 	locked = TRUE
+
+//house
+
+/obj/structure/mineral_door/wood/towner/house
+	icon = 'icons/roguetown/misc/housemisc/housedoors.dmi'
+	icon_state = "woodgreen"
+	resident_advclass = /datum/advclass/hunter//placeholder
+	//resident_advclass = /datum/advclass/house
+	lockid = "towner_fisher"//placeholder
+
+//barons
+/obj/structure/mineral_door/wood/towner/house/green/baron
+	resident_advclass = /datum/advclass/hunter
+	//resident_advclass = /datum/advclass/greenbaron
+	icon_state = "woodgreen"
+	lockid = "greenbaron"
+
+/obj/structure/mineral_door/wood/towner/house/red/baron
+	resident_advclass = /datum/advclass/hunter
+	//resident_advclass = /datum/advclass/redbaron
+	icon_state = "woodred"
+	lockid = "redbaron"
+
+/obj/structure/mineral_door/wood/towner/house/yellow/baron
+	resident_advclass = /datum/advclass/hunter
+	//resident_advclass = /datum/advclass/yellowbaron
+	icon_state = "woodyellow"
+	lockid = "yellowbaron"
+
+/obj/structure/mineral_door/wood/towner/house/purple/baron
+	resident_advclass = /datum/advclass/hunter
+	//resident_advclass = /datum/advclass/purplebaron
+	icon_state = "woodpurple"
+	lockid = "purplebaron"
+
+/obj/structure/mineral_door/wood/towner/house/blue/baron
+	resident_advclass = /datum/advclass/hunter
+	//resident_advclass = /datum/advclass/bluebaron
+	icon_state = "woodblue"
+	lockid = "bluebaron"
+
+//stone doors
+/obj/structure/mineral_door/wood/donjon/stone/house
+	desc = "stone door"
+	icon = 'icons/roguetown/misc/housemisc/housedoors.dmi'
+	icon_state = "stonegreen"
+	base_state = "stonegreen"
+	over_state = "stonegreenopen"
+
+/obj/structure/mineral_door/wood/donjon/stone/house/red
+	icon_state = "stonered"
+	base_state = "stonered"
+	over_state = "stoneredopen"
+
+/obj/structure/mineral_door/wood/donjon/stone/house/yellow
+	icon_state = "stoneyellow"
+	base_state = "stoneyellow"
+	over_state = "stoneyellowopen"
+
+/obj/structure/mineral_door/wood/donjon/stone/house/purple
+	icon_state = "stonepurple"
+	base_state = "stonepurple"
+	over_state = "stonepurpleopen"
+
+/obj/structure/mineral_door/wood/donjon/stone/house/blue
+	icon_state = "stoneblue"
+	base_state = "stoneblue"
+	over_state = "stoneblueopen"
+
+/obj/structure/mineral_door/wood/donjon/stone/house/black
+	icon_state = "stoneblack"
+	base_state = "stoneblack"
+	over_state = "stoneblackopen"
+
+/obj/structure/mineral_door/wood/donjon/stone/house/white
+	icon_state = "stonewhite"
+	base_state = "stonewhite"
+	over_state = "stonewhiteopen"

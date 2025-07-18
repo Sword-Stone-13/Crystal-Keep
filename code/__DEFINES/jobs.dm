@@ -57,7 +57,7 @@
 #define JOB_UNAVAILABLE_SLOTFULL 12
 
 #define DEFAULT_RELIGION "Christianity"
-#define DEFAULT_DEITY "Space Jesus"
+#define DEFAULT_DEITY "Jesus Christ"
 
 #define JOB_DISPLAY_ORDER_DEFAULT 0
 
@@ -192,6 +192,55 @@
 #define GOBLINGUARD	(1<<2)
 #define GOBLINSMITH	(1<<3)
 
+//CRYSTAL KEEP TIME
+//God help me, I don't know if this is how this type of stuff works
+
+//#define HOUSES  (1<<10)
+#define HOUSE_BARON_WHITE   (1<<0)
+#define HOUSE_KNIGHT_WHITE  (1<<1)
+#define HOUSE_WITCH_WHITE   (1<<2)
+#define HOUSE_SOLDIER_WHITE (1<<3)
+
+
+#define HOUSE_ALRICH  (1<<11)
+
+#define HOUSE_BARON_RED     (1<<0)
+#define HOUSE_KNIGHT_RED    (1<<1)
+#define HOUSE_WITCH_RED     (1<<2)
+#define HOUSE_SOLDIER_RED   (1<<3)
+
+#define HOUSE_BRAVADO  (1<<12)
+
+#define HOUSE_BARON_YELLOW  (1<<0)
+#define HOUSE_KNIGHT_YELLOW (1<<1)
+#define HOUSE_WITCH_YELLOW  (1<<2)
+#define HOUSE_SOLDIER_YELLOW (1<<3)
+
+#define HOUSE_CAESAR  (1<<13)
+
+#define HOUSE_BARON_PURPLE  (1<<0)
+#define HOUSE_KNIGHT_PURPLE (1<<1)
+#define HOUSE_WITCH_PURPLE  (1<<2)
+#define HOUSE_SOLDIER_PURPLE (1<<3)
+
+#define HOUSE_DELEON  (1<<14)
+
+#define HOUSE_BARON_BLUE    (1<<0)
+#define HOUSE_KNIGHT_BLUE   (1<<1)
+#define HOUSE_WITCH_BLUE    (1<<2)
+#define HOUSE_SOLDIER_BLUE  (1<<3)
+
+#define HOUSE_BARON_GREEN   (1<<0)
+#define HOUSE_KNIGHT_GREEN  (1<<1)
+#define HOUSE_WITCH_GREEN   (1<<2)
+#define HOUSE_SOLDIER_GREEN (1<<3)
+
+#define HOUSE_BARON_BLACK   (1<<0)
+#define HOUSE_KNIGHT_BLACK  (1<<1)
+#define HOUSE_WITCH_BLACK   (1<<2)
+#define HOUSE_SOLDIER_BLACK (1<<3)
+//gotta learn somehow
+
 #define SLOP		(1<<9)
 
 #define TESTER		(1<<0)
@@ -205,6 +254,10 @@
 #define JCOLOR_YEOMAN "#819e82"
 #define JCOLOR_PEASANT "#b09262"
 #define JCOLOR_MERCENARY "#c86e3a"
+#define JCOLOR_ALRICH "#a3343c"
+#define JCOLOR_BRAVADO "#d3b54d"
+#define JCOLOR_CAESAR "#8b308f"
+#define JCOLOR_DELEON "#343da3"
 
 
 // job display orders //
@@ -293,6 +346,43 @@
 #define JDO_GOBLINGUARD 38
 #define JDO_GOBLINSMITH 39
 
+//CKEEP MOMENT
+
+#define JDO_HOUSE_BARON_WHITE 40
+#define JDO_HOUSE_KNIGHT_WHITE 40.1
+#define JDO_HOUSE_WITCH_WHITE  40.2
+#define JDO_HOUSE_SOLDIER_WHITE 40.3
+
+#define JDO_HOUSE_BARON_RED 41
+#define JDO_HOUSE_KNIGHT_RED 41.1
+#define JDO_HOUSE_WITCH_RED 41.2
+#define JDO_HOUSE_SOLDIER_RED 41.3
+
+#define JDO_HOUSE_BARON_YELLOW 42
+#define JDO_HOUSE_KNIGHT_YELLOW 42.1
+#define JDO_HOUSE_WITCH_YELLOW 42.2
+#define JDO_HOUSE_SOLDIER_YELLOW 42.3
+
+#define JDO_HOUSE_BARON_PURPLE 43
+#define JDO_HOUSE_KNIGHT_PURPLE 43.1
+#define JDO_HOUSE_WITCH_PURPLE 43.2
+#define JDO_HOUSE_SOLDIER_PURPLE 43.3
+
+#define JDO_HOUSE_BARON_BLUE 44
+#define JDO_HOUSE_KNIGHT_BLUE 44.1
+#define JDO_HOUSE_WITCH_BLUE 44.2
+#define JDO_HOUSE_SOLDIER_BLUE 44.3
+
+#define JDO_HOUSE_BARON_GREEN 45
+#define JDO_HOUSE_KNIGHT_GREEN 45.1
+#define JDO_HOUSE_WITCH_GREEN 45.2
+#define JDO_HOUSE_SOLDIER_GREEN 45.3
+
+#define JDO_HOUSE_BARON_BLACK 46
+#define JDO_HOUSE_KNIGHT_BLACK 46.1
+#define JDO_HOUSE_WITCH_BLACK 46.2
+#define JDO_HOUSE_SOLDIER_BLACK 46.3
+
 #define MANOR_ROLES \
 	/datum/job/roguetown/jester,\
 	/datum/job/roguetown/veteran,\
@@ -331,7 +421,7 @@
 
 #define PEASANT_ROLES \
 	/datum/job/roguetown/villager,\
-	/datum/job/roguetown/nightmaiden,\
+	/datum/job/roguetown/actor,\
 	/datum/job/roguetown/beggar,\
 	/datum/job/roguetown/butcher,\
 	/datum/job/roguetown/cook,\

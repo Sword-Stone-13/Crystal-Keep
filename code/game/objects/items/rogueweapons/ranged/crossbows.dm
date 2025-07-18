@@ -20,9 +20,9 @@
 	load_sound = 'sound/foley/nockarrow.ogg'
 	fire_sound = 'sound/combat/Ranged/crossbow-small-shot-02.ogg'
 	associated_skill = /datum/skill/combat/crossbows
-	anvilrepair = /datum/skill/craft/blacksmithing
+	anvilrepair = /datum/skill/craft/weaponsmithing
 	smeltresult = /obj/item/ingot/steel
-	damfactor = 2
+	damfactor = 1.0
 	metalizer_result = /obj/structure/bars/pipe
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/getonmobprop(tag)
@@ -121,6 +121,9 @@
 				spread += 0
 	for(var/obj/item/ammo_casing/CB in get_ammo_list(FALSE, TRUE))
 		var/obj/projectile/BB = CB.BB
+		if(user.STASKL > 10)
+			BB.damage = (BB.damage * (user.STASKL / 10) * damfactor)
+
 		if(HAS_TRAIT(user, TRAIT_TINY))
 			BB.damage = (BB.damage * 0.1)
 	cocked = FALSE
@@ -147,3 +150,52 @@
 	caliber = "regbolt"
 	max_ammo = 1
 	start_empty = TRUE
+
+//steeeels//
+
+///BLUESTEEL///
+/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/bluesteel
+	name = "dwarven crossbow"
+	desc = "three slots for deadly punctures."
+	possible_item_intents = list(/datum/intent/shoot/crossbow/bluesteel, /datum/intent/arc/crossbow/bluesteel, INTENT_GENERIC)
+	force = 12
+	minstr = 12
+	anvilrepair = /datum/skill/craft/dwarfsmithing
+	smeltresult = /obj/item/ingot/bluesteel
+	damfactor = 1.5
+	mag_type = /obj/item/ammo_box/magazine/internal/shot/xbow/bluesteel
+	icon_state = "crossbow0_bluesteel"
+	item_state = "crossbow"
+
+/obj/item/ammo_box/magazine/internal/shot/xbow/bluesteel
+	max_ammo = 3
+
+/datum/intent/shoot/crossbow/bluesteel
+	chargetime = 6
+	chargedrain = 0 //no drain to aim a crossbow
+
+/datum/intent/arc/crossbow/bluesteel
+	chargetime = 6
+	chargedrain = 0 //no drain to aim a crossbow
+
+///REDSTEEL///
+/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/redsteel
+	name = "kobold crossbow"
+	desc = "a smaller intricate crossbow, scarlet."
+	possible_item_intents = list(/datum/intent/shoot/crossbow, /datum/intent/arc/crossbow, INTENT_GENERIC)
+	force = 6
+	minstr = 4
+	anvilrepair = /datum/skill/craft/koboldsmithing
+	smeltresult = /obj/item/ingot/redsteel
+	damfactor = 1.8
+	slot_flags = ITEM_SLOT_BACK|ITEM_SLOT_HIP
+	icon_state = "crossbow0_redsteel"
+	item_state = "crossbow"
+
+/datum/intent/shoot/crossbow/bluesteel
+	chargetime = 2
+	chargedrain = 0 //no drain to aim a crossbow
+
+/datum/intent/arc/crossbow/bluesteel
+	chargetime = 2
+	chargedrain = 0 //no drain to aim a crossbow

@@ -22,6 +22,9 @@
 	beltl = /obj/item/flashlight/flare/torch/lantern
 	beltr = /obj/item/rogueweapon/whip/antique
 	backpack_contents = list(/obj/item/reagent_containers/glass/bottle/rogue/healthpot = 1, /obj/item/rope/chain = 1, /obj/item/flint = 1)
+	if(ishumannorthern(H))
+		H.skin_tone = pick("Lalvestine", "Giza")
+		H.update_body()
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 5, TRUE)
@@ -34,8 +37,8 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 3, TRUE)
@@ -71,6 +74,9 @@
 	backr = /obj/item/rogueweapon/sword/long/rider
 	beltl = /obj/item/storage/belt/rogue/pouch/coins/poor 
 	backpack_contents = list(/obj/item/rope/chain = 1, /obj/item/rogueweapon/huntingknife/idagger = 1)
+	if(ishumannorthern(H))
+		H.skin_tone = pick("lalvestine", "Giza")
+		H.update_body()
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 3, TRUE)
@@ -105,7 +111,6 @@
 	allowed_races = RACES_TOLERATED_UP
 	grant_lit_torch = TRUE
 	show_wanderer_examine = FALSE
-	show_wanderer_examine = FALSE
 
 /datum/outfit/job/roguetown/slaver/slavemercwhip/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -122,6 +127,9 @@
 	beltr = /obj/item/rogueweapon/whip
 	beltl = /obj/item/storage/belt/rogue/pouch/coins/poor 
 	backpack_contents = list(/obj/item/rope/chain = 1, /obj/item/rogueweapon/huntingknife/idagger = 1)
+	if(ishumannorthern(H))
+		H.skin_tone = pick("lalvestine", "Giza")
+		H.update_body()
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 4, TRUE)
@@ -173,6 +181,9 @@
 	beltl = /obj/item/storage/belt/rogue/pouch/coins/poor 
 	beltr = /obj/item/ammo_holder/quiver/bolts
 	backpack_contents = list(/obj/item/rope/chain = 1, /obj/item/rogueweapon/huntingknife/cleaver/combat = 1, /obj/item/needle = 1)
+	if(ishumannorthern(H))
+		H.skin_tone = pick("lalvestine", "Giza")
+		H.update_body()
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 3, TRUE)
@@ -195,7 +206,7 @@
 		H.change_stat("speed", 2)
 		H.change_stat("endurance", 2)
 
-	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_XENOPHOBIC, TRAIT_GENERIC)
 
 /datum/migrant_role/slaver/slavez
@@ -216,7 +227,6 @@
 	beltr = /obj/item/flint
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
 	if(H.mind)
-		H.virginity = TRUE
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
@@ -235,5 +245,4 @@
 		H.change_stat("mageability", 3)
 		H.change_stat("speed", 1)
 		H.change_stat("fortune", -1)
-
-	ADD_TRAIT(H, TRAIT_GOODLOVER, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_BEAUTIFUL, TRAIT_GENERIC)

@@ -128,27 +128,27 @@
 	else
 		fade_progress = clamp(((new_stress - 5) / 50), 0, 0.6)
 
-	/// Update screen black/white
+	///Stress color change
 	var/datum/client_colour/stress_fade/fade_color = add_client_colour(/datum/client_colour/stress_fade)
 	var/list/matrix = fade_color.colour
 	//RED FADE
-	// R fade is 0.3
-	var/r_fade = 0.3 * fade_progress
-	var/red = 1.0 - (0.7 * fade_progress)
+	// R fade is 0.1
+	var/r_fade = 0.1 * fade_progress
+	var/red = 1.0 - (0.9 * fade_progress)
 	matrix[1] = red // RED
 	matrix[2] = r_fade
 	matrix[3] = r_fade
 	//GREEN FADE
-	// G fade is 0.6
-	var/g_fade = 0.6 * fade_progress
-	var/green = 1.0 - (0.4 * fade_progress)
+	// G fade is 0.3
+	var/g_fade = 0.3 * fade_progress
+	var/green = 1.0 - (0.7 * fade_progress)
 	matrix[5] = g_fade
 	matrix[6] = green // GREEN
 	matrix[7] = g_fade
 	//BLUE FADE
-	// B fade is 0.1
-	var/b_fade = 0.1 * fade_progress
-	var/blue = 1.0 - (0.9 * fade_progress)
+	// B fade is 0.6
+	var/b_fade = 0.6 * fade_progress
+	var/blue = 1.0 - (0.4 * fade_progress)
 	matrix[9] = b_fade
 	matrix[10] = b_fade
 	matrix[11] = blue // BLUE

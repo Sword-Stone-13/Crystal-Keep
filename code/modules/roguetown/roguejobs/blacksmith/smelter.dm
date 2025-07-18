@@ -104,36 +104,51 @@
 				playsound(src.loc,'sound/misc/smelter_sound.ogg', 50, FALSE)
 			else
 				if(cooking == 30)
-
-					var/alloy //moving each alloy to it's own var allows for possible additions later
-					var/steelalloy
-					var/bronzealloy
-					var/blacksteelalloy
-
+					var/alloy
+					var/steelalloy = 0
+					var/bronzealloy = 0
+					var/blacksteelalloy = 0
+					var/bluesteelalloy = 0
+					var/redsteelalloy = 0
+					
 					for(var/obj/item/I in ore)
 						if(I.smeltresult == /obj/item/rogueore/coal)
-							steelalloy = steelalloy + 1
+							steelalloy += 1
 						if(I.smeltresult == /obj/item/ingot/iron)
-							steelalloy = steelalloy + 2
+							steelalloy += 2
 						if(I.smeltresult == /obj/item/ingot/tin)
-							bronzealloy = bronzealloy + 1
+							bronzealloy += 1
 						if(I.smeltresult == /obj/item/ingot/copper)
-							bronzealloy = bronzealloy + 2
+							bronzealloy += 2
 						if(I.smeltresult == /obj/item/ingot/silver)
-							blacksteelalloy = blacksteelalloy + 1
+							blacksteelalloy += 1
 						if(I.smeltresult == /obj/item/ingot/steel)
-							blacksteelalloy = blacksteelalloy + 2
+							blacksteelalloy += 2
+							bluesteelalloy += 2
+							redsteelalloy += 2
+						if(I.smeltresult == /obj/item/roguegem/blue)
+							bluesteelalloy += 3
+						if(I.smeltresult == /obj/item/roguegem/red) 
+							redsteelalloy += 3 
 
-					if(steelalloy == 7)
+					if(steelalloy == 7) 
 						testing("STEEL ALLOYED")
-						maxore = 3 // Coal no longer turns to steel
+						maxore = 3 
 						alloy = /obj/item/ingot/steel
-					else if(bronzealloy == 7)
+					else if(bronzealloy == 5) 
 						testing("BRONZE ALLOYED")
 						alloy = /obj/item/ingot/bronze
-					else if(blacksteelalloy == 7)
+					else if(blacksteelalloy == 5) 
 						testing("BLACKSTEEL ALLOYED")
 						alloy = /obj/item/ingot/blacksteel
+					else if(bluesteelalloy == 9) 
+						testing("BLUESTEEL ALLOYED")
+						alloy = /obj/item/ingot/bluesteel
+						maxore = 2 
+					else if(redsteelalloy == 9) 
+						testing("REDSTEEL ALLOYED")
+						alloy = /obj/item/ingot/redsteel
+						maxore = 2 
 					else
 						alloy = null
 						

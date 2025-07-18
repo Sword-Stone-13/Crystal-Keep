@@ -259,6 +259,260 @@
 	floor_tile = /obj/item/stack/tile/carpet/royalblue
 	canSmoothWith = list(/turf/open/floor/carpet/royalblue, /turf/open/floor/carpet/royalblue/airless)
 
+//Crystal Keep houses. Woe the huge code block
+
+/turf/open/floor/rogue/carpet/house
+	smooth = SMOOTH_TRUE
+	footstep = FOOTSTEP_CARPET
+
+/turf/open/floor/rogue/carpet/house/black/simple
+	icon = 'icons/turf/floors/carpet_house_black_simple.dmi'
+	floor_tile = /obj/item/stack/tile/carpet/house/black/simple
+	canSmoothWith = list(
+		/turf/open/floor/rogue/carpet/house/black/simple,
+		/turf/open/floor/rogue/carpet/house/black/simple/airless
+	)
+
+/turf/open/floor/rogue/carpet/house/black/gold/diagonal
+	icon = 'icons/turf/floors/carpet_house_black_gold_diagonal.dmi'
+	floor_tile = /obj/item/stack/tile/carpet/house/black/gold/diagonal
+	canSmoothWith = list(
+		/turf/open/floor/rogue/carpet/house/black/gold/diagonal,
+	)
+
+/turf/open/floor/rogue/carpet/house/black/gold/fancy
+	icon = 'icons/turf/floors/carpet_house_black_gold_fancy.dmi'
+	floor_tile = /obj/item/stack/tile/carpet/house/black/gold/fancy
+	canSmoothWith = list(
+		/turf/open/floor/rogue/carpet/house/black/gold/fancy,
+	)
+
+/turf/open/floor/rogue/carpet/house/black/silver/diagonal
+	icon = 'icons/turf/floors/carpet_house_black_silver_diagonal.dmi'
+	floor_tile = /obj/item/stack/tile/carpet/house/black/silver/diagonal
+	canSmoothWith = list(
+		/turf/open/floor/rogue/carpet/house/black/silver/diagonal,
+	)
+
+/turf/open/floor/rogue/carpet/house/black/silver_fancy
+	icon = 'icons/turf/floors/carpet_house_black_silver_fancy.dmi'
+	floor_tile = /obj/item/stack/tile/carpet/house/black/silver/fancy
+	canSmoothWith = list(
+		/turf/open/floor/rogue/carpet/house/black/silver/fancy,
+	)
+
+/turf/open/floor/rogue/carpet/house/red/simple
+	icon = 'icons/turf/floors/carpet_house_red_simple.dmi'
+	floor_tile = /obj/item/stack/tile/carpet/house/red/simple
+	canSmoothWith = list(
+		/turf/open/floor/rogue/carpet/house/red/simple,
+		/turf/open/floor/rogue/carpet/house/red/simple/airless
+	)
+
+/turf/open/floor/rogue/carpet/house/red/gold/diagonal
+	icon = 'icons/turf/floors/carpet_house_red_gold_diagonal.dmi'
+	floor_tile = /obj/item/stack/tile/carpet/house/red/gold/diagonal
+	canSmoothWith = list(
+		/turf/open/floor/rogue/carpet/house/red/gold/diagonal,
+	)
+
+/turf/open/floor/rogue/carpet/house/red/gold/fancy
+	icon = 'icons/turf/floors/carpet_house_red_gold_fancy.dmi'
+	floor_tile = /obj/item/stack/tile/carpet/house/red/gold/fancy
+	canSmoothWith = list(
+		/turf/open/floor/rogue/carpet/house/red/gold/fancy,
+	)
+
+/turf/open/floor/rogue/carpet/house/red/silver/diagonal
+	icon = 'icons/turf/floors/carpet_house_red_silver_diagonal.dmi'
+	floor_tile = /obj/item/stack/tile/carpet/house/red/silver/diagonal
+	canSmoothWith = list(
+		/turf/open/floor/rogue/carpet/house/red/silver/diagonal,
+	)
+
+/turf/open/floor/rogue/carpet/house/red/silver/fancy
+	icon = 'icons/turf/floors/carpet_house_red_silver_fancy.dmi'
+	floor_tile = /obj/item/stack/tile/carpet/house/red/silver/fancy
+	canSmoothWith = list(
+		/turf/open/floor/rogue/carpet/house/red/silver/fancy,
+	)
+
+/turf/open/floor/rogue/carpet/house/yellow/simple
+	icon = 'icons/turf/floors/carpet_house_yellow_simple.dmi'
+	floor_tile = /obj/item/stack/tile/carpet/house/yellow/simple
+	canSmoothWith = list(
+		/turf/open/floor/rogue/carpet/house/yellow/simple,
+	)
+
+/turf/open/floor/rogue/carpet/house/yellow/gold/diagonal
+	icon = 'icons/turf/floors/carpet_house_yellow_gold_diagonal.dmi'
+	floor_tile = /obj/item/stack/tile/carpet/house/yellow/gold/diagonal
+	canSmoothWith = list(
+		/turf/open/floor/rogue/carpet/house/yellow/gold/diagonal,
+	)
+
+/turf/open/floor/rogue/carpet/house/yellow/gold/fancy
+	icon = 'icons/turf/floors/carpet_house_yellow_gold_fancy.dmi'
+	floor_tile = /obj/item/stack/tile/carpet/house/yellow/gold/fancy
+	canSmoothWith = list(
+		/turf/open/floor/rogue/carpet/house/yellow/gold/fancy,
+	)
+
+/turf/open/floor/rogue/carpet/house/yellow/silver/diagonal
+	icon = 'icons/turf/floors/carpet_house_yellow_silver_diagonal.dmi'
+	floor_tile = /obj/item/stack/tile/carpet/house/yellow/silver/diagonal
+	canSmoothWith = list(
+		/turf/open/floor/rogue/carpet/house/yellow/silver/diagonal,
+	)
+
+/turf/open/floor/rogue/carpet/house/yellow/silver/fancy
+	icon = 'icons/turf/floors/carpet_house_yellow_silver_fancy.dmi'
+	floor_tile = /obj/item/stack/tile/carpet/house/yellow/silver/fancy
+	canSmoothWith = list(
+		/turf/open/floor/rogue/carpet/house/yellow/silver/fancy,
+	)
+
+/turf/open/floor/rogue/carpet/house/purple/simple
+	icon = 'icons/turf/floors/carpet_house_purple_simple.dmi'
+	floor_tile = /obj/item/stack/tile/carpet/house/purple/simple
+	canSmoothWith = list(
+		/turf/open/floor/rogue/carpet/house/purple/simple,
+		/turf/open/floor/rogue/carpet/house/purple/simple/airless
+	)
+
+/turf/open/floor/rogue/carpet/house/purple/gold/diagonal
+	icon = 'icons/turf/floors/carpet_house_purple_gold_diagonal.dmi'
+	floor_tile = /obj/item/stack/tile/carpet/house/purple/gold/diagonal
+	canSmoothWith = list(
+		/turf/open/floor/rogue/carpet/house/purple/gold/diagonal,
+	)
+
+/turf/open/floor/rogue/carpet/house/purple/gold/fancy
+	icon = 'icons/turf/floors/carpet_house_purple_gold_fancy.dmi'
+	floor_tile = /obj/item/stack/tile/carpet/house/purple/gold/fancy
+	canSmoothWith = list(
+		/turf/open/floor/rogue/carpet/house/purple/gold/fancy,
+	)
+
+/turf/open/floor/rogue/carpet/house/purple/silver/diagonal
+	icon = 'icons/turf/floors/carpet_house_purple_silver_diagonal.dmi'
+	floor_tile = /obj/item/stack/tile/carpet/house/purple/silver/diagonal
+	canSmoothWith = list(
+		/turf/open/floor/rogue/carpet/house/purple/silver/diagonal,
+	)
+
+/turf/open/floor/rogue/carpet/house/purple/silver/fancy
+	icon = 'icons/turf/floors/carpet_house_purple_silver_fancy.dmi'
+	floor_tile = /obj/item/stack/tile/carpet/house/purple/silver/fancy
+	canSmoothWith = list(
+		/turf/open/floor/rogue/carpet/house/purple/silver/fancy,
+	)
+
+/turf/open/floor/rogue/carpet/house/blue/simple
+	icon = 'icons/turf/floors/carpet_house_blue_simple.dmi'
+	floor_tile = /obj/item/stack/tile/carpet/house/blue/simple
+	canSmoothWith = list(
+		/turf/open/floor/rogue/carpet/house/blue/simple,
+	)
+
+/turf/open/floor/rogue/carpet/house/blue/gold/diagonal
+	icon = 'icons/turf/floors/carpet_house_blue_gold_diagonal.dmi'
+	floor_tile = /obj/item/stack/tile/carpet/house/blue/gold/diagonal
+	canSmoothWith = list(
+		/turf/open/floor/rogue/carpet/house/blue/gold/diagonal,
+	)
+
+/turf/open/floor/rogue/carpet/house/blue/gold/fancy
+	icon = 'icons/turf/floors/carpet_house_blue_gold_fancy.dmi'
+	floor_tile = /obj/item/stack/tile/carpet/house/blue/gold/fancy
+	canSmoothWith = list(
+		/turf/open/floor/rogue/carpet/house/blue/gold/fancy,
+	)
+
+/turf/open/floor/rogue/carpet/house/blue/silver/diagonal
+	icon = 'icons/turf/floors/carpet_house_blue_silver_diagonal.dmi'
+	floor_tile = /obj/item/stack/tile/carpet/house/blue/silver/diagonal
+	canSmoothWith = list(
+		/turf/open/floor/rogue/carpet/house/blue/silver/diagonal,
+	)
+
+/turf/open/floor/rogue/carpet/house/blue/silver/fancy
+	icon = 'icons/turf/floors/carpet_house_blue_silver_fancy.dmi'
+	floor_tile = /obj/item/stack/tile/carpet/house/blue/silver/fancy
+	canSmoothWith = list(
+		/turf/open/floor/rogue/carpet/house/blue/silver/fancy,
+	)
+
+/turf/open/floor/rogue/carpet/house/green/simple
+	icon = 'icons/turf/floors/carpet_house_green_simple.dmi'
+	floor_tile = /obj/item/stack/tile/carpet/house/green/simple
+	canSmoothWith = list(
+		/turf/open/floor/rogue/carpet/house/green/simple,
+	)
+
+/turf/open/floor/rogue/carpet/house/green/gold/diagonal
+	icon = 'icons/turf/floors/carpet_house_green_gold_diagonal.dmi'
+	floor_tile = /obj/item/stack/tile/carpet/house/green/gold/diagonal
+	canSmoothWith = list(
+		/turf/open/floor/rogue/carpet/house/green/gold/diagonal,
+	)
+
+/turf/open/floor/rogue/carpet/house/green/gold/fancy
+	icon = 'icons/turf/floors/carpet_house_green_gold_fancy.dmi'
+	floor_tile = /obj/item/stack/tile/carpet/house/green/gold/fancy
+	canSmoothWith = list(
+		/turf/open/floor/rogue/carpet/house/green/gold/fancy,
+	)
+
+/turf/open/floor/rogue/carpet/house/green/silver/diagonal
+	icon = 'icons/turf/floors/carpet_house_green_silver_diagonal.dmi'
+	floor_tile = /obj/item/stack/tile/carpet/house/green/silver/diagonal
+	canSmoothWith = list(
+		/turf/open/floor/rogue/carpet/house/green/silver/diagonal,
+	)
+
+/turf/open/floor/rogue/carpet/house/green/silver/fancy
+	icon = 'icons/turf/floors/carpet_house_green_silver_fancy.dmi'
+	floor_tile = /obj/item/stack/tile/carpet/house/green/silver/fancy
+	canSmoothWith = list(
+		/turf/open/floor/rogue/carpet/house/green/silver/fancy,
+	)
+
+/turf/open/floor/rogue/carpet/house/white/simple
+	icon = 'icons/turf/floors/carpet_house_white_simple.dmi'
+	floor_tile = /obj/item/stack/tile/carpet/house/white/simple
+	canSmoothWith = list(
+		/turf/open/floor/rogue/carpet/house/white/simple,
+	)
+
+/turf/open/floor/rogue/carpet/house/white/gold/diagonal
+	icon = 'icons/turf/floors/carpet_house_white_gold_diagonal.dmi'
+	floor_tile = /obj/item/stack/tile/carpet/house/white/gold/diagonal
+	canSmoothWith = list(
+		/turf/open/floor/rogue/carpet/house/white/gold/diagonal,
+	)
+
+/turf/open/floor/rogue/carpet/house/white/gold/fancy
+	icon = 'icons/turf/floors/carpet_house_white_gold_fancy.dmi'
+	floor_tile = /obj/item/stack/tile/carpet/house/white/gold/fancy
+	canSmoothWith = list(
+		/turf/open/floor/rogue/carpet/house/white/gold/fancy,
+	)
+
+/turf/open/floor/rogue/carpet/house/white/silver/diagonal
+	icon = 'icons/turf/floors/carpet_house_white_silver_diagonal.dmi'
+	floor_tile = /obj/item/stack/tile/carpet/house/white/silver/diagonal
+	canSmoothWith = list(
+		/turf/open/floor/rogue/carpet/house/white/silver/diagonal,
+	)
+
+/turf/open/floor/rogue/carpet/house/white/silver/fancy
+	icon = 'icons/turf/floors/carpet_house_white_silver_fancy.dmi'
+	floor_tile = /obj/item/stack/tile/carpet/house/white/silver/fancy
+	canSmoothWith = list(
+		/turf/open/floor/rogue/carpet/house/white/silver/fancy,
+	)
+
 //*****Airless versions of all of the above.*****
 /turf/open/floor/carpet/airless
 	initial_gas_mix = AIRLESS_ATMOS
@@ -289,6 +543,113 @@
 
 /turf/open/floor/carpet/royalblue/airless
 	initial_gas_mix = AIRLESS_ATMOS
+
+//crystal keep, dunno when we'd need this, maybe some day, better safe than never
+/turf/open/floor/rogue/carpet/house/black/simple/airless
+	initial_gas_mix = AIRLESS_ATMOS
+
+/turf/open/floor/rogue/carpet/house/black/gold/diagonal/airless
+	initial_gas_mix = AIRLESS_ATMOS
+
+/turf/open/floor/rogue/carpet/house/black/gold/fancy/airless
+	initial_gas_mix = AIRLESS_ATMOS
+
+/turf/open/floor/rogue/carpet/house/black/silver/diagonal/airless
+	initial_gas_mix = AIRLESS_ATMOS
+
+/turf/open/floor/rogue/carpet/house/black/silver/fancy/airless
+	initial_gas_mix = AIRLESS_ATMOS
+
+/turf/open/floor/rogue/carpet/house/red/simple/airless
+	initial_gas_mix = AIRLESS_ATMOS
+
+/turf/open/floor/rogue/carpet/house/red/gold/diagonal/airless
+	initial_gas_mix = AIRLESS_ATMOS
+
+/turf/open/floor/rogue/carpet/house/red/gold/fancy/airless
+	initial_gas_mix = AIRLESS_ATMOS
+
+/turf/open/floor/rogue/carpet/house/red/silver/diagonal/airless
+	initial_gas_mix = AIRLESS_ATMOS
+
+/turf/open/floor/rogue/carpet/house/red/silver/fancy/airless
+	initial_gas_mix = AIRLESS_ATMOS
+
+/turf/open/floor/rogue/carpet/house/yellow/simple/airless
+	initial_gas_mix = AIRLESS_ATMOS
+
+/turf/open/floor/rogue/carpet/house/yellow/gold/diagonal/airless
+	initial_gas_mix = AIRLESS_ATMOS
+
+/turf/open/floor/rogue/carpet/house/yellow/gold/fancy/airless
+	initial_gas_mix = AIRLESS_ATMOS
+
+/turf/open/floor/rogue/carpet/house/yellow/silver/diagonal/airless
+	initial_gas_mix = AIRLESS_ATMOS
+
+/turf/open/floor/rogue/carpet/house/yellow/silver/fancy/airless
+	initial_gas_mix = AIRLESS_ATMOS
+
+/turf/open/floor/rogue/carpet/house/purple/simple/airless
+	initial_gas_mix = AIRLESS_ATMOS
+
+/turf/open/floor/rogue/carpet/house/purple/gold/diagonal/airless
+	initial_gas_mix = AIRLESS_ATMOS
+
+/turf/open/floor/rogue/carpet/house/purple/gold/fancy/airless
+	initial_gas_mix = AIRLESS_ATMOS
+
+/turf/open/floor/rogue/carpet/house/purple/silver/diagonal/airless
+	initial_gas_mix = AIRLESS_ATMOS
+
+/turf/open/floor/rogue/carpet/house/purple/silver/fancy/airless
+	initial_gas_mix = AIRLESS_ATMOS
+
+/turf/open/floor/rogue/carpet/house/blue/simple/airless
+	initial_gas_mix = AIRLESS_ATMOS
+
+/turf/open/floor/rogue/carpet/house/blue/gold/diagonal/airless
+	initial_gas_mix = AIRLESS_ATMOS
+
+/turf/open/floor/rogue/carpet/house/blue/gold/fancy/airless
+	initial_gas_mix = AIRLESS_ATMOS
+
+/turf/open/floor/rogue/carpet/house/blue/silver/diagonal/airless
+	initial_gas_mix = AIRLESS_ATMOS
+
+/turf/open/floor/rogue/carpet/house/blue/silver/fancy/airless
+	initial_gas_mix = AIRLESS_ATMOS
+
+/turf/open/floor/rogue/carpet/house/green/simple/airless
+	initial_gas_mix = AIRLESS_ATMOS
+
+/turf/open/floor/rogue/carpet/house/green/gold/diagonal/airless
+	initial_gas_mix = AIRLESS_ATMOS
+
+/turf/open/floor/rogue/carpet/house/green/gold/fancy/airless
+	initial_gas_mix = AIRLESS_ATMOS
+
+/turf/open/floor/rogue/carpet/house/green/silver/diagonal/airless
+	initial_gas_mix = AIRLESS_ATMOS
+
+/turf/open/floor/rogue/carpet/house/green/silver/fancy/airless
+	initial_gas_mix = AIRLESS_ATMOS
+
+/turf/open/floor/rogue/carpet/house/white/simple/airless
+	initial_gas_mix = AIRLESS_ATMOS
+
+/turf/open/floor/rogue/carpet/house/white/gold/diagonal/airless
+	initial_gas_mix = AIRLESS_ATMOS
+
+/turf/open/floor/rogue/carpet/house/white/gold/fancy/airless
+	initial_gas_mix = AIRLESS_ATMOS
+
+/turf/open/floor/rogue/carpet/house/white/silver/diagonal/airless
+	initial_gas_mix = AIRLESS_ATMOS
+
+/turf/open/floor/rogue/carpet/house/white/silver/fancy/airless
+	initial_gas_mix = AIRLESS_ATMOS
+
 
 /turf/open/floor/carpet/narsie_act(force, ignore_mobs, probability = 20)
 	. = (prob(probability) || force)

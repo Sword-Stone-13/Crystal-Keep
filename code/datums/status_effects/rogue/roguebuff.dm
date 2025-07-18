@@ -243,3 +243,31 @@
 	name = "Seelie Blessing"
 	desc = "A nearby Seelie has brought me fortune."
 	icon_state = "stressg"
+
+/datum/status_effect/buff/cured_moondust
+	id = "Cured Moondust"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/druqks
+	effectedstats = list("speed" = 2, "endurance" = 2, "fortune" = 2)
+	duration = 40 SECONDS
+
+/datum/status_effect/buff/cured_moondust/nextmove_modifier()
+	return 0.5
+
+/datum/status_effect/buff/cured_moondust/on_apply()
+	. = ..()
+	owner.add_stress(/datum/stressevent/vvizard_lean)
+
+/datum/status_effect/buff/cured_moondust/on_remove()
+	. = ..()
+	owner.apply_status_effect(/datum/status_effect/debuff/moondust_crash)
+
+/datum/status_effect/buff/gazeuponme
+	id = "gazeuponme"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/gazeuponme
+	effectedstats = list("endurance" = 1, "faith" = 1)
+	duration = 999 MINUTES
+
+/atom/movable/screen/alert/status_effect/buff/gazeuponme
+	name = "Excommunicated heretic"
+	desc = "My PATRON is proud of ME!"
+	icon_state = "buff"

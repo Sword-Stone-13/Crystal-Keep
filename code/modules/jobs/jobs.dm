@@ -69,7 +69,7 @@ GLOBAL_LIST_INIT(noble_positions, list(
 	"Steward",
 	"Knight",
 ))
-
+//MEDIEVAL CODES
 GLOBAL_LIST_INIT(courtier_positions, list(
 	"Court Magos",
 	"Court Physician",
@@ -122,7 +122,7 @@ GLOBAL_LIST_INIT(peasant_positions, list(
 	"Towner",
 	"Grabber",
 	"Nightmaster",
-	"Bath Swain",
+	"Actor",
 	"Docker",
 	"Prisoner",
 	"Beggar",
@@ -166,6 +166,31 @@ GLOBAL_LIST_INIT(roguefight_positions, list(
 	"Green Ranger",
 	"Green Fighter",
 ))
+
+GLOBAL_LIST_INIT(alrich_positions, list(
+	"House Alrich Baron",
+	"Alrich Knight",
+	"Alrich Witch",
+))
+
+GLOBAL_LIST_INIT(bravado_positions, list(
+	"House Bravado Baron",
+	"Bravado Knight",
+	"Bravado Witch",
+))
+GLOBAL_LIST_INIT(caesar_positions, list(
+
+	"House Caesar Baron",
+	"Caesar Knight",
+	"Caesar Witch",
+))
+GLOBAL_LIST_INIT(deleon_positions, list(
+
+	"House Deleon Baron",
+	"Deleon Knight",
+	"Deleon Witch",
+))
+
 
 GLOBAL_LIST_INIT(test_positions, list(
 	"Tester",

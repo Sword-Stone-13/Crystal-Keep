@@ -5,7 +5,13 @@
 	name = "Kobold"
 	id = "kobold"
 	desc = "<b>Kobold</b><br>\
-	In time you will learn the history of this race."
+	Kobolds are a new, pilgrim race to Crystal Keep. Filled with everlasting pride and ego. They're a small creacher that claims lineage to ancient dragons and birthright to the mountains. \
+	They share most of these mountains and lands with dwarves, however, and have been in contention for the most longstanding war between species to exist. \
+	As such, they've been at each others necks, even in neutral lands like Crystal Keep. Their reputation, being the former folk and unwelcomed by Eora, is lowly. \
+	There's even claims that they mostly worship the dragon head of 'Matthios', an interpretatio dwarfica of Nyatthios, though this claim is disputed as these claims are generally from Dwarvish Malumites who gatekeep \
+	all races from Malum worship, including men. As being a neutral party, Crystal Keep allows them pilgrimage as per the Walnutian treaty, however, their presence is... watched, to say the least."
+
+
 	species_traits = list(EYECOLOR,LIPS,STUBBLE,MUTCOLORS)
 	inherent_traits = list(TRAIT_NOMOBSWAP)
 	possible_ages = ALL_AGES_LIST
@@ -32,21 +38,16 @@
 		OFFSET_SHIRT_F = list(0,0), OFFSET_ARMOR_F = list(0,0), OFFSET_UNDIES = list(0,-4), OFFSET_UNDIES_F = list(0,-4), \
 		)
 	specstats =  list(
-		"strength" = -4,
+		"strength" = -2,
 		"skill" = 2,
 		"mageability" = 2,
 		"constitution" = -2,
-		"endurance" = 1,
+		"endurance" = 0,
 		"speed" = 2,
 		"faith" = 1,
 		"fortune" = 0
 		)
-	specstats_f = list(
-		"strength" = 0,
-		"constitution" = 1,
-		"mageability" = -1,
-		"speed" = 0,
-	)
+
 	enflamed_icon = "widefire"
 	attack_verb = "slash"
 	attack_sound = 'sound/blank.ogg'

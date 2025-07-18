@@ -122,7 +122,7 @@
 			H.change_stat("constitution", 2)
 			H.change_stat("endurance", 2)
 			H.change_stat("speed", -1)
-			H.change_stat("faith", 3)
+			H.change_stat("faith", 2)
 			armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
 			wrists = /obj/item/clothing/wrists/roguetown/bracers
 			pants = /obj/item/clothing/under/roguetown/chainlegs

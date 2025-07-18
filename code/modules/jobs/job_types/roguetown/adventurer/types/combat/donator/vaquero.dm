@@ -1,9 +1,12 @@
 
 /datum/advclass/vaquero
 	name = "Vaquero"
-	tutorial = "Vaquero are Tieberian swashbucklers who have their origins as skilled horse-tamers of Asturia. It's hard to find horses these days..."
+	tutorial = "Vaqueros are swashbucklers who have their origins as skilled horse-tamers. It's hard to find horses these days..."
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = list(/datum/species/tieberian)
+	allowed_races = list(
+		/datum/species/aasimar,
+		/datum/species/tieberian
+	)
 	outfit = /datum/outfit/job/roguetown/adventurer/vaquero
 	horse = /mob/living/simple_animal/hostile/retaliate/rogue/saigabuck/tame/saddled
 	cmode_music = 'sound/music/combat_vaquero.ogg'
@@ -54,5 +57,10 @@
 	H.change_stat("mageability", 2)
 	H.change_stat("endurance", 2)
 	H.change_stat("speed", 2)
-	H.change_stat("faith", -3)
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/mockery)
+	if(ismoth(H))
+		H.change_stat("faith", 3)
+		H.change_stat("mageability", -2)
+	if(istiefling(H))
+		H.change_stat("faith", -3)
+		H.change_stat("mageability", 2)

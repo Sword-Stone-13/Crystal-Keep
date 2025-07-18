@@ -210,6 +210,10 @@ GLOBAL_PROTECT(admin_verbs_debug)
 	/datum/admins/proc/create_or_modify_area,
 	/client/verb/debug_soliloquys, 	/*add or remove dummy soliloquys for testing*/
 	/client/proc/returntolobby,
+	/client/proc/delete_player_book,
+	/client/proc/amend_player_book,
+	/client/proc/pull_book_file_names,
+	/client/proc/manage_player_books,
 	/client/proc/set_tod_override
 	)
 GLOBAL_LIST_INIT(admin_verbs_possess, list(/proc/possess, GLOBAL_PROC_REF(release)))
@@ -282,6 +286,10 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 	/client/proc/toggle_nuke,
 	/client/proc/cmd_display_del_log,
 	/client/proc/toggle_combo_hud,
+	/client/proc/delete_player_book,
+	/client/proc/amend_player_book,
+	/client/proc/pull_book_file_names,
+	/client/proc/manage_player_books,
 	/client/verb/debug_soliloquys, 	/*add or remove dummy soliloquys for testing*/
 	/client/verb/view_and_display_soliloquys, /*view submitted soliloquys and display them on screen*/
 	/client/verb/select_chosen_soliloquy,	/*select a round end soliloquy from a list of submitted ones*/
