@@ -332,3 +332,35 @@
 	affected_bodyparts = CHEST
 	default_color = DEFAULT_SECONDARY
 	covers_chest = TRUE
+
+///imps///
+
+/*
+/datum/body_marking/imp/markings/tats
+	icon = 'icons/mob/body_markings/imp_marks.dmi'
+	name = "imp Tattoos"
+	icon_state = "tattoos_black"
+	affected_bodyparts = HEAD | CHEST | HAND_LEFT | HAND_RIGHT | ARM_LEFT | ARM_RIGHT | LEG_LEFT | LEG_RIGHT
+	default_color = DEFAULT_SECONDARY
+
+/datum/body_marking/imp/markings/tigerstripes
+	icon = 'icons/mob/body_markings/imp_marks.dmi'
+	name = "tiger stripes"
+	icon_state = "tiger"
+	affected_bodyparts = HEAD | CHEST | HAND_LEFT | HAND_RIGHT | ARM_LEFT | ARM_RIGHT | LEG_LEFT | LEG_RIGHT
+	default_color = DEFAULT_SECONDARY
+
+/datum/body_marking/imp/markings/toga
+	icon = 'icons/mob/body_markings/imp_marks.dmi'
+	name = "imp Tattoos"
+	icon_state = "toga"
+	affected_bodyparts = CHEST | LEG_LEFT | LEG_RIGHT
+	default_color = DEFAULT_SECONDARY
+
+/datum/body_marking/imp/markings/moon
+	icon = 'icons/mob/body_markings/imp_marks.dmi'
+	name = "Moon"
+	icon_state = "moon"
+	affected_bodyparts = HEAD | CHEST | HAND_LEFT | HAND_RIGHT | ARM_LEFT | ARM_RIGHT | LEG_LEFT | LEG_RIGHT
+	default_color = DEFAULT_SECONDARY
+*/

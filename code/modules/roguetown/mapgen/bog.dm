@@ -1,8 +1,8 @@
 //genstuff
 /obj/effect/landmark/mapGenerator/rogue/bog
 	mapGeneratorType = /datum/mapGenerator/bog
-	endTurfX = 255
-	endTurfY = 400
+	endTurfX = 177//255
+	endTurfY = 256//400
 	startTurfX = 1
 	startTurfY = 1
 
@@ -15,7 +15,9 @@
 	clusterCheckFlags = CLUSTER_CHECK_DIFFERENT_ATOMS
 	allowed_turfs = list(/turf/open/floor/rogue/dirt)
 	excluded_turfs = list(/turf/open/floor/rogue/dirt/road)
-	spawnableAtoms = list(/obj/structure/flora/newtree = 30,
+	spawnableAtoms = list(				
+							/obj/structure/flora/roguetree/ckeep/shorter = 5,
+							/obj/structure/flora/roguetree/ckeep/taller = 25,
 							/obj/structure/flora/roguegrass/bush = 25,
 							/obj/structure/flora/roguegrass = 26,
 							/obj/structure/flora/roguegrass/maneater = 13,
@@ -31,6 +33,7 @@
 	spawnableTurfs = list(/turf/open/floor/rogue/dirt/road=2,
 						/turf/open/water/swamp=1)
 	allowed_areas = list(/area/rogue/outdoors/bog, /area/rogue/outdoors/rtfield)
+//obj/structure/flora/newtree = 30,
 
 /datum/mapGeneratorModule/bogroad
 	clusterCheckFlags = CLUSTER_CHECK_DIFFERENT_ATOMS
@@ -50,14 +53,16 @@
 	excluded_turfs = list()
 	allowed_areas = list(/area/rogue/outdoors/bog)
 	spawnableAtoms = list(/obj/structure/glowshroom = 5,
-							/obj/structure/flora/roguetree = 30,
-							/obj/structure/flora/roguetree/wise=1,
+							/obj/structure/flora/roguetree/ckeep/shorter = 5,
+							/obj/structure/flora/roguetree/ckeep/taller = 25,
+							/obj/structure/flora/roguetree/wise= 1,
 							/obj/structure/flora/roguegrass/bush = 25,
 							/obj/structure/flora/roguegrass = 44,
 							/obj/structure/flora/roguegrass/maneater = 13,
-							/obj/structure/flora/roguegrass/maneater/real=2,
+							/obj/structure/flora/roguegrass/maneater/real= 2,
 							/obj/item/natural/stone = 6,
 							/obj/item/natural/rock = 1,
 							/obj/item/grown/log/tree/stick = 3,
 							/obj/structure/flora/roguetree/stump/log = 3,
 							/datum/spacevine_controller = 1)
+							///obj/structure/flora/roguetree = 30,

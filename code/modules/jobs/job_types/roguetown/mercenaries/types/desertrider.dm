@@ -1,15 +1,15 @@
 /datum/advclass/desert_rider
 	name = "Desert Rider"
-	tutorial = "Blood, like the desert sand, stains your hands, a crimson testament to the gold you covet. A desert rider, renowned mercenary of the far east, your scimitar whispers tales of centuries-old tradition. Your loyalty, a fleeting mirage in the shifting sands, will yield to the allure of fortune."
+	tutorial = "Blood, like the desert sand, stains your hands, a crimson testament to the gold you covet. A desert rider, renowned mercenary of the far east, your scimitar whispers tales of centuries-old tradition. Your loyalty is to coin, tradition, and your patriarch."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(
 		/datum/species/tieberian,
-		/datum/species/lizardfolk,
+		/datum/species/kobold,
 		/datum/species/human/northern,
 		/datum/species/elf/dark,
 	)
 	outfit = /datum/outfit/job/roguetown/mercenary/desert_rider
-	maximum_possible_slots = 10
+	maximum_possible_slots = 4
 	min_pq = 2
 	torch = FALSE
 	cmode_music = 'sound/music/combat_desertrider.ogg'
@@ -30,6 +30,9 @@
 	pants = /obj/item/clothing/under/roguetown/chainlegs/iron
 	neck = /obj/item/clothing/neck/roguetown/shalal
 
+	if(ishumannorthern(H))
+		H.skin_tone = pick("Shalvestine", "Babar")
+		H.update_body()
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
@@ -49,6 +52,6 @@
 		H.change_stat("strength", 2)
 		H.change_stat("endurance", 2)
 		H.change_stat("constitution", 1)
-		H.change_stat("skill", 1)
+		H.change_stat("skill", 2)
 		H.change_stat("speed", 2)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)

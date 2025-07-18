@@ -637,3 +637,11 @@
 	reqs = list(/obj/item/natural/fibers = 2,
 				/obj/item/natural/silk = 3)
 	craftdiff = 5
+
+///Crystal Keep///
+
+/datum/crafting_recipe/roguetown/sewing/facemask
+	name = "Padded Mask"
+	result = /obj/item/clothing/mask/rogue/facemask/leather/heavy
+	reqs = list(/obj/item/natural/fur = 1)
+	craftdiff = 2

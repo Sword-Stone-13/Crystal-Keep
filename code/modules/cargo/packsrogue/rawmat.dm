@@ -41,12 +41,12 @@
 	/obj/item/rogueore/coal,
 	/obj/item/rogueore/coal,
 	/obj/item/rogueore/coal)
-
+/*
 /datum/supply_pack/rogue/rawmats/silver
 	name = "Silver Ore"
 	cost = 125
 	contains = list(/obj/item/rogueore/silver)
-
+*/
 /datum/supply_pack/rogue/rawmats/cloth
 	name = "Cloth"
 	cost = 10

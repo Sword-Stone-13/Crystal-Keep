@@ -18,6 +18,7 @@
 	outfit = /datum/outfit/job/roguetown/priest
 
 	display_order = JDO_PRIEST
+	associated_squad = /datum/antagonist/squad/none
 	give_bank_account = 115
 	min_pq = 8
 	max_pq = null
@@ -60,7 +61,7 @@
 		H.change_stat("constitution", -1)
 		H.change_stat("endurance", 1)
 		H.change_stat("speed", -1)
-		H.change_stat("faith", 6)
+		H.change_stat("faith", 5)
 
 	var/datum/devotion/C = new /datum/devotion(H, H.patron) // This creates the cleric holder used for devotion spells
 	C.grant_spells_priest(H)
@@ -118,8 +119,8 @@
 		SSticker.rulermob = HU
 		var/dispjob = mind.assigned_role
 		removeomen(OMEN_NOLORD)
-		say("By the authority of the gods, I pronounce you [SSticker.rulertype] of Rockhill!")
-		priority_announce("[real_name] the [dispjob] has named [HU.real_name] the [SSticker.rulertype] of Rockhill!", title = "Long Live [HU.real_name]!", sound = 'sound/misc/bell.ogg')
+		say("By the authority of the gods, I pronounce you [SSticker.rulertype] of the Crystal Keep!")
+		priority_announce("[real_name] the [dispjob] has named [HU.real_name] the [SSticker.rulertype] of the Crystal Keep!", title = "Long Live [HU.real_name]!", sound = 'sound/misc/bell.ogg')
 		TITLE_LORD = SSticker.rulertype
 
 /mob/living/carbon/human/proc/churchexcommunicate()
@@ -127,17 +128,23 @@
 	set category = "Priest"
 	if(stat)
 		return
-	var/inputty = input("Excommunicate someone, removing their ability to use miracles... (excommunicate them again to remove it)", "Sinner Name") as text|null
+	var/inputty = input("Excommunicate someone, pushing them the ten's grace and approval.", "Sinner Name") as text|null
 	if(inputty)
 		if(!istype(get_area(src), /area/rogue/indoors/town/church/chapel))
-			to_chat(src, span_warning("I need to do this from the Church's chapel."))
+			to_chat(src, span_warning("I need to do this from the Church."))
 			return FALSE
 		if(inputty in GLOB.excommunicated_players)
 			GLOB.excommunicated_players -= inputty
 			priority_announce("[real_name] has forgiven [inputty]. Their patron hears their prayer once more!", title = "Hail the Ten!", sound = 'sound/misc/bell.ogg')
 			for(var/mob/living/carbon/human/H in GLOB.player_list)
 				if(H.real_name == inputty)
-					H.remove_stress(/datum/stressevent/psycurse)
+					switch(H.patron.type)
+						if(/datum/patron/inhumen/psydon, /datum/patron/inhumen/baotha, /datum/patron/inhumen/graggar, /datum/patron/inhumen/nyatthios, /datum/patron/zizo)
+							H.remove_stress(/datum/stressevent/gazeuponme)
+							H.remove_status_effect(/datum/status_effect/buff/gazeuponme)
+						else
+							H.remove_stress(/datum/stressevent/psycurse)
+							H.remove_status_effect(/datum/status_effect/debuff/excomm)
 					H.devotion.recommunicate()
 			return
 		var/found = FALSE
@@ -175,7 +182,13 @@
 				continue
 			if(H.real_name == inputty)
 				found = TRUE
-				H.add_stress(/datum/stressevent/psycurse)
+				switch(H.patron.type)
+					if(/datum/patron/inhumen/psydon, /datum/patron/inhumen/baotha, /datum/patron/inhumen/graggar, /datum/patron/inhumen/nyatthios, /datum/patron/zizo)
+						H.add_stress(/datum/stressevent/gazeuponme)
+						H.apply_status_effect(/datum/status_effect/buff/gazeuponme)
+					else if(H.patron.type != /datum/patron/godless)
+						H.add_stress(/datum/stressevent/psycurse)
+						H.apply_status_effect(/datum/status_effect/debuff/excomm)
 		if(!found)
 			return FALSE
 		GLOB.heretical_players += inputty
@@ -223,46 +236,3 @@
 	recruitment_message = "Serve the ten, %RECRUIT!"
 	accept_message = "FOR THE TEN!"
 	refuse_message = "I refuse."
-
-/obj/effect/proc_holder/spell/invoked/solar_smite
-	name = "Solar Smite"
-	overlay_state = "solarsmite"
-	releasedrain = 100
-	chargedrain = 0
-	chargetime = 1 SECONDS
-	range = 8
-	warnie = "sydwarning"
-	movement_interrupt = FALSE
-	chargedloop = /datum/looping_sound/invokeholy
-	req_items = list(/obj/item/clothing/neck/roguetown/psicross)
-	sound = 'sound/magic/churn.ogg'
-	invocation = "MAY THE HOLY LIGHT SHINE ON YOU!!"
-	invocation_type = "shout"
-	associated_skill = /datum/skill/magic/holy
-	antimagic_allowed = TRUE
-	charge_max = 90 SECONDS
-	miracle = TRUE
-	devotion_cost = 100
-	//explosion values
-	var/exp_heavy = 0
-	var/exp_light = 4
-	var/exp_flash = 8
-
-/obj/effect/proc_holder/spell/invoked/solar_smite/cast(list/targets, mob/user = usr)
-	. = ..()
-	if(isliving(targets[1]))
-		var/mob/living/L = targets[1]
-		user.visible_message("<font color='yellow'>[user] points at [L]!</font>")
-		explosion(L, -1, exp_heavy, exp_light, 8, 0, soundin = 'sound/misc/lava_death.ogg')
-		L.adjust_fire_stacks(6)
-		L.IgniteMob()
-		L.adjustFireLoss(30)
-		if(istype(get_area(L), /area/rogue/indoors/town/church))
-			L.adjust_fire_stacks(9)
-			L.adjustFireLoss(50)
-			if(L.mob_biotypes & MOB_UNDEAD) //positive energy harms the undead
-				L.visible_message(span_danger("[L] is unmade by holy light!"), span_userdanger("I'm unmade by holy light!"))
-				L.gib()
-		return TRUE
-	else
-		return FALSE

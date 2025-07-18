@@ -6,15 +6,16 @@
 	total_positions = 1
 	spawn_positions = 1
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = RACES_TOLERATED_UP
+	allowed_races = RACES_EORA_APPROVED
 	allowed_patrons = list(
-		/datum/patron/psydon
+		/datum/patron/divine/ravox
 	)
-	tutorial = "Created with the re-emergence of the cult of Psydon, The Inquisition has sent you to Rockhill on a quest to root out the blasphemous and the accursed of these lands. Guided by religious fervor and paranoia, you hope that your uneasy alliance with the Church will hold."
+	tutorial = "Created with the re-emergence of the cult of Psydon, The Inquisition has sent you to the Crystal Keep on a quest to root out the blasphemous and the accursed of these lands."
 	whitelist_req = TRUE
 
 	outfit = /datum/outfit/job/roguetown/puritan
 	display_order = JDO_PURITAN
+	associated_squad = /datum/antagonist/squad/none
 	give_bank_account = 200
 	min_pq = 5
 	max_pq = null
@@ -22,20 +23,19 @@
 /datum/outfit/job/roguetown/puritan
 	name = "Inquisitor"
 	jobtype = /datum/job/roguetown/puritan
-	allowed_patrons = list(/datum/patron/psydon)
+	allowed_patrons = list(/datum/patron/divine/ravox)
 
 /datum/outfit/job/roguetown/puritan/pre_equip(mob/living/carbon/human/H)
 	..()
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/puritan
 	belt = /obj/item/storage/belt/rogue/leather
 	neck = /obj/item/clothing/neck/roguetown/psicross/silver
-	shoes = /obj/item/clothing/shoes/roguetown/armor
+	shoes = /obj/item/clothing/shoes/roguetown/armor/inqboots
 	pants = /obj/item/clothing/under/roguetown/tights/black
 	cloak = /obj/item/clothing/cloak/cape/puritan
-	beltr = /obj/item/gun/ballistic/revolver/grenadelauncher/runelock
-	beltl = /obj/item/storage/belt/rogue/pouch/ammo
-	head = /obj/item/clothing/head/roguetown/puritan
-	gloves = /obj/item/clothing/gloves/roguetown/leather
+	head = /obj/item/clothing/head/roguetown/inqhat
+	gloves = /obj/item/clothing/gloves/roguetown/inqgloves
+	armor = /obj/item/clothing/suit/roguetown/armor/plate/scale/inqcoat
 	backr = /obj/item/rogueweapon/sword/rapier
 	backl = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/keyring/puritan = 1, /obj/item/rogueweapon/huntingknife/idagger/silver)
@@ -56,7 +56,7 @@
 		H.change_stat("constitution", 3)
 		H.change_stat("skill", 3)
 		H.change_stat("mageability", 3)
-		H.change_stat("faith", 2)
+		H.change_stat("faith", 4)
 	H.verbs |= /mob/living/carbon/human/proc/faith_test
 	H.verbs |= /mob/living/carbon/human/proc/torture_victim
 	ADD_TRAIT(H, TRAIT_NOSEGRAB, TRAIT_GENERIC)

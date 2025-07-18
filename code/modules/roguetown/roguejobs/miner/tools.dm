@@ -53,3 +53,18 @@
 	gripped_intents = list(/datum/intent/pick)
 	max_integrity = 600
 	smeltresult = /obj/item/ingot/steel
+
+
+/obj/item/rogueweapon/pick/bluesteel
+	name = "bluesteel pick"
+	desc = "The dwarf's most important tool."
+	force = 21
+	icon_state = "bluesteelpick"
+	icon = 'icons/roguetown/weapons/32.dmi'
+	force_wielded = 30
+	icon_state = "steelpick"
+	possible_item_intents = list(/datum/intent/pick, /datum/intent/mace/strike, /datum/intent/mace/smash)
+	gripped_intents = list(/datum/intent/pick,/datum/intent/mace/strike, /datum/intent/axe/smash)
+	max_integrity = 800
+	smeltresult = /obj/item/ingot/bluesteel
+	minstr = 13

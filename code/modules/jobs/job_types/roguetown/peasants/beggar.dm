@@ -6,8 +6,8 @@
 	total_positions = -1
 	spawn_positions = -1
 
-	allowed_races = RACES_VERY_SHUNNED_UP
-	allowed_ages = ALL_AGES_LIST
+	allowed_races = RACES_ALL_KINDS
+	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)
 	outfit = /datum/outfit/job/roguetown/vagrant
 	bypass_lastclass = TRUE
 	banned_leprosy = FALSE
@@ -18,6 +18,8 @@
 	display_order = JDO_VAGRANT
 	show_in_credits = FALSE
 	can_random = FALSE
+	associated_squad = /datum/antagonist/squad/none
+
 
 	cmode_music = 'sound/music/combat_bum.ogg'
 
@@ -120,7 +122,7 @@
 	else
 		l_hand = null
 	H.change_stat("strength", -1)
-	H.change_stat("mageability", -4)
+	H.change_stat("skill", -4)
 	H.change_stat("constitution", -3)
 	H.change_stat("endurance", -3)
 

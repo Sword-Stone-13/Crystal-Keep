@@ -1,5 +1,5 @@
 /datum/faith/divine
 	name = "Divine Pantheon"
-	desc = "The most accepted religion in Rockhill. May Almighty Psydon and His ten children protect us from Zizo!"
-	worshippers = "Humans and citizens of Rockhill"
+	desc = "The most accepted religion in Crystal Keep. May Almighty Astrata and her 9 siblings protect us from Zizo and the inhumen!"
+	worshippers = "Humans and citizens of Crystal Keep"
 	godhead = /datum/patron/divine/astrata

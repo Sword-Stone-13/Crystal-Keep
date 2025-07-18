@@ -83,6 +83,58 @@
 		return
 	return TRUE
 
+
+/datum/crafting_recipe/roguetown/turfs/woodwall/dark
+	name = "dark wooden wall"
+	result = /turf/closed/wall/mineral/rogue/wood/dark
+	reqs = list(/obj/item/grown/log/tree/small = 2, /obj/item/natural/dirtclod = 1)
+	skillcraft = /datum/skill/craft/carpentry
+	verbage_simple = "construct"
+	verbage = "constructs"
+	craftdiff = 2
+
+/datum/crafting_recipe/roguetown/turfs/woodwall/light
+	name = "light wooden wall"
+	result = /turf/closed/wall/mineral/rogue/wood/light
+	reqs = list(/obj/item/grown/log/tree/small = 2, /obj/item/natural/sandpile = 1)
+	skillcraft = /datum/skill/craft/carpentry
+	verbage_simple = "construct"
+	verbage = "constructs"
+	craftdiff = 2
+
+/datum/crafting_recipe/roguetown/turfs/woodwall/log
+	name = "log wall"
+	result = /turf/closed/wall/mineral/rogue/wood/log
+	reqs = list(/obj/item/grown/log/tree = 1)
+	craftdiff = 3
+
+/datum/crafting_recipe/roguetown/turfs/woodwindow/dark
+	name = "dark wooden murder hole"
+	result = /turf/closed/wall/mineral/rogue/wood/dark/window
+	reqs = list(/obj/item/grown/log/tree/small = 2, /obj/item/natural/dirtclod = 1)
+	skillcraft = /datum/skill/craft/carpentry
+	verbage_simple = "construct"
+	verbage = "constructs"
+	craftdiff = 2
+
+/datum/crafting_recipe/roguetown/turfs/woodwindow/light
+	name = "light wooden murder hole"
+	result = /turf/closed/wall/mineral/rogue/wood/light/window
+	reqs = list(/obj/item/grown/log/tree/small = 2, /obj/item/natural/sandpile = 1)
+	skillcraft = /datum/skill/craft/carpentry
+	verbage_simple = "construct"
+	verbage = "constructs"
+	craftdiff = 2
+
+/datum/crafting_recipe/roguetown/turfs/woodwindow/log
+	name = "wooden log murder hole"
+	result = /turf/closed/wall/mineral/rogue/wood/log/window
+	reqs = list(/obj/item/grown/log/tree = 1)
+	skillcraft = /datum/skill/craft/carpentry
+	verbage_simple = "construct"
+	verbage = "constructs"
+	craftdiff = 3
+
 /// STONE
 
 /datum/crafting_recipe/roguetown/turfs/stonefloor
@@ -127,6 +179,40 @@
 	verbage_simple = "build"
 	verbage = "builds"
 	craftdiff = 2
+
+/datum/crafting_recipe/roguetown/turfs/stonewall/light
+	name = "whitestone wall"
+	result = /turf/closed/wall/mineral/rogue/stone/light
+	reqs = list(/obj/item/natural/stone = 1, /obj/item/natural/sandpile = 1)
+	result = /turf/closed/wall/mineral/rogue/stone/light
+
+/datum/crafting_recipe/roguetown/turfs/stonewall/carved
+	name = "carved wall"
+	result = /turf/closed/wall/mineral/rogue/stone/carved
+	reqs = list(/obj/item/natural/stone = 3)
+	result = /turf/closed/wall/mineral/rogue/stone/carved
+	craftdiff = 4
+
+/datum/crafting_recipe/roguetown/turfs/stonebrick
+	name = "Brick wall"
+	result = /turf/closed/wall/mineral/rogue/stonebrick
+	reqs = list(/obj/item/natural/stone = 4)
+	skillcraft = /datum/skill/craft/masonry
+	verbage_simple = "build"
+	verbage = "builds"
+	craftdiff = 3
+
+/datum/crafting_recipe/roguetown/turfs/stonebrick/red
+	name = "Red brick wall"
+	reqs = list(/obj/item/natural/stone = 1, /obj/item/natural/dirtclod = 1) //stand in for clay
+	result = /turf/closed/wall/mineral/rogue/stonebrick/red
+
+
+/datum/crafting_recipe/roguetown/turfs/stonebrick/light
+	name = "White brick wall"
+	reqs = list(/obj/item/natural/stone = 3, /obj/item/natural/sandpile = 1)
+	result = /turf/closed/wall/mineral/rogue/stonebrick/light
+
 
 /datum/crafting_recipe/roguetown/turfs/stonewall/TurfCheck(mob/user, turf/T)
 	if(isclosedturf(T))
@@ -177,6 +263,38 @@
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/turfs/stonewindow/TurfCheck(mob/user, turf/T)
+	if(isclosedturf(T))
+		return
+	if(!istype(T, /turf/open/floor/rogue))
+		return
+	return TRUE
+
+/datum/crafting_recipe/roguetown/turfs/stonewindow/light
+	name = "stone murder hole"
+	result = /turf/closed/wall/mineral/rogue/stone/window/light
+	reqs = list(/obj/item/natural/stone = 2)
+	skillcraft = /datum/skill/craft/masonry
+	verbage_simple = "build"
+	verbage = "builds"
+	craftdiff = 2
+
+/datum/crafting_recipe/roguetown/turfs/stonewindow/light/TurfCheck(mob/user, turf/T)
+	if(isclosedturf(T))
+		return
+	if(!istype(T, /turf/open/floor/rogue))
+		return
+	return TRUE
+
+/datum/crafting_recipe/roguetown/turfs/stonewindow
+	name = "carved murder hole"
+	result = /turf/closed/wall/mineral/rogue/stone/window
+	reqs = list(/obj/item/natural/stone = 3)
+	skillcraft = /datum/skill/craft/masonry
+	verbage_simple = "build"
+	verbage = "builds"
+	craftdiff = 4
+
+/datum/crafting_recipe/roguetown/turfs/stonewindow/carved/TurfCheck(mob/user, turf/T)
 	if(isclosedturf(T))
 		return
 	if(!istype(T, /turf/open/floor/rogue))

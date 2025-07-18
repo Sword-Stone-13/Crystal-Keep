@@ -5,8 +5,9 @@
 	faction = "Station"
 	total_positions = -1
 	spawn_positions = -1
-	allowed_races = RACES_VERY_SHUNNED_UP
-	tutorial = "Fleeing misfortune you head your way towards Rockhill, you're not a soldier or an explorer, but a humble migrant trying to look for a better life, if you get to survive the trip that is."
+	allowed_races = RACES_ALL_KINDS_NO_SEELIE
+	tutorial = "Fleeing misfortune you head your way towards Crystal Keep, you're not a soldier or an explorer, but a humble migrant trying to look for a better life, if you get to survive the trip that is."
+	associated_squad = /datum/antagonist/squad/none
 
 	outfit = null
 	outfit_female = null

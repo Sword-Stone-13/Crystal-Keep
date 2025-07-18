@@ -4,7 +4,7 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_VERY_SHUNNED_UP
 	outfit = /datum/outfit/job/roguetown/mercenary/sellsword
-	maximum_possible_slots = 10
+	maximum_possible_slots = 3
 	min_pq = 0
 	torch = FALSE
 	category_tags = list(CTAG_MERCENARY)
@@ -26,7 +26,7 @@
 	switch(classchoice)
 		if("Swordsman")
 			H.set_blindness(0)
-			to_chat(H, span_warning("You are well versed in the ways of the longsword. You have a steel sword and a leather helmet."))
+			to_chat(H, span_warning("You are a general mercenary with a varied skills. You have a steel sword and a leather helmet."))
 			head = /obj/item/clothing/head/roguetown/helmet/leather
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
 			beltr = /obj/item/rogueweapon/sword
@@ -47,26 +47,26 @@
 				H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
 				H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
 				H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
-				H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 1, TRUE)
-				H.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
 				H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
 				H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
+				H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 1, TRUE)
 				H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 				H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
-				H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
+				H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
+				H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
 				H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
 				H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 				H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
-				H.change_stat("strength", 2)
-				H.change_stat("endurance", 1)
-				H.change_stat("constitution", 1)
+				H.change_stat("strength", 1)
+				H.change_stat("endurance", 2)
+				H.change_stat("constitution", 2)
 				H.change_stat("skill", 1)
 				H.change_stat("speed", 1)
 			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 		if("Fencer")
 			H.set_blindness(0)
 			to_chat(H, span_warning("You are well versed in the ways of the rapier. You have a rapier and a tricorn."))
-			head = /obj/item/clothing/head/roguetown/helmet/tricorn
+			head = /obj/item/clothing/head/roguetown/helmet/bandana
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 			beltr = /obj/item/rogueweapon/sword/rapier
 			shoes = /obj/item/clothing/shoes/roguetown/armor/leather
@@ -84,28 +84,26 @@
 				H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
 				H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
 				H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
-				H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 1, TRUE)
 				H.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
-				H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
-				H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
+				H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 				H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
-				H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
+				H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
 				H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
-				H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
+				H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 				H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 				H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
-				H.change_stat("strength", 2)
+				H.change_stat("strength", 1)
 				H.change_stat("endurance", 1)
 				H.change_stat("constitution", 1)
-				H.change_stat("skill", 1)
+				H.change_stat("skill", 2)
 				H.change_stat("speed", 1)
-			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 		if("Cutthroat")
 			H.set_blindness(0)
-			to_chat(H, span_warning("You are well versed in the ways of the Cutlass. You have a cutlass and a maritime outfit."))
-			head = /obj/item/clothing/head/roguetown/helmet/bandana
+			to_chat(H, span_warning("You're a scurvy dodging bastard. Your axe runs on coin."))
+			head = /obj/item/clothing/head/roguetown/helmet/tricorn
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor/red
-			beltr = /obj/item/rogueweapon/sword/cutlass
+			beltr = /obj/item/rogueweapon/stoneaxe/handaxe
 			shoes = /obj/item/clothing/shoes/roguetown/armor/leather
 			neck = /obj/item/keyring/mercenary
 			pants = /obj/item/clothing/under/roguetown/trou/leather
@@ -118,17 +116,15 @@
 			backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger)
 
 			if(H.mind)
-				H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
+				H.mind.adjust_skillrank(/datum/skill/misc/swimming, 3, TRUE)
 				H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
 				H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
-				H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 1, TRUE)
-				H.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
-				H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
+				H.mind.adjust_skillrank(/datum/skill/combat/axes, 3, TRUE)
 				H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 				H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 				H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
-				H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
-				H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
+				H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
+				H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 				H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 				H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 				H.change_stat("strength", 2)

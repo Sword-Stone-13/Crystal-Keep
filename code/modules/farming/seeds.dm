@@ -188,6 +188,138 @@
 	plant_def_type = /datum/plant_def/amanita
 
 
+//Crystal Keep Seeds
+
+/obj/item/seeds/elfnut/ //Elves grow their arms. Something to do with all that spare time, I suppose.
+	name = "elfnut"
+	resistance_flags = FIRE_PROOF
+
+//ironwood armors
+/obj/item/seeds/elfnut/ironwood/armor/ //produces chainmail
+	seed_identity = "elfnut seed"
+	plant_def_type = /datum/plant_def/elfnut/ironwood/armor/
+
+/obj/item/seeds/elfnut/ironwood/armor/halfplate
+	plant_def_type = /datum/plant_def/elfnut/ironwood/armor/halfplate
+
+/obj/item/seeds/elfnut/ironwood/armor/fullplate/
+	plant_def_type = /datum/plant_def/elfnut/ironwood/armor/fullplate
+
+/obj/item/seeds/elfnut/ironwood/armor/helmet
+	plant_def_type = /datum/plant_def/elfnut/ironwood/armor/helmet
+
+/obj/item/seeds/elfnut/ironwood/armor/halfhelm
+	plant_def_type = /datum/plant_def/elfnut/ironwood/armor/halfhelm
+
+/obj/item/seeds/elfnut/ironwood/armor/bracers/
+	plant_def_type = /datum/plant_def/elfnut/ironwood/armor/bracers
+
+/obj/item/seeds/elfnut/ironwood/armor/bervor/
+	plant_def_type = /datum/plant_def/elfnut/ironwood/armor/bervor
+
+/obj/item/seeds/elfnut/ironwood/armor/greaves/
+	plant_def_type = /datum/plant_def/elfnut/ironwood/armor/greaves
+
+/obj/item/seeds/elfnut/ironwood/armor/boots/
+	plant_def_type = /datum/plant_def/elfnut/ironwood/armor/boots
+
+/obj/item/seeds/elfnut/ironwood/armor/gauntlets/
+	plant_def_type = /datum/plant_def/elfnut/ironwood/armor/gauntlets
+
+
+///Silverwood Armor///
+//	seed_identity = "intricate elfnut seed"//keeping the original names on the side, made all names uniform so merchants don't game the system by getting a farmer to help them identify nuts
+/obj/item/seeds/elfnut/silverwood/armor/halfhelm
+	plant_def_type = /datum/plant_def/elfnut/silverwood/armor/halfhelm
+
+/obj/item/seeds/elfnut/silverwood/armor/fullplate/upper//code was uppity with me, see if this woorks
+	plant_def_type = /datum/plant_def/elfnut/silverwood/fullplate/upper
+
+/obj/item/seeds/elfnut/silverwood/armor/fullplate/extremities
+	plant_def_type = /datum/plant_def/elfnut/ironwood/armor/fullplate/extremities
+
+//ironwood weapons
+//	seed_identity = "thorny elfnut seed"
+/obj/item/seeds/elfnut/ironwood/weapons/dagger
+	plant_def_type = /datum/plant_def/elfnut/ironwood/dagger
+
+/obj/item/seeds/elfnut/ironwood/weapons/shortsword
+	plant_def_type = /datum/plant_def/elfnut/ironwood/shortsword
+
+/obj/item/seeds/elfnut/ironwood/weapons/sword
+	plant_def_type = /datum/plant_def/elfnut/ironwood/sword
+
+/obj/item/seeds/elfnut/ironwood/weapons/sabre
+	plant_def_type = /datum/plant_def/elfnut/ironwood/sabre
+
+/obj/item/seeds/elfnut/ironwood/weapons/buckler //had a real difficult time deciding if this would be an arm or an armor. Decided on arm because of repair and skill code.
+	plant_def_type = /datum/plant_def/elfnut/ironwood/buckler
+
+/obj/item/seeds/elfnut/ironwood/weapons/bow
+	plant_def_type = /datum/plant_def/elfnut/ironwood/bow
+
+/obj/item/seeds/elfnut/ironwood/weapons/glaive
+	plant_def_type = /datum/plant_def/elfnut/ironwood/glaive
+
+
+/* maybe later
+/obj/item/seeds/elfnut/ironwood/weapons/longleaf
+	seed_identity = "thorny elfnut seed"
+	plant_def_type = /datum/plant_def/elfnut/ironwood/weapons/2handsabre
+*/
+
+//silverwood weapons
+//	seed_identity = "heavy elfnut seed"
+/obj/item/seeds/elfnut/silverwood/weapons/dagger //lorewise these are elfnut seeds planted then collected over a silver deposit, artificial or natural (ergo, a pile of silver under dirt) Usually artificial because... silver deposits aren't everywhere
+	plant_def_type = /datum/plant_def/elfnut/silverwood/dagger
+
+/obj/item/seeds/elfnut/silverwood/weapons/shortsword
+	plant_def_type = /datum/plant_def/elfnut/silverwood/shortsword
+
+/obj/item/seeds/elfnut/silverwood/weapons/sword
+	plant_def_type = /datum/plant_def/elfnut/silverwood/sword
+
+/obj/item/seeds/elfnut/silverwood/weapons/sabre
+	plant_def_type = /datum/plant_def/elfnut/silverwood/sabre
+
+
+/obj/item/seeds/elfnut/silverwood/weapons/glaive
+	plant_def_type = /datum/plant_def/elfnut/silverwood/glaive
+
+/obj/item/seeds/elfnut/silverwood/weapons/shield
+	plant_def_type = /datum/plant_def/elfnut/silverwood/shield
+
+/obj/item/seeds/elfnut/silverwood/weapons/bow
+	plant_def_type = /datum/plant_def/elfnut/silverwood/bow
+
+/obj/item/seeds/elfnut/silverwood/weapons/mastersword
+	seed_identity = "glowing elfnut seed"
+	plant_def_type = /datum/plant_def/elfnut/silverwood/weapons/elfmastersword
+
+//high quality seeds
+
+//	seed_identity = "complete elfnut seed"
+/obj/item/seeds/elfnut/ironwood/armor/complete/ //spawns the entire iron elfnut armor, should be rare.
+	plant_def_type = /datum/plant_def/elfnut/ironwood/armor/complete
+
+//	seed_identity = "perfect elfnut seed"
+/obj/item/seeds/elfnut/silverwood/armor/complete/ //spawns the entire SILVER elfnut armor. Should be extraordinarily rare.
+	plant_def_type = /datum/plant_def/elfnut/silverwood/armor/complete
+
+
+//henneseed
+//	seed_identity = "condensed courage"
+/obj/item/seeds/elfnut/henneseed //a bottle of cognac GOT DAMN
+	plant_def_type = /datum/plant_def/henneseed
+
+
+/obj/item/seeds/elfnut/henneseed/gourd //a "natural" bottle of "elf wine" in case a glass bottle of alcohol is too "immersion breaking"
+	plant_def_type = /datum/plant_def/henneseed/gourd
+
+/obj/item/seeds/elfnut/henneseed/faeport //a pack of sick zigs baby
+	plant_def_type = /datum/plant_def/henneseed/faeport
+
+//poison oak shenanigans
 /obj/item/seeds/poison_oak
 	seed_identity = "poison oak seeds"
 	plant_def_type = /datum/plant_def/poison_oak

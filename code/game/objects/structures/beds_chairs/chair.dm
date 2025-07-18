@@ -141,6 +141,9 @@
 	item_chair = null
 	anchored = FALSE
 
+
+
+
 /obj/structure/chair/wood/narsie_act()
 	return
 

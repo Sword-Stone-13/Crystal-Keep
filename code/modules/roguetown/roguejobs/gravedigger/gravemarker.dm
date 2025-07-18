@@ -51,3 +51,19 @@
 		if(pacify_coffin(hole, user))
 			break
 	return ..()
+
+/datum/crafting_recipe/roguetown/gravemarker/walnutian
+	name = "elvish grave marker"
+	result = /obj/structure/gravemarker/walnutian
+	reqs = list(/obj/item/grown/log/tree/stick = 1)
+	time = 10 SECONDS
+	verbage_simple = "fastens together"
+	verbage = "fastens together"
+	craftsound = 'sound/foley/Building-01.ogg'
+	structurecraft = /obj/structure/closet/dirthole
+	craftdiff = 0
+
+/obj/structure/gravemarker/walnutian
+	name = "elvish grave marker"
+	desc = "A grave marker in the style of old."
+	icon_state = "gravemarkerelf1"

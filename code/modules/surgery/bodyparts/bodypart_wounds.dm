@@ -115,7 +115,7 @@
 	return bleed_rate
 
 /// Called after a bodypart is attacked so that wounds and critical effects can be applied
-/obj/item/bodypart/proc/bodypart_attacked_by(bclass = BCLASS_BLUNT, dam, mob/living/user, zone_precise = src.body_zone, silent = FALSE, crit_message = FALSE)
+/obj/item/bodypart/proc/bodypart_attacked_by(bclass = BCLASS_BLUNT, dam, mob/living/user, zone_precise = src.body_zone, silent = FALSE, crit_message = FALSE, force_crit = FALSE)
 	if(!bclass || !dam || !owner || (owner.status_flags & GODMODE))
 		return FALSE
 	if(ishuman(owner))
@@ -165,6 +165,8 @@
 					added_wound = /datum/wound/bite/small
 	if(added_wound)
 		added_wound = add_wound(added_wound, silent, crit_message)
+	if(force_crit)
+		return try_crit(bclass, dam, user, zone_precise, silent, crit_message)
 	if(do_crit)
 		var/crit_attempt = try_crit(bclass, dam, user, zone_precise, silent, crit_message)
 		if(crit_attempt)

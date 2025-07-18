@@ -16,7 +16,7 @@
 #define ROLE_ASPIRANT			"Aspirant"
 #define ROLE_ZIZOIDCULTIST		"Cultist"
 #define ROLE_LICH				"Lich"
-#define ROLE_SWIZARD			"Shadow Wizard"
+//#define ROLE_SWIZARD			"Shadow Wizard" //eventually
 
 #define ROLE_SYNDICATE			"Syndicate"
 #define ROLE_TRAITOR			"Traitor"
@@ -81,7 +81,6 @@ GLOBAL_LIST_INIT(special_roles_rogue, list(
 	ROLE_ZIZOIDCULTIST = /datum/antagonist/zizocultist,
 	ROLE_NBEAST = /datum/antagonist/vampirelord,
 	ROLE_LICH = /datum/antagonist/lich,
-	ROLE_SWIZARD = /datum/antagonist/shadowwizard
 ))
 
 //Job defines for what happens when you fail to qualify for any job during job selection

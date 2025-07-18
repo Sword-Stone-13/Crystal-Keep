@@ -1,5 +1,6 @@
 /obj/item/gun/magic/spellbook
 	name = "spellbook of nothing"
+	desc = "A beginner's spellbook, closed and unassuming."
 	icon = 'icons/roguetown/items/books.dmi'
 	icon_state = "basic_book_1"
 	possible_item_intents = list(/datum/intent/shoot/tome, INTENT_GENERIC)
@@ -12,48 +13,78 @@
 	can_parry = FALSE
 	force = 2
 	throwforce = 10
-	minmag = 10
-	w_class = WEIGHT_CLASS_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL // Book-like when closed
 	slot_flags = ITEM_SLOT_HIP
 	can_charge = TRUE
-	max_charges = 100 //100, 50, 50, 34 (max charge distribution by 25%ths)
+	max_charges = 100
 	attack_verb = list("bashed", "whacked", "educated")
 	resistance_flags = FLAMMABLE
 	drop_sound = 'sound/foley/dropsound/book_drop.ogg'
-	pickup_sound =  'sound/blank.ogg'
+	pickup_sound = 'sound/blank.ogg'
 	hitsound = 'sound/blank.ogg'
-	var/hitsound_on = 'sound/blank.ogg' //to be furled pages bop
 	associated_skill = /datum/skill/magic/arcane
-	var/list/attack_verb_on = list("bashed", "whacked", "educated")
-	var/list/attack_verb_off = list("bashed", "whacked", "educated")
-	var/force_on = 5
+	// State-specific variables
+	var/on = FALSE // Closed by default
+	var/on_icon_state = "basic_book_1"
+	var/off_icon_state = "basic_book_0"
+	var/force_on = 5 // Slightly higher force when open
+	var/throw_speed_on = 1 // Book-like throw speed when closed
+	var/throw_speed_off = 1
+	var/throw_range_on = 5 // Book-like throw range when closed
+	var/throw_range_off = 5
+	var/w_class_on = WEIGHT_CLASS_BULKY // Larger when open
+	var/brightness_on = 5 // Light when open
 	var/on_sound = 'sound/items/book_open.ogg'
-	var/on = TRUE
-	var/on_icon_state = "basic_book_1" // What is our sprite when turned on
-	var/off_icon_state = "basic_book_0" // What is our sprite when turned off
-	var/on_item_state = "basic_book_0" // What is our in-hand sprite when turned on
-	var/force_off = 5 // Damage when off - not stunning
-	var/weight_class_on = WEIGHT_CLASS_BULKY // What is the new size class when turned on
-	var/active = FALSE
-	var/brightness_on = 5
-	var/throwforce_on = 5
-	var/w_class_on = WEIGHT_CLASS_BULKY
+	var/off_sound = 'sound/items/book_close.ogg'
 
+
+
+
+/obj/item/gun/magic/spellbook/Initialize()
+	. = ..()
+	update_state() // Ensure initial state is set correctly
+
+/obj/item/gun/magic/spellbook/update_icon()
+	if(on)
+		icon_state = on_icon_state
+		item_state = on_icon_state // Consistent in-hand sprite
+	else
+		icon_state = off_icon_state
+		item_state = off_icon_state
+	if(loc && ismob(loc))
+		var/mob/M = loc
+		M.regenerate_icons()
+
+/obj/item/gun/magic/spellbook/proc/update_state()
+	if(on)
+		w_class = w_class_on
+		force = force_on
+		throw_speed = throw_speed_on
+		throw_range = throw_range_on
+		set_light(brightness_on)
+		possible_item_intents = list(/datum/intent/shoot/tome, INTENT_GENERIC)
+	else
+		w_class = WEIGHT_CLASS_NORMAL
+		force = 2
+		throw_speed = throw_speed_off
+		throw_range = throw_range_off
+		set_light(0)
+		possible_item_intents = list(INTENT_GENERIC) // No shooting when closed
+	update_icon()
 
 /obj/item/gun/magic/spellbook/getonmobprop(tag)
 	. = ..()
-	if(tag)
-		if(on)
-			switch(tag)
-				if("gen")
-					return list("shrink" = 0.4)
-				if("onbelt")
-					return list("shrink" = 0.3)
-
-
-
+	if(tag && on)
+		switch(tag)
+			if("gen")
+				return list("shrink" = 0.4)
+			if("onbelt")
+				return list("shrink" = 0.3)
 
 /obj/item/gun/magic/spellbook/process_fire(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "", bonus_spread = 0)
+	if(!on)
+		to_chat(user, "<span class='info'>Open the spellbook first!</span>")
+		return FALSE
 	var/obj/item/ammo_casing/magic/cur_casing = chambered
 	var/spell_class = cur_casing.spell_element
 	var/obj/projectile/cur_proj = cur_casing.BB
@@ -67,86 +98,70 @@
 				cur_proj.damage = cur_proj.damage + (user.STAMAG * 0.5) + (user.STASKL * 0.5)
 			if(STYPE_CRYSTAL) //misc magic like magic missile 
 				cur_proj.damage = cur_proj.damage + (user.STAMAG * 0.5) + (user.STAFTH * 0.5)
-	. = ..()
-//new
-/obj/item/gun/magic/spellbook/proc/get_on_description()
-	. = list()
-
-	.["local_on"] = "<span class ='warning'>I open the spellbook!</span>"
-	.["local_off"] = "<span class ='notice'>I close the spellbook.</span>"
-
-	return .
+	return. = ..()
 
 
 /obj/item/gun/magic/spellbook/attack_self(mob/user)
 	on = !on
-	var/list/desc = get_on_description()
-
 	if(on)
-		to_chat(user, desc["local_on"])
-		icon_state = on_icon_state
-		item_state = on_item_state
-		w_class = weight_class_on
-		force = force_on
-		playsound(loc, 'sound/items/book_open.ogg', 100)
-		set_light(brightness_on)
+		to_chat(user, "<span class='warning'>I open the spellbook!</span>")
+		playsound(loc, on_sound, 50, TRUE)
 	else
-		to_chat(user, desc["local_off"])
-		icon_state = off_icon_state
-		force = force_off
-		playsound(loc, 'sound/items/book_close.ogg', 100)
-	update_icon()
+		to_chat(user, "<span class='notice'>I close the spellbook.</span>")
+		playsound(loc, off_sound, 50, TRUE)
+	update_state()
 	user.update_inv_hands()
-	playsound(src.loc, on_sound, 50, TRUE)
-	set_light(0)
-
 
 /obj/item/gun/magic/spellbook/can_shoot(mob/living/user)
-	// Check if the spellbook is open
-	if (!on)
+	if(!on)
 		to_chat(user, "<span class='info'>Open me first.</span>")
 		return FALSE
 	return ..()
 
+/obj/item/gun/magic/spellbook/attackby(obj/item/I, mob/user, params)
+	// Prevent reading interactions
+	if(istype(I, /obj/item/pen) || istype(I, /obj/item/paper))
+		to_chat(user, "<span class='warning'>This is a magical tome, not a writable book!</span>")
+		return
+	return ..()
+
+/obj/item/gun/magic/spellbook/examine(mob/user)
+	. = ..()
+	if(!on)
+		. += "<span class='notice'>It is closed and looks like an ordinary book.</span>"
+	else
+		. += "<span class='warning'>It is open and pulses with magical energy.</span>"
+
+	return
+
+// Intent for shooting
 /datum/intent/shoot/tome
 	chargetime = 1
 	chargedrain = 2
 	charging_slowdown = 3
 
 /datum/intent/shoot/tome/can_charge()
-	if(mastermob)
-		if(mastermob.get_inactive_held_item())
-			return FALSE
+	if(mastermob && mastermob.get_inactive_held_item())
+		return FALSE
 	return TRUE
 
 /datum/intent/shoot/tome/prewarning()
 	if(mastermob)
 		mastermob.visible_message(span_warning("[mastermob] charges the [masteritem]!"))
-		playsound(mastermob, pick('sound/magic/charged.ogg'), 100, FALSE)
+		playsound(mastermob, 'sound/magic/charged.ogg', 100, FALSE)
 
 /datum/intent/shoot/tome/get_chargetime()
 	if(mastermob && chargetime)
-		var/newtime = 0
-		//skill block
-		newtime = newtime + 12
-		newtime = newtime - (mastermob.mind.get_skill_level(/datum/skill/combat/tomes) * (10/5))
-		//12 because skills go up to 6 and originally math was skill level * 10/6
-		newtime = newtime + 10
-		newtime = newtime - (mastermob.STASKL * (10/20))
-		//I just think Skill is neat and should be used more
-		newtime = newtime + 20
-		newtime = newtime - (mastermob.STAMAG * 1) //20/20 is 1
-		if(newtime > 0)
-			return newtime
-		else
-			return 0.1
+		var/newtime = 12 - (mastermob.mind.get_skill_level(/datum/skill/combat/tomes) * 2) // Skill reduces by 2 per level (max 6 levels = 12)
+		newtime += 10 - (mastermob.STASKL * 0.5) // Skill reduces by 0.5 per point (max 20 = 10)
+		newtime += 20 - mastermob.STAMAG // Magic reduces by 1 per point (max 20 = 20)
+		return max(newtime, 0.1)
 	return chargetime
 
-
-
+// Example subtype (others follow similar pattern)
 /obj/item/gun/magic/spellbook/firebolt
 	name = "firebolt tome"
-	desc = "The beginner's tome."
+	desc = "A beginner's tome for casting firebolts."
 	ammo_type = /obj/item/ammo_casing/magic/firebolt
 	max_charges = 6
 	recharge_rate = 4
@@ -298,7 +313,7 @@
 	name = "Shining sword"
 	desc = "A beautiful blue sword that glows in the night."
 	ammo_type = /obj/item/ammo_casing/magic/crystalpeep
-	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/shoot/tome/)
+	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/shoot/tome)
 	associated_skill = /datum/skill/combat/swords
 	attack_verb = list("slashed", "cut", "skewered")
 	icon_state = "spellblade"
@@ -310,7 +325,8 @@
 	spread = 0
 	damtype = BRUTE
 	can_parry = TRUE
-	force = 25
+	force = 25 // Retain high force for melee
+	force_on = 25 // Ensure consistency when open
 	minmag = 11 //for now, just to test
 //more to come after tests
 

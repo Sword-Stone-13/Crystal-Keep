@@ -140,8 +140,7 @@
 */
 	var/PQ_boost_divider = 0
 
-	var/associated_squad = null // if this is set, this will override the squad the player is assigned to regardless of preference.
-	// Set to SQUAD_NONE to force this job to have no squad.
+	var/associated_squad = /datum/antagonist/squad/none// if this is set, this will override the squad the player is assigned to, and they'll be assigned to this squad
 
 
 /datum/job/proc/special_job_check(mob/dead/new_player/player)
@@ -169,7 +168,7 @@
 		tutorial = "It wasn't easy for a fae, but your liege saw great potential in you. Once, you were just an adventuring companion- now you are one of the highest status fae within the realm itself. It's come at a cost, youve lost your more mischievous spells and nature over time, but gained ones more useful to dealing with the chaos of court."
 	else if(title == "Servant")		//Change tutorial message for Seelie maids
 		tutorial = "Though once you were a mischievous fae, you've now accepted the comfort and security of service in the manor instead. Your spells may come in handy, but youve allowed the more chaotic ones to fade to memory."
-	else if(title == "Prisoner (Rockhill)" || title == "Prisoner (Bog)")
+	else if(title == "Prisoner (Crystal Keep)" || title == "Prisoner (Bog)")
 		tutorial = "Thrown in this accursed place, the colar around your neck prevents any and all magic you mightve had. You waste away here, no mischief to be made or people to assist. Your life as a caged fae is miserable indeed."
 	return
 

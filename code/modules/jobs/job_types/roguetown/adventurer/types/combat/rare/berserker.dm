@@ -1,18 +1,16 @@
 //terrify mobs scream
 /datum/advclass/berserker
 	name = "Berserker"
-	tutorial = "A terrifying beast who roams areas leading bands and cleaning house."
+	tutorial = "A terrifying beast who roams areas leading bands and cleaning house before returning to her tribe to challenge a matriarch."
 	allowed_sexes = list(FEMALE)
-	allowed_races = list(
-		/datum/species/lizardfolk,
-	)
+	allowed_races = list(/datum/species/lizardfolk)
 	outfit = /datum/outfit/job/roguetown/adventurer/berserker
-	traits_applied = list(TRAIT_CRITICAL_RESISTANCE, TRAIT_NOPAINSTUN, TRAIT_STRONGBITE, TRAIT_NASTY_EATER, TRAIT_MEDIUMARMOR) //experimental, but this should be a monster
+	traits_applied = list(TRAIT_CRITICAL_RESISTANCE, TRAIT_NOPAINSTUN, TRAIT_NASTY_EATER, TRAIT_MEDIUMARMOR) //experimental, but this should be a monster
 	cmode_music = 'sound/music/combat_gronn.ogg'
 	category_tags = list(CTAG_ADVENTURER)
 
 /datum/outfit/job/roguetown/adventurer/berserker
-	allowed_patrons = list(/datum/patron/divine/ravox, /datum/patron/inhumen/graggar)
+	allowed_patrons = list(/datum/patron/divine/dendor, /datum/patron/inhumen/graggar)
 
 /datum/outfit/job/roguetown/adventurer/berserker/pre_equip(mob/living/carbon/human/H)
 	..() 
@@ -50,4 +48,7 @@
 	H.change_stat("constitution", 3)
 	H.change_stat("endurance", 3)
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/barbarian_rage)
-
+	if(prob(25))
+		H.cmode_music = 'sound/music/combat_amazunt.ogg'
+	else
+		H.cmode_music = 'sound/music/combat_gronn.ogg'

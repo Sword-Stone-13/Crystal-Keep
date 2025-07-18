@@ -23,7 +23,7 @@
 	throwforce = 10
 	thrown_bclass = BCLASS_CUT
 	//dropshrink = 0.75
-	anvilrepair = /datum/skill/craft/blacksmithing
+	anvilrepair = /datum/skill/craft/weaponsmithing
 	smeltresult = /obj/item/ingot/steel
 	minstr = 7
 	sellprice = 30
@@ -173,8 +173,8 @@
 
 
 /obj/item/rogueweapon/sword/long/judgement
-	force = 40
-	force_wielded = 55
+	force = 25
+	force_wielded = 35
 	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/strike)
 	gripped_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/strike, /datum/intent/sword/chop)
 	icon_state = "judgement"
@@ -412,6 +412,7 @@
 	gripped_intents = null
 	minstr = 4
 	wdefense = 3
+	var/list/small_gripped_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/strike, /datum/intent/sword/chop)
 
 /obj/item/rogueweapon/sword/iron/short/chipped
 	force = 17
@@ -457,6 +458,20 @@
 	wdefense = 6
 	wbalance = 1
 	wparryspeed = 5
+
+/obj/item/rogueweapon/sword/sabre/katana
+	name = "katana"
+	desc = "A simple sword from the foreign Jade Kingdom."
+	icon_state = "katana"
+	max_integrity = 120
+	possible_item_intents = list(/datum/intent/sword/cut/rapier, /datum/intent/sword/thrust)
+	gripped_intents = list(/datum/intent/sword/cut/sabre, /datum/intent/sword/thrust, /datum/intent/sword/chop)
+	parrysound = list('sound/combat/parry/bladed/bladedthin (1).ogg', 'sound/combat/parry/bladed/bladedthin (2).ogg', 'sound/combat/parry/bladed/bladedthin (3).ogg')
+	swingsound = BLADEWOOSH_SMALL
+	minstr = 5
+	wdefense = 6
+	wbalance = 1
+	sellprice = 100
 
 /datum/intent/sword/cut/sabre
 	clickcd = 10
@@ -560,7 +575,6 @@
 	icon_state = "sword1"
 	sellprice = 200
 	smeltresult = /obj/item/ingot/silver
-	var/last_used = 0
 
 
 /obj/item/rogueweapon/sword/silver/pickup(mob/user)
@@ -670,13 +684,21 @@
 
 /obj/item/rogueweapon/sword/silver/sabre/elf
 	force = 25
-	name = "elvish saber"
+	possible_item_intents = list(/datum/intent/sword/cut/sabre, /datum/intent/sword/thrust)
+	name = "elvish silver saber"
 	desc = "This finely crafted saber is of elven design. Pure silver... except the grip."
-	icon_state = "esaber"
+	icon_state = "elfnutsabersilver"
 	item_state = "esaber"
 	max_integrity = 205
 	lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/swords_righthand.dmi'
+	gripped_intents = null
+	parrysound = list('sound/combat/parry/bladed/bladedthin (1).ogg', 'sound/combat/parry/bladed/bladedthin (2).ogg', 'sound/combat/parry/bladed/bladedthin (3).ogg')
+	swingsound = BLADEWOOSH_SMALL
+	minstr = 5
+	wdefense = 6
+	wbalance = 1
+	wparryspeed = 5
 
 /obj/item/rogueweapon/greatsword
 	force = 12
@@ -792,3 +814,162 @@
 	recovery = 20
 	clickcd = 10
 	idodgebonus = -15
+
+
+
+///CRYSTAL KEEP///
+
+///ELFNUT///
+
+/obj/item/rogueweapon/sword/sabre/elfnut
+	name = "elvish sabre"
+	desc = "A swift sabre. Parries realiantly and strikes swiftly"
+	icon_state = "elfnutsaber"
+	force = 25
+	max_integrity = 230
+	possible_item_intents = list(/datum/intent/sword/cut/sabre, /datum/intent/sword/thrust)
+	gripped_intents = null
+	parrysound = list('sound/combat/parry/bladed/bladedthin (1).ogg', 'sound/combat/parry/bladed/bladedthin (2).ogg', 'sound/combat/parry/bladed/bladedthin (3).ogg')
+	swingsound = BLADEWOOSH_SMALL
+	minstr = 3
+	wdefense = 6
+	wbalance = 1
+	wparryspeed = 5
+	smeltresult = /obj/item/ingot/iron
+
+/obj/item/rogueweapon/sword/long/masterelf
+	force = 40
+	force_wielded = 55
+	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/strike)
+	gripped_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/strike, /datum/intent/sword/chop)
+	icon_state = "elfnutmasterswordsilver"
+	icon = 'icons/roguetown/weapons/64.dmi'
+	item_state = "elfnutmasterswordsilver"
+	lefthand_file = 'icons/mob/inhands/weapons/roguebig_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/weapons/roguebig_righthand.dmi'
+	name = "Sword of Meekal"
+	desc = "One of the thirteen stone swords incarnate. Of the elves."
+	parrysound = "bladedmedium"
+	swingsound = BLADEWOOSH_LARGE
+	pickup_sound = 'sound/foley/equip/swordlarge2.ogg'
+	bigboy = 1
+	wlength = WLENGTH_LONG
+	gripsprite = TRUE
+	pixel_y = -16
+	pixel_x = -16
+	inhand_x_dimension = 64
+	inhand_y_dimension = 64
+	associated_skill = /datum/skill/magic/holy //it's funny
+	max_integrity = 9999
+	throwforce = 15
+	thrown_bclass = BCLASS_CUT
+	smeltresult = /obj/item/ingot/silver
+	sellprice = 1000
+	static_price = TRUE
+
+//cheap copy paste fourth time in a row, because I'm not a coder. :y
+/obj/item/rogueweapon/sword/long/masterelf/pickup(mob/user)
+	. = ..()
+	var/mob/living/carbon/human/H = user
+	var/datum/antagonist/vampirelord/V_lord = H.mind.has_antag_datum(/datum/antagonist/vampirelord/)
+	var/datum/antagonist/werewolf/W = H.mind.has_antag_datum(/datum/antagonist/werewolf/)
+	if(ishuman(H))
+		if(H.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser))
+			to_chat(H, span_userdanger("The light!"))
+			H.Knockdown(10)
+			H.Paralyze(10)
+			H.adjustFireLoss(25)
+			H.fire_act(10)
+		if(V_lord)
+			to_chat(H, span_userdanger("The light!"))
+			H.Knockdown(10)
+			H.Paralyze(10)
+		if(W && W.transformed == TRUE)
+			to_chat(H, span_userdanger("The light!"))
+			H.Knockdown(10)
+			H.Paralyze(10)
+			H.adjustFireLoss(25)
+			H.fire_act(10)
+
+
+/obj/item/rogueweapon/sword/long/masterelf/mob_can_equip(mob/living/M, mob/living/equipper, slot, disable_warning = FALSE, bypass_equip_delay_self = FALSE)
+	. = ..()
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		var/datum/antagonist/vampirelord/V_lord = H.mind.has_antag_datum(/datum/antagonist/vampirelord/)
+		var/datum/antagonist/werewolf/W = H.mind.has_antag_datum(/datum/antagonist/werewolf/)
+		if(H.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser))
+			to_chat(H, span_userdanger("I can't equip the silver, it is my BANE!"))
+			H.Knockdown(10)
+			H.Paralyze(10)
+			H.adjustFireLoss(25)
+			H.fire_act(10)
+		if(V_lord)
+			to_chat(H, span_userdanger("I can't equip the silver, it is my BANE!"))
+			H.Knockdown(10)
+			H.Paralyze(10)
+		if(W && W.transformed == TRUE)
+			to_chat(H, span_userdanger("I can't equip the silver, it is my BANE!"))
+			H.Knockdown(10)
+			H.Paralyze(10)
+			H.adjustFireLoss(25)
+			H.fire_act(10)
+
+/obj/item/rogueweapon/sword/short/elfnut
+	name = "elfnut shortsword"
+	desc = "A short arming sword with a beautiful bronzelike sword."
+	icon_state = "elfnutshortsword"
+	minstr = 7
+	wdefense = 4
+	can_cdg = TRUE
+	smeltresult = /obj/item/ingot/iron
+
+/obj/item/rogueweapon/sword/short/elfnut/silvernut
+	name = "walnutian shortsword"
+	desc = "A glistening short sword that was sung into shape before it was even pulled."
+	icon_state = "elfnutshortsword"
+	minstr = 5
+	wdefense = 8
+	can_cdg = TRUE
+	smeltresult = /obj/item/ingot/steel
+
+
+/obj/item/rogueweapon/sword/elfnut
+	force = 20
+	force_wielded = 25
+	name = "sword"
+	desc = "A durable sword sung by elvish smiths."
+	icon_state = "elfnutlongsword"
+	max_integrity = 200
+	smeltresult = /obj/item/ingot/iron
+	minstr = 6
+	sellprice = 70
+	wdefense = 5
+
+/obj/item/rogueweapon/sword/elfnut/silvernut
+	force = 18
+	force_wielded = 33
+	name = "sword"
+	desc = "Hard to believe it was sharp before it ever touched a hand."
+	icon_state = "elfnutlongswordsilver"
+	max_integrity = 200
+	minstr = 6
+	sellprice = 70
+	wdefense = 5
+///BLUESTEEL///
+
+///REDSTEEL///
+
+/obj/item/rogueweapon/sword/short/redsteel
+	slot_flags = ITEM_SLOT_HIP | ITEM_SLOT_BACK
+	force = 20
+	force_wielded = 28
+	name = "Redsteel Sword"
+	desc = "A kobold Longsword."
+	icon_state = "redsteelsword"
+	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/strike)
+	gripped_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust/estoc, /datum/intent/sword/strike)
+	swingsound = BLADEWOOSH_SMALL
+	minstr = 5
+	wdefense = 4
+	can_cdg = TRUE

@@ -692,7 +692,7 @@
 	if(!user.is_literate())
 		. += "I have no idea what it says."
 	else
-		. += "It says \"TOWN ON ROCKHILL\""
+		. += "It says \"TOWN ON CRYSTAL KEEP\""
 
 /obj/structure/fluff/buysign
 	icon_state = "signwrote"
@@ -929,7 +929,7 @@
 
 /obj/structure/fluff/statue/evil
 	name = "idol"
-	desc = "A statue built to the robber-god, Matthios, who stole the gift of fire from the underworld. It is said that he grants the wishes of those pagan bandits (free folk) who feed him money and valuable metals."
+	desc = "A statue built to the robber-god, Nyatthios, who stole the gift of fire from the underworld. It is said that he grants the wishes of those pagan bandits (free folk) who feed him money and valuable metals."
 	icon_state = "evilidol"
 	icon = 'icons/roguetown/misc/structure.dmi'
 
@@ -1014,8 +1014,8 @@
 					playsound(loc,'sound/items/carvty.ogg', 50, TRUE)
 				playsound(loc,'sound/misc/eat.ogg', rand(30,60), TRUE)
 				if(istype(W, /obj/item/clothing/head/roguetown/crown/serpcrown)) // duplicate check here to notify admins and disable a second crown sale
-					message_admins("A Bandit [ADMIN_FLW(user)] has offered the Crown of Rockhill to Matthios.")
-					user.log_message("as Bandit offered the Crown of Rockhill to Matthios. (THRONE)", LOG_GAME)
+					message_admins("A Bandit [ADMIN_FLW(user)] has offered the Crown of Crystal Keep to Nyatthios.")
+					user.log_message("as Bandit offered the Crown of Crystal Keep to Nyatthios. (THRONE)", LOG_GAME)
 					treasuretypes = treasuretypes - /obj/item/clothing/head/roguetown/crown/serpcrown
 					SSroguemachine.crown = null //Avoid keeping an invalid reference to the crown.
 				qdel(W)
@@ -1338,3 +1338,71 @@
 	stake.forceMove(drop_location())
 	stake = null
 	qdel(src)
+
+
+//CRYSTAL KEEP STATUES
+
+/obj/structure/fluff/statue/tradition
+	icon = 'icons/roguetown/misc/housemisc/tallstructure.dmi'
+	icon_state = "statuem2r"
+
+/obj/structure/fluff/statue/tradition/knightright
+	icon_state = "statuem2r"
+
+/obj/structure/fluff/statue/tradition/knightleft
+	icon_state = "statuem2l"
+
+/obj/structure/fluff/statue/tradition/kingright
+	icon_state = "statuem3r"
+
+/obj/structure/fluff/statue/tradition/kingleft
+	icon_state = "statuem3l"
+
+/obj/structure/fluff/statue/tradition/pensiveright
+	icon_state = "statuem4r"
+
+/obj/structure/fluff/statue/tradition/pensiveleft
+	icon_state = "statuem4l"
+
+/obj/structure/fluff/statue/tradition/emperorright
+	icon_state = "statuem5r"
+
+/obj/structure/fluff/statue/tradition/emperorleft
+	icon_state = "statuem5l"
+
+/obj/structure/fluff/statue/tradition/nattyright
+	icon_state = "statuem6r"
+
+/obj/structure/fluff/statue/tradition/nattyleft
+	icon_state = "statuem6l"
+
+/obj/structure/fluff/statue/tradition/amazonleft
+	icon_state = "statuef2r"
+
+/obj/structure/fluff/statue/tradition/amazonright
+	icon_state = "statuef2l"
+
+/obj/structure/fluff/statue/tradition/wenchleft
+	icon_state = "statuef3r"
+
+/obj/structure/fluff/statue/tradition/wenchright
+	icon_state = "statuef3l"
+
+/obj/structure/fluff/statue/tradition/beautyleft
+	icon_state = "statuef4r"
+
+/obj/structure/fluff/statue/tradition/beautyright
+	icon_state = "statuef4l"
+
+/obj/structure/fluff/statue/tradition/maidenleft
+	icon_state = "statuef5r"
+
+/obj/structure/fluff/statue/tradition/maidenright
+	icon_state = "statuef5l"
+
+/obj/structure/fluff/statue/tradition/sorceressleft
+	icon_state = "statuef6r"
+
+/obj/structure/fluff/statue/tradition/sorceressright
+	icon_state = "statuef6l"
+

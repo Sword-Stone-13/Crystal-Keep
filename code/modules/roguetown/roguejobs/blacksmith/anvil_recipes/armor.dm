@@ -1,7 +1,16 @@
 /datum/anvil_recipe/armor
-	appro_skill = /datum/skill/craft/blacksmithing
+	appro_skill = /datum/skill/craft/armorsmithing
 	craftdiff = 1
 	i_type = "Armor"
+
+
+/datum/anvil_recipe/armor/bluesteel
+	appro_skill = /datum/skill/craft/dwarfsmithing 
+	craftdiff = 4
+
+/datum/anvil_recipe/armor/redsteel
+	appro_skill = /datum/skill/craft/koboldsmithing 
+	craftdiff = 4
 
 //For the sake of keeping the code modular with the introduction of new metals, each recipe has had it's main resource added to it's datum
 //This way, we can avoid having to name things in strange ways and can simply have iron/cuirass, stee/cuirass, blacksteel/cuirass->
@@ -378,3 +387,126 @@
 	name = "Blacksteel Plate Boots"
 	req_bar = /obj/item/ingot/blacksteel
 	created_item = /obj/item/clothing/shoes/roguetown/boots/blacksteel/plateboots
+
+// --------- BLUESTEEL RECIPES-----------
+
+/datum/anvil_recipe/armor/bluesteel/platechest
+	name = "Bluesteel Plate Armor"
+	req_bar = /obj/item/ingot/bluesteel
+	additional_items = list(/obj/item/ingot/bluesteel, /obj/item/ingot/bluesteel, /obj/item/ingot/bluesteel)
+	created_item = /obj/item/clothing/suit/roguetown/armor/bluesteel/
+
+/datum/anvil_recipe/armor/bluesteel/helm
+	name = "Bluesteel Helm"
+	req_bar = /obj/item/ingot/bluesteel
+	additional_items = list(/obj/item/ingot/bluesteel)
+	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/bluesteel
+
+/datum/anvil_recipe/armor/bluesteel/beardmail //this should be the first most important piece of armor for every Dwarf
+	name = "Bluesteel Beardmail"
+	req_bar = /obj/item/ingot/bluesteel
+	created_item = /obj/item/clothing/neck/roguetown/chaincoif/bluesteel
+
+/datum/anvil_recipe/armor/bluesteel/Beardmail
+	name = "Bluesteel Bervor"
+	req_bar = /obj/item/ingot/bluesteel
+	created_item = /obj/item/clothing/neck/roguetown/chaincoif/bluesteel
+
+/datum/anvil_recipe/armor/bluesteel/platebracer
+	name = "Bluesteel Plate Bracers"
+	req_bar = /obj/item/ingot/bluesteel
+	created_item = /obj/item/clothing/wrists/roguetown/bracers/bluesteel
+
+/datum/anvil_recipe/armor/bluesteel/plateboots
+	name = "Bluesteel Plate Boots"
+	req_bar = /obj/item/ingot/bluesteel
+	created_item = /obj/item/clothing/shoes/roguetown/armor/steel/bluesteel
+
+
+// --------- REDSTEEL RECIPES-----------
+
+/datum/anvil_recipe/armor/redsteel/curiass
+	name = "Redsteel Curiass"
+	req_bar = /obj/item/ingot/redsteel
+	additional_items = list(/obj/item/ingot/redsteel)
+	created_item = /obj/item/clothing/suit/roguetown/armor/redsteel/
+
+/datum/anvil_recipe/armor/redsteel/chainmail
+	name = "Redsteel Chainmail"
+	req_bar = /obj/item/ingot/redsteel
+	additional_items = list(/obj/item/ingot/redsteel)
+	created_item = /obj/item/clothing/suit/roguetown/armor/plate/scale/redsteel
+
+/*
+/datum/anvil_recipe/armor/redsteel/platelegs
+	name = "Redsteel Plate Chausses"
+	req_bar = /obj/item/ingot/redsteel
+	created_item = /obj/item/clothing/under/roguetown/platelegs/redsteel
+*/
+/datum/anvil_recipe/armor/redsteel/helm
+	name = "Redsteel Helm"
+	req_bar = /obj/item/ingot/redsteel
+	additional_items = list(/obj/item/ingot/redsteel)
+	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/redsteel
+
+/datum/anvil_recipe/armor/redsteel/plategloves
+	name = "Redsteel Plate Gauntlets"
+	req_bar = /obj/item/ingot/redsteel
+	created_item = /obj/item/clothing/gloves/roguetown/plate
+
+/datum/anvil_recipe/armor/redsteel/bervor
+	name = "Redsteel bervor"
+	req_bar = /obj/item/ingot/redsteel
+	created_item = /obj/item/clothing/neck/roguetown/bervor/redsteel
+	additional_items = list(/obj/item/ingot/redsteel)
+	craftdiff = 5 //Should be the best bervor in game, essentially a haunch that increases stats
+
+////////JADE KINGDOM RECIPES
+
+/datum/anvil_recipe/armor/jadish/helmet/kitsune
+	name = "Nyabutokisunne"
+	req_bar = /obj/item/ingot/steel
+	additional_items = list(/obj/item/ingot/steel)
+	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/jadish/kitsune
+	craftdiff = 3
+	appro_skill = /datum/skill/craft/jadesmithing 
+
+/datum/anvil_recipe/armor/jadish/armor/kitsune
+	name = "Nyo-dokissune"
+	req_bar = /obj/item/ingot/steel
+	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/steel)
+	created_item = /obj/item/clothing/suit/roguetown/armor/plate/full/jadekingdom/kitsune
+	craftdiff = 4
+	appro_skill = /datum/skill/craft/jadesmithing 
+
+/datum/anvil_recipe/armor/jadish/armor/
+	name = "Nyomaru"
+	req_bar = /obj/item/ingot/steel
+	additional_items = list(/obj/item/natural/hide/cured)
+	created_item = /obj/item/clothing/suit/roguetown/armor/plate/jadekingdomhalf
+	craftdiff = 2
+	appro_skill = /datum/skill/craft/jadesmithing 
+
+/datum/anvil_recipe/armor/jadish/helmet/kitsune
+	name = "Nyissage"
+	req_bar = /obj/item/ingot/steel
+	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/jadish
+	craftdiff = 3
+	appro_skill = /datum/skill/craft/jadesmithing 
+
+////Nyandit stuffs
+
+/datum/anvil_recipe/armor/jadish/helmet
+	name = "Nyabuto"
+	req_bar = /obj/item/ingot/steel
+	additional_items = list(/obj/item/ingot/steel)
+	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/jadish
+	craftdiff = 3
+	appro_skill = /datum/skill/craft/jadesmithing 
+
+/datum/anvil_recipe/armor/jadish/armor
+	name = "Nyo-do"
+	req_bar = /obj/item/ingot/steel
+	created_item = /obj/item/clothing/suit/roguetown/armor/plate/full/jadekingdom
+	craftdiff = 3
+	appro_skill = /datum/skill/craft/jadesmithing 

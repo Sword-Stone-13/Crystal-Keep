@@ -52,7 +52,7 @@
 	H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/labor/mining, 3, TRUE)
 
-	H.change_stat("constitution", 3) // Seven points just like Warrior. They already get a debuff racial to speed. Please do not stack it God please.
+	H.change_stat("constitution", 2) 
 	H.change_stat("strength", 2)
 	H.change_stat("endurance", 2)
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/secondwind)

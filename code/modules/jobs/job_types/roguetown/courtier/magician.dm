@@ -7,7 +7,7 @@
 	total_positions = 1
 	spawn_positions = 1
 
-	allowed_races = RACES_TOLERATED_UP
+	allowed_races = RACES_SHUNNED_UP
 	allowed_sexes = list(MALE, FEMALE)
 	spells = list(/obj/effect/proc_holder/spell/invoked/learnspell, /obj/effect/proc_holder/spell/invoked/projectile/fireball/greater, /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
 	display_order = JDO_MAGICIAN
@@ -16,6 +16,8 @@
 		In return, you have proven time and time again as justicar and trusted advisor to their reign."
 	outfit = /datum/outfit/job/roguetown/magician
 	whitelist_req = TRUE
+	associated_squad = /datum/antagonist/squad/none
+
 	give_bank_account = 47
 	min_pq = 2
 	max_pq = null
@@ -55,9 +57,10 @@
 		H.change_stat("strength", -1)
 		H.change_stat("constitution", -1)
 		H.change_stat("mageability", 4)
+		H.change_stat("skill", 4)
 		H.change_stat("faith", 3)
 
-		H.mind.adjust_spellpoints(8)
+		H.mind.adjust_spellpoints(10)
 		if(H.age == AGE_OLD)
 			H.mind.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
 			H.change_stat("speed", -1)

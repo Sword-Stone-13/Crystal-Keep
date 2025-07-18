@@ -66,6 +66,33 @@
 	else
 		return ..() || ((obj_flags & CAN_BE_HIT) && I.attack_obj(src, user))
 
+
+/mob/living/attackby(obj/item/I, mob/living/user, params)
+	if(..())
+		return TRUE
+	var/adf = ((user.used_intent.clickcd + 1) - round((user.STASPD - 10) / 2)) // ok so (user.used_intent.clickcd + x) ok so, at 1, 12 SPE and anything less than journeyman skill is old clicks, blackstone era, 10 SPE and journeyman is the same speed. 
+	if(istype(user.rmb_intent, /datum/rmb_intent/aimed))
+		adf = round(adf * 1.4)
+	if(istype(user.rmb_intent, /datum/rmb_intent/swift))
+		adf = round(adf * 0.6)
+	// Apply skill-based speed increase
+	var/skill_level = user.mind ? user.mind.get_skill_level(I.associated_skill) : SKILL_LEVEL_NONE
+	if(skill_level >= SKILL_LEVEL_JOURNEYMAN)
+		var/multiplier
+		switch(skill_level)
+			if(SKILL_LEVEL_JOURNEYMAN)
+				multiplier = 10 / 11
+			if(SKILL_LEVEL_EXPERT)
+				multiplier = 2 / 3
+			if(SKILL_LEVEL_MASTER)
+				multiplier = 4 / 7
+			if(SKILL_LEVEL_LEGENDARY)
+				multiplier = 0.5
+		adf = round(adf * multiplier)
+	user.changeNext_move(adf)
+	return I.attack(src, user)
+
+/* //this is what the OG dev of the combat rework intended (courtesy of our OG combat reworker). This is based on the pathfinder tabletop system, real time, which is pretty good. However, I want to experiment with quicker clicks, if things go bad, revert to this. 
 /mob/living/attackby(obj/item/I, mob/living/user, params)
 	if(..())
 		return TRUE
@@ -76,7 +103,7 @@
 		adf = round(adf * 0.6)
 	user.changeNext_move(adf)
 	return I.attack(src, user)
-
+*/
 /mob/living
 	var/tempatarget = null
 
@@ -126,10 +153,16 @@
 			if(!user.used_intent.swingdelay)
 				user.do_attack_animation(M, visual_effect_icon = user.used_intent.animname)
 			return
-	if(istype(user.rmb_intent, /datum/rmb_intent/strong))
-		user.rogfat_add(10)
-	if(istype(user.rmb_intent, /datum/rmb_intent/swift))
-		user.rogfat_add(10)
+
+
+	var/rmb_stam_penalty = 0
+	if(istype(user.rmb_intent, /datum/rmb_intent/strong) || istype(user.rmb_intent, /datum/rmb_intent/swift))
+		rmb_stam_penalty = 10
+	// As of writing, releasedrain is 1 on everything but unarmed and grab intents,
+	// so it's primarily an unarmed thing.
+	user.rogfat_add(user.used_intent.releasedrain + rmb_stam_penalty)
+
+
 	if(M.checkdefense(user.used_intent, user))
 		if(M.d_intent == INTENT_PARRY)
 			if(!M.get_active_held_item() && !M.get_inactive_held_item()) //we parried with a bracer, redirect damage

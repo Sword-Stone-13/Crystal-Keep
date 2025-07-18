@@ -58,6 +58,33 @@
 		/datum/body_marking/tiger/dark
 	)
 
+
+///IMPS///
+/*
+/datum/body_marking_set/imp/markings/tats
+	name = "Tats"
+	body_marking_list = list(
+		/datum/body_marking/imp/markings/tats
+	)
+
+/datum/body_marking_set/imp/markings/tiger
+	name = "Tiger"
+	body_marking_list = list(
+		/datum/body_marking/imp/markings/tigerstripes
+	)
+
+/datum/body_marking_set/markings/toga
+	name = "Toga"
+	body_marking_list = list(
+		/datum/body_marking/imp/markings/toga
+	)
+
+/datum/body_marking_set/markings/moon
+	name = "Moon"
+	body_marking_list = list(
+		/datum/body_marking/imp/markings/moon
+	)
+*/
 //MOTH
 
 /datum/body_marking_set/moth

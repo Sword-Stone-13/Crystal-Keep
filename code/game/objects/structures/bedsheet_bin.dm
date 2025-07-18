@@ -13,6 +13,7 @@ LINEN BINS
 	icon_state = "sheetwhite"
 	item_state = "sheetwhite"
 	layer = MOB_LAYER
+	plane = GAME_PLANE_FOV_HIDDEN
 	throwforce = 0
 	throw_speed = 1
 	throw_range = 2
@@ -277,6 +278,58 @@ LINEN BINS
 	icon_state = "random_bedsheet"
 	name = "random bedsheet"
 	desc = ""
+
+/obj/item/bedsheet/rogue/fabric/house
+	desc = ""
+	icon = 'icons/roguetown/misc/housemisc/structure.dmi'
+	icon_state = "sheetgreen"
+	item_state = "sheetgreen"
+
+/obj/item/bedsheet/rogue/fabric/house/green
+	icon_state = "sheetgreen"
+	item_state = "sheetgreen"
+
+/obj/item/bedsheet/rogue/fabric/house/red
+	icon_state = "sheetred"
+	item_state = "sheetred"
+
+/obj/item/bedsheet/rogue/fabric/house/yellow
+	icon_state = "sheetyellow"
+	item_state = "sheetyellow"
+
+/obj/item/bedsheet/rogue/fabric/house/purple
+	icon_state = "sheetpurple"
+	item_state = "sheetpurple"
+
+/obj/item/bedsheet/rogue/fabric/house/blue
+	icon_state = "sheetblue"
+	item_state = "sheetblue"
+
+/obj/item/bedsheet/rogue/fabric_double/house
+	desc = ""
+	icon = 'icons/roguetown/misc/housemisc/structure.dmi'
+	icon_state = "widesheetgreen"
+	item_state = "widesheetgreen"
+
+/obj/item/bedsheet/rogue/fabric_double/house/green
+	icon_state = "widesheetgreen"
+	item_state = "widesheetgreen"
+
+/obj/item/bedsheet/rogue/fabric_double/house/red
+	icon_state = "widesheetred"
+	item_state = "widesheetred"
+
+/obj/item/bedsheet/rogue/fabric_double/house/yellow
+	icon_state = "widesheetyellow"
+	item_state = "widesheetyellow"
+
+/obj/item/bedsheet/rogue/fabric_double/house/purple
+	icon_state = "widesheetpurple"
+	item_state = "widesheetpurple"
+
+/obj/item/bedsheet/rogue/fabric_double/house/blue
+	icon_state = "widesheetblue"
+	item_state = "widesheetblue"
 
 /obj/item/bedsheet/random/Initialize()
 	..()

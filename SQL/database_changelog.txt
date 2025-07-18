@@ -9,19 +9,6 @@ INSERT INTO `SS13_schema_revision` (`major`, `minor`) VALUES (5, 10);
 In any query remember to add a prefix to the table names if you use one.
 
 -----------------------------------------------------
-Version 5.10, 08 January 2024, by useroth
-Add a new table for age-checking purposes. Optional if you don't ever intend to use the age prompt.
-
-```sql
-CREATE TABLE `player_dob` (
-    `ckey` VARCHAR(32) NOT NULL,
-    `dob_year` smallint(5) NOT NULL,
-    `dob_month` smallint(5) NOT NULL,
-    PRIMARY KEY (`ckey`)
-);
-```
-
------------------------------------------------------
 
 Version 5.9, 19 April 2020, by Jordie0608
 Updates and improvements to poll handling.

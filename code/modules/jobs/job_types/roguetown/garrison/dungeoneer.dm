@@ -21,7 +21,7 @@
 	give_bank_account = 98
 	min_pq = 2
 	max_pq = null
-
+	associated_squad = /datum/antagonist/squad/none
 	cmode_music = 'sound/music/combat_weird.ogg'
 
 /datum/outfit/job/roguetown/dungeoneer/pre_equip(mob/living/carbon/human/H)

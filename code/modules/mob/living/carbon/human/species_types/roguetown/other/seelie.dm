@@ -5,13 +5,7 @@
 /datum/species/seelie
 	name = "Seelie"
 	id = "seelie"
-	desc = "<b>Seelie</b><br>\
-	The smallest of Fae-folk, Seelie are a mysterious race and not well understood. \
-    Parentless creatures and unable to reproduce naturally, it is clear that they do not propogate in a typical human way. \
-    Instead, Seelie tend to appear and gather in places of chaos and misfortune, thriving in such an environment. \
-    Seelie are known to have Elemental Attunements, an influence of nature that mystically sprung them into existance. \
-    Any tribalism or history regarding the race is scarce and uncommmon, and as such misconception and myth surrounds them. \
-    The wary traveller should take heed of such beings, as both fortune and missery is said to accompany the little troublemakers."
+	desc = "<b>Seelie</b><br>"
 
 	skin_tone_wording = "Elemental Connection"
 
@@ -89,6 +83,9 @@
 	stress_desc = span_red("A tiny seelie, mischievous in nature.")
 
 	alignment_weights = SEELIE_WEIGHTS
+
+/datum/species/seelie/check_roundstart_eligible()
+	return FALSE
 
 /datum/species/seelie/on_species_gain(mob/living/carbon/C, datum/species/old_species)
 	..()

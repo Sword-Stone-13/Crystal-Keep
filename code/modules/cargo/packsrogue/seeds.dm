@@ -39,15 +39,6 @@
 					/obj/item/seeds/pipeweed,
 				)
 
-/datum/supply_pack/rogue/seeds/sleaf
-	name = "Sweet Leaf"
-	cost = 20
-	contains = list(
-					/obj/item/seeds/sweetleaf,
-					/obj/item/seeds/sweetleaf,
-					/obj/item/seeds/sweetleaf,
-					/obj/item/seeds/sweetleaf,
-				)
 
 /datum/supply_pack/rogue/seeds/berry
 	name = "Berry"
@@ -56,7 +47,6 @@
 					/obj/item/seeds/berryrogue,
 					/obj/item/seeds/berryrogue,
 					/obj/item/seeds/berryrogue,
-					/obj/item/seeds/berryrogue/poison,
 				)
 
 /datum/supply_pack/rogue/seeds/beet

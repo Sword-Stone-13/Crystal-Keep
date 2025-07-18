@@ -15,6 +15,8 @@
 	give_bank_account = 43
 	min_pq = -4
 	max_pq = null
+	associated_squad = /datum/antagonist/squad/none
+
 
 /datum/outfit/job/roguetown/barkeep/pre_equip(mob/living/carbon/human/H)
 	..()

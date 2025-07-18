@@ -26,7 +26,7 @@
 	attacked_sound = "parrywood"
 	max_integrity = 150
 	blade_dulling = DULLING_BASHCHOP
-	anvilrepair = /datum/skill/craft/blacksmithing
+	anvilrepair = /datum/skill/craft/armorsmithing
 	COOLDOWN_DECLARE(shield_bang)
 	w_class = WEIGHT_CLASS_BULKY
 
@@ -255,3 +255,75 @@
 				return list("shrink" = 0.6,"sx" = 1,"sy" = 4,"nx" = 1,"ny" = 2,"wx" = 3,"wy" = 3,"ex" = 0,"ey" = 2,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 8,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 1,"southabove" = 0,"eastabove" = 0,"westabove" = 0)
 
 #undef SHIELD_BANG_COOLDOWN
+
+///CRYSTAL KEEPU///
+
+///ELFNUT///
+/obj/item/rogueweapon/shield/buckler/elfnut
+	name = "Elfnut Buckler"
+	desc = "Elven artistry allows it to grow a handle before breaking off the nut."
+	icon_state = "elfnutshield"
+	slot_flags = ITEM_SLOT_HIP | ITEM_SLOT_BACK
+	wdefense = 12
+	coverage = 50
+	wparrybonus = 25
+	crit_bonus = 10
+	can_crit_throw = TRUE
+
+/obj/item/rogueweapon/shield/buckler/elfnut/silverwood //heraldry later
+	name = "Silverwood Shield"
+	desc = "A beautiful blue green sheen accompanies this shield."
+	icon_state = "elfnutshieldsilver"
+	slot_flags = ITEM_SLOT_HIP | ITEM_SLOT_BACK
+	wdefense = 15
+	coverage = 60
+	wparrybonus = 30
+
+/obj/item/rogueweapon/shield/tower/silvernut
+	name = "elvish knight shield"
+	desc = "A kite-shaped iron shield. Reliable and sturdy."
+	icon_state = "elfnutshieldsilverbig"
+	force = 20
+	throwforce = 20
+	throw_speed = 1
+	throw_range = 3
+	wlength = WLENGTH_NORMAL
+	resistance_flags = null
+	flags_1 = CONDUCT_1
+	wdefense = 20
+	coverage = 90
+	attacked_sound = list('sound/combat/parry/shield/metalshield (1).ogg','sound/combat/parry/shield/metalshield (2).ogg','sound/combat/parry/shield/metalshield (3).ogg')
+	parrysound = list('sound/combat/parry/shield/metalshield (1).ogg','sound/combat/parry/shield/metalshield (2).ogg','sound/combat/parry/shield/metalshield (3).ogg')
+	max_integrity = 350
+	blade_dulling = DULLING_BASH
+	sellprice = 200
+	can_crit_throw = TRUE //this is going to be really funny
+
+///BLUESTEEL///
+/obj/item/rogueweapon/shield/tower/bluesteel
+	name = "Bluesteel Shield"
+	desc = "a wall of bluesteel pretty much."
+	icon_state = "bluesteelsh"
+	force = 20
+	throwforce = 10
+	throw_speed = 1
+	throw_range = 2
+	wlength = WLENGTH_NORMAL
+	resistance_flags = null
+	flags_1 = CONDUCT_1
+	wdefense = 20
+	coverage = 70 //dunno what this code does, so I won't touch 
+	attacked_sound = list('sound/combat/parry/shield/metalshield (1).ogg','sound/combat/parry/shield/metalshield (2).ogg','sound/combat/parry/shield/metalshield (3).ogg')
+	parrysound = list('sound/combat/parry/shield/metalshield (1).ogg','sound/combat/parry/shield/metalshield (2).ogg','sound/combat/parry/shield/metalshield (3).ogg')
+	max_integrity = 400
+	blade_dulling = DULLING_BASH
+	sellprice = 200
+
+///REDSTEEL///
+/obj/item/rogueweapon/shield/buckler/redsteel
+	name = "buckler shield"
+	desc = "A kobold shield, as good as any."
+	icon_state = "redsteelsh"
+	wdefense = 9
+	coverage = 40
+	max_integrity = 400

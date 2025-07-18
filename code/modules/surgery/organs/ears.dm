@@ -167,3 +167,8 @@
 /obj/item/organ/ears/goblin
 	name = "goblin ears"
 	accessory_type = /datum/sprite_accessory/ears/goblin
+
+/obj/item/organ/ears/nuppy
+	name = "nuppy ears"
+	damage_multiplier = 2
+	accessory_type = /datum/sprite_accessory/ears/nuppy

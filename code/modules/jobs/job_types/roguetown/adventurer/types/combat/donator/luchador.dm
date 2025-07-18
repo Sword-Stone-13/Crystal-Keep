@@ -12,7 +12,7 @@
 	vampcompat = FALSE
 
 	category_tags = list(CTAG_ADVENTURER)
-	pickprob = 25
+	pickprob = 5
 	maximum_possible_slots = 2
 
 /datum/outfit/job/roguetown/adventurer/wrestler/pre_equip(mob/living/carbon/human/H)
@@ -38,7 +38,13 @@
 		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
 		H.change_stat("strength", 4)
-		H.change_stat("constitution", 2)
+		H.change_stat("constitution", 1)
+		H.change_stat("endurance", 2)
 		H.change_stat("skill", 3)
-		H.change_stat("faith", 3)
-		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/mockery)
+		if(ismoth(H))//The Face
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/secondwind)
+			H.change_stat("faith", 3)
+		if(istiefling(H))//The Heel
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/mockery)
+			H.change_stat("skill", 1)
+

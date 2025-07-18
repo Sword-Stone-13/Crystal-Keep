@@ -14,11 +14,13 @@
 	display_order = JDO_ARCHIVIST
 	min_pq = 0
 	max_pq = null
+	associated_squad = /datum/antagonist/squad/none
+
 
 /datum/outfit/job/roguetown/archivist
 	allowed_patrons = list(/datum/patron/divine/noc)
 
-/datum/outfit/job/roguetown/archivist/pre_equip(mob/living/carbon/human/H)         ///////////// gave a lil love with a satchel and dagger. virgin ass needs it.
+/datum/outfit/job/roguetown/archivist/pre_equip(mob/living/carbon/human/H)
 	..()
 	if(H.gender == FEMALE)
 		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/gen/black
@@ -43,8 +45,10 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 6, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 		H.change_stat("strength", -2)
 		H.change_stat("mageability", 8)
+		H.change_stat("skill", 4)
 		H.change_stat("faith", -1)
 		H.change_stat("constitution", -2)
 		H.change_stat("speed", -2)

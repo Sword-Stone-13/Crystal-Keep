@@ -21,7 +21,7 @@
 		/datum/language/elvish
 	)
 
-	alignment_weights = ELF_WEIGHTS
+//	alignment_weights = ELF_WEIGHTS
 
 /datum/species/elf/on_species_gain(mob/living/carbon/C, datum/species/old_species)
 	..()
@@ -34,6 +34,8 @@
 /datum/species/elf/on_species_loss(mob/living/carbon/C)
 	. = ..()
 	UnregisterSignal(C, COMSIG_MOB_SAY)
+	REMOVE_TRAIT(C, TRAIT_LEAF_WALKER, TRAIT_GENERIC)
+
 
 /datum/species/elf/qualifies_for_rank(rank, list/features)
 	return TRUE

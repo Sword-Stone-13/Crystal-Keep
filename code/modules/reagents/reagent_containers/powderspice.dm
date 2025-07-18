@@ -350,6 +350,50 @@
 	M.adjustToxLoss(10, 0)
 
 
+/datum/reagent/moondust_liquid
+	name = "Liquid Moondust"
+	description = ""
+	color = "#bfc3b5"
+	overdose_threshold = 20 //at 10, currently, it knocks you out
+	metabolization_rate = 0.2
+	reagent_state = LIQUID
+	taste_description = "Liquid energy and berries"
+
+
+/datum/reagent/moondust/overdose_process(mob/living/M)
+	M.adjustToxLoss(0.25*REM, 0)
+	..()
+	. = 1
+
+/datum/reagent/moondust_liquid/on_mob_metabolize(mob/living/M)
+	narcolepsy_drug_up(M)
+	M.flash_fullscreen("can_you_see")
+	animate(M.client, pixel_y = 1, time = 1, loop = -1, flags = ANIMATION_RELATIVE)
+	animate(pixel_y = -1, time = 1, flags = ANIMATION_RELATIVE)
+
+/datum/reagent/moondust_liquid/on_mob_end_metabolize(mob/living/M)
+	animate(M.client)
+
+/datum/reagent/moondust_liquid/on_mob_life(mob/living/carbon/M)
+	narcolepsy_drug_up(M)
+	if(M.reagents.has_reagent(/datum/reagent/moondust))
+		M.Sleeping(40, 0)
+	else
+		M.Sleeping(-40)
+	if(M.has_flaw(/datum/charflaw/addiction/junkie))
+		M.sate_addiction()
+	M.apply_status_effect(/datum/status_effect/buff/moondust)
+	if(prob(10))
+		M.flash_fullscreen("whiteflash")
+	..()
+
+/datum/reagent/moondust_liquid/overdose_start(mob/living/M)
+	M.playsound_local(M, 'sound/misc/heroin_rush.ogg', 100, FALSE)
+	M.visible_message(span_warning("Blood runs from [M]'s nose."))
+
+/datum/reagent/moondust_liquid/overdose_process(mob/living/M)
+	M.adjustToxLoss(10, 0)
+
 //SEELIE DRUGS
 
 /datum/reagent/seelie_drugs

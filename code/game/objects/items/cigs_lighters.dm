@@ -1008,3 +1008,17 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 	if(reagents && reagents.total_volume)
 		hand_reagents()
+
+
+//CRYSTAL KEEP// 
+
+/obj/item/storage/fancy/cigarettes/faeports
+	name = "\improper Faeports"
+	desc = "By the Lord, Faeports!"
+	icon = 'icons/obj/cigarettes.dmi'
+	icon_state = "cig"
+	item_state = "cigpacket"
+	throw_speed = 0.5
+	throwforce = 0
+	icon_type = "cigarette"
+	spawn_type = /obj/item/clothing/mask/cigarette/rollie

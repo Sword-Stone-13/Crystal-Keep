@@ -6,7 +6,7 @@
 	faction = "Station"
 	tutorial = "Templars are warriors who have forsaken wealth and title in lieu of service to the church, due to either zealotry or a past shame. They guard the church and its priest, while keeping a watchful eye against heresy and nite-creechers. Within troubled dreams, they wonder if the blood they shed makes them holy or stained."
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = RACES_VERY_SHUNNED_UP
+	allowed_races = RACES_TOLERATED_UP
 	allowed_patrons = ALL_CLERIC_PATRONS
 	outfit = /datum/outfit/job/roguetown/templar
 	min_pq = 2
@@ -14,6 +14,7 @@
 	total_positions = 3
 	spawn_positions = 3
 	display_order = JDO_TEMPLAR
+	associated_squad = /datum/antagonist/squad/none
 	give_bank_account = TRUE
 
 	cmode_music = 'sound/music/combat_clergy.ogg'
@@ -96,7 +97,7 @@
 		H.change_stat("mageability", 2)
 		H.change_stat("constitution", 2)
 		H.change_stat("endurance", 2)
-		H.change_stat("faith", 3)
+		H.change_stat("faith", 2)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	H.dna.species.soundpack_m = new /datum/voicepack/male/knight()

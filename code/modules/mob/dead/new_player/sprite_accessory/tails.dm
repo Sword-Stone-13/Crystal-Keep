@@ -73,6 +73,7 @@
 	name = "Cat, Big"
 	icon_state = "catbig"
 	can_wag = TRUE
+	color_key_defaults = list(KEY_HAIR_COLOR)
 
 /datum/sprite_accessory/tail/corvid
 	name = "Corvid"

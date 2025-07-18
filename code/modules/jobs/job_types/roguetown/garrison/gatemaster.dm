@@ -18,7 +18,7 @@
 	give_bank_account = 3
 	min_pq = 4
 	max_pq = null
-	
+	associated_squad = /datum/antagonist/squad/none
 	cmode_music = 'sound/music/combat_guard2.ogg'
 
 /datum/job/roguetown/gatemaster/after_spawn(mob/living/L, mob/M, latejoin = TRUE)

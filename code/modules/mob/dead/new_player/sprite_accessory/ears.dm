@@ -61,6 +61,7 @@
 	icon_state = "catbig"
 	color_keys = 2
 	color_key_names = list("Ears", "Inner")
+	color_key_defaults = list(KEY_HAIR_COLOR)
 
 /datum/sprite_accessory/ears/cat_normal
 	name = "Cat, Normal"
@@ -321,3 +322,8 @@
 	color_keys = 2
 	color_key_names = list("Ears", "Inner")
 	relevant_layers = list(BODY_ADJ_LAYER)
+
+/datum/sprite_accessory/ears/nuppy
+	name = "Nuppy"
+	icon_state = "nuppy"
+	color_key_defaults = list(KEY_SKIN_COLOR)

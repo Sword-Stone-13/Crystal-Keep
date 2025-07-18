@@ -1,4 +1,4 @@
-/datum/patron/psydon
+/*/datum/patron/psydon
 	name = "Psydon"
 	domain = "The Original God"
 	desc = "The first True God, Psydon is the creator of all things. He is believed dead by the Church of the Successors."
@@ -9,3 +9,4 @@
 		"THE SUCCESSORS ARE FALSE GODS!",
 		"PSYDON LIVES!",
 	)
+*/

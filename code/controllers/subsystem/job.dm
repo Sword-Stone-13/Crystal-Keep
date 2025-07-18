@@ -95,6 +95,11 @@ SUBSYSTEM_DEF(job)
 			var/datum/job/old_job = SSjob.GetJob(player.mind.assigned_role)
 			if(old_job)
 				old_job.current_positions = max(old_job.current_positions - 1, 0)
+		// Clear existing squad
+		player.mind.squad = null
+		var/datum/antagonist/squad/squad_datum = player.mind.has_antag_datum(/datum/antagonist/squad)
+		if(squad_datum)
+			player.mind.remove_antag_datum(squad_datum)
 		player.mind.assigned_role = rank
 		unassigned -= player
 		job.current_positions++
@@ -272,6 +277,10 @@ SUBSYSTEM_DEF(job)
 		if((player) && (player.mind))
 			player.mind.assigned_role = null
 			player.mind.special_role = null
+			player.mind.squad = null // Clear squad field
+			var/datum/antagonist/squad/squad_datum = player.mind.has_antag_datum(/datum/antagonist/squad)
+			if(squad_datum)
+				player.mind.remove_antag_datum(squad_datum) // Remove squad antagonist datum
 			SSpersistence.antag_rep_change[player.ckey] = 0
 	SetupOccupations()
 	unassigned = list()
@@ -707,6 +716,12 @@ SUBSYSTEM_DEF(job)
 			*/
 				H.mind.squad = squad_datum.squad_type
 				squad_datum.greet()
+		else
+			// Explicitly clear squad if no associated squad
+			H.mind.squad = null
+			var/datum/antagonist/squad/squad_datum = H.mind.has_antag_datum(/datum/antagonist/squad)
+			if(squad_datum)
+				H.mind.remove_antag_datum(squad_datum)
 
 		H.mind.soliloquy.set_doll(H)
 

@@ -48,13 +48,13 @@
 // PATRON GOD TRAITS
 #define TRAIT_ROT_EATER "Blessing of Pestra" //can eat rotten food
 #define TRAIT_ORGAN_EATER "Blessing of Graggar" //can eat organs
-#define TRAIT_VINE_WALKER "Blessing of Dendor"
+#define TRAIT_KNEESTINGER_IMMUNITY "Blessing of Dendor"
 #define TRAIT_SOUL_EXAMINE "Blessing of Necra" //can check bodies to see if they have departed
 #define TRAIT_CRACKHEAD "Blessing of Baotha" //will never overdose
-#define TRAIT_COMMIE "Blessing of Matthios" //recognized by bandits as an ally
+#define TRAIT_COMMIE "Blessing of Nyatthios" //recognized by bandits as an ally
 #define TRAIT_CHOSEN "Astrata's Chosen"
 
-#define TRAIT_KNEESTINGER_IMMUNITY "Kneestinger Immunity"
+#define TRAIT_VINE_WALKER "lesser blessing of Dendor"
 #define TRAIT_BASHDOORS "bashdoors"
 #define TRAIT_NOMOOD "no_mood"
 #define TRAIT_BAD_MOOD "Bad Mood"
@@ -78,7 +78,7 @@
 
 // PATRON CURSE TRAITS
 #define TRAIT_CURSE "Curse" //source
-#define TRAIT_ATHEISM_CURSE "Curse of Atheism"
+#define TRAIT_ATHEISM_CURSE "Curse of idiocy"
 #define TRAIT_PSYDON_CURSE "Psydon's Curse"
 #define TRAIT_ASTRATA_CURSE "Astrata's Curse"
 #define TRAIT_NOC_CURSE "Noc's Curse"
@@ -87,9 +87,12 @@
 #define TRAIT_XYLIX_CURSE "Xylix's Curse"
 #define TRAIT_PESTRA_CURSE "Pestra's Curse"
 #define TRAIT_EORA_CURSE "Eora's Curse"
+#define TRAIT_DENDOR_CURSE "Dendor's Curse"
+#define TRAIT_MALLUM_CURSE "Mallum's Curse"
+#define TRAIT_ABYSSOR_CURSE "Abyssor's Curse"
 #define TRAIT_ZIZO_CURSE "Zizo's Curse"
 #define TRAIT_GRAGGAR_CURSE "Graggar's Curse"
-#define TRAIT_MATTHIOS_CURSE "Matthios' Curse"
+#define TRAIT_NYATTHIOS_CURSE "Nyatthios' Curse"
 #define TRAIT_BAOTHA_CURSE "Baotha's Curse"
 
 // TRAITS FROM HEARTHSTONE AND OTHERS
@@ -97,6 +100,9 @@
 #define TRAIT_MARTIALARTIST "Martial Artist" //pretty much just lets you kick heads
 #define TRAIT_ROTMAN "rotman" //you are a rotman and need occasional maintenance
 
+///CRYSTAL KEEPO///
+#define TRAIT_SILENT_FIGHTER "Zanshin"
+#define TRAIT_LEAF_WALKER "Leaf Walker"
 
 
 GLOBAL_LIST_INIT(roguetraits, list(
@@ -116,7 +122,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_SEEPRICES = "I can tell the prices of things down to the zenny.",
 	TRAIT_SEEPRICES_SHITTY = "I can tell the prices of things... <i>Kind of</i>.",
 	TRAIT_STRONGBITE = "Stronger bites, critical bite attacks.",
-	TRAIT_NOBLE = span_blue("I'm of noble blood."),
+	TRAIT_NOBLE = span_blue("I'm of noble blood. Eora bless me."),
 	TRAIT_EMPATH = "I can notice when people are in pain.",
 	TRAIT_BREADY = "Defensive stance does not passively fatigue me.",
 	TRAIT_MEDIUMARMOR = "I can move freely in medium armor.",
@@ -143,7 +149,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_NOSLEEP = span_warning("I can't sleep."),
 	TRAIT_STRONGTHROW = ("I can throw long!"), // Hearthstone change
 	TRAIT_MARTIALARTIST = ("I have better kicks."), // Hearthstone change
-
+	TRAIT_SILENT_FIGHTER = ("I may not look it, but I'm always ready for combat."),
 	TRAIT_ROT_EATER = span_necrosis("I can eat rotten food."),
 	TRAIT_ORGAN_EATER = span_bloody("I can eat organs and raw flesh."),
 	TRAIT_KNEESTINGER_IMMUNITY = "I am immune to the shock of kneestingers.",
@@ -159,6 +165,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_WATERBREATHING = span_info("I do not drown in bodies of water."),
 	TRAIT_GOODRUNNER = span_info("I can run without breaking a sweat!"),
 	TRAIT_NUDE_SLEEPER = span_warning("I can't fall asleep unless I'm nude and in bed."),
+	TRAIT_LEAF_WALKER = ("I can walk on leaves."),
 	TRAIT_TINY = span_info("I am tiny in size and quite fragile!"),
 ))
 

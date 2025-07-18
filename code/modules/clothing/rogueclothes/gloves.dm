@@ -89,14 +89,14 @@
 	blade_dulling = DULLING_BASHCHOP
 	break_sound = 'sound/foley/breaksound.ogg'
 	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
-	anvilrepair = /datum/skill/craft/blacksmithing
+	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/steel
 	resistance_flags = FIRE_PROOF
 	sewrepair = FALSE
 
 /obj/item/clothing/gloves/roguetown/chain/iron
 	icon_state = "icgloves"
-	anvilrepair = /datum/skill/craft/blacksmithing
+	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/iron
 
 //rogtodo sprites for this
@@ -113,7 +113,7 @@
 	blade_dulling = DULLING_BASH
 	break_sound = 'sound/foley/breaksound.ogg'
 	drop_sound = 'sound/foley/dropsound/armor_drop.ogg'
-	anvilrepair = /datum/skill/craft/blacksmithing
+	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/steel
 	sewrepair = FALSE
 
@@ -150,5 +150,150 @@
 	blade_dulling = DULLING_BASH
 	break_sound = 'sound/foley/breaksound.ogg'
 	drop_sound = 'sound/foley/dropsound/armor_drop.ogg'
-	anvilrepair = /datum/skill/craft/blacksmithing
+	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/blacksteel
+
+///CKEEP///
+
+///ELFNUT///
+/obj/item/clothing/gloves/roguetown/chain/elfnut
+	name = "elfnut gauntlets"
+	desc = "gauntlets made of solid wooden rings."
+	icon_state = "elfnut_gloves"
+	item_state = "elfnut_gloves"
+	armor = list("blunt" = 70, "slash" = 80, "stab" = 80, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	armor_class = ARMOR_CLASS_LIGHT
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT)
+	resistance_flags = null
+	max_integrity = 150
+	anvilrepair = /datum/skill/craft/armorsmithing
+	smeltresult = /obj/item/ingot/iron
+	allowed_race = list(/datum/species/elf/wood, /datum/species/elf/dark) 
+
+/obj/item/clothing/gloves/roguetown/chain/elfnut/silverwood
+	name = "silverwood gauntlets"
+	desc = "Elvish gauntlets made of interwoven wood-like silver threads."
+	icon_state = "elfnut_var_gloves"
+	item_state = "elfnut_var_gloves"
+	armor = list("blunt" = 70, "slash" = 100, "stab" = 80, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	max_integrity = 350
+
+
+///BLUESTEEL///
+//nothing, dwarves use their bare fucking hands//
+
+///REDSTEEL///
+/obj/item/clothing/gloves/roguetown/plate/redsteel
+	name = "Redsteel gauntlets"
+	desc = "a pair of gauntlets that protect the dorsals of the hands."
+	icon_state = "redsteel_gloves"
+	item_state = "redsteel_gloves"
+	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	armor_class = ARMOR_CLASS_MEDIUM
+	anvilrepair = /datum/skill/craft/armorsmithing
+
+
+
+///The houses///
+
+/obj/item/clothing/gloves/roguetown/plate/alrich
+	name = "red plated gauntlets"
+	desc = ""
+	icon_state = "house_red_gloves"
+	item_state = "house_red_gloves"
+
+/obj/item/clothing/gloves/roguetown/plate/bravado
+	name = "bronze plated gauntlets"
+	desc = ""
+	icon_state = "house_yellow_gloves"
+	item_state = "house_yellow_gloves"
+
+/obj/item/clothing/gloves/roguetown/plate/caesar
+	name = "purple plated gauntlets"
+	desc = ""
+	icon_state = "house_purple_gloves"
+	item_state = "house_purple_gloves"
+
+/obj/item/clothing/gloves/roguetown/leather/deleon
+	name = "leather gloves"
+	desc = "marked with the insignia of house Deleon"
+	icon_state = "house_blue_gloves"
+	item_state = "house_blue_gloves"
+
+/obj/item/clothing/gloves/roguetown/plate/echarus
+	name = "guild standard gauntlets"
+	desc = ""
+	icon_state = "house_green_gloves"
+	item_state = "house_green_gloves"
+
+/obj/item/clothing/gloves/roguetown/plate/black
+	name = "black stained gauntlets"
+	desc = ""
+	icon_state = "house_black_gloves"
+	item_state = "house_black_gloves"
+
+/obj/item/clothing/gloves/roguetown/plate/white
+	name = "white gauntlets"
+	desc = ""
+	icon_state = "house_white_gloves"
+	item_state = "house_white_gloves"
+
+//witch stuff//
+
+/obj/item/clothing/gloves/roguetown/fingerless/house//green
+	name = "brown fingerless gloves"
+	desc = ""
+	icon_state = "house_green_witch_gloves"
+	item_state = "house_green_witch_gloves"
+	allowed_sex = list(FEMALE)
+
+/obj/item/clothing/gloves/roguetown/fingerless/house/red
+	name = "cuffed fingerless gloves"
+	desc = ""
+	icon_state = "house_red_witch_gloves"
+	item_state = "house_red_witch_gloves"
+
+/obj/item/clothing/gloves/roguetown/leather/house
+	name = "yellow wraps"
+	desc = ""
+	icon_state = "house_yellow_witch_gloves"
+	item_state = "house_yellow_witch_gloves"
+	allowed_sex = list(FEMALE)
+
+/obj/item/clothing/gloves/roguetown/leather/house/white
+	name = "long leather gloves"
+	desc = ""
+	icon_state = "house_white_witch_gloves"
+	item_state = "house_white_witch_gloves"
+
+//BLACSTONE//
+
+/obj/item/clothing/gloves/roguetown/inqgloves
+	name = "inquisitorial leather gloves"
+	desc = "Leather gloves with a psycross stitched inside. The confessors call you Master."
+	icon_state = "inqgloves"
+	item_state = "inqgloves"
+	armor = list("blunt" = 15, "slash" = 15, "stab" = 15, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT)
+	resistance_flags = null
+	blocksound = SOFTHIT
+	blade_dulling = DULLING_BASHCHOP
+	break_sound = 'sound/foley/cloth_rip.ogg'
+	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
+
+//CKEEP//
+
+/obj/item/clothing/gloves/roguetown/angel/long
+	name = "long fur gloves"
+	desc = ""
+	icon_state = "angel_nun_gloves"
+	item_state = "angel_nun_gloves"
+	max_integrity = 120
+	salvage_result = /obj/item/natural/fur
+	allowed_sex = list(FEMALE)
+
+/obj/item/clothing/gloves/roguetown/leather/villager
+	name = "Walnutian gloves"
+	desc = ""
+	icon_state = "villager_orphan_gloves"
+	icon_state = "villager_orphan_gloves"

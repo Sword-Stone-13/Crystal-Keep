@@ -2445,7 +2445,7 @@
 /obj/item/roguekey/steward,
 /obj/item/roguekey/graveyard,
 /obj/item/roguekey/mercenary,
-/obj/item/roguekey/nightmaiden,
+/obj/item/roguekey/actor,
 /obj/item/roguekey/tavern,
 /obj/item/roguekey/physician,
 /obj/item/roguekey/sheriff_office,
@@ -3226,7 +3226,7 @@
 /area/rogue)
 "Bi" = (
 /obj/structure/roguethrone{
-	name = "Throne of Rockhill"
+	name = "Throne of Crystal Keep"
 	},
 /turf/open/floor/rogue/carpet/lord/center,
 /area/rogue)

@@ -14,6 +14,8 @@
 	give_bank_account = 17
 	min_pq = 2
 	max_pq = null
+	associated_squad = /datum/antagonist/squad/none
+
 
 /datum/outfit/job/roguetown/steward/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -48,7 +50,12 @@
 		H.change_stat("mageability", 2)
 		H.change_stat("skill", 2)
 		H.change_stat("speed", -1)
-	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
+	if(isdwarfmountain(H))
+		ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
+	if(iswoodelf(H))
+		ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
+	if(ishumannorthern(H))
+		ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_SEEPRICES, TRAIT_GENERIC)
 
 	if(H.charflaw)

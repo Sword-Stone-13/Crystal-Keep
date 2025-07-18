@@ -86,6 +86,17 @@
 	grind_results = list(/datum/reagent/mercury = 15)
 	sellprice = 5
 
+/obj/item/rogueore/mooncrystal
+	name = "moon crystal"
+	desc = "A moon rock, some would kill for this."
+	icon_state = "oremoon"
+	grind_results = list(/datum/reagent/moondust_liquid = 5)
+	sellprice = 7
+
+/obj/item/rogueore/mooncrystal/Initialize()
+	icon_state = "oremoon[rand(1,3)]"
+	. = ..()
+
 /obj/item/ingot
 	name = "ingot"
 	icon = 'icons/roguetown/items/ore.dmi'
@@ -173,3 +184,16 @@
 	icon_state = "ingotblacksteel"
 	smeltresult = /obj/item/ingot/blacksteel
 	sellprice = 90
+
+/obj/item/ingot/bluesteel
+	name = "bluesteel bar"
+	desc = "Dwarvish Steel, much more durable, with a beautiful blue sheen. Like blue candy. An infusion of magic gems into steel."
+	icon_state = "ingotbluesteel"
+	sellprice = 200
+
+/obj/item/ingot/redsteel
+	name = "redsteel bar"
+	desc = "Kobold Steel, a marvel of unparalleled beauty that shines like dragon scales. One may say this is more gem than steel."
+	icon_state = "ingotredsteel"
+	sellprice = 200
+

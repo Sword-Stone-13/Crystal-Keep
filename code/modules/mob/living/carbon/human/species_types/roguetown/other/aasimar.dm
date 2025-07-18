@@ -5,14 +5,15 @@
 	name = "Aasimar"
 	id = "aasimar"
 	desc = "<b>Aasimar</b><br>\
-	Aasimar are born of a rare union between Humans and Angels. \
-	They bear the mark of their celestial touch through many varying physical features. \
-	Their looks resemble the traditional characteristics of whichever of the Gods the Angel parent was associated with. \
-	Most commonly, Aasimar are similar to Humans, albeit taller, and possess uncanny beauty. \
-	They have strangely colored skin and are more physically frail than the average Human. \
-	Because of their upbringing, they make for natural conduits for godly powers. \
-	Rockhills populace holds them with a mixture of uneasy fear or, and respect. \
-	It is also widely believed that an Aasimars death is a bad omen..."
+	Aasimar are creachers that descended from the heavens less than a few hundred years ago. \
+	Or so they claim. \
+	No one really knows where they arrived from. The Walnutians of the Walnut Federation claims their Monogod, Psydon, created them and dropped them in cocoons from the heavens.\
+	This, ofcourse, is disputed by Noccian scholars who claim Aasimars are yet another corrupted Chimera folk of many. \
+	Regardless, Aasimar are a taller, more robust folk to the common humen, and possess bulbous eyes and a feathery down across their entire body that, on rarities, hums and lightly glows in the starlight. \
+	In general they're incandescent, tall, and overbearing; moreso, they possess an ethereal, offputting demeanor to the point of heresy. They're often on the fringes of societies, huddled over in secrecy. \
+	Likely due to they're foreign appearance, they posses antisocial inhumen behavior, whereas they are generally Psydonite zealots that affront the Ten. \
+	Crystal Keep's populace holds them with a mixture of uneasy fear, distaste, and on some occasions, hatred. \
+	For some reason, they generally don't get along with Tiebereans. Often more fire to the flame of their inhumen reputation."
 
 	species_traits = list(EYECOLOR,LIPS,STUBBLE,MUTCOLORS)
 	inherent_traits = list(TRAIT_NOMOBSWAP)
@@ -49,15 +50,15 @@
 	specstats_m = list(
 		"strength" = 3,
 		"mageability" = 1,
+		"constitution" = 1,
 	)
 	specstats_f = list(
 		"strength" = 1,
 		"mageability" = 3,
+		"speed" = 1,
 	)
 	enflamed_icon = "widefire"
-	attack_verb = "slash"
-	attack_sound = 'sound/blank.ogg'
-	miss_sound = 'sound/blank.ogg'
+
 	organs = list(
 		ORGAN_SLOT_BRAIN = /obj/item/organ/brain,
 		ORGAN_SLOT_HEART = /obj/item/organ/heart,
@@ -119,20 +120,21 @@
 		/datum/descriptor_choice/stature,
 		/datum/descriptor_choice/face,
 		/datum/descriptor_choice/face_exp,
-		/datum/descriptor_choice/chitin,
+		/datum/descriptor_choice/feathers,
 		/datum/descriptor_choice/voice,
 		/datum/descriptor_choice/prominent_one,
 		/datum/descriptor_choice/prominent_two,
 		/datum/descriptor_choice/prominent_three,
 		/datum/descriptor_choice/prominent_four,
 	)
+	stress_examine = TRUE
+	stress_desc = span_red("That bulbous headed thing is disturbing...")
 	languages = list(
 		/datum/language/common,
 		/datum/language/celestial
 	)
 
 	alignment_weights = AASIMAR_WEIGHTS
-
 /datum/species/aasimar/check_roundstart_eligible()
 	return TRUE
 
@@ -147,11 +149,39 @@
 	..()
 	to_chat(C, "<span class='info'>I can speak Celestial with ,c before my speech.</span>")
 
+/datum/species/aasimar/on_species_gain(mob/living/carbon/C, datum/species/old_species)
+	..()
+	var/mob/living/carbon/human/species/aasimar/H = C
+	if(H.age == AGE_YOUTH)
+		offset_features = list(
+			OFFSET_ID = list(0,-1), OFFSET_GLOVES = list(0,-1), OFFSET_WRISTS = list(0,-1),\
+			OFFSET_CLOAK = list(0,-1), OFFSET_FACEMASK = list(0,-1), OFFSET_HEAD = list(0,-1), \
+			OFFSET_FACE = list(0,-1), OFFSET_BELT = list(0,-1), OFFSET_BACK = list(0,-1), \
+			OFFSET_NECK = list(0,-1), OFFSET_MOUTH = list(0,-1), OFFSET_PANTS = list(0,-1), \
+			OFFSET_SHIRT = list(0,-1), OFFSET_ARMOR = list(0,-1), OFFSET_HANDS = list(0,-1), OFFSET_UNDIES = list(0,-1), \
+			OFFSET_ID_F = list(0,-1), OFFSET_GLOVES_F = list(0,-1), OFFSET_WRISTS_F = list(0,-1), OFFSET_HANDS_F = list(0,-2), \
+			OFFSET_CLOAK_F = list(0,-1), OFFSET_FACEMASK_F = list(0,-2), OFFSET_HEAD_F = list(0,-2), \
+			OFFSET_FACE_F = list(0,-2), OFFSET_BELT_F = list(0,-1), OFFSET_BACK_F = list(0,-2), \
+			OFFSET_NECK_F = list(0,-2), OFFSET_MOUTH_F = list(0,-2), OFFSET_PANTS_F = list(0,-1), \
+			OFFSET_SHIRT_F = list(0,-1), OFFSET_ARMOR_F = list(0,-1), OFFSET_UNDIES_F = list(0,-1))
+		limbs_icon_m = 'icons/roguetown/mob/bodies/m/mofmy.dmi'
+		limbs_icon_f = 'icons/roguetown/mob/bodies/f/moffy.dmi'
+		hairyness = null
+		body_marking_sets = null
+		body_markings = null
+//		soundpack_m = new /datum/voicepack/male/young()
+		H.has_stubble = FALSE
+		H.facial_hairstyle = "None"
+		H.update_hair()
+		H.update_body()
+
+
+
 /datum/species/aasimar/on_species_loss(mob/living/carbon/C)
 	. = ..()
 	UnregisterSignal(C, COMSIG_MOB_SAY)
 
-/datum/species/tieberian/random_name(gender,unique,lastname)
+/datum/species/aasimar/random_name(gender,unique,lastname)
 
 	var/randname
 	if(unique)
@@ -192,19 +222,17 @@
 	returned["mcolor3"] = second_color
 	return returned
 
-//Groups of Accents for each race set by associated 'skin_tone', see 'get_skin_list' above
-// "full" group in JSON lists
 /datum/species/aasimar/get_accent(mob/living/carbon/human/H)
-	return strings("proper_replacement.json", "full")
+	return strings("spanish_latin_replacement.json", "full")
 
 // "start" group in JSON lists
 /datum/species/aasimar/get_accent_start(mob/living/carbon/human/H)
-	return strings("proper_replacement.json", "start")
+	return strings("spanish_latin_replacement.json", "start")
 
 // "end" group in JSON lists
 /datum/species/aasimar/get_accent_end(mob/living/carbon/human/H)
-	return strings("proper_replacement.json", "end")
+	return strings("spanish_latin_replacement.json", "end")
 
 // "syllable" group in JSON lists
 /datum/species/aasimar/get_accent_any(mob/living/carbon/human/H)
-	return strings("proper_replacement.json", "syllable")
+	return strings("spanish_latin_replacement.json", "syllable")

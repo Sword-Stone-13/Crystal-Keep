@@ -55,7 +55,7 @@
 			backr = /obj/item/rogue/instrument/lute
 		else if(isdwarf(H))
 			backr = /obj/item/rogue/instrument/accord
-		else if(istiefling(H) /*|| isargonian(H)*/)
+		else if(istiefling(H) || ismoth(H))
 			backr = /obj/item/rogue/instrument/guitar
 		else
 			backr = /obj/item/rogue/instrument/lute

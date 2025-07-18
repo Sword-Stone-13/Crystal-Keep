@@ -261,3 +261,34 @@
 	stressadd = 6
 	desc = "I slept on the floor! What am I?! An animal?!"
 	timer = 3 MINUTES
+
+// Stress event triggered by The Ring’s curse
+/datum/stressevent/Zizotec
+	timer = 5 MINUTES
+	stressadd = 10
+	desc = span_boldred("I heard a name, Zizotec!")
+
+// Stress event triggered by The Ring’s whispers of domination
+/datum/stressevent/demonview
+	timer = 5 MINUTES
+	stressadd = 10
+	desc = span_boldred("She views me, visions of daemons peering into me surround me!")
+
+// Stress event triggered by The Ring’s weight on the soul
+/datum/stressevent/pain
+	timer = 5 MINUTES
+	stressadd = 10
+	desc = span_boldred("Psydon help me...")
+/*
+// Stress event triggered by The Ring’s visions of doom
+/datum/stressevent/ring_doom_visions
+	timer = 5 MINUTES
+	stressadd = 10
+	desc = span_boldred("Hooded figures in twisted contortions around one another!")
+
+// Stress event triggered by The Ring’s betrayal
+/datum/stressevent/ring_betrayal
+	timer = 5 MINUTES
+	stressadd = 10
+	desc = span_boldred("The lies...")
+*/

@@ -34,6 +34,6 @@ GLOBAL_VAR(bible_item_state)
 GLOBAL_VAR(holy_weapon_type)
 GLOBAL_VAR(holy_armor_type)
 
-GLOBAL_LIST_INIT(all_squads, list(SQUAD_NONE = /datum/antagonist/squad/none, SQUAD_ALRICH = /datum/antagonist/squad/alrich, SQUAD_BRAVADO = /datum/antagonist/squad/bravado, SQUAD_CAESAR = /datum/antagonist/squad/caesar, SQUAD_DELEON = /datum/antagonist/squad/deleon))
+GLOBAL_LIST_INIT(all_squads, list("None" = SQUAD_NONE, SQUAD_ALRICH = /datum/antagonist/squad/alrich, SQUAD_BRAVADO = /datum/antagonist/squad/bravado, SQUAD_CAESAR = /datum/antagonist/squad/caesar, SQUAD_DELEON = /datum/antagonist/squad/deleon,))
 GLOBAL_LIST_EMPTY(soliloquies)
 GLOBAL_VAR(chosen_soliloquy)

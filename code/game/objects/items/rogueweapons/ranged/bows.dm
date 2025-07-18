@@ -64,10 +64,12 @@
 		var/mob/living/carbon/human/H = user
 		switch(H.mind.get_skill_level(/datum/skill/combat/bows))
 			if(0)
-				spread += 35
+				spread += 60
 			if(1)
-				spread += 20
+				spread += 30
 			if(2)
+				spread += 15
+			if(3)
 				spread += 5
 			else
 				spread += 0
@@ -79,7 +81,9 @@
 			BB.damage = BB.damage - (BB.damage * (user.client.chargedprog / 100))
 			BB.embedchance = 5
 		else
-			BB.damage = BB.damage * (user.STASTR * 0.1) * damfactor
+			BB.damage = BB.damage * (user.STASTR / 10) * damfactor
+			if(user.STASKL > 10)
+				BB.damage = BB.damage * (user.STASKL / 10)
 			BB.embedchance = 100
 		if(HAS_TRAIT(user, TRAIT_TINY))
 			BB.damage = (BB.damage * 0.1)
@@ -100,6 +104,12 @@
 /obj/item/ammo_box/magazine/internal/shot/bow
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow
 	caliber = "arrow"
+	max_ammo = 1
+	start_empty = TRUE
+
+/obj/item/ammo_box/magazine/internal/shot/greatbow
+	ammo_type = /obj/item/ammo_casing/caseless/rogue/greatarrow
+	caliber = "great arrow"
 	max_ammo = 1
 	start_empty = TRUE
 
@@ -170,7 +180,7 @@
 	spread = 1
 	force = 9
 	minstr = 7
-	damfactor = 1.2
+	damfactor = 0.9
 
 /datum/intent/shoot/bow/recurve
 	chargetime = 12
@@ -181,3 +191,79 @@
 	chargetime = 15
 	chargedrain = 1.5
 	charging_slowdown = 2.5
+
+///CRYSTAL KEEP///
+
+///ELFNUT///
+
+/obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve/elfnut
+	name = "Elfnut Bow"
+	desc = "Elfnuts are usually empty inside, save for the ones who's waxy innards contort into string-like sinews."
+	icon_state = "elfnutlongbow"
+	icon = 'icons/roguetown/weapons/32.dmi'
+	possible_item_intents = list(/datum/intent/shoot/bow/recurve/elfnut, /datum/intent/arc/bow/recurve/elfnut, INTENT_GENERIC)
+	randomspread = 1
+	spread = 1
+	force = 9
+	minstr = 7
+	damfactor = 0.8
+	pixel_y = -16
+	pixel_x = -16
+	inhand_x_dimension = 64
+	inhand_y_dimension = 64
+	bigboy = TRUE
+
+/datum/intent/shoot/bow/recurve/elfnut
+	chargetime = 6
+	chargedrain = 1
+	charging_slowdown = 0
+
+/datum/intent/arc/bow/recurve/elfnut
+	chargetime = 6
+	chargedrain = 1
+	charging_slowdown = 0
+
+/obj/item/gun/ballistic/revolver/grenadelauncher/bow/elvish
+	name = "Elvish Longbow"
+	desc = "An elvish warbow. Twisted steel-like threads like roots of a tree."
+	icon_state = "elfnutlongbowsilver"
+	possible_item_intents = list(/datum/intent/shoot/bow/elvish, /datum/intent/arc/bow/elvish,INTENT_GENERIC)
+	randomspread = 1
+	spread = 1
+	force = 9
+	minstr = 12
+	damfactor = 2
+
+/datum/intent/shoot/bow/elvish
+	chargetime = 20
+	chargedrain = 1
+	charging_slowdown = 3
+
+/datum/intent/arc/bow/elvish
+	chargetime = 20
+	chargedrain = 1
+	charging_slowdown = 3
+
+
+/obj/item/gun/ballistic/revolver/grenadelauncher/bow/aasimar
+	name = "Aasimar Warbow"
+	desc = "Borderline club with a rope across it."
+	icon_state = "bow_moth"
+	possible_item_intents = list(/datum/intent/shoot/bow/aasimar, /datum/intent/arc/bow/aasimar, /datum/intent/mace/smash/wood)
+	randomspread = 1
+	slot_flags = ITEM_SLOT_BACK
+	spread = 1
+	force = 20
+	minstr = 15
+	damfactor = 3
+	mag_type = /obj/item/ammo_box/magazine/internal/shot/greatbow
+
+/datum/intent/shoot/bow/aasimar
+	chargetime = 30
+	chargedrain = 2
+	charging_slowdown = 4
+
+/datum/intent/arc/bow/aasimar
+	chargetime = 30
+	chargedrain = 2
+	charging_slowdown = 4

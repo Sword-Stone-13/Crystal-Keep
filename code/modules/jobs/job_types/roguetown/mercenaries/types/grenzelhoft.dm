@@ -6,9 +6,10 @@
 		/datum/species/aasimar, //grenzelmoft?
 		/datum/species/dwarf/mountain,
 		/datum/species/human/northern,
+		/datum/species/elf/wood,
 	)
 	outfit = /datum/outfit/job/roguetown/mercenary/grenzelhoft
-	maximum_possible_slots = 9
+	maximum_possible_slots = 4
 	min_pq = 15
 	torch = FALSE
 	cmode_music = 'sound/music/combat_grenzelhoft.ogg'

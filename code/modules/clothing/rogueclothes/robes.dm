@@ -168,3 +168,121 @@
 	flags_inv = HIDEBOOB|HIDETAIL //DO NOT CHANGE THIS, I WILL THROW HANDS WITH YOU IDIOTS
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
+
+
+///CRYSTAL KEEP///
+
+
+///AASIMARIAN RAGS///
+
+///TBD///
+
+///PEASANT CLOTHING
+
+
+/obj/item/clothing/suit/roguetown/shirt/robe/nun/alt
+	color = null
+	icon_state = "angel_nun_dress"
+	item_state = "angel_nun_dress"
+	allowed_sex = list(FEMALE)
+
+
+//Wizards with attitude
+/obj/item/clothing/cloak/shadowwizard
+	name = "Fly Robes"
+	desc = ""
+	color = null
+	icon_state = "shadowwiz_red_robe"
+	item_state = "shadowwiz_red_robe"
+	slot_flags = ITEM_SLOT_ARMOR
+	body_parts_covered = CHEST|GROIN|ARMS|LEGS|VITALS
+	boobed = TRUE
+	icon = 'icons/roguetown/clothing/shirts.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/shirts.dmi'
+	sleeved = 'icons/roguetown/clothing/onmob/shirts.dmi'
+	sleevetype = "shirt"
+	nodismemsleeves = TRUE
+	inhand_mod = TRUE
+	flags_inv = HIDEBOOB|HIDECROTCH
+	hoodtype = /obj/item/clothing/head/hooded/shadowwizard // Default red hood
+	toggle_icon_state = FALSE
+	salvage_result = /obj/item/ingot/gold
+	w_class = WEIGHT_CLASS_NORMAL
+
+/obj/item/clothing/cloak/shadowwizard/wash_act(clean)
+	. = ..()
+	if(hood)
+		wash_atom(hood, clean)
+
+/obj/item/clothing/cloak/shadowwizard/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/storage/concrete)
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	if(STR)
+		STR.max_combined_w_class = 3
+		STR.max_w_class = WEIGHT_CLASS_NORMAL
+		STR.max_items = 1
+
+/obj/item/clothing/cloak/shadowwizard/dropped(mob/living/carbon/human/user)
+	..()
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	if(STR)
+		var/list/things = STR.contents()
+		for(var/obj/item/I in things)
+			STR.remove_from_storage(I, get_turf(src))
+
+/obj/item/clothing/cloak/shadowwizard/green
+	icon_state = "shadowwiz_green_robe"
+	item_state = "shadowwiz_green_robe"
+	hoodtype = /obj/item/clothing/head/hooded/shadowwizard/green
+
+/obj/item/clothing/cloak/shadowwizard/blue
+	icon_state = "shadowwiz_blue_robe"
+	item_state = "shadowwiz_blue_robe"
+	hoodtype = /obj/item/clothing/head/hooded/shadowwizard/blue
+
+/obj/item/clothing/cloak/shadowwizard/yellow
+	icon_state = "shadowwiz_yellow_robe"
+	item_state = "shadowwiz_yellow_robe"
+	hoodtype = /obj/item/clothing/head/hooded/shadowwizard/yellow
+
+/obj/item/clothing/cloak/shadowwizard/purple
+	icon_state = "shadowwiz_purple_robe"
+	item_state = "shadowwiz_purple_robe"
+	hoodtype = /obj/item/clothing/head/hooded/shadowwizard/purple
+
+/obj/item/clothing/head/hooded/shadowwizard
+	name = "hood"
+	desc = "This one will shelter you from the weather and hide your identity too."
+	icon_state = "shadowwiz_red_hood"
+	item_state = "shadowwiz_red_hood"
+	slot_flags = ITEM_SLOT_HEAD
+	dynamic_hair_suffix = ""
+	edelay_type = 1
+	body_parts_covered = HEAD
+	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDETAIL
+	block2add = FOV_BEHIND
+
+/obj/item/clothing/head/hooded/shadowwizard/equipped(mob/user, slot)
+	. = ..()
+	user.update_fov_angles()
+
+/obj/item/clothing/head/hooded/shadowwizard/dropped(mob/user)
+	. = ..()
+	user.update_fov_angles()
+
+/obj/item/clothing/head/hooded/shadowwizard/green
+	icon_state = "shadowwiz_green_hood"
+	item_state = "shadowwiz_green_hood"
+
+/obj/item/clothing/head/hooded/shadowwizard/blue
+	icon_state = "shadowwiz_blue_hood"
+	item_state = "shadowwiz_blue_hood"
+
+/obj/item/clothing/head/hooded/shadowwizard/yellow
+	icon_state = "shadowwiz_yellow_hood"
+	item_state = "shadowwiz_yellow_hood"
+
+/obj/item/clothing/head/hooded/shadowwizard/purple
+	icon_state = "shadowwiz_purple_hood"
+	item_state = "shadowwiz_purple_hood"

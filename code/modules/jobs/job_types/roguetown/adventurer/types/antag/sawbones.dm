@@ -6,11 +6,11 @@
 	outfit = /datum/outfit/job/roguetown/bandit/sawbones
 	category_tags = list(CTAG_BANDIT)
 	cmode_music = 'sound/music/combat_bandit2.ogg'
-	maximum_possible_slots = 1
+	maximum_possible_slots = 2
 
 /datum/outfit/job/roguetown/bandit/sawbones/pre_equip(mob/living/carbon/human/H)
 	..()
-	mask = /obj/item/clothing/mask/rogue/facemask/steel
+	mask = /obj/item/clothing/mask/rogue/facemask/hound
 	head = /obj/item/clothing/head/roguetown/nightman
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest
 	shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt
@@ -20,7 +20,7 @@
 	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 	backl = /obj/item/storage/backpack/rogue/backpack
 	backpack_contents = list(/obj/item/storage/fancy/skit = 1, /obj/item/storage/fancy/ifak = 1, /obj/item/reagent_containers/glass/alembic = 1,)
-	H.mind.adjust_skillrank(/datum/skill/combat/knives, 4, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 2, TRUE)
@@ -34,9 +34,8 @@
 	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/treatment, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
-	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC) //Given for consistencysake as the idol still provides scalemail.
 	H.change_stat("strength", 2)
-	H.change_stat("mageability", 3)
+	H.change_stat("skill", 3)
 	H.change_stat("speed", 1)
 	H.change_stat("fortune", 1)
 	if(H.age == AGE_OLD)

@@ -81,3 +81,10 @@
 
 /datum/customizer_choice/organ/eyes/moth
 	organ_type = /obj/item/organ/eyes/moth
+
+/datum/customizer/organ/eyes/nuppy
+	customizer_choices = list(/datum/customizer_choice/organ/eyes/nuppy)
+	default_choice = /datum/customizer_choice/organ/eyes/nuppy
+
+/datum/customizer_choice/organ/eyes/nuppy
+	organ_type = /obj/item/organ/eyes/nuppy

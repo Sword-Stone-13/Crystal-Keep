@@ -1,6 +1,6 @@
-/datum/job/roguetown/nightmaiden
-	title = "Bath Swain"
-	f_title = "Bath Wench"
+/datum/job/roguetown/actor
+	title = "Actor"
+	f_title = "Actress"
 	flag = WENCH
 	department_flag = PEASANTS
 	faction = "Station"
@@ -11,22 +11,24 @@
 	allowed_races = RACES_VERY_SHUNNED_UP
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED)
 
-	tutorial = "Nobody would envy your lot in life, for the role of bath-servant is not something so idly taken. Such folk often come from a place of desperation, 'least usually: for any with true compassion or skill would seek position with a nunnery or the medical trade. Launder clothes and soothe wounds, that is your loathsome creed."
+	tutorial = "The life of an entertainer is a lowly one. Generally you find yourself at the tavern earning coin, other times the house barons pay you to influence or outright recruit travelling folk to their houses. One day, you'll act for a proper theatre."
 
-	outfit = /datum/outfit/job/roguetown/nightmaiden
+	outfit = /datum/outfit/job/roguetown/actor
 	display_order = JDO_WENCH
 	give_bank_account = TRUE
 	can_random = FALSE
 	min_pq = -10
 	max_pq = null
+	associated_squad = /datum/antagonist/squad/none
 
-/datum/outfit/job/roguetown/nightmaiden/pre_equip(mob/living/carbon/human/H)
+
+/datum/outfit/job/roguetown/actor/pre_equip(mob/living/carbon/human/H)
 	..()
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	r_hand = /obj/item/soap/bath
 	l_hand = /obj/item/rogue/instrument/harp
-	mouth = /obj/item/key/nightmaiden
+	mouth = /obj/item/key/actor
 	if(H.gender == MALE)
 		pants =	/obj/item/clothing/under/roguetown/loincloth
 		belt =	/obj/item/storage/belt/rogue/leather/cloth
@@ -39,13 +41,14 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/stealing, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/music, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/music, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 1, TRUE)
 		H.change_stat("constitution", 1)
+		H.change_stat("skill", 2)
 		H.change_stat("endurance", 2)
-	ADD_TRAIT(H, TRAIT_GOODLOVER, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_BEAUTIFUL, TRAIT_GENERIC)
 
 // Washing Implements
 
@@ -62,7 +65,7 @@
 	if(istype(target, /mob/living/carbon/human))
 		visible_message(span_info("[user] begins scrubbing [target] with the [src]."))
 		if(do_after(user, 50))
-			if(HAS_TRAIT(user, TRAIT_GOODLOVER))
+			if(HAS_TRAIT(user, TRAIT_BEAUTIFUL))
 				visible_message(span_info("[user] expertly scrubs and soothes [target] with the [src]."))
 				to_chat(target, span_love("I feel so relaxed and clean!"))
 				SEND_SIGNAL(target, COMSIG_ADD_MOOD_EVENT, "bathcleaned", /datum/mood_event/bathcleaned)

@@ -3,15 +3,15 @@
 	name = "Maniac"
 	roundend_category = "maniacs"
 	antagpanel_category = "Maniac"
-	antag_memory = "<b>Recently I've been visited by a lot of VISIONS. They're all about another WORLD, ANOTHER life. I will do EVERYTHING to know the TRUTH, and return to the REAL world.</b>"
+	antag_memory = "<b>Recently I've been visited by a lot of VISIONS. Madness envelops me. Little by little.</b>"
 	job_rank = ROLE_MANIAC
 	antag_hud_type = ANTAG_HUD_TRAITOR
 	antag_hud_name = "villain"
 	confess_lines = list(
-		"I gave them no time to squeal.",
-		"I shant quit ripping them.",
-		"They deserve to be put at my blade.",
-		"Do what thou wilt shall be the whole of the law.",
+		"HECKING OWCHERS.",
+		"ZAMN!",
+		"CRYING LAUGHING EMOJI.",
+		"UUUOOOOOH!",
 	)
 	rogue_enabled = TRUE
 	/// Traits we apply to the owner
@@ -192,7 +192,7 @@ GLOBAL_VAR_INIT(maniac_highlander, 0) // THERE CAN ONLY BE ONE!
 		spawnturf = get_turf(trey)
 	if(spawnturf)
 		var/mob/living/carbon/human/trey_liam = new /mob/living/carbon/human/species/human/northern(spawnturf)
-		trey_liam.fully_replace_character_name(trey_liam.name, "Trey Liam")
+		trey_liam.fully_replace_character_name(trey_liam.name, "Chet Sterling")
 		trey_liam.gender = MALE
 		trey_liam.skin_tone = "ffe0d1"
 		trey_liam.hair_color = "999999"
@@ -212,7 +212,7 @@ GLOBAL_VAR_INIT(maniac_highlander, 0) // THERE CAN ONLY BE ONE!
 	if(GLOB.maniac_highlander) // another Maniac has TRIUMPHED before we could
 		if(src.owner && src.owner.current)
 			var/straggler = src.owner.current
-			to_chat(straggler, span_danger("IT'S NO USE! I CAN'T WAKE UP!"))
+			to_chat(straggler, span_danger("JORKIN THE WHOLE PEANITZ!"))
 		return
 	GLOB.maniac_highlander = 1
 	STOP_PROCESSING(SSobj, src)
@@ -257,13 +257,14 @@ GLOBAL_VAR_INIT(maniac_highlander, 0) // THERE CAN ONLY BE ONE!
 		to_chat(trey_liam, span_deadsay("<span class='reallybig'>... WHERE AM I? ...</span>"))
 		sleep(1.5 SECONDS)
 		var/static/list/slop_lore = list(
-			span_deadsay("... Rockhill? No ... It doesn't exist ..."),
-			span_deadsay("... My name is Trey. Trey Liam, Scientific Overseer ..."),
-			span_deadsay("... I'm on NT Aeon, a self sustaining ship, used to preserve what remains of humanity ..."),
-			span_deadsay("... Launched into the stars, INRL preserves their memories ... Their personalities ..."),
-			span_deadsay("... Keeps them alive in cyberspace, oblivious to the catastrophe ..."),
-			span_deadsay("... There is no hope left. Only the cyberspace deck lets me live in the forgery ..."),
-			span_deadsay("... What have I done!? ..."),
+			span_deadsay("... Space Station 13...the... future?..."),
+			span_deadsay("... Zizotec's orgy...?..."),
+			span_deadsay("... Who the hell is Steve Jobs...?"),
+			span_deadsay("... Encino Moth... who the hell is that...?"),
+			span_deadsay("... Juan Francisco Donaldo... Catholic Knight... what? ..."),
+			span_deadsay("... One day while Andy was-..."),
+			span_deadsay("... GnarxPoppy fanfiction? What the fuck are you talk-..."),
+			span_deadsay("... Jean the Hunted... Hero... Tabletop...What?"),
 		)
 		for(var/slop in slop_lore)
 			to_chat(trey_liam, slop)

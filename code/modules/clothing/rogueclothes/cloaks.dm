@@ -838,7 +838,7 @@
 	nodismemsleeves = TRUE
 
 /obj/item/clothing/cloak/jadekingdom
-	name = "red cloak"
+	name = "green cloak"
 	desc = ""
 	icon_state = "jadekingdom_cloak"
 	body_parts_covered = CHEST|GROIN|VITALS|ARMS
@@ -888,6 +888,9 @@
 		var/list/things = STR.contents()
 		for(var/obj/item/I in things)
 			STR.remove_from_storage(I, get_turf(src))
+
+/obj/item/clothing/cloak/half/bravado
+	color = "#d3b54d"
 
 /obj/item/clothing/cloak/half/brown
 	color = CLOTHING_BROWN
@@ -979,7 +982,7 @@
 		return
 	active_item = TRUE
 	if(user.mind.special_role == "Bandit")
-		to_chat(user, span_notice("I feel bolstered by Matthios Power!..."))
+		to_chat(user, span_notice("I feel bolstered by Nyatthios Power!..."))
 		user.change_stat("strength", 2)
 		user.change_stat("skill", 2)
 		user.change_stat("mageability", 2)
@@ -996,7 +999,7 @@
 		return
 	active_item = FALSE
 	if(user.mind.special_role == "Bandit")
-		to_chat(user, span_notice("I've removed the necklace of Matthios..."))
+		to_chat(user, span_notice("I've removed the necklace of Nyatthios..."))
 		user.change_stat("strength", -2)
 		user.change_stat("skill", -2)
 		user.change_stat("mageability", -2)
@@ -1113,3 +1116,140 @@
 	name = "necran tabard"
 	desc = "Deep dark blacks, swallowing all light as if the night itself."
 	icon_state = "necratabard"
+
+//////////// CRYSTAL KEEP ////////////
+
+///ELFNUT///
+
+/obj/item/clothing/cloak/cape/elvish
+	name = "leafy cape"
+	desc = ""
+	icon_state = "elfnut_cloak"
+	item_state = "elfnut_cloak"
+	alternate_worn_layer = CLOAK_BEHIND_LAYER
+	body_parts_covered = CHEST|GROIN|VITALS|ARMS
+	sleeved = 'icons/roguetown/clothing/onmob/cloaks.dmi'
+	sleevetype = "shirt"
+	nodismemsleeves = TRUE
+	slot_flags = ITEM_SLOT_BACK_R|ITEM_SLOT_CLOAK
+	allowed_sex = list(MALE, FEMALE)
+	allowed_race = NON_DWARVEN_RACE_TYPES
+	sellprice = 50
+	nodismemsleeves = TRUE
+
+/obj/item/clothing/cloak/cape/elvish/royal
+	name = "deep leaf cape"
+	icon_state = "elfnut_silver_cloak"
+	item_state = "elfnut_silver_cloak"
+
+
+///VILLAGER CORE///
+
+/obj/item/clothing/cloak/shawl/
+	name = "shawl"
+	desc = ""
+	color = null
+	icon_state = "villager_w1_shawl"
+	item_state = "villager_w1_shawl"
+	alternate_worn_layer = TABARD_LAYER
+	body_parts_covered = CHEST
+	allowed_race = CLOTHED_RACES_TYPES
+	w_class = WEIGHT_CLASS_TINY
+	allowed_sex = list(FEMALE)
+
+/obj/item/clothing/cloak/half/orphan
+	name = "poncho"
+	icon_state = "villager_orphan_shawl"
+	item_state = "villager_orphan_shawl"
+	body_parts_covered = ARMS|CHEST
+	allowed_race = CLOTHED_RACES_TYPES
+	flags_inv = HIDEBOOB
+	w_class = WEIGHT_CLASS_SMALL
+
+/obj/item/clothing/cloak/black_cloak/toga
+	name = "toga"
+	icon_state = "holy_shawl"
+	item_state = "holy_shawl"
+	alternate_worn_layer = CLOAK_BEHIND_LAYER
+
+
+///HOUSE STUFF///
+
+
+/obj/item/clothing/cloak/tabard/houseblack
+	name = "Black Knight Tabard"
+	desc = ""
+	icon_state = "house_black_shirt"
+	item_state = "house_black_shirt"
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/shirts.dmi'
+	alternate_worn_layer = TABARD_LAYER
+	body_parts_covered = CHEST|GROIN
+	boobed = TRUE
+	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
+	flags_inv = HIDECROTCH|HIDEBOOB
+
+
+//halfcloaks
+
+/obj/item/clothing/cloak/half/house
+	name = "white fur collared cloak"
+	desc = ""
+	color = null
+	icon_state = "house_white_baron_halfcloak"
+	item_state = "house_white_baron_halfcloak"
+	salvage_amount = 2
+
+/obj/item/clothing/cloak/half/house/alrich
+	name = "House Alrich Cloak"
+	icon_state = "house_red_baron_halfcloak"
+	item_state = "house_red_baron_halfcloak"
+
+/obj/item/clothing/cloak/half/house/bravado
+	name = "House Bravado Cloak"
+	icon_state = "house_yellow_baron_halfcloak"
+	item_state = "house_yellow_baron_halfcloak"
+
+/obj/item/clothing/cloak/half/house/caesar
+	name = "House Caesar Cloak"
+	icon_state = "house_purple_baron_halfcloak"
+	item_state = "house_purple_baron_halfcloak"
+
+/obj/item/clothing/cloak/half/house/deleon
+	name = "House Deleon Cloak"
+	icon_state = "house_blue_baron_halfcloak"
+	item_state = "house_blue_baron_halfcloak"
+
+/obj/item/clothing/cloak/half/house/hand
+	name = "Royal Cloak"
+	icon_state = "house_black_baron_halfcloak"
+	item_state = "house_black_baron_halfcloak"
+
+//WITCHES
+
+
+/obj/item/clothing/cloak/black_cloak/house/
+	name = "fur lined cloak"
+	desc = ""
+	icon_state = "house_green_witch_cloak"
+	item_state = "house_green_witch_cloak"
+	hoodtype = null
+	allowed_sex = list(FEMALE)
+
+/obj/item/clothing/cloak/black_cloak/house/white
+	name = "regal fur tassels"
+	desc = ""
+	icon_state = "house_white_witch_cloak"
+	item_state = "house_white_witch_cloak"
+	alternate_worn_layer = CLOAK_BEHIND_LAYER
+
+/obj/item/clothing/cloak/cape/house
+	name = "silk cape"
+	desc = ""
+	icon_state = "house_black_witch_cloak"
+	item_state = "house_black_witch_cloak"
+
+/obj/item/clothing/cloak/cape/house/red
+	name = "shortened mage cape"
+	desc = ""
+	icon_state = "house_red_witch_cloak"
+	item_state = "house_red_witch_cloak"

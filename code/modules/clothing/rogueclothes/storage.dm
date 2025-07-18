@@ -253,7 +253,7 @@
 
 /obj/item/storage/belt/rogue/pouch/food/PopulateContents()
 	new /obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked(src)
-
+/*
 /obj/item/storage/belt/rogue/pouch/ammo
 	name = "sphere pouch"
 	desc = "Usually used for holding runelock sphreres."
@@ -262,7 +262,7 @@
 	new /obj/item/ammo_casing/caseless/rogue/bullet(src)
 	new /obj/item/ammo_casing/caseless/rogue/bullet(src)
 	new /obj/item/ammo_casing/caseless/rogue/bullet(src)
-
+*/
 /obj/item/storage/backpack/rogue //holding salvage vars for children
 	sewrepair = TRUE
 	fiber_salvage = TRUE
@@ -305,6 +305,9 @@
 /obj/item/storage/backpack/rogue/satchel/black
 	color = CLOTHING_BLACK
 
+/obj/item/storage/backpack/rogue/satchel/white
+	color = CLOTHING_WHITE
+
 /obj/item/storage/backpack/rogue/satchel/ComponentInitialize()
 	. = ..()
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
@@ -341,7 +344,9 @@
 		STR.max_w_class = WEIGHT_CLASS_NORMAL
 		STR.max_items = 14
 		STR.not_while_equipped = TRUE
+
 /*
+//someone commented out this gem. It stays. Nevermind it broke shit.
 /obj/item/storage/belt/rogue/pickles
 	name = "jar of pickles"
 	desc = "Briney goodness!"
@@ -370,3 +375,74 @@
 	new /obj/item/reagent_containers/food/snacks/grown/pickle(src)
 
 */
+
+
+//CKEEP THINGS
+
+
+/obj/item/storage/belt/rogue/pouch/hipbelt
+	name = "pouch belt"
+	desc = ""
+	icon = 'icons/roguetown/clothing/belts.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/belts.dmi'
+	icon_state = "villager_orphan_belt"
+	item_state = "villager_orphan_belt"
+	lefthand_file = 'icons/mob/inhands/equipment/belt_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/equipment/belt_righthand.dmi'
+	slot_flags = ITEM_SLOT_BELT
+	salvage_result = /obj/item/natural/hide/cured
+
+/obj/item/storage/belt/rogue/pouch/hipbelt/ComponentInitialize()
+	. = ..()
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	if(STR)
+		STR.max_combined_w_class = 8
+		STR.max_w_class = WEIGHT_CLASS_NORMAL
+		STR.max_items = 4
+		STR.not_while_equipped = FALSE
+
+
+
+/obj/item/storage/belt/rogue/leather/steel/yellow
+	name = "Bronze Plated Faulds"
+	desc = "House Bravado's custom smithed faulds."
+	icon_state = "house_purple_belt"
+	sellprice = 30
+	sewrepair = FALSE
+	smeltresult = /obj/item/ingot/steel
+
+/obj/item/storage/belt/rogue/leather/steel/purple
+	name = "Tyrian Plated Faulds"
+	desc = "House Caesar's custom crafted faulds."
+	icon_state = "house_purple_belt"
+	sellprice = 30
+	sewrepair = FALSE
+	smeltresult = /obj/item/ingot/steel
+
+/obj/item/storage/belt/rogue/leather/guildgreen
+	name = "Guild Echarus Belt"
+	icon_state = "house_green_belt"
+	sellprice = 15
+
+/obj/item/storage/belt/rogue/leather/black/loose
+	icon_state = "house_black_belt"
+
+/obj/item/storage/belt/rogue/leather/redmage
+	name = "Custom Belt"
+	icon_state = "house_red_witch_belt"
+	sellprice = 10
+
+/obj/item/storage/belt/rogue/leather/purplemage
+	name = "Purple Belt"
+	icon_state = "house_purple_witch_belt"
+	sellprice = 15
+
+
+/obj/item/storage/belt/rogue/leather/rope/bluemage
+	name = "Gold Tassle Belt"
+	desc = "More decorative than functional."
+	icon_state = "house_blue_witch"
+	item_state = "house_blue_witch"
+	heldz_items = 1
+	salvage_result = /obj/item/ingot/gold
+	sellprice = 120

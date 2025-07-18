@@ -170,3 +170,30 @@
 	max_integrity = 150
 	sellprice = 100
 	smeltresult = /obj/item/ingot/gold
+
+//Crystallis keepus
+/obj/item/clothing/mask/rogue/facemask/leather
+	name = "leather mask"
+	desc = "A strange dark mask made of leather."
+	icon_state = "leathermask"
+	item_state = "leathermask"
+	max_integrity = 100
+	blocksound = SOFTHIT
+	break_sound = 'sound/foley/cloth_rip.ogg'
+	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
+	resistance_flags = FIRE_PROOF
+	armor = list("blunt" = 50, "slash" = 100, "stab" = 70, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 50, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 50)
+	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT)
+	flags_inv = HIDEFACE
+	body_parts_covered = FACE|EARS|EYES|MOUTH
+	slot_flags = ITEM_SLOT_MASK
+	experimental_onhip = TRUE
+	sewrepair = TRUE
+
+/obj/item/clothing/mask/rogue/facemask/leather/heavy
+	icon_state = "magemask"
+	item_state = "magemask"
+	max_integrity = 200
+	body_parts_covered = FACE|EARS|EYES|MOUTH|NECK
+
+//Jade Kingdom

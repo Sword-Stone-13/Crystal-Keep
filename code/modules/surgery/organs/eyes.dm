@@ -139,7 +139,7 @@
 
 
 /obj/item/organ/eyes/night_vision/argonian
-	name = "sissean eyes"
+	name = "reptoid eyes"
 	desc = ""
 
 /obj/item/organ/eyes/night_vision/alien
@@ -181,6 +181,11 @@
 	desc = ""
 	see_in_dark = 15
 	lighting_alpha = 200
+
+/obj/item/organ/eyes/nuppy
+	name = "nuppy eyes"
+	desc = ""
+	accessory_type = /datum/sprite_accessory/eyes/humanoid/nuppy
 
 ///Robotic
 
@@ -450,7 +455,7 @@
 
 
 /obj/item/organ/eyes/moth
-	name = "fluvian eyes"
+	name = "Aasimar eyes"
 	desc = ""
 	flash_protect = FLASH_PROTECTION_SENSITIVE
 	accessory_type = /datum/sprite_accessory/eyes/moth
@@ -482,4 +487,3 @@
 	eye_color = "#663702"
 	tint = INFINITY
 	sight_flags = BLIND
-	metalizer_result = /obj/item/ammo_casing/caseless/rogue/bullet

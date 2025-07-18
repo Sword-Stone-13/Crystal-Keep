@@ -14,6 +14,8 @@
 	category_tags = list(CTAG_ADVENTURER)
 	pickprob = 25
 	maximum_possible_slots = 2
+	cmode_music = 'sound/music/combat_jade.ogg'
+
 //	cmode_music = 'sound/music/combat_samurai.ogg' //soon
 
 /datum/outfit/job/roguetown/adventurer/samurai

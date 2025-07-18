@@ -1,3 +1,4 @@
+/* //commented out, might re add if and ONLY if it's not a gun. Maybe a wand... or a sling, idk. NO GUNS.
 /obj/item/gun/ballistic/revolver/grenadelauncher/runelock
 	name = "runelock pistol"
 	desc = "An incredibly deadly weapon, inscribed with runes to render it powderless. All it requires is compatible projectiles."
@@ -111,3 +112,4 @@
 /datum/intent/arc/runelock
 	chargetime = 1
 	chargedrain = 0
+*/

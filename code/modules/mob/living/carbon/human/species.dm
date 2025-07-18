@@ -17,7 +17,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	var/list/possible_ages = ALL_AGES_LIST
 	var/sexes = 1		// whether or not the race has sexual characteristics. at the moment this is only 0 for skeletons and shadows
 	var/patreon_req = 0
-	var/max_age = 75
+	var/max_age = 90
 	var/list/offset_features = list(OFFSET_ID = list(0,0), OFFSET_GLOVES = list(0,0),\
 	OFFSET_CLOAK = list(0,0), OFFSET_FACEMASK = list(0,0), OFFSET_HEAD = list(0,0), \
 	OFFSET_FACE = list(0,0), OFFSET_BELT = list(0,0), OFFSET_BACK = list(0,0), \
@@ -389,6 +389,11 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		hairs = get_oldhc_list()
 	else
 		hairs = get_hairc_list()
+	if(H.age == AGE_YOUTH)
+		H.facial_hairstyle = null
+		H.facial_hair_color = null
+	else
+		H.facial_hair_color = H.hair_color
 	H.hair_color = hairs[pick(hairs)]
 	H.facial_hair_color = H.hair_color
 	var/list/skins = get_skin_list()
@@ -608,6 +613,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	var/is_inhumen = HAS_TRAIT(H, TRAIT_INHUMEN_ANATOMY)
 	var/num_arms = H.get_num_arms(FALSE)
 	var/num_legs = H.get_num_legs(FALSE)
+	var/noc_curse = HAS_TRAIT(H, TRAIT_NOC_CURSE)
 
 	switch(slot)
 		if(SLOT_HANDS)
@@ -731,6 +737,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			if(H.head)
 				return FALSE
 			if(is_inhumen)
+				return FALSE
+			if(noc_curse)
 				return FALSE
 			if(!(I.slot_flags & ITEM_SLOT_HEAD))
 				return FALSE

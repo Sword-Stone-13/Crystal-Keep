@@ -24,6 +24,7 @@
 	max_storage = 20
 	ammo_type = list (/obj/item/ammo_casing/caseless/rogue/arrow, /obj/item/ammo_casing/caseless/rogue/bolt)
 
+/* //dogshit gun code in fantasy server. Kept commented out in case it breaks something to remove it.
 /obj/item/ammo_holder/bullet
 	name = "bullet pouch"
 	icon_state = "pouch0"
@@ -31,7 +32,7 @@
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_NECK
 	max_storage = 10
 	ammo_type = list(/obj/item/ammo_casing/caseless/rogue/bullet)
-
+*/
 /obj/item/ammo_holder/attackby(obj/A, loc, params)
 	for(var/i in ammo_type)
 		if(istype(A, i))
@@ -86,26 +87,60 @@
 		var/obj/item/ammo_casing/caseless/rogue/bolt/A = new()
 		ammo += A
 	update_icon()
-
+/*
 /obj/item/ammo_holder/bullet/runed/Initialize()
 	. = ..()
 	for(var/i in 1 to max_storage)
 		var/obj/item/ammo_casing/caseless/rogue/bullet/A = new()
 		ammo += A
 	update_icon()
-/*
+*/
+
 /obj/item/ammo_holder/Parrows/Initialize()
 	..()
 	for(var/i in 1 to max_storage)
 		var/obj/item/ammo_casing/caseless/rogue/arrow/poison/A = new()
-		arrows += A
+		ammo += A
 	update_icon()
 
 /obj/item/ammo_holder/Pbolts/Initialize()
 	..()
 	for(var/i in 1 to max_storage)
 		var/obj/item/ammo_casing/caseless/rogue/bolt/poison/A = new()
-		arrows += A
+		ammo += A
 	update_icon()
-*/
 
+
+///Crystal Keepo!///
+
+/obj/item/ammo_holder/quiver/giantsquiver
+	name = "Giants Quiver"
+	icon = 'icons/roguetown/weapons/ammo64.dmi'
+	icon_state = "giantquiver0"
+	item_state = "quiver"
+	lefthand_file = 'icons/mob/inhands/equipment/backpack_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/equipment/backpack_righthand.dmi'
+	slot_flags = ITEM_SLOT_BACK
+	max_storage = 5
+	ammo_type = list (/obj/item/ammo_casing/caseless/rogue/greatarrow)
+	pixel_y = -16
+	pixel_x = -16
+	inhand_x_dimension = 64
+	inhand_y_dimension = 64
+
+/obj/item/ammo_holder/quiver/greatquiver
+	name = "Large Quiver"
+	icon_state = "walnutquiver0"
+	item_state = "quiver"
+	lefthand_file = 'icons/mob/inhands/equipment/backpack_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/equipment/backpack_righthand.dmi'
+	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_BACK
+	max_storage = 30
+	ammo_type = list (/obj/item/ammo_casing/caseless/rogue/arrow, /obj/item/ammo_casing/caseless/rogue/bolt)
+
+/obj/item/ammo_holder/Sarrows/Initialize()
+	..()
+	for(var/i in 1 to max_storage)
+		var/obj/item/ammo_casing/caseless/rogue/arrow/stone/A = new()
+		ammo += A
+	update_icon()

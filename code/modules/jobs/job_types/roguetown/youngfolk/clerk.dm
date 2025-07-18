@@ -8,7 +8,7 @@
 
 	allowed_races = RACES_SHUNNED_UP
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_ages = list(AGE_ADULT)
+	allowed_ages = list(AGE_YOUTH, AGE_ADULT)
 
 	tutorial = "You have been granted the privilege of serving as a clerk in the Steward's office. You help the Steward with anything they need, and learn how coin keeps the town moving and prosperous."
 
@@ -17,6 +17,8 @@
 	give_bank_account = TRUE
 	min_pq = -10
 	max_pq = null
+	associated_squad = /datum/antagonist/squad/none
+
 
 /datum/outfit/job/roguetown/clerk/pre_equip(mob/living/carbon/human/H)
 	..()

@@ -108,12 +108,24 @@
 				if((user_skin_tone_seen == "lalvestine" && skin_tone_seen == "shalvistine") || \
 					(user_skin_tone_seen == "shalvistine" && skin_tone_seen == "lalvestine"))
 					slop_lore_string = ", <span class='danger'>A TRAITOR!</span>"
+			if(iself(user) && !iswoodelf(user) && iswoodelf(src) && skin_tone == SKIN_COLOR_WALNUT_WOODS)
+				slop_lore_string = ", <span class='warning'>A weirdo from the woods!</span>"
 			. += span_info("[capitalize(m2)] [skin_tone_wording] is [skin_tone_seen][slop_lore_string]")
 
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
 			if(H.marriedto == name)
 				. += span_love("It's my spouse.")
+
+			// Species rivalries
+			if((isdwarf(H) && is_species(src, /datum/species/kobold)) || (is_species(H, /datum/species/kobold) && isdwarf(src)))
+				. += span_danger("That stumpy little bastard!")
+			if((istiefling(H) && is_species(src, /datum/species/aasimar)) || (is_species(H, /datum/species/aasimar) && istiefling(src)))
+				. += span_danger("Get that thing out of here!")
+			if(iself(H) && !iswoodelf(H) && isdarkelf(src))
+				. += span_warning("A Zizo spawn...")
+			if(iswoodelf(H) && H.skin_tone == SKIN_COLOR_WALNUT_WOODS && is_species(src, /datum/species/aasimar))
+				. += span_notice("A good omen. Godski be praised, bruh.")
 
 		if(name in GLOB.excommunicated_players)
 			. += span_userdanger("EXCOMMUNICATED!")
@@ -291,7 +303,7 @@
 			. += "<span class='warning'>[m1] tied up with \a [handcuffed]!</span>"
 		else
 			. += "<A href='?src=[REF(src)];item=[SLOT_HANDCUFFED]'><span class='warning'>[m1] tied up with \a [handcuffed]!</span></A>"
- 
+
 	if(legcuffed)
 		. += "<A href='?src=[REF(src)];item=[SLOT_LEGCUFFED]'><span class='warning'>[m3] \a [legcuffed] around [m2] legs!</span></A>"
 

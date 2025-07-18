@@ -116,3 +116,8 @@
 	new /obj/item/seeds/onion(src)
 	new /obj/item/seeds/potato(src)
 	new /obj/item/seeds/potato(src)
+
+/obj/item/storage/roguebag/rogueration/PopulateContents()
+	new /obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked(src)
+	new /obj/item/clothing/mask/cigarette/rollie(src)
+	new /obj/item/reagent_containers/glass/bottle/rogue/moonster(src)

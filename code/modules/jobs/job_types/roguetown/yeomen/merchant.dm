@@ -9,8 +9,7 @@
 	allowed_races = RACES_SHUNNED_UP
 	tutorial = "You were born into wealth, learning from before you could talk about the basics of mathematics. \
 	Counting coins is a simple pleasure for any person, but you've made it an artform. \
-	These people are addicted to your wares and you are the literal beating heart of this economy: Dont let these filthy-covered troglodytes ever forget that. \
-	Remember that you've two shophands and an additional two 'thugs' to assure such."
+	These people are addicted to your wares and you are the literal beating heart of this economy: Dont let these filthy-covered troglodytes ever forget that." 
 
 	display_order = JDO_MERCHANT
 
@@ -19,18 +18,18 @@
 	min_pq = 1
 	max_pq = null
 	required = TRUE
+	associated_squad = /datum/antagonist/squad/none
+
 
 	cmode_music = 'sound/music/combat_giza.ogg'
 
 /datum/outfit/job/roguetown/merchant/pre_equip(mob/living/carbon/human/H)
 	..()
 	if(H.mind)
-		H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 5, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
@@ -57,4 +56,7 @@
 	H.change_stat("mageability", 2)
 	H.change_stat("skill", 3)
 	H.change_stat("strength", -1)
+	H.change_stat("speed", 2)
+	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC) 
+
 

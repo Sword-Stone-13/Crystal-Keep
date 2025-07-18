@@ -1,25 +1,28 @@
 
 <p align="center">
- <img width="450px" src="https://res.cloudinary.com/dxckdses2/image/upload/v1730145846/ydfd9atasnhj9jn3r5jw.png" align="center" alt="Ratwood Stats" />
- <h1 align="center">CRYSTALKEEP</h1>
- <h2 align="center">Legend of the SS13, the Stone Swords of the 13! Beginner friendly.</h2>
+ <img width="450px" src="https://i.imgur.com/lATjGuN.png" align="center" alt="Crystal Keep 13" />
+ <h1 align="center">CRYSTAL KEEP</h1>
+ <h2 align="center">Legend of the SS13, the Stone Swords of the 13</h2>
+</p>
+
+## About Crystal Keep
+Crystal Keep is a beginner-friendly Space Station 13 fork set in a rich medieval fantasy world inspired by the Roguetown codebase. Players can create unique characters set in a whimsical hope core happy arc world. Engage in deep roleplay, survival, and combat with a focus on accessibility, featuring intuitive character customization and a welcoming community. Join the adventure to wield the Stone Swords of the 13 heroes and shape the legend of Crystal Keep!
+
+<p align="center">
+    <a href="https://github.com/Sword-Stone-13/Crystal-Keep/graphs/contributors">
+      <img alt="GitHub Contributors" src="https://img.shields.io/github/contributors/Sword-Stone-13/Crystal-Keep" />
+    </a>
+    <a href="https://github.com/Sword-Stone-13/Crystal-Keep/issues">
+      <img alt="Issues" src="https://img.shields.io/github/issues/Sword-Stone-13/Crystal-Keep?color=0088ff" />
+    </a>
+    <a href="https://github.com/Sword-Stone-13/Crystal-Keep/pulls">
+      <img alt="GitHub pull requests" src="https://img.shields.io/github/issues-pr/Sword-Stone-13/Crystal-Keep?color=0088ff" />
+    </a>
 </p>
 
 <p align="center">
-    <a href="https://github.com/Rotwood-Vale/Ratwood-Keep/graphs/contributors">
-      <img alt="GitHub Contributors" src="https://img.shields.io/github/contributors/Rotwood-Vale/Ratwood-Keep" />
-    </a>
-    <a href="https://github.com/Rotwood-Vale/Ratwood-Keep/issues">
-      <img alt="Issues" src="https://img.shields.io/github/issues/Rotwood-Vale/Ratwood-Keep?color=0088ff" />
-    </a>
-    <a href="https://github.com/Rotwood-Vale/Ratwood-Keep/pulls">
-      <img alt="GitHub pull requests" src="https://img.shields.io/github/issues-pr/Rotwood-Vale/Ratwood-Keep?color=0088ff" />
-    </a>
-</p>
-
-<p align="center">
-	<a href="https://github.com/Rotwood-Vale/Ratwood-Keep/actions/workflows/ci_suite.yml">
-      <img alt="BYOND Build" src="https://github.com/Rotwood-Vale/Ratwood-Keep/actions/workflows/ci_suite.yml/badge.svg" />
+	<a href="https://github.com/Sword-Stone-13/Crystal-Keep/actions/workflows/ci_suite.yml">
+      <img alt="BYOND Build" src="https://github.com/Sword-Stone-13/Crystal-Keep/actions/workflows/ci_suite.yml/badge.svg" />
     </a>
 </p>
 
@@ -27,7 +30,7 @@
 
 | Website                   | Link                                           |
 |---------------------------|------------------------------------------------|
-| Discord          | [discord.gg/SOONTOBEADDED](link here) |
+| Forums          | [Forums](https://forum.crystal-keep.com/) |
 | Wiki                      | [wikisoon](link) |
 
 </div>
@@ -35,20 +38,10 @@
 
 
 
-# LICENSE
 
-## Ratwood
+## Crystal Keep
 
 All original code and assets of this repository are under the [GNU Affero General Public License v3.0](https://www.gnu.org/licenses/agpl-3.0.en.html) unless otherwise indicated.
-
-## Ratwood - Proprietary
-
-The following code and assets are under a custom proprietary license as per author or client's wishes.
-
-| Reference                                           | Author   |   License  |
-|-----------------------------------------------------|----------|------------|
-| sprite.dmi                                          | John Doe | license.txt|
-| [Assets](https://github.com/Rotwood-Vale/Ratwood-Keep/blob/main/icons/roguetown/clothing/licensed-infraredbaron)                                        | Infrared Baron | [LICENSE.md](https://github.com/Rotwood-Vale/Ratwood-Keep/blob/main/icons/roguetown/clothing/licensed-infraredbaron/LICENSE.md)|
 
 
 ## TG

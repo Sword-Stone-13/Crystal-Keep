@@ -6,7 +6,7 @@
 	total_positions = 1
 	spawn_positions = 1
 
-	allowed_races = RACES_ALL_KINDS_PLUS_SEELIE
+	allowed_races = RACES_ALL_KINDS
 
 	tutorial = "The Grenzelhofts were known for their Jesters, wisemen with a tongue just as sharp as their wit. \
 		You command a position of a fool, envious of the position your superiors have upon you. \
@@ -19,6 +19,7 @@
 	display_order = JDO_JESTER
 	give_bank_account = TRUE
 	min_pq = -4 //stupid jesters are funny so low PQ requirement
+	associated_squad = /datum/antagonist/squad/none
 	max_pq = null
 
 /datum/outfit/job/roguetown/jester/pre_equip(mob/living/carbon/human/H)

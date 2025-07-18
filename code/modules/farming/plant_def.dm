@@ -389,6 +389,407 @@
 	can_grow_underground = TRUE
 
 
+//crystal keep elf nuts
+//armors
+/datum/plant_def/elfnut
+	name = "elfnut tree"
+	icon = 'icons/roguetown/misc/crops.dmi'
+	icon_state = "elfnut"
+	produce_type = /obj/item/clothing/suit/roguetown/armor/plate/elfnut
+	uproot_loot = list(/obj/item/ingot/iron)
+	produce_amount_min = 1
+	produce_amount_max = 2
+	maturation_nutrition = 100
+	maturation_time = 6 MINUTES
+	produce_time = 6 MINUTES
+
+/datum/plant_def/elfnut/ironwood/armor/ //produces chainmail
+	produce_type = /obj/item/clothing/suit/roguetown/armor/chainmail/elfnut
+	uproot_loot = list(/obj/item/ingot/iron)
+	produce_amount_min = 1
+	produce_amount_max = 2
+	maturation_nutrition = 100
+	maturation_time = 6 MINUTES
+	produce_time = 6 MINUTES
+
+/datum/plant_def/elfnut/ironwood/armor/halfplate
+	produce_type = /obj/item/clothing/suit/roguetown/armor/plate/elfnut
+	uproot_loot = list(/obj/item/ingot/iron)
+	produce_amount_min = 1
+	produce_amount_max = 2
+	maturation_nutrition = 200
+	maturation_time = 6 MINUTES
+	produce_time = 6 MINUTES
+
+/datum/plant_def/elfnut/ironwood/armor/fullplate
+	produce_type = /obj/item/clothing/suit/roguetown/armor/plate/full/elfnut
+	uproot_loot = list(/obj/item/clothing/cloak/cape/elvish)
+	produce_amount_min = 1
+	produce_amount_max = 1
+	maturation_nutrition = 300
+	maturation_time = 6 MINUTES
+	produce_time = 6 MINUTES
+
+/datum/plant_def/elfnut/ironwood/armor/helmet
+	produce_type = /obj/item/clothing/head/roguetown/helmet/heavy/elfnut
+	uproot_loot = list(/obj/item/ingot/iron)
+	produce_amount_min = 1
+	produce_amount_max = 2
+	maturation_nutrition = 70
+	maturation_time = 3 MINUTES
+	produce_time = 6 MINUTES
+
+/datum/plant_def/elfnut/ironwood/armor/halfhelm
+	produce_type = /obj/item/clothing/head/roguetown/helmet/bascinet/elfnut
+	uproot_loot = list(/obj/item/ingot/iron)
+	produce_amount_min = 2
+	produce_amount_max = 3
+	maturation_nutrition = 70
+	maturation_time = 3 MINUTES
+	produce_time = 6 MINUTES
+
+/datum/plant_def/elfnut/ironwood/armor/bracers
+	produce_type = /obj/item/clothing/wrists/roguetown/bracers/elfnut
+	uproot_loot = list(/obj/item/ingot/iron)
+	produce_amount_min = 2
+	produce_amount_max = 3
+	maturation_nutrition = 70
+	maturation_time = 3 MINUTES
+	produce_time = 6 MINUTES
+
+/datum/plant_def/elfnut/ironwood/armor/bervor
+	produce_type = /obj/item/clothing/neck/roguetown/bervor/elfnut/
+	uproot_loot = list(/obj/item/ingot/iron)
+	produce_amount_min = 2
+	produce_amount_max = 3
+	maturation_nutrition = 70
+	maturation_time = 3 MINUTES
+	produce_time = 6 MINUTES
+
+/datum/plant_def/elfnut/ironwood/armor/greaves
+	produce_type = /obj/item/clothing/under/roguetown/platelegs/elfnut
+	uproot_loot = list(/obj/item/ingot/iron)
+	produce_amount_min = 2
+	produce_amount_max = 3
+	maturation_nutrition = 70
+	maturation_time = 3 MINUTES
+	produce_time = 6 MINUTES
+
+/datum/plant_def/elfnut/ironwood/armor/boots
+	produce_type = /obj/item/clothing/shoes/roguetown/armor/elfnut
+	uproot_loot = list(/obj/item/ingot/iron)
+	produce_amount_min = 3
+	produce_amount_max = 4
+	maturation_nutrition = 70
+	maturation_time = 3 MINUTES
+	produce_time = 6 MINUTES
+
+/datum/plant_def/elfnut/ironwood/armor/gauntlets
+	produce_type = /obj/item/clothing/gloves/roguetown/chain/elfnut
+	uproot_loot = list(/obj/item/ingot/iron)
+	produce_amount_min = 2
+	produce_amount_max = 3
+	maturation_nutrition = 70
+	maturation_time = 3 MINUTES
+	produce_time = 6 MINUTES
+
+///SILVERWOOD///
+/datum/plant_def/elfnut/silverwood/armor/halfhelm
+	produce_type = /obj/item/clothing/head/roguetown/helmet/bascinet/elfnut/silver
+	uproot_loot = list(/obj/item/ingot/silver)
+	produce_amount_min = 2
+	produce_amount_max = 3
+	maturation_nutrition = 70
+	maturation_time = 3 MINUTES
+	produce_time = 6 MINUTES
+
+/datum/plant_def/elfnut/silverwood/fullplate/upper
+	produce_type = list(/obj/item/clothing/head/roguetown/helmet/heavy/elfnut/silverwood, 
+	/obj/item/clothing/neck/roguetown/bervor/elfnut/silverwood,
+/obj/item/clothing/shoes/roguetown/armor/elfnut/silverwood)
+	uproot_loot = list(/obj/item/clothing/cloak/cape/elvish/royal)
+	produce_amount_min = 1
+	produce_amount_max = 1
+	maturation_nutrition = 300
+	maturation_time = 6 MINUTES
+	produce_time = 6 MINUTES
+
+/datum/plant_def/elfnut/ironwood/armor/fullplate/extremities
+	produce_type = list(/obj/item/clothing/gloves/roguetown/chain/elfnut/silverwood, 
+	/obj/item/clothing/suit/roguetown/armor/plate/full/elfnut/silverwood,
+	/obj/item/clothing/under/roguetown/platelegs/elfnut/silverwood)
+	uproot_loot = list(/obj/item/clothing/wrists/roguetown/bracers/elfnut/silverwood)
+	produce_amount_min = 1
+	produce_amount_max = 1
+	maturation_nutrition = 300
+	maturation_time = 6 MINUTES
+	produce_time = 6 MINUTES
+///////////WEAPONS/////////////
+
+/datum/plant_def/elfnut/ironwood/dagger
+	produce_type = /obj/item/rogueweapon/huntingknife/elfnut
+	uproot_loot = list(/obj/item/ingot/iron)
+	produce_amount_min = 1
+	produce_amount_max = 2
+	maturation_nutrition = 100
+	maturation_time = 6 MINUTES
+	produce_time = 6 MINUTES
+
+/datum/plant_def/elfnut/ironwood/shortsword
+	name = "elf nut tree"
+	produce_type = /obj/item/rogueweapon/sword/short/elfnut
+	uproot_loot = list(/obj/item/ingot/iron)
+	produce_amount_min = 2
+	produce_amount_max = 3
+	maturation_nutrition = 100
+	maturation_time = 3 MINUTES
+	produce_time = 3 MINUTES
+
+/datum/plant_def/elfnut/ironwood/sword
+	name = "elf nut tree"
+	produce_type = /obj/item/rogueweapon/sword/elfnut
+	uproot_loot = list(/obj/item/ingot/iron)
+	produce_amount_min = 1
+	produce_amount_max = 2
+	maturation_nutrition = 100
+	maturation_time = 6 MINUTES
+	produce_time = 3 MINUTES
+
+/datum/plant_def/elfnut/ironwood/sabre
+	name = "elf nut tree"
+	produce_type = /obj/item/rogueweapon/sword/sabre/elfnut
+	uproot_loot = list(/obj/item/ingot/iron)
+	produce_amount_min = 1
+	produce_amount_max = 2
+	maturation_nutrition = 100
+	maturation_time = 6 MINUTES
+	produce_time = 6 MINUTES
+
+/datum/plant_def/elfnut/ironwood/buckler
+
+	produce_type = /obj/item/rogueweapon/shield/buckler/elfnut
+	uproot_loot = list(/obj/item/ingot/iron)
+	produce_amount_min = 1
+	produce_amount_max = 2
+	maturation_nutrition = 100
+	maturation_time = 6 MINUTES
+	produce_time = 6 MINUTES
+
+/datum/plant_def/elfnut/ironwood/bow
+	name = "elf vine tree"
+	produce_type = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve/elfnut
+	uproot_loot = list(/obj/item/ingot/iron)
+	produce_amount_min = 1
+	produce_amount_max = 2
+	maturation_nutrition = 100
+	maturation_time = 6 MINUTES
+	produce_time = 6 MINUTES
+
+/datum/plant_def/elfnut/ironwood/glaive
+	name = "elf nut tree"
+	produce_type = /obj/item/rogueweapon/glaive/elfnut
+	uproot_loot = list(/obj/item/ingot/iron)
+	produce_amount_min = 1
+	produce_amount_max = 2
+	maturation_nutrition = 100
+	maturation_time = 6 MINUTES
+	produce_time = 6 MINUTES
+
+
+//silver 
+
+/datum/plant_def/elfnut/silverwood/dagger
+	name = "elf nut tree"
+	produce_type = /obj/item/rogueweapon/huntingknife/idagger/silver/elvish
+	uproot_loot = list(/obj/item/ingot/silver)
+	produce_amount_min = 1
+	produce_amount_max = 2
+	maturation_nutrition = 100
+	maturation_time = 6 MINUTES
+	produce_time = 6 MINUTES
+
+/datum/plant_def/elfnut/silverwood/shortsword
+	name = "elf nut tree"
+	produce_type = /obj/item/rogueweapon/sword/short/elfnut
+	uproot_loot = list(/obj/item/ingot/steel)
+	produce_amount_min = 2
+	produce_amount_max = 3
+	maturation_nutrition = 100
+	maturation_time = 3 MINUTES
+	produce_time = 3 MINUTES
+
+/datum/plant_def/elfnut/silverwood/sword
+	name = "elf nut tree"
+	produce_type = /obj/item/rogueweapon/sword/elfnut
+	uproot_loot = list(/obj/item/ingot/steel)
+	produce_amount_min = 1
+	produce_amount_max = 2
+	maturation_nutrition = 100
+	maturation_time = 6 MINUTES
+	produce_time = 3 MINUTES
+
+
+/datum/plant_def/elfnut/silverwood/sabre
+	name = "elf nut tree"
+	produce_type = /obj/item/rogueweapon/sword/silver/sabre/elf
+	uproot_loot = list(/obj/item/ingot/steel)
+	produce_amount_min = 1
+	produce_amount_max = 2
+	maturation_nutrition = 100
+	maturation_time = 6 MINUTES
+	produce_time = 6 MINUTES
+
+/datum/plant_def/elfnut/silverwood/glaive
+	name = "elf nut tree"
+	icon = 'icons/roguetown/misc/crops.dmi'
+	icon_state = "elfnutsilver"
+	produce_type = /obj/item/rogueweapon/glaive/elfnut/silverwood
+	uproot_loot = list(/obj/item/ingot/iron)
+	produce_amount_min = 1
+	produce_amount_max = 2
+	maturation_nutrition = 100
+	maturation_time = 6 MINUTES
+	produce_time = 6 MINUTES
+
+/datum/plant_def/elfnut/silverwood/shield
+	name = "elfnut tree"
+	produce_type = /obj/item/rogueweapon/shield/buckler/elfnut/silverwood
+	uproot_loot = list(/obj/item/ingot/iron)
+	produce_amount_min = 1
+	produce_amount_max = 2
+	maturation_nutrition = 100
+	maturation_time = 6 MINUTES
+	produce_time = 6 MINUTES
+
+/datum/plant_def/elfnut/silverwood/bow
+	name = "elf vine tree"
+	produce_type = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/elvish
+	uproot_loot = list(/obj/item/ingot/iron)
+	produce_amount_min = 1
+	produce_amount_max = 2
+	maturation_nutrition = 100
+	maturation_time = 6 MINUTES
+	produce_time = 6 MINUTES
+
+//shouldn't be obtainable for now//
+/datum/plant_def/elfnut/silverwood/weapons/elfmastersword
+	name = "elf nut tree"
+	produce_type = /obj/item/rogueweapon/sword/long/masterelf
+	uproot_loot = list(/obj/item/ingot/iron)
+	produce_amount_min = 1
+	produce_amount_max = 1
+	maturation_nutrition = 200
+	maturation_time = 6 MINUTES
+	produce_time = 6 MINUTES
+
+/datum/plant_def/elfnut/silverwood/armor/plate
+	name = "elfnut tree"
+	produce_type = /obj/item/clothing/suit/roguetown/armor/plate/elfnut
+	uproot_loot = list(/obj/item/ingot/iron)
+	produce_amount_min = 1
+	produce_amount_max = 2
+	maturation_nutrition = 100
+	maturation_time = 6 MINUTES
+	produce_time = 6 MINUTES
+
+//HIGH QUALITY SEEDS//
+
+/datum/plant_def/elfnut/ironwood/armor/complete
+	produce_type = list(
+		/obj/item/clothing/head/roguetown/helmet/heavy/elfnut/,
+		/obj/item/clothing/suit/roguetown/armor/plate/full/elfnut/,
+		/obj/item/clothing/suit/roguetown/armor/chainmail/elfnut,
+		/obj/item/clothing/neck/roguetown/bervor/elfnut/,
+		/obj/item/clothing/shoes/roguetown/armor/elfnut/,
+		/obj/item/clothing/under/roguetown/platelegs/elfnut/,
+		/obj/item/clothing/gloves/roguetown/chain/elfnut/
+	)
+	uproot_loot = list(/obj/item/clothing/cloak/cape/elvish/)
+	produce_amount_min = 1
+	produce_amount_max = 1
+	maturation_nutrition = 300
+	maturation_time = 6 MINUTES
+	produce_time = 6 MINUTES
+
+/datum/plant_def/elfnut/silverwood/armor/complete
+	produce_type = list(
+		/obj/item/clothing/head/roguetown/helmet/heavy/elfnut/silverwood,
+		/obj/item/clothing/suit/roguetown/armor/plate/full/elfnut/silverwood,
+		/obj/item/clothing/suit/roguetown/armor/chainmail/elfnut/silverwood,
+		/obj/item/clothing/neck/roguetown/bervor/elfnut/silverwood,
+		/obj/item/clothing/shoes/roguetown/armor/elfnut/silverwood,
+		/obj/item/clothing/under/roguetown/platelegs/elfnut/silverwood,
+		/obj/item/clothing/gloves/roguetown/chain/elfnut/silverwood
+	)
+	uproot_loot = list(/obj/item/clothing/cloak/cape/elvish/)
+	produce_amount_min = 1
+	produce_amount_max = 1
+	maturation_nutrition = 300
+	maturation_time = 6 MINUTES
+	produce_time = 6 MINUTES
+
+//gourd plants 
+
+/datum/plant_def/elfnut/gourds
+	name = "gourd patch"
+	produce_type = /obj/item/clothing/suit/roguetown/armor/plate/elfnut
+	uproot_loot = list(/obj/item/ingot/iron)
+	produce_amount_min = 1
+	produce_amount_max = 2
+	maturation_nutrition = 100
+	maturation_time = 6 MINUTES
+	produce_time = 6 MINUTES
+
+//premium
+
+/datum/plant_def/elfnut/ironwood/armor/complete
+	//produce_type = list out all the armor pieces
+	uproot_loot = list(/obj/item/ingot/iron)
+	produce_amount_min = 2
+	produce_amount_max = 3
+	maturation_nutrition = 500
+	maturation_time = 8 MINUTES
+	produce_time = 8 MINUTES
+
+
+///HENNESEED///
+
+/datum/plant_def/henneseed
+	name = "a gathering of golden roses"
+	icon = 'icons/roguetown/misc/crops.dmi'
+	icon_state = "eggplant"
+	produce_type = /obj/item/reagent_containers/glass/bottle/gourd/booze
+	produce_amount_min = 1
+	produce_amount_max = 3
+	maturation_nutrition = 69
+	maturation_time = 6 MINUTES
+	produce_time = 3 MINUTES
+
+
+/datum/plant_def/henneseed/faeport
+	name = "a refreshing tangle of mint."
+	icon = 'icons/roguetown/misc/crops.dmi'
+	icon_state = "eggplant"
+	produce_type = /obj/item/storage/fancy/cigarettes/faeports
+	produce_amount_min = 1
+	produce_amount_max = 3
+	maturation_nutrition = 100
+	maturation_time = 6 MINUTES
+	produce_time = 3 MINUTES
+
+/datum/plant_def/henneseed/gourd
+	name = "a gathering of roses."
+	icon = 'icons/roguetown/misc/crops.dmi'
+	icon_state = "eggplant"
+	produce_type = /obj/item/reagent_containers/glass/bottle/gourd
+	perennial = TRUE
+	maturation_nutrition = 60
+	produce_nutrition =  30
+	maturation_time = 6 MINUTES
+	produce_time = 3 MINUTES
+
+
+//poison oak shenanigans
 /datum/plant_def/poison_oak
 	name = "poison oak patch"
 	icon = 'icons/roguetown/misc/crops.dmi'

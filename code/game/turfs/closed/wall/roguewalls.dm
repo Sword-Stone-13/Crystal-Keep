@@ -35,7 +35,25 @@
 	climbdiff = 3
 	damage_deflection = 10
 
+/turf/closed/wall/mineral/rogue/stone/light
+	icon = 'icons/turf/walls/stone_light_wall.dmi'
+
+/turf/closed/wall/mineral/rogue/stone/carved
+	icon = 'icons/turf/walls/carved_wall.dmi'
+
 /turf/closed/wall/mineral/rogue/stone/window
+	name = "stone window"
+	desc = "A window with solid and sturdy stone frame."
+	opacity = FALSE
+	max_integrity = 1300
+
+/turf/closed/wall/mineral/rogue/stone/window/light
+	name = "stone window"
+	desc = "A window with solid and sturdy stone frame."
+	opacity = FALSE
+	max_integrity = 1300
+
+/turf/closed/wall/mineral/rogue/stone/window/carved
 	name = "stone window"
 	desc = "A window with solid and sturdy stone frame."
 	opacity = FALSE
@@ -60,6 +78,14 @@
 	icon = 'icons/turf/walls/mossy_stone.dmi'
 	climbdiff = 4
 
+/turf/closed/wall/mineral/rogue/stone/moss/light
+	icon = 'icons/turf/walls/mossy_stone_light.dmi'
+	climbdiff = 4
+
+/turf/closed/wall/mineral/rogue/stone/window/moss/light
+	icon = 'icons/turf/walls/mossy_stone_light.dmi'
+	climbdiff = 4
+
 /turf/closed/wall/mineral/rogue/craftstone
 	name = "stone wall"
 	desc = "A durable wall made from specially crafted stone."
@@ -67,7 +93,7 @@
 	icon_state = "box"
 	smooth = SMOOTH_MORE
 	blade_dulling = DULLING_BASH
-	max_integrity = 2200
+	max_integrity = 1500
 	sheet_type = /obj/item/natural/stone
 	break_sound = 'sound/combat/hits/onstone/stonedeath.ogg'
 	attacked_sound = list('sound/combat/hits/onstone/wallhit.ogg', 'sound/combat/hits/onstone/wallhit2.ogg', 'sound/combat/hits/onstone/wallhit3.ogg')
@@ -79,6 +105,11 @@
 	damage_deflection = 10
 
 
+/turf/closed/wall/mineral/rogue/craftstone/light
+	canSmoothWith = list(/turf/closed/wall/mineral/rogue/craftstone, /turf/closed/wall/mineral/rogue/craftstone/light)
+	icon = 'icons/turf/walls/craftstone_light.dmi'
+
+
 /turf/closed/wall/mineral/rogue/stonebrick
 	name = "brick wall"
 	desc = "Several rows of bricks form this wall."
@@ -87,16 +118,32 @@
 	smooth = SMOOTH_MORE
 	wallclimb = FALSE
 	blade_dulling = DULLING_BASH
-	max_integrity = 1500
+	max_integrity = 2500
 	sheet_type = /obj/item/natural/stone
 	break_sound = 'sound/combat/hits/onstone/stonedeath.ogg'
 	attacked_sound = list('sound/combat/hits/onstone/wallhit.ogg', 'sound/combat/hits/onstone/wallhit2.ogg', 'sound/combat/hits/onstone/wallhit3.ogg')
-	canSmoothWith = list(/turf/closed/wall/mineral/rogue/stonebrick, /turf/closed/wall/mineral/rogue/wooddark)
+	canSmoothWith = list(/turf/closed/wall/mineral/rogue/stonebrick)
 	above_floor = /turf/open/floor/rogue/blocks
 	baseturfs = list(/turf/open/floor/rogue/blocks)
 	neighborlay = "dirtedge"
 	climbdiff = 4
 	damage_deflection = 20
+
+/turf/closed/wall/mineral/rogue/stonebrick/light
+	name = "brick wall"
+	desc = "Several rows of bricks form this wall."
+	icon = 'icons/turf/walls/stonebrick_light.dmi'
+	icon_state = "stonebrick"
+	canSmoothWith = list(/turf/closed/wall/mineral/rogue/stonebrick/light)
+
+
+/turf/closed/wall/mineral/rogue/stonebrick/red
+	name = "brick wall"
+	desc = "Several rows of bricks form this wall."
+	icon = 'icons/turf/walls/stonebrick_red.dmi'
+	icon_state = "stonebrick"
+	canSmoothWith = list(/turf/closed/wall/mineral/rogue/stonebrick/red)
+
 
 /turf/closed/wall/mineral/rogue/wood
 	name = "wooden wall"
@@ -122,12 +169,62 @@
 	explosion_block = 1
 	max_integrity = 550
 
+/turf/closed/wall/mineral/rogue/wood/light
+	name = "wooden wall"
+	desc = "A rough-hewn wall of wood."
+	icon = 'icons/turf/walls/roguewood_light.dmi'
+	canSmoothWith = list(/turf/closed/wall/mineral/rogue/wood, /obj/structure/roguewindow, /obj/structure/roguetent, /turf/closed/wall/mineral/rogue/wooddark)
+
+/turf/closed/wall/mineral/rogue/wood/light/window/
+	name = "wooden window"
+	desc = "A window with rough hewn wood frame."
+	opacity = FALSE
+	explosion_block = 1
+	max_integrity = 550
+
+
+/turf/closed/wall/mineral/rogue/wood/dark
+	name = "wooden wall"
+	desc = "A rough-hewn wall of wood."
+	icon = 'icons/turf/walls/roguewood_dark.dmi'
+	canSmoothWith = list(/turf/closed/wall/mineral/rogue/wood, /obj/structure/roguewindow, /obj/structure/roguetent, /turf/closed/wall/mineral/rogue/wooddark)
+
+/turf/closed/wall/mineral/rogue/wood/dark/window/
+	name = "wooden window"
+	desc = "A window with rough hewn wood frame."
+	opacity = FALSE
+	explosion_block = 1
+	max_integrity = 550
+
 /turf/closed/wall/mineral/rogue/wood/window/CanPass(atom/movable/mover, turf/target)
 	if(istype(mover) && ((mover.pass_flags & PASSTABLE) || (mover.pass_flags & PASSGRILLE)) )
 		return 1
 	return ..()
 
 /turf/closed/wall/mineral/rogue/wood/window/Initialize()
+	. = ..()
+	var/mutable_appearance/M = mutable_appearance(icon, "woodhole", layer = ABOVE_NORMAL_TURF_LAYER)
+	add_overlay(M)
+
+/turf/closed/wall/mineral/rogue/wood/log
+	name = "Log wall"
+	desc = ""
+	icon = 'icons/turf/walls/roguewood_log.dmi'
+	canSmoothWith = list(/turf/closed/wall/mineral/rogue/wood, /obj/structure/roguewindow, /obj/structure/roguetent, /turf/closed/wall/mineral/rogue/wooddark, /turf/closed/wall/mineral/rogue/wood/log)
+
+/turf/closed/wall/mineral/rogue/wood/log/window/
+	name = "Log window"
+	desc = ""
+	opacity = FALSE
+	explosion_block = 1
+	max_integrity = 550
+
+/turf/closed/wall/mineral/rogue/wood/log/window/CanPass(atom/movable/mover, turf/target)
+	if(istype(mover) && ((mover.pass_flags & PASSTABLE) || (mover.pass_flags & PASSGRILLE)) )
+		return 1
+	return ..()
+
+/turf/closed/wall/mineral/rogue/wood/log/window/Initialize()
 	. = ..()
 	var/mutable_appearance/M = mutable_appearance(icon, "woodhole", layer = ABOVE_NORMAL_TURF_LAYER)
 	add_overlay(M)

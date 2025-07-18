@@ -735,6 +735,13 @@
 	spreadChance = 23
 	spread = 5
 
+/turf/closed/mineral/rogue/moon
+	icon_state = "mingold"
+	mineralType = /obj/item/rogueore/mooncrystal
+	rockType = /obj/item/natural/rock/moon
+	spreadChance = 20
+	spread = 3
+
 /turf/closed/mineral/rogue/gem
 	icon_state = "mingold"
 	mineralType = /obj/item/roguegem/random

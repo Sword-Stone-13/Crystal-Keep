@@ -235,3 +235,7 @@
 	//70% chance to be raceswapped to Gronn because slop lore
 
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/barbarian_rage)
+	if(prob(5)) //for the barbarian out there...what's it called... serving cunt?
+		H.cmode_music = 'sound/music/combat_amazunt.ogg'
+	else
+		H.cmode_music = 'sound/music/combat_gronn.ogg'

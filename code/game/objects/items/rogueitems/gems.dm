@@ -1,17 +1,18 @@
 
 /obj/item/roguegem
-	name = "rontz"
-	icon_state = "ruby_cut"
+	name = "dorpel"
+	icon_state = "diamond_cut"
 	icon = 'icons/roguetown/items/gems.dmi'
-	desc = "Its facets shine so brightly.."
+	desc = "Beautifully clear, it demands respect."
 	lefthand_file = 'icons/mob/inhands/misc/food_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/misc/food_righthand.dmi'
 	w_class = WEIGHT_CLASS_TINY
 	slot_flags = ITEM_SLOT_MOUTH
 	dropshrink = 0.4
 	drop_sound = 'sound/items/gem.ogg'
-	sellprice = 100
+	sellprice = 121
 	static_price = FALSE
+	smeltresult = /obj/item/roguegem
 
 /obj/item/roguegem/getonmobprop(tag)
 	. = ..()
@@ -26,23 +27,33 @@
 	playsound(loc, pick('sound/items/gems (1).ogg','sound/items/gems (2).ogg'), 100, TRUE, -2)
 	..()
 
+/obj/item/roguegem/red
+	name = "rontz"
+	icon_state = "ruby_cut"
+	sellprice = 100
+	desc = "Its facets shine so brightly.."
+	smeltresult = /obj/item/roguegem/blue
+
 /obj/item/roguegem/green
 	name = "gemerald"
 	icon_state = "emerald_cut"
 	sellprice = 42
 	desc = "Glints with verdant brilliance."
+	smeltresult = /obj/item/roguegem/blue
 
 /obj/item/roguegem/blue
 	name = "blortz"
 	icon_state = "quartz_cut"
 	sellprice = 88
 	desc = "Pale blue, like a frozen tear." // i am not sure if this is really quartz.
+	smeltresult = /obj/item/roguegem/blue
 
 /obj/item/roguegem/yellow
 	name = "toper"
 	icon_state = "topaz_cut"
 	sellprice = 34
 	desc = "Its amber hues remind you of the sunset."
+	smeltresult = /obj/item/roguegem
 
 /obj/item/roguegem/violet
 	name = "saffira"

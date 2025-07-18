@@ -106,7 +106,7 @@
 
 /obj/item/key/royal
 	name = "Royal Key"
-	desc = "The Key to the royal chambers. It even feels pretentious."
+	desc = ""
 	icon_state = "ekey"
 	lockid = "royal"
 
@@ -323,11 +323,11 @@
 	icon_state = "greenkey"
 	lockid = "nightman"
 
-/obj/item/key/nightmaiden
-	name = "nightmaiden's key"
+/obj/item/key/actor
+	name = "actor's key"
 	desc = "This regal key opens a few doors within the castle."
 	icon_state = "brownkey"
-	lockid = "nightmaiden"
+	lockid = "actor"
 
 /obj/item/key/mercenary
 	name = "mercenary key"
@@ -457,3 +457,25 @@
 	lockid = "porta"
 
 // Towner homes keys
+
+
+//HOUSE KEYS
+/obj/item/key/alrich
+	name = "Copper Key"
+	icon_state = "greenkey"
+	lockid = "alrich"
+
+/obj/item/key/bravado
+	name = "Copper Key"
+	icon_state = "greenkey"
+	lockid = "bravado"
+
+/obj/item/key/caesar
+	name = "Copper Key"
+	icon_state = "greenkey"
+	lockid = "caesar"
+
+/obj/item/key/deleon
+	name = "Copper Key"
+	icon_state = "greenkey"
+	lockid = "deleon"

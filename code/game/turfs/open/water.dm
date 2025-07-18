@@ -240,6 +240,10 @@
 	slowdown = 3
 	water_reagent = /datum/reagent/water/gross
 
+/turf/open/water/bath/dark
+	icon_state = "bathtiledarkW"
+
+
 /turf/open/water/bath/Initialize()
 	.  = ..()
 	icon_state = "bathtile"
@@ -257,8 +261,50 @@
 
 /turf/open/water/sewer/Initialize()
 	icon_state = "paving"
-	water_color = pick("#705a43","#697043")
-	.  = ..()
+	water_color = pick("#705a43", "#697043")
+	. = ..()
+
+/turf/open/water/sewer/roguesmooth(adjacencies)
+	var/list/Yeah = ..() // Call parent roguesmooth to get edge overlays
+	// Apply edge overlays only to the base turf, not water overlays
+	if(Yeah)
+		add_overlay(Yeah)
+	// Reset water overlays to their base state
+	if(water_overlay)
+		water_overlay.cut_overlays(TRUE)
+		water_overlay.color = water_color
+		water_overlay.icon_state = "bottom[water_level]"
+	if(water_top_overlay)
+		water_top_overlay.cut_overlays(TRUE)
+		water_top_overlay.color = water_color
+		water_top_overlay.icon_state = "top[water_level]"
+
+/turf/open/water/sewer/dark
+	icon_state = "pavingdarkW"
+	water_color = "#5A4B38" // Slightly darker for distinction
+
+/turf/open/water/sewer/dark/Initialize()
+	icon_state = "pavingdark"
+	water_color = pick("#5A4B38", "#4F4633") // Darker shades
+	. = ..()
+
+/turf/open/water/sewer/red
+	icon_state = "pavingredW"
+	water_color = "#8B4A4A" // Reddish tint for distinction
+
+/turf/open/water/sewer/red/Initialize()
+	icon_state = "pavingred"
+	water_color = pick("#8B4A4A", "#7A3F3F") // Reddish shades
+	. = ..()
+
+/turf/open/water/sewer/teal
+	icon_state = "pavingtealW"
+	water_color = "#4A8B8B" // Teal tint for distinction
+
+/turf/open/water/sewer/teal/Initialize()
+	icon_state = "pavingteal"
+	water_color = pick("#4A8B8B", "#3F7A7A") // Teal shades
+	. = ..()
 
 /turf/open/water/swamp
 	name = "murk"
@@ -380,7 +426,7 @@
 	if(isseelie(FM) && !(FM.resting))	//Add wingcheck
 		return
 	if(!river_processing)
-		river_processing = addtimer(CALLBACK(src, PROC_REF(process_river)), 5, TIMER_STOPPABLE)
+		river_processing = addtimer(CALLBACK(src, PROC_REF(process_river)), 3, TIMER_STOPPABLE) //number here decides how quickly the tile moves the player
 
 /turf/open/water/river/proc/process_river()
 	river_processing = null

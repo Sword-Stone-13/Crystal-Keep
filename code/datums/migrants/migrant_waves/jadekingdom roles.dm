@@ -1,9 +1,9 @@
 /datum/migrant_role/jadekingdom/emperor
-	name = "Lord of the jade kingdom"
-	greet_text = "You are the Lord of Jade Kingdom, ruler of a once-prosperous barony now in ruin. Guided by your Magos, you journey to Rockhill, seeking aid to restore your domain to its former glory, or perhaps claim a new throne."
+	name = "Jade Kingdom Emperor"
+	greet_text = "You are the Lord of Jade Kingdom, ruler of a once-prosperous barony now in ruin. Guided by your Magos, you journey to Crystal Keep, seeking aid to restore your domain to its former glory, or perhaps claim a new throne."
 	outfit = /datum/outfit/job/roguetown/jadekingdom/emperor
 	allowed_sexes = list(MALE)
-	allowed_races = RACES_TOLERATED_UP
+	allowed_races = RACES_EORA_APPROVED
 	grant_lit_torch = TRUE
 	show_wanderer_examine = FALSE
 
@@ -22,7 +22,6 @@
 	backl = /obj/item/storage/backpack/rogue/satchel
 	id = /obj/item/scomstone
 	if(H.mind)
-		H.virginity = TRUE
 		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
@@ -45,13 +44,14 @@
 	ADD_TRAIT(H, TRAIT_NOSEGRAB, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+	H.cmode_music = 'sound/music/combat_jade.ogg'
 
 /datum/migrant_role/jadekingdom/empress
-	name = "Lady of jadekingdom"
-	greet_text = "You are the Lady of jadekingdom, once a respected noblewoman now struggling to survive in a desolate landscape. With your home in ruins, you look to Rockhill, hoping to find new purpose or refuge amidst the chaos."
+	name = "Jade Kingdom Empress"
+	greet_text = "You are the Lady of jadekingdom, once a respected noblewoman now struggling to survive in a desolate landscape. With your home in ruins, you look to Crystal Keep, hoping to find new purpose or refuge amidst the chaos."
 	outfit = /datum/outfit/job/roguetown/jadekingdom/empress
 	allowed_sexes = list(FEMALE)
-	allowed_races = RACES_TOLERATED_UP
+	allowed_races = RACES_EORA_APPROVED
 	grant_lit_torch = TRUE
 	show_wanderer_examine = FALSE
 
@@ -84,11 +84,12 @@
 	ADD_TRAIT(H, TRAIT_SEEPRICES, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NUTCRACKER, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_GOODLOVER, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_BEAUTIFUL, TRAIT_GENERIC)
+	H.cmode_music = 'sound/music/combat_jade.ogg'
 
 /datum/migrant_role/jadekingdom/shogun
-	name = "Hand of jadekingdom"
-	greet_text = "You are the Hand of jadekingdom, burdened by the perception of failure in protecting your Lord's domain. Despite doubts from others, your loyalty remains steadfast as you journey to Rockhill, determined to fulfill your duties."
+	name = "jade kingdom Shogun"
+	greet_text = "You are the Hand of jadekingdom, burdened by the perception of failure in protecting your Lord's domain. Despite doubts from others, your loyalty remains steadfast as you journey to Crystal Keep, determined to fulfill your duties."
 	outfit = /datum/outfit/job/roguetown/jadekingdom/shogun
 	allowed_races = RACES_TOLERATED_UP
 	grant_lit_torch = TRUE
@@ -126,13 +127,13 @@
 
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_SEEPRICES, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
+	H.cmode_music = 'sound/music/combat_jade.ogg'
 
 /datum/migrant_role/jadekingdom/hatamoto
-	name = "hatamoto of jadekingdom"
+	name = "Jade Kingdom Hatamoto"
 	greet_text = "You are a hatamoto of jadekingdom, once part of a brotherhood in service to your Lord. Now, alone and committed to safeguarding what remains of your court, you ride to the Crystal Keep, resolved to ensure their safe arrival."
 	outfit = /datum/outfit/job/roguetown/jadekingdom/hatamoto
-	allowed_races = RACES_TOLERATED_UP
+	allowed_races = RACES_EORA_APPROVED
 	grant_lit_torch = TRUE
 	show_wanderer_examine = FALSE
 
@@ -174,6 +175,7 @@
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NOSEGRAB, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+	H.cmode_music = 'sound/music/combat_jade.ogg'
 
 /datum/migrant_role/jadekingdom/hatamoto/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
 	..()
@@ -196,7 +198,7 @@
 		H.name = "[honorary] [prev_name]"
 
 /datum/migrant_role/jadekingdom/onmyoji
-	name = "Onmyoki of jadekingdom"
+	name = "Jade Kingdom Onmyoki"
 	greet_text = "You are the Magos of jadekingdom, renowned for your arcane knowledge yet unable to foresee the tragedy that befell your home. Drawn by a guiding star to the Crystal Keep, you seek answers and perhaps a new purpose in the wake of destruction."
 	outfit = /datum/outfit/job/roguetown/jadekingdom/onmyoji
 	allowed_races = RACES_TOLERATED_UP
@@ -253,10 +255,11 @@
 		var/list/spells = list(/obj/effect/proc_holder/spell/invoked/learnspell, /obj/effect/proc_holder/spell/targeted/touch/prestidigitation, /obj/effect/proc_holder/spell/invoked/projectile/fireball/greater)
 		for(var/S in spells)
 			H.mind.AddSpell(new S)
+	H.cmode_music = 'sound/music/combat_jade.ogg'
 
 /datum/migrant_role/jadekingdom/guji
-	name = "guji of jadekingdom"
-	greet_text = "The Prior of jadekingdom, you were destined for ascension within the Church, but fate intervened with the barony's downfall, delaying it indefinitely. Still guided by the blessings of Astrata, you journey to Rockhill, determined to offer what aid and solace you can."
+	name = "Jade Kingdom Guji"
+	greet_text = "The Prior of jadekingdom, you were destined for ascension within the Church, but fate intervened with the barony's downfall, delaying it indefinitely. Still guided by the blessings of Astrata, you journey to Crystal Keep, determined to offer what aid and solace you can."
 	outfit = /datum/outfit/job/roguetown/jadekingdom/guji
 	allowed_races = RACES_TOLERATED_UP
 	grant_lit_torch = TRUE
@@ -264,11 +267,10 @@
 
 
 /datum/outfit/job/roguetown/jadekingdom/guji
-	allowed_patrons = list(/datum/patron/divine/astrata)
+	allowed_patrons = list(/datum/patron/divine/abyssor)
 
 /datum/outfit/job/roguetown/jadekingdom/guji/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.virginity = TRUE
 	neck = /obj/item/clothing/neck/roguetown/psicross/astrata
 	head = /obj/item/clothing/head/roguetown/priestmask
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/priest
@@ -285,8 +287,6 @@
 	)
 	ADD_TRAIT(H, TRAIT_CHOSEN, TRAIT_GENERIC)
 	if(H.mind)
-		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 6, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 4, TRUE)
@@ -301,3 +301,4 @@
 	var/datum/devotion/C = new /datum/devotion(H, H.patron)
 	C.grant_spells_priest(H)
 	H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
+	H.cmode_music = 'sound/music/combat_jade.ogg'

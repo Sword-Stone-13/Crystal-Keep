@@ -1,6 +1,9 @@
 /obj/item
 	var/unequip_delay_self = 1
 	var/allow_self_unequip = TRUE
+	var/thrown_bclass = BCLASS_BLUNT // Determines wound type when thrown (e.g., BCLASS_BLUNT, BCLASS_STAB, BCLASS_CUT)
+	var/crit_bonus = 0 // Bonus to critical hit chance when thrown (percentage)
+	var/can_crit_throw = FALSE
 
 /obj/item/allow_attack_hand_drop(mob/user)
 	if(ishuman(user))

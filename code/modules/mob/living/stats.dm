@@ -45,6 +45,7 @@
 	STAEND = 9
 	STASPD = 9
 	STALUC = 10
+	STAFTH = 9
 	for(var/S in MOBSTATS)
 		if(prob(33))
 			change_stat(S, 1)
@@ -69,6 +70,15 @@
 				for(var/S in H.dna.species.specstats_m)
 					change_stat(S, H.dna.species.specstats_m[S])
 		switch(H.age)
+			if(AGE_YOUTH)
+				change_stat("strength", -2)
+				change_stat("speed", 2)
+				change_stat("endurance", -2)
+				change_stat("constitution", -2)
+				change_stat("mageability", 3)
+				change_stat("faith", 2) //Gott favors his children
+				change_stat("fortune", 3)
+
 			if(AGE_MIDDLEAGED)
 				change_stat("speed", -1)
 				change_stat("endurance", 1)

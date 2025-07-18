@@ -659,7 +659,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 //	dat += "<a href='byond://?src=[REF(N)];rgprompt=1'>Religion Primer</a><br>"
 	dat += 	"</td>"
 	dat += "<td width='33%' align='center'>"
-	dat += "<a href='?_src_=prefs;preference=bespecial'><b>[next_special_trait ? "<font color='red'>SPECIAL</font>" : "Be Special"]</b></a><BR>"
+	dat += "<a href='?_src_=prefs;preference=bespecial'><b>[next_special_trait ? "<font color='red'>View Background</font>" : "Roll Background"]</b></a><BR>"
 	if(istype(N))
 		if(SSticker.current_state <= GAME_STATE_PREGAME)
 			switch(N.ready)
@@ -724,7 +724,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	popup.open(FALSE)
 	onclose(user, "capturekeypress", src)
 
-/datum/preferences/proc/SetChoices(mob/user, limit = 15, list/splitJobs = list("Court Magos", "Retinue Captain", "Priest", "Merchant", "Archivist", "Towner", "Grenzelhoft Mercenary", "Beggar", "Prisoner", "Goblin King"), widthPerColumn = 295, height = 670) //295 620
+/datum/preferences/proc/SetChoices(mob/user, limit = 15, list/splitJobs = list("Court Magos", "Retinue Captain", "Priest", "Merchant", "Archivist", "Towner", "Grenzelhoft Mercenary", "Beggar", "Prisoner", "Goblin King", "House Alrich Baron", "House Bravado Baron", "House Caesar Baron", "House Deleon Baron"), widthPerColumn = 295, height = 670) //295 620
 	if(!SSjob)
 		return
 

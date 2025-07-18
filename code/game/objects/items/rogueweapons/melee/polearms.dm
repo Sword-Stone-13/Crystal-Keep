@@ -122,7 +122,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	minstr = 8
 	max_blade_int = 100
-	anvilrepair = /datum/skill/craft/blacksmithing
+	anvilrepair = /datum/skill/craft/weaponsmithing
 	smeltresult = /obj/item/ingot/iron
 	associated_skill = /datum/skill/combat/polearms
 	blade_dulling = DULLING_BASHCHOP
@@ -130,6 +130,9 @@
 	wdefense = 5
 	thrown_bclass = BCLASS_STAB
 	throwforce = 25
+	max_integrity = 100
+	crit_bonus = 10
+	can_crit_throw = TRUE
 
 /obj/item/rogueweapon/spear/getonmobprop(tag)
 	. = ..()
@@ -146,7 +149,7 @@
 	icon_state = "billhook"
 	force_wielded = 30
 	smeltresult = /obj/item/ingot/steel
-	max_blade_int = 200
+	max_blade_int = 130
 	minstr = 8
 	wdefense = 6
 	throwforce = 15
@@ -158,7 +161,7 @@
 	desc = "Looks hastily made."
 	icon_state = "billhook"
 	smeltresult = /obj/item/ingot/iron
-	max_blade_int = 100
+	max_blade_int = 90
 	wdefense = 4
 	throwforce = 10
 
@@ -203,13 +206,14 @@
 	wlength = WLENGTH_GREAT
 	w_class = WEIGHT_CLASS_BULKY
 	minstr = 9
-	max_blade_int = 200
+	max_blade_int = 150
 	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 	associated_skill = /datum/skill/combat/polearms
 	blade_dulling = DULLING_BASHCHOP
 	walking_stick = TRUE
-	wdefense = 6
+	wdefense = 5
+	max_integrity = 100
 
 /obj/item/rogueweapon/halberd/getonmobprop(tag)
 	. = ..()
@@ -259,7 +263,7 @@
 	associated_skill = /datum/skill/combat/polearms
 	blade_dulling = DULLING_BASHCHOP
 	walking_stick = TRUE
-	wdefense = 6
+	wdefense = 5
 	wparryspeed = -2
 
 /obj/item/rogueweapon/eaglebeak/getonmobprop(tag)
@@ -280,7 +284,7 @@
 	icon_state = "polehammer"
 	force_wielded = 30
 	smeltresult = /obj/item/ingot/iron
-	max_blade_int = 200
+	max_blade_int = 180
 
 /datum/intent/spear/thrust/eaglebeak
 	penfactor = 20
@@ -300,3 +304,117 @@
 	force = 20
 	force_wielded = 25
 	gripsprite = FALSE //someone really should make a grip sprite
+	max_integrity = 200
+
+////Crystal Keep////
+
+
+/obj/item/rogueweapon/glaive
+	force = 12
+	force_wielded = 30
+	possible_item_intents = list(SPEAR_THRUST, SPEAR_BASH)
+	gripped_intents = list(SPEAR_THRUST, /datum/intent/spear/cut/glaive, /datum/intent/sword/chop, SPEAR_BASH)
+	name = "glaive"
+	desc = "A war spear with a bladed tip."
+	icon_state = "bardiche"//standin, sort of fits though, goes hard, ngl
+	icon = 'icons/roguetown/weapons/64.dmi'
+	pixel_y = -16
+	pixel_x = -16
+	inhand_x_dimension = 64
+	inhand_y_dimension = 64
+	bigboy = TRUE
+	gripsprite = TRUE
+	wlength = WLENGTH_LONG
+	w_class = WEIGHT_CLASS_BULKY
+	slot_flags = ITEM_SLOT_BACK
+	minstr = 7
+	max_blade_int = 150
+	anvilrepair = /datum/skill/craft/blacksmithing
+	smeltresult = /obj/item/ingot/steel
+	associated_skill = /datum/skill/combat/polearms
+	blade_dulling = DULLING_BASHCHOP
+	walking_stick = TRUE
+	wdefense = 6
+	max_integrity = 100
+
+/obj/item/rogueweapon/glaive/getonmobprop(tag)
+	. = ..()
+	if(tag)
+		switch(tag)
+			if("gen")
+				return list("shrink" = 0.6,"sx" = -7,"sy" = 2,"nx" = 7,"ny" = 3,"wx" = -2,"wy" = 1,"ex" = 1,"ey" = 1,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = -38,"sturn" = 37,"wturn" = 30,"eturn" = -30,"nflip" = 0,"sflip" = 8,"wflip" = 8,"eflip" = 0)
+			if("wielded")
+				return list("shrink" = 0.6,"sx" = 5,"sy" = -3,"nx" = -5,"ny" = -2,"wx" = -5,"wy" = -1,"ex" = 3,"ey" = -2,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 7,"sturn" = -7,"wturn" = 16,"eturn" = -22,"nflip" = 8,"sflip" = 0,"wflip" = 8,"eflip" = 0)
+			if("onbelt")
+				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
+
+
+/datum/intent/spear/cut/glaive
+	damfactor = 0.9
+	iparrybonus = 5
+
+///JADE KINGDOM////
+
+/obj/item/rogueweapon/glaive/naginata
+	force = 10
+	force_wielded = 25
+	possible_item_intents = list(SPEAR_THRUST, SPEAR_BASH)
+	gripped_intents = list(SPEAR_THRUST, /datum/intent/spear/cut/glaive, /datum/intent/sword/chop, SPEAR_BASH)
+	name = "glaive"
+	desc = "A war spear with a bladed tip."
+	icon_state = "naginata"
+	icon = 'icons/roguetown/weapons/32.dmi'
+	minstr = 6
+
+///ELFNUT///
+/obj/item/rogueweapon/glaive/elfnut
+	gripped_intents = list(SPEAR_THRUST, /datum/intent/spear/cut/glaive, /datum/intent/sword/chop, SPEAR_BASH)
+	force = 12
+	force_wielded = 30
+	name = "glaive"
+	desc = "A war spear with a bladed tip."
+	icon_state = "elfnutspear"
+	wdefense = 7
+	max_integrity = 200
+
+
+/obj/item/rogueweapon/glaive/elfnut/silverwood
+	gripped_intents = list(/datum/intent/spear/thrust/eaglebeak, /datum/intent/spear/cut/glaive, /datum/intent/axe/chop/battle, SPEAR_BASH)
+	force = 18
+	force_wielded = 35
+	name = "glaive"
+	desc = "A war spear with a bladed tip."
+	icon_state = "elfnutspearsilver"
+	wdefense = 8
+	max_integrity = 200
+
+///REDSTEEL///
+
+/obj/item/rogueweapon/halberd/redsteel
+	force = 15
+	force_wielded = 30
+	possible_item_intents = list(/datum/intent/spear/thrust/redsteel, SPEAR_BASH) //bash is for less-lethal takedowns, only targets limbs.
+	gripped_intents = list(/datum/intent/spear/thrust/redsteel, /datum/intent/spear/cut/halberd, /datum/intent/sword/chop, SPEAR_BASH)
+	name = "redsteel halberd"
+	desc = "A redsteel halberd with a glint of gem at the tip. Not as common."
+	icon_state = "redsteelhal"
+	icon = 'icons/roguetown/weapons/64.dmi'
+	minstr = 6
+	max_blade_int = 200
+	anvilrepair = /datum/skill/craft/koboldsmithing
+	smeltresult = /obj/item/ingot/steel
+	max_integrity = 200
+	
+/datum/intent/spear/thrust/redsteel
+	penfactor = 50
+
+/obj/item/rogueweapon/glaive/redsteel
+	force = 12
+	force_wielded = 28
+	possible_item_intents = list(SPEAR_THRUST, SPEAR_BASH)
+	gripped_intents = list(SPEAR_THRUST, /datum/intent/spear/cut/glaive, /datum/intent/sword/chop, SPEAR_BASH)
+	name = "redsteel glaive"
+	desc = "A war spear with a sharp gem tip."
+	icon_state = "redsteelspear"
+	icon = 'icons/roguetown/weapons/32.dmi'
+	minstr = 4

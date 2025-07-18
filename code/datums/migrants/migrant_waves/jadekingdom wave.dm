@@ -37,7 +37,7 @@
 		/datum/migrant_role/jadekingdom/emperor = 1,
 		/datum/migrant_role/jadekingdom/shogun = 1,
 		/datum/migrant_role/jadekingdom/hatamoto = 1,
-		/datum/migrant_role/jadekingdom/onmyoji = 1,
+		/datum/migrant_role/jadekingdom/guji = 1,
 	)
 	greet_text = "Fleeing disaster, you have come together as a court, united in a final effort to restore the former glory and promise of jadekingdom. Stay close and watch out for each other, for all of your sakes! Some of you already did not make it on the way here..."
 
@@ -50,5 +50,6 @@
 		/datum/migrant_role/jadekingdom/emperor = 1,
 		/datum/migrant_role/jadekingdom/hatamoto = 1,
 		/datum/migrant_role/jadekingdom/shogun = 1,
+		/datum/migrant_role/jadekingdom/guji = 1
 	)
 	greet_text = "Fleeing disaster, you have come together as a court, united in a final effort to restore the former glory and promise of jadekingdom. Stay close and watch out for each other, for all of your sakes! Some of you already did not make it on the way here..."

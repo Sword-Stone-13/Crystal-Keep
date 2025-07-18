@@ -85,6 +85,11 @@
 	verbage = "builds"
 	skillcraft = /datum/skill/craft/masonry
 
+/datum/crafting_recipe/roguetown/structure/stonedoor/carved
+	name = "carved stone door"
+	result = /obj/structure/mineral_door/wood/donjon/stone/alt
+	reqs = list(/obj/item/natural/stone = 3)
+
 /datum/crafting_recipe/roguetown/structure/doorbolt
 	name = "wooden door (deadbolt)"
 	result = /obj/structure/mineral_door/wood/deadbolt
@@ -103,6 +108,12 @@
 	verbage = "constructs"
 	skillcraft = /datum/skill/craft/carpentry
 	craftdiff = 3
+
+/datum/crafting_recipe/roguetown/structure/fancydoor/light
+	name = "light fancy door"
+	result = /obj/structure/mineral_door/wood/fancywood/light
+	reqs = list(/obj/item/grown/log/tree/small = 2)
+
 
 /datum/crafting_recipe/roguetown/structure/barrel
 	name = "wooden barrel"

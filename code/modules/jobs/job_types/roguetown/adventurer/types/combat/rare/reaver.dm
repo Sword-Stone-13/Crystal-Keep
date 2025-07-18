@@ -1,7 +1,7 @@
 
 /datum/advclass/reaver
 	name = "Reaver"
-	tutorial = "Reavers are elvish mercenaries who travel for coin, either because they couldn't amount to a greater position in the elvish military, or simply to entertain the mystique of an elvish soldier."
+	tutorial = "Reavers are elvish mercenaries who travel for coin, either because they couldn't amount to a greater position in the Walnutian army, or simply to entertain the mystique of an elvish soldier."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(
 		/datum/species/human/halfelf,
@@ -16,13 +16,14 @@
 
 /datum/outfit/job/roguetown/adventurer/reaver/pre_equip(mob/living/carbon/human/H)
 	..()
-	head = /obj/item/clothing/head/roguetown/helmet/sallet //elvish armor tbd
-	pants = /obj/item/clothing/under/roguetown/trou/leather
-	shoes = /obj/item/clothing/shoes/roguetown/armor/leather
+	head = /obj/item/clothing/head/roguetown/helmet/bascinet/elfnut
+	pants = /obj/item/clothing/under/roguetown/platelegs/elfnut
+	shoes = /obj/item/clothing/shoes/roguetown/armor/elfnut
 	belt = /obj/item/storage/belt/rogue/leather
-	armor = /obj/item/clothing/suit/roguetown/armor/plate/half
+	armor = /obj/item/clothing/suit/roguetown/armor/plate/elfnut
+	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/elfnut
 	neck = /obj/item/storage/belt/rogue/pouch/coins/mid
-	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+	wrists = /obj/item/clothing/wrists/roguetown/bracers/elfnut
 	backr = /obj/item/rogueweapon/shield/heater
 	backl = /obj/item/storage/backpack/rogue/satchel
 	if(prob(25))
@@ -30,10 +31,10 @@
 	else
 		gloves = /obj/item/clothing/gloves/roguetown/angle
 	if(prob(50))
-		/obj/item/rogueweapon/spear
+		r_hand = /obj/item/rogueweapon/glaive/elfnut
 		beltl = /obj/item/rogueweapon/huntingknife
 	else if(prob(50))
-		r_hand = /obj/item/rogueweapon/halberd
+		r_hand = /obj/item/rogueweapon/glaive/elfnut
 		beltl = /obj/item/rogueweapon/huntingknife/idagger/steel
 
 	
@@ -55,3 +56,6 @@
 	H.change_stat("strength", 3)
 	H.change_stat("endurance", 2)
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/secondwind)
+	if(!H.has_language(/datum/language/beachbum))
+		H.grant_language(/datum/language/beachbum)
+		to_chat(H, span_info("I can speak deep elf with ,l before my speech."))

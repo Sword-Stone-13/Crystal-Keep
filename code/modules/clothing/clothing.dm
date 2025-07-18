@@ -13,6 +13,9 @@
 	integrity_failure = 0.1
 	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
 	var/colorgrenz = FALSE //For Grenzelhoft's colors
+	var/colorkobold = FALSE //for the kobold mane
+	//var/colorsquad = FALSE //in the future for the houses
+
 	var/damaged_clothes = 0 //similar to machine's BROKEN stat and structure's broken var
 	///What level of bright light protection item has.
 	var/flash_protect = FLASH_PROTECTION_NONE
@@ -21,7 +24,7 @@
 	var/visor_flags = 0			//flags that are added/removed when an item is adjusted up/down
 	var/visor_flags_inv = 0		//same as visor_flags, but for flags_inv
 	var/visor_flags_cover = 0	//same as above, but for flags_cover
-//what to toggle when toggled with weldingvisortoggle()
+	//what to toggle when toggled with weldingvisortoggle()
 	var/visor_vars_to_toggle = VISOR_FLASHPROTECT | VISOR_TINT | VISOR_VISIONFLAGS | VISOR_DARKNESSVIEW | VISOR_INVISVIEW
 	lefthand_file = 'icons/mob/inhands/clothing_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/clothing_righthand.dmi'
@@ -61,6 +64,8 @@
 	var/list/allowed_race = CLOTHED_RACES_TYPES
 	var/immune_to_genderswap = FALSE
 	var/armor_class = ARMOR_CLASS_NONE
+	var/con_threshold = 10 // CON threshold for damage adjustment. Ergo, what's the minimum CON to get base clothes HP. Should be the average CON of intended wearer. Like, Kobolds 8, Humans 10 and so on.
+	var/damage_per_con_point = 0.1 // 10% damage adjustment per CON point difference in line before. Think of this as something to adjust AC. Maybe leather armor gets .20, to balance speedsters and barbs, while Heavy gets .05 since it's metal. 
 
 	sellprice = 1
 
@@ -267,7 +272,6 @@
 	else
 		return ..()
 
-
 /*	if(damaged_clothes && istype(W, /obj/item/stack/sheet/cloth))
 		var/obj/item/stack/sheet/cloth/C = W
 		C.use(1)
@@ -276,6 +280,19 @@
 		to_chat(user, span_notice("I fix the damage on [src] with [C]."))
 		return 1*/
 	return ..()
+
+/obj/item/clothing/take_damage(damage_amount, damage_type = BRUTE, damage_flag = 0, sound_effect = TRUE, attack_dir, armor_penetration = 0)
+	var/adjusted_damage = damage_amount
+	if(armor_class > ARMOR_CLASS_NONE && ismob(loc)) // Only apply CON-based damage if it's armor and worn
+		var/mob/living/carbon/human/H = loc
+		if(ishuman(H))
+			var/con = H.STACON // Retrieve the Constitution stat directly
+			var/damage_multiplier = 1 + (con_threshold - con) * damage_per_con_point // Adjusts for CON above and below threshold
+			adjusted_damage *= damage_multiplier
+	obj_integrity -= adjusted_damage
+	if(obj_integrity <= 0)
+		obj_break(damage_flag)
+
 
 /obj/item/clothing/Destroy()
 	user_vars_remembered = null //Oh god somebody put REFERENCES in here? not to worry, we'll clean it up
@@ -376,7 +393,7 @@ SEE_MOBS  // can see all mobs, no matter what
 SEE_OBJS  // can see all objs, no matter what
 SEE_TURFS // can see all turfs (and areas), no matter what
 SEE_PIXELS// if an object is located on an unlit area, but some of its pixels are
-          // in a lit area (via pixel_x,y or smooth movement), can see those pixels
+		// in a lit area (via pixel_x,y or smooth movement), can see those pixels
 BLIND     // can't see anything
 */
 

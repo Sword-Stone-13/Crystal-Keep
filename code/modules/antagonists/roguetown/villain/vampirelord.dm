@@ -191,7 +191,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	blocksound = PLATEHIT
 	do_sound_plate = TRUE
 	drop_sound = 'sound/foley/dropsound/armor_drop.ogg'
-	anvilrepair = /datum/skill/craft/blacksmithing
+	anvilrepair = /datum/skill/craft/armorsmithing
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 
 /obj/item/clothing/suit/roguetown/shirt/vampire
@@ -235,7 +235,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	max_integrity = 500
 	allowed_sex = list(MALE, FEMALE)
 	do_sound_plate = TRUE
-	anvilrepair = /datum/skill/craft/blacksmithing
+	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/steel
 	equip_delay_self = 40
 	armor_class = 3

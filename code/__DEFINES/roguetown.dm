@@ -13,36 +13,38 @@
 	/datum/species/kobold,\
 	/datum/species/goblinp,\
 	/datum/species/seelie,\
+	/datum/species/nuppies\
 )
 
 #define RACES_RESPECTED \
 	/datum/species/human/northern,\
 	/datum/species/elf/wood,\
-	/datum/species/human/halfelf,\
-	/datum/species/dwarf/mountain,\
-	/datum/species/aasimar,\
+	/datum/species/dwarf/mountain\
 
 #define RACES_TOLERATED \
-	/datum/species/lizardfolk,\
+	/datum/species/tieberian,\
+	/datum/species/human/halfelf,\
+	/datum/species/nuppies\
 
 #define RACES_SHUNNED \
-	/datum/species/elf/dark,\
-	/datum/species/tieberian,\
-	/datum/species/kobold
+	/datum/species/aasimar,\
+	/datum/species/kobold\
 
 #define RACES_VERY_SHUNNED \
-	/datum/species/halforc
+	/datum/species/elf/dark,\
+	/datum/species/halforc,\
+	/datum/species/goblinp,\
 
 #define RACES_DESPISED \
-	/datum/species/goblinp,\
-	/datum/species/human/nyanderthal
+	/datum/species/lizardfolk\
 
 #define RACES_SEELIE \
-	/datum/species/seelie	//Seelie having its own global define and nothing else will prevent allowing it via RACES_ALL_KINDS
+	/datum/species/human/nyanderthal,\
+	/datum/species/seelie//Seelie having its own global define and nothing else will prevent allowing it via RACES_ALL_KINDS
 
-#define RACES_ALL_KINDS list(RACES_DESPISED, RACES_SHUNNED, RACES_TOLERATED, RACES_VERY_SHUNNED, RACES_RESPECTED)
+#define RACES_ALL_KINDS list(RACES_DESPISED, RACES_SHUNNED, RACES_TOLERATED, RACES_VERY_SHUNNED, RACES_RESPECTED, RACES_SEELIE)
 
-#define RACES_ALL_KINDS_PLUS_SEELIE list(RACES_DESPISED, RACES_SHUNNED, RACES_TOLERATED, RACES_VERY_SHUNNED, RACES_RESPECTED, RACES_SEELIE)
+#define RACES_ALL_KINDS_NO_SEELIE list(RACES_DESPISED, RACES_SHUNNED, RACES_TOLERATED, RACES_VERY_SHUNNED, RACES_RESPECTED)
 
 #define RACES_VERY_SHUNNED_UP list(RACES_SHUNNED, RACES_TOLERATED, RACES_VERY_SHUNNED, RACES_RESPECTED)
 
@@ -52,10 +54,12 @@
 
 #define RACES_TOLERATED_UP list(RACES_TOLERATED, RACES_RESPECTED)
 
+#define RACES_EORA_APPROVED list(RACES_RESPECTED)//jobs won't allow just putting races respected in there
+
+//CK note, I have no idea what a noble race is supposed to be, this is the only reference to itself. I assume it was originally the royal race pool, now it will be the Queen race pool. Kings, for lore reason, are gonna be restricted to the map's people.
 #define NOBLE_RACES_TYPES list(\
 	/datum/species/human/northern,\
 	/datum/species/human/halfelf,\
-	/datum/species/elf/dark,\
 	/datum/species/elf/wood,\
 	/datum/species/dwarf/mountain,\
 	/datum/species/tieberian,\
@@ -63,9 +67,13 @@
 	/datum/species/lizardfolk,\
 	/datum/species/kobold,\
 	/datum/species/goblinp,\
-	/datum/species/seelie,\
+	/datum/species/nuppies,\
+	/datum/species/human/nyanderthal,\
+	/datum/species/halforc,\
+	/datum/species/elf/dark,\
+	/datum/species/seelie\
 )
-
+//originally I was just going to make it the human/dwarf/elf dynamic for queens. But I realized if I was king I'd absolutely a gobbo, lizard, and kobold. But that's me. I added darkelves and horcs, I know what the players want. Monster waifus...and revolt.
 #define CLOTHED_RACES_TYPES list(\
 	/datum/species/human/northern,\
 	/datum/species/human/nyanderthal,\
@@ -80,6 +88,7 @@
 	/datum/species/kobold,\
 	/datum/species/goblinp,\
 	/datum/species/seelie,\
+	/datum/species/nuppies\
 )
 // Non-dwarf non-kobold non-goblin mostly
 #define NON_DWARVEN_RACE_TYPES list(\
@@ -93,14 +102,14 @@
 	/datum/species/lizardfolk,\
 	/datum/species/halforc,\
 	/datum/species/seelie,\
+	/datum/species/nuppies\
 )
-// Non-elf non-dwarf non-kobold non-goblin mostly
+// Non-elf non-dwarf non-kobold non-goblinp mostly
 #define HUMANLIKE_RACE_TYPES list(\
 	/datum/species/human/northern,\
 	/datum/species/human/nyanderthal,\
 	/datum/species/tieberian,\
-	/datum/species/aasimar,\
-	/datum/species/lizardfolk,\
+	/datum/species/aasimar\
 )
 #define ALL_CLERIC_PATRONS list(\
 	/datum/patron/divine/astrata,\
@@ -109,7 +118,7 @@
 	/datum/patron/divine/necra,\
 	/datum/patron/divine/pestra,\
 	/datum/patron/divine/malum,\
-	/datum/patron/divine/ravox,\
+	/datum/patron/divine/ravox\
 )
 
 #define ALL_ACOLYTE_PATRONS list(\
@@ -133,6 +142,14 @@
 	/datum/patron/divine/eora\
 )
 
+#define ALL_INHUMEN_PATRONS list(\
+	/datum/patron/inhumen/psydon,\
+	/datum/patron/inhumen/graggar,\
+	/datum/patron/inhumen/baotha,\
+	/datum/patron/inhumen/nyatthios,\
+	/datum/patron/zizo\
+)
+
 #define ALL_NON_INHUMEN_PATRONS list(\
 	/datum/patron/divine/astrata,\
 	/datum/patron/divine/noc,\
@@ -143,8 +160,7 @@
 	/datum/patron/divine/xylix,\
 	/datum/patron/divine/pestra,\
 	/datum/patron/divine/malum,\
-	/datum/patron/divine/eora,\
-	/datum/patron/psydon\
+	/datum/patron/divine/eora\
 )
 
 #define TEN_CURSES list(\
@@ -154,15 +170,18 @@
 	/datum/curse/necra,\
 	/datum/curse/xylix,\
 	/datum/curse/pestra,\
-	/datum/curse/eora\
+	/datum/curse/eora,\
+	/datum/curse/dendor,\
+	/datum/curse/mallum,\
+	/datum/curse/abyssor\
 )
 
 #define INHUMEN_CURSES list(\
 	/datum/curse/zizo,\
 	/datum/curse/graggar,\
-	/datum/curse/matthios,\
+	/datum/curse/nyatthios,\
 	/datum/curse/baotha\
-)
+)//	/datum/curse/psydon\ I'll get around to this, it's gonna be a 2 hour ban lmaoo
 
 #define SPECIAL_CURSES list(\
 	/datum/curse/atheism\

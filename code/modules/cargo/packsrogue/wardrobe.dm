@@ -83,13 +83,7 @@
 					/obj/item/clothing/mask/rogue/spectacles,
 				)
 
-/datum/supply_pack/rogue/wardrobe/shoes/shalal
-	name = "Shalal Shoes"
-	cost = 10
-	contains = list(
-					/obj/item/clothing/shoes/roguetown/armor/shalal,
-					/obj/item/clothing/shoes/roguetown/armor/shalal,
-				)
+
 
 /datum/supply_pack/rogue/wardrobe/shoes/sandals
 	name = "Sandals"

@@ -7,7 +7,7 @@
 	spawn_positions = 1
 
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = RACES_SHUNNED_UP
+	allowed_races = RACES_VERY_SHUNNED_UP
 	allowed_ages = list(AGE_OLD)
 	tutorial = "You are as venerable and ancient as the trees themselves, wise even for your years spent in the bog guard. The King may lead officially, but people look to you as Ealdorman to solve lesser issues. Remember the old ways of the law, not everything must end in bloodshed: no matter how much the Bog Guards wish it were the case."
 	whitelist_req = TRUE
@@ -16,6 +16,7 @@
 	min_pq = 5
 	max_pq = null
 	give_bank_account = 16
+	associated_squad = /datum/antagonist/squad/none
 
 	cmode_music = 'sound/music/combat_bog.ogg'
 
@@ -50,7 +51,7 @@
 	backr = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/keyring/velder  = 1, /obj/item/storage/belt/rogue/pouch/coins/rich = 1, /obj/item/rogueweapon/huntingknife/idagger/steel/special = 1)
 	if(H.mind)
-		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 6, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/axes, 3, TRUE)

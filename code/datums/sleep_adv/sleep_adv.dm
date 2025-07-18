@@ -98,7 +98,7 @@
 	dream_dust += BASE_DREAM_DUST
 
 	var/int = mind.current.STASKL
-	dream_dust += mind.current.STASKL * DREAM_DUST_PER_SKL //25% dream points for each int
+	dream_dust += mind.current.STASKL * DREAM_DUST_PER_SKL //25% dream points for each SKL
 	if(int < 10)
 		to_chat(mind.current, span_boldwarning("My shallow imagination makes them dull..."))
 	else if (int > 10)

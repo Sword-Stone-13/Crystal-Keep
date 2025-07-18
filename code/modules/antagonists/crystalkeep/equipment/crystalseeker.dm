@@ -1,3 +1,4 @@
+/*
 /obj/item/pinpointer/nuke
 	var/mode = TRACK_NUKE_DISK
 
@@ -61,3 +62,4 @@
 	name = "syndicate pinpointer"
 	desc = ""
 	icon_state = "pinpointer_syndicate"
+*/

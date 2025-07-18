@@ -15,6 +15,8 @@
 	give_bank_account = TRUE
 	min_pq = -10
 	max_pq = null
+	associated_squad = /datum/antagonist/squad/none
+
 
 /datum/outfit/job/roguetown/beastmaster/pre_equip(mob/living/carbon/human/H)
 	..()

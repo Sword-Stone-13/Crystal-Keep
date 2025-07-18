@@ -15,8 +15,8 @@
 	accessory_type = /datum/sprite_accessory/tail/catbig
 
 /obj/item/organ/tail/lizard
-	name = "sissean tail"
-	desc = "A severed sissean tail. Somewhere, no doubt, a lizard hater is very pleased with themselves."
+	name = "reptoid tail"
+	desc = "A severed reptoid tail. Somewhere, no doubt, a lizard hater is very pleased with themselves."
 	color = "#116611"
 	accessory_type = /datum/sprite_accessory/tail/lizard/smooth
 	icon_state = "lizardtail"

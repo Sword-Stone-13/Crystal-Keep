@@ -20,6 +20,7 @@
 
 	spells = list(/obj/effect/proc_holder/spell/self/convertrole/guard, /obj/effect/proc_holder/spell/self/convertrole/bog)
 	outfit = /datum/outfit/job/roguetown/marshal
+	associated_squad = /datum/antagonist/squad/none
 
 	give_bank_account = 40
 	min_pq = 4
@@ -59,7 +60,13 @@
 		H.change_stat("endurance", 1)
 		H.change_stat("speed", 1)
 		H.change_stat("fortune", 1)
-	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
+	if(isdwarfmountain(H))
+		ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
+	if(iswoodelf(H))
+		ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
+	if(ishumannorthern(H))
+		ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
+
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	H.verbs |= /mob/proc/haltyell
 	H.verbs |= list(/mob/living/carbon/human/proc/request_outlaw, /mob/living/carbon/human/proc/request_law, /mob/living/carbon/human/proc/request_law_removal, /mob/living/carbon/human/proc/request_purge)

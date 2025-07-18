@@ -13,6 +13,7 @@
 	outfit = /datum/outfit/job/roguetown/goblinsmith
 	min_pq = 0
 	max_pq = null
+	associated_squad = /datum/antagonist/squad/none
 
 /datum/outfit/job/roguetown/goblinsmith/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -31,6 +32,8 @@
 		H.mind.adjust_skillrank(/datum/skill/craft/engineering, pick(2,2,3), TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sewing, pick(1,1,2), TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/armorsmithing, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/weaponsmithing, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 3, TRUE)
 		H.change_stat("strength", 1)
 		H.change_stat("endurance", 1)

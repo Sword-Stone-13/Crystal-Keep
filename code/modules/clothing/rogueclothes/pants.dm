@@ -158,7 +158,7 @@
 	blocksound = CHAINHIT
 	do_sound_chain = TRUE
 	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
-	anvilrepair = /datum/skill/craft/blacksmithing
+	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/steel
 	r_sleeve_status = SLEEVE_NOMOD
 	l_sleeve_status = SLEEVE_NOMOD
@@ -179,7 +179,7 @@
 	body_parts_covered = GROIN
 	blocksound = CHAINHIT
 	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
-	anvilrepair = /datum/skill/craft/blacksmithing
+	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/steel
 	r_sleeve_status = SLEEVE_NOMOD
 	l_sleeve_status = SLEEVE_NOMOD
@@ -189,7 +189,7 @@
 /obj/item/clothing/under/roguetown/chainlegs/iron
 	desc = "Iron chain leggings, composed of interlinked metal rings, that absorb arrow impacts decently enough."
 	icon_state = "ichain_legs"
-	anvilrepair = /datum/skill/craft/blacksmithing
+	anvilrepair = /datum/skill/craft/armorsmithing
 	max_integrity = 175
 	smeltresult = /obj/item/ingot/iron
 
@@ -208,7 +208,7 @@
 	blocksound = PLATEHIT
 	do_sound_plate = TRUE
 	drop_sound = 'sound/foley/dropsound/armor_drop.ogg'
-	anvilrepair = /datum/skill/craft/blacksmithing
+	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/steel
 	r_sleeve_status = SLEEVE_NOMOD
 	l_sleeve_status = SLEEVE_NOMOD
@@ -264,7 +264,7 @@
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT)
 	blocksound = SOFTHIT
 	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
-	anvilrepair = /datum/skill/craft/blacksmithing
+	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/iron
 	r_sleeve_status = SLEEVE_NOMOD
 	l_sleeve_status = SLEEVE_NOMOD
@@ -290,7 +290,118 @@
 	blocksound = PLATEHIT
 	var/do_sound = FALSE
 	drop_sound = 'sound/foley/dropsound/armor_drop.ogg'
-	anvilrepair = /datum/skill/craft/blacksmithing
+	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/blacksteel
 	r_sleeve_status = SLEEVE_NOMOD
 	l_sleeve_status = SLEEVE_NOMOD
+
+
+///CKEEP///
+
+///ELFNUT///
+
+/obj/item/clothing/under/roguetown/platelegs/elfnut
+	name = "elfnut chausses"
+	desc = "Long turtle shell-like plates for protecting an elf's secondmost important assets."
+	icon_state = "elfnut_pants"
+	item_state = "elfnut_pants"
+	armor_class = ARMOR_CLASS_LIGHT
+	armor = list("blunt" = 80, "slash" = 100, "stab" = 90, "bullet" = 90, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	allowed_race = list(/datum/species/elf/wood, /datum/species/elf/dark) 
+
+/obj/item/clothing/under/roguetown/platelegs/elfnut/silverwood
+	name = "silver elfnut chausses"
+	desc = "beautiful long silver plates. Elf sized."
+	icon_state = "elfnut_var_pants"
+	item_state = "elfnut_var_pants"
+	armor_class = ARMOR_CLASS_MEDIUM
+	max_integrity = 250
+	armor = list("blunt" = 80, "slash" = 100, "stab" = 90, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+
+
+///BLUESTEEL///
+
+///REDSTEEL///
+/* //maybe later
+/obj/item/clothing/under/roguetown/platelegs/redsteel
+	name = "plated chausses"
+	desc = "smooth pieces of shining red plate."
+	icon_state = "chain_legs"
+	item_state = "chain_legs"
+	armor_class = ARMOR_CLASS_MEDIUM
+	max_integrity = 150
+	armor = list("blunt" = 80, "slash" = 100, "stab" = 80, "bullet" = 50, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 0)
+	allowed_race = list(/datum/species/goblinp, /datum/species/nuppies, /datum/species/kobold)
+*/
+
+///CRYSTALKEEP///
+/obj/item/clothing/under/roguetown/chainlegs/house
+	name = "chain lined trousers"
+	desc = ""
+	icon_state = "house_green_pants"
+	item_state = "house_green_pants"
+	max_integrity = 210
+	armor = list("blunt" = 70, "slash" = 100, "stab" = 80, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+
+/obj/item/clothing/under/roguetown/jeans
+	name = "walnutian trousers"
+	icon_state = "villager_m1_pants"
+	item_state = "villager_m1_pants"
+	sewrepair = TRUE
+	max_integrity = 110
+	armor = list("blunt" = 15, "slash" = 20, "stab" = 10, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+
+/obj/item/clothing/under/roguetown/jeans/orphan
+	name = "trousers"
+	icon_state = "villager_orphan_pants"
+	item_state = "villager_orphan_pants"
+
+/obj/item/clothing/under/roguetown/jeans/guild
+	name = "puffy trousers"
+	allowed_sex = list(FEMALE)
+	icon_state = "house_green_witch_pants"
+	item_state = "house_green_witch_pants"
+
+///The Houses///
+
+/obj/item/clothing/under/roguetown/platelegs/alrich
+	name = "red plated chausses"
+	desc = ""
+	icon_state = "house_red_pants"
+
+/obj/item/clothing/under/roguetown/platelegs/bravado
+	name = "bronze plated chausses"
+	desc = ""
+	icon_state = "house_yellow_pants"
+
+/obj/item/clothing/under/roguetown/platelegs/caesar
+	name = "purple plated chausses"
+	desc = ""
+	icon_state = "house_purple_pants"
+
+
+/obj/item/clothing/under/roguetown/platelegs/echarus
+	name = "Echarus chausses"
+	desc = ""
+	icon_state = "plate_green"
+
+/obj/item/clothing/under/roguetown/chainlegs/house
+	icon_state = "house_black_pants"
+
+/obj/item/clothing/under/roguetown/platelegs/white
+	name = "white steel chausses"
+	desc = ""
+	icon_state = "house_white_pants"
+
+
+///STEPPE///
+
+//Gronn
+/obj/item/clothing/under/roguetown/trou/nomadpants
+	name = "nomad pants"
+	desc = "Tight fitting leather pants worn under clothing of the steppes."
+	icon_state = "nomadpants"
+	max_integrity = 130
+	armor = list("blunt" = 20, "slash" = 25, "stab" = 20, "bullet" = 5, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB)
+	salvage_result = /obj/item/natural/hide/cured

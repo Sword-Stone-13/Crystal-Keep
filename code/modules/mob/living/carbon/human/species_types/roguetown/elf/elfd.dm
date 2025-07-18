@@ -5,13 +5,13 @@
 	name = "Dark Elf"
 	id = "elfd"
 	desc = "<b>Dark Elf</b><br>\
-	Elves, are a generic term for tall, pointy-eared humanoids\
-    Of whom trace their original heritage to the ancient mysterious Snow Elves. \
-	These ones are of a dark complexion and originate mostly from the underdark. \
-    Their culture and entire lives normally involve serving the evil gods of the inhumen pantheon. \
+	Dark elf is a term for a folk generally elf-like, whom \
+    claim their original heritage to the gods themselves. \
+	they are a hated creachers of dark complexion and originate mostly from the underdark. \
+    Their culture and entire lives are entirely set to serving, not a single god, but the ten as well as some of the inhumen, some call evil, gods as well. \
     Previously rare but in recent times, more and more dark elfs can be seen on the surface. \
-    The ones who aren't overtly cruel and bloodthirsty, tend to flee to the surface lest they get culled by their own society, \
-    while some more sinister ones abandon their cities in search of new and greater power."
+    They serve a largely matriarchal society that culls most of their males through sacrifices and offerings to the gods. Occasionally dipping into the broader light for men of other societies. \
+    This ofcourse prompts many males to flee in search of survival while some more sinister ones abandon their cities in search of new and greater power, and men. "
 
 /*
 	Former RT Desc: These guys were undead which doesn't really fit considering now you have a ton of them walking around.
@@ -76,6 +76,7 @@
 		"mageability" = -1,
 	)
 	enflamed_icon = "widefire"
+
 	organs = list(
 		ORGAN_SLOT_BRAIN = /obj/item/organ/brain,
 		ORGAN_SLOT_HEART = /obj/item/organ/heart,
@@ -139,6 +140,33 @@
 	"white - spiderweb" = "f4f4f4"
 
 	))
+
+
+/datum/species/elf/dark/on_species_gain(mob/living/carbon/C, datum/species/old_species)
+	..()
+	var/mob/living/carbon/human/species/elf/dark/H = C
+	if(H.age == AGE_YOUTH)
+		offset_features = list(OFFSET_ID = list(0,-2), OFFSET_GLOVES = list(0,-1), OFFSET_WRISTS = list(0,-1),\
+		OFFSET_CLOAK = list(0,-1), OFFSET_FACEMASK = list(0,-2), OFFSET_HEAD = list(0,-2), \
+		OFFSET_FACE = list(0,-2), OFFSET_BELT = list(0,-1), OFFSET_BACK = list(0,-2), \
+		OFFSET_NECK = list(0,-2), OFFSET_MOUTH = list(0,-2), OFFSET_PANTS = list(0, -1), \
+		OFFSET_SHIRT = list(0,-1), OFFSET_ARMOR = list(0,-1), OFFSET_HANDS = list(0,-2), OFFSET_UNDIES = list(0,-1), \
+		OFFSET_ID_F = list(0,-1), OFFSET_GLOVES_F = list(0,-1), OFFSET_WRISTS_F = list(0,-1), OFFSET_HANDS_F = list(0,-2), \
+		OFFSET_CLOAK_F = list(0,-1), OFFSET_FACEMASK_F = list(0,-2), OFFSET_HEAD_F = list(0,-2), \
+		OFFSET_FACE_F = list(0,-2), OFFSET_BELT_F = list(0,-1), OFFSET_BACK_F = list(0,-2), \
+		OFFSET_NECK_F = list(0,-2), OFFSET_MOUTH_F = list(0,-2), OFFSET_PANTS_F = list(0,-1), \
+		OFFSET_SHIRT_F = list(0,-1), OFFSET_ARMOR_F = list(0,-1), OFFSET_UNDIES_F = list(0,-1))
+
+		limbs_icon_m = 'icons/roguetown/mob/bodies/m/mems.dmi'
+		limbs_icon_f = 'icons/roguetown/mob/bodies/f/fs.dmi'
+
+		hairyness = null
+
+//		soundpack_m = new /datum/voicepack/male/young()
+		H.has_stubble = FALSE
+		H.facial_hairstyle = "None"
+		H.update_hair()
+		H.update_body()
 
 /datum/species/elf/dark/random_name(gender,unique,lastname)
 	var/randname

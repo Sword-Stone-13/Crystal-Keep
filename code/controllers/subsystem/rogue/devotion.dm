@@ -6,10 +6,10 @@
 #define CLERIC_T4 4
 
 #define CLERIC_REQ_0 0
-#define CLERIC_REQ_1 75
-#define CLERIC_REQ_2 150
-#define CLERIC_REQ_3 350
-#define CLERIC_REQ_4 500
+#define CLERIC_REQ_1 125 //5 faith, minimum
+#define CLERIC_REQ_2 250 //10 faith, most common
+#define CLERIC_REQ_3 350 // 14 faith, usually peak of most character. 
+#define CLERIC_REQ_4 400 //16 faith, rare, not even most priests get this. You have to roll 11 base FTH. Currently just for the revival spell (Astrata). If Revivals become too common, set it to 425 since that's only Elf reachable. 
 
 // Cleric Holder Datums
 
@@ -21,7 +21,7 @@
 	/// Current devotion we are holding
 	var/devotion = 0
 	/// Maximum devotion we can hold at once
-	var/max_devotion = CLERIC_REQ_3 * 2
+	var/max_devotion
 	/// Current progression (experience)
 	var/progression = 0
 	/// Maximum progression (experience) we can achieve
@@ -42,6 +42,7 @@
 	src.holder = holder
 	holder?.devotion = src
 	src.patron = patron
+	max_devotion = (holder?.STAFTH) * 25
 
 /datum/devotion/Destroy(force)
 	. = ..()
@@ -134,8 +135,8 @@
 		LAZYADD(granted_spells, newspell)
 	level = CLERIC_T0
 	update_devotion(50, 50, silent = TRUE)
-	max_devotion = CLERIC_REQ_1 //Max devotion limit - Paladins are stronger but cannot pray to gain all abilities beyond t1
-	max_progression = CLERIC_REQ_1
+//	max_devotion = CLERIC_REQ_1 //Max devotion limit - Paladins are stronger but cannot pray to gain all abilities beyond t1
+//	max_progression = CLERIC_REQ_1// both of these are crossed out because now you can just limit a paladin's spells to his STAFTH, and you can just give acolytes more STAFTH 
 
 /datum/devotion/proc/grant_spells_churchling(mob/living/carbon/human/H)
 	if(!H || !H.mind || !patron)

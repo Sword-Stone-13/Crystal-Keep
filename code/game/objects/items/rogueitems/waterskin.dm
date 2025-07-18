@@ -17,3 +17,19 @@
 	poursounds = list('sound/items/fillbottle.ogg')
 	sewrepair = TRUE
 
+///Crystal Keepu///
+/obj/item/reagent_containers/glass/bottle/gourd
+	name = "Gourd"
+	desc = "The beautiful shape of a woman, and a drink at the same time."
+	icon_state = "clear_bottle1"
+	volume = 50
+	reagent_flags = OPENCONTAINER
+	dropshrink = 0.5
+	sellprice = 100 //good investment, honestly. 
+
+/obj/item/reagent_containers/glass/bottle/gourd/booze
+	name = "Labeled Gourd"
+	desc = "This Gourd is dark and has a label on it for some reason."
+	icon_state = "clear_bottle1"
+	list_reagents = list(/datum/reagent/consumable/ethanol/cognac = 100)
+	sellprice = 200 ///High demand lmao

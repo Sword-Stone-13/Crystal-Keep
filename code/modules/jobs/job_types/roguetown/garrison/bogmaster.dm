@@ -7,7 +7,7 @@
 	spawn_positions = 1
 	allowed_patrons = ALL_NON_INHUMEN_PATRONS
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = RACES_VERY_SHUNNED_UP
+	allowed_races = RACES_TOLERATED_UP
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
 	tutorial = "You are the most experienced idiot to volunteer to the Bog Guard... \
 				What a mistake that was. You report to the Royal Marshal and their Councillors, \
@@ -15,6 +15,8 @@
 				May Gods have mercy on you..."
 	display_order = JDO_BOGMASTER
 	whitelist_req = TRUE
+
+	associated_squad = /datum/antagonist/squad/none
 
 	spells = list(/obj/effect/proc_holder/spell/self/convertrole/bog)
 	outfit = /datum/outfit/job/roguetown/bogmaster
@@ -43,9 +45,9 @@
 	pants = /obj/item/clothing/under/roguetown/chainlegs
 	cloak = /obj/item/clothing/cloak/stabard/bog
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
-	armor = /obj/item/clothing/suit/roguetown/armor/plate/half
-	neck = /obj/item/clothing/neck/roguetown/bervor
-	wrists = /obj/item/clothing/wrists/roguetown/bracers
+	armor = /obj/item/clothing/suit/roguetown/armor/plate/half/iron
+	neck = /obj/item/clothing/neck/roguetown/gorget
+	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	gloves = /obj/item/clothing/gloves/roguetown/chain
 	shoes = /obj/item/clothing/shoes/roguetown/armor/leather
 	beltl = /obj/item/keyring/bog_master

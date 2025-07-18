@@ -12,7 +12,7 @@
 /datum/customizer/organ/horns/humanoid
 	customizer_choices = list(/datum/customizer_choice/organ/horns/humanoid)
 
-/datum/customizer/organ/horns/humanoid/sissean
+/datum/customizer/organ/horns/humanoid/reptoid
 	default_disabled = TRUE
 
 /datum/customizer_choice/organ/horns/humanoid

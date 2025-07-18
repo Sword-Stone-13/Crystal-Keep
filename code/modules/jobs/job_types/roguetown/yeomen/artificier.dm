@@ -16,6 +16,8 @@
 	give_bank_account = 8
 	min_pq = 0
 	max_pq = null
+	associated_squad = /datum/antagonist/squad/none
+
 
 /datum/outfit/job/roguetown/artificer/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -23,8 +25,6 @@
 		H.mind.adjust_skillrank(/datum/skill/labor/mining, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/axes, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/masonry, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 4, TRUE)
@@ -48,9 +48,10 @@
 	beltl = /obj/item/key/artificer
 	mask = /obj/item/clothing/mask/rogue/spectacles/golden
 	backl = /obj/item/storage/backpack/rogue/backpack
-	backpack_contents = list(/obj/item/rogueweapon/hammer/claw = 1, /obj/item/key/artificer)
+	backpack_contents = list(/obj/item/rogueweapon/hammer/claw = 1, /obj/item/key/artificer, , /obj/item/engraving_hammer = 1)
 	H.change_stat("strength", 1)
 	H.change_stat("mageability", 2)
+	H.change_stat("skill", 2)
 	H.change_stat("endurance", 1)
 	H.change_stat("constitution", 1)
 	H.change_stat("speed", -1)

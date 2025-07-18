@@ -12,7 +12,7 @@
 	customizer_choices = list(/datum/customizer_choice/organ/neck_feature/moth_fluff)
 
 /datum/customizer_choice/organ/neck_feature/moth_fluff
-	name = "Fluvian Fluff"
+	name = "Aasimar Fluff"
 	organ_type = /obj/item/organ/neck_feature/moth_fluff
 	sprite_accessories = list(
 		/datum/sprite_accessory/neck_feature/moth_fluff/plain,

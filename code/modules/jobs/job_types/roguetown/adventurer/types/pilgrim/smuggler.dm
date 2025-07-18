@@ -11,7 +11,7 @@
 	cmode_music = 'sound/music/combat_pirate.ogg'
 
 /datum/outfit/job/roguetown/adventurer/smuggler
-	allowed_patrons =  list(/datum/patron/divine/abyssor, /datum/patron/inhumen/matthios)
+	allowed_patrons =  list(/datum/patron/divine/abyssor, /datum/patron/inhumen/nyatthios)
 
 /datum/outfit/job/roguetown/adventurer/smuggler/pre_equip(mob/living/carbon/human/H)
 	..()

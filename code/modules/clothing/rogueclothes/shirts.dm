@@ -380,3 +380,134 @@
 		if(get_detail_color())
 			pic.color = get_detail_color()
 		add_overlay(pic)
+
+
+
+//villager core
+
+
+/obj/item/clothing/suit/roguetown/shirt/dress/villager
+	slot_flags = ITEM_SLOT_ARMOR
+	name = "Walnutian Dress"
+	desc = ""
+	body_parts_covered = CHEST|GROIN|LEGS|VITALS
+	icon_state = "villager_w1_dress"
+	item_state = "villager_w1_dress"
+	allowed_sex = list(FEMALE)
+
+/obj/item/clothing/suit/roguetown/shirt/tunic/villager
+	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
+	name = "Walnutian Tunic"
+	desc = ""
+	body_parts_covered = CHEST|GROIN|VITALS
+	icon_state = "millager_m1_shirt"
+	item_state = "millager_m1_shirt"
+	sleevetype = null
+	r_sleeve_status = SLEEVE_NORMAL
+	l_sleeve_status = SLEEVE_NORMAL
+	flags_inv = HIDECROTCH|HIDEBOOB
+
+/obj/item/clothing/suit/roguetown/shirt/rags/orphan
+	slot_flags = ITEM_SLOT_SHIRT
+	name = "thin rags"
+	desc = "paper thin, so cold..."
+	body_parts_covered = CHEST|GROIN|VITALS
+	icon_state = "villager_orphan_shirt"
+	item_state = "villager_orphan_shirt"
+
+
+
+///HOUSE CORE
+
+
+/obj/item/clothing/suit/roguetown/shirt/dress/housegreen
+	slot_flags = ITEM_SLOT_SHIRT
+	name = "Guild Mage Girdle"
+	desc = ""
+	body_parts_covered = CHEST|GROIN|LEGS|VITALS
+	icon = 'icons/roguetown/clothing/nobledresses/shirts.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/nobledresses/onmob/shirts.dmi'
+	icon_state = "house_green_witch_shirt"
+	item_state = "house_green_witch_shirt"
+	allowed_sex = list(FEMALE)
+
+
+/obj/item/clothing/suit/roguetown/shirt/dress/housered
+	slot_flags = ITEM_SLOT_ARMOR
+	name = "Alrich Robes"
+	desc = "These look like they've been cut shorter"
+	body_parts_covered = CHEST|GROIN|VITALS
+	icon_state = "house_red_witch_dress"
+	item_state = "house_red_witch_dress"
+	allowed_sex = list(FEMALE)
+
+/obj/item/clothing/suit/roguetown/shirt/dress/houseyellow
+	slot_flags = ITEM_SLOT_SHIRT
+	name = "Bravado Dressing"
+	desc = ""
+	body_parts_covered = CHEST|GROIN|VITALS
+	icon_state = "house_yellow_witch_dress"
+	item_state = "house_yellow_witch_dress"
+	allowed_sex = list(FEMALE)
+
+/obj/item/clothing/suit/roguetown/shirt/dress/housepurple
+	slot_flags = ITEM_SLOT_ARMOR
+	name = "Caesar Robes"
+	desc = ""
+	body_parts_covered = CHEST|GROIN|VITALS
+	icon_state = "house_purple_witch_dress"
+	item_state = "house_purple_witch_dress"
+	allowed_sex = list(FEMALE)
+
+/obj/item/clothing/suit/roguetown/shirt/dress/houseblue
+	slot_flags = ITEM_SLOT_ARMOR
+	name = "Deleon Robes"
+	desc = "Revealing"
+	body_parts_covered = CHEST|VITALS
+	icon_state = "house_blue_witch_dress"
+	item_state = "house_blue_witch_dress"
+	allowed_sex = list(FEMALE)
+
+/obj/item/clothing/suit/roguetown/shirt/dress/houseblack
+	slot_flags = ITEM_SLOT_SHIRT
+	name = "Court Magos Top"
+	desc = ""
+	body_parts_covered = CHEST
+	icon_state = "house_black_witch_dress"
+	item_state = "house_black_witch_dress"
+	allowed_sex = list(FEMALE)
+	toggle_icon_state = FALSE
+	hoodtype = /obj/item/clothing/head/roguetown/wizhat/house/black 
+
+/obj/item/clothing/suit/roguetown/shirt/dress/houseblack/wash_act(clean)
+	. = ..()
+	if(hood)
+		wash_atom(hood, clean)
+
+/obj/item/clothing/suit/roguetown/shirt/dress/houseblack/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/storage/concrete)
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	if(STR)
+		STR.max_combined_w_class = 3
+		STR.max_w_class = WEIGHT_CLASS_NORMAL
+		STR.max_items = 1
+
+/obj/item/clothing/suit/roguetown/shirt/dress/houseblack/dropped(mob/living/carbon/human/user)
+	..()
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	if(STR)
+		var/list/things = STR.contents()
+		for(var/obj/item/I in things)
+			STR.remove_from_storage(I, get_turf(src))
+
+
+
+/obj/item/clothing/suit/roguetown/shirt/dress/housewhite
+	slot_flags = ITEM_SLOT_SHIRT
+	name = "Church Magus Girdle"
+	desc = ""
+	body_parts_covered = CHEST|VITALS
+	icon_state = "house_white_witch_dress"
+	item_state = "house_white_witch_dress"
+	allowed_sex = list(FEMALE)

@@ -132,13 +132,17 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 	gripped_intents = null
 	dropshrink = 0.75
 	possible_item_intents = list(INTENT_GENERIC)
-	force = 10
-	throwforce = 15
+	force = 18
+	throwforce = 20
+	throw_speed = 1
+	thrown_bclass = BCLASS_BLUNT // Applies bruise wounds, fractures on crit
+	crit_bonus = 0 // No crit bonus by default
+	can_crit_throw = TRUE // Allows critical hits when thrown
 	slot_flags = ITEM_SLOT_MOUTH
 	w_class = WEIGHT_CLASS_TINY
 	mill_result = /obj/item/reagent_containers/powder/alch/stone
 	var/magicstone = FALSE
-	
+
 /obj/item/natural/stone/Initialize()
 	. = ..()
 	stone_lore()
@@ -217,27 +221,30 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 
 	bonus_force = rand(0, max_force_range) // Your total bonus force is now between 1 and your sharpness/bluntness totals
 
-	if(prob(5)) // We hit the jackpot, a magical stone! JUST FOR ME!
+	// Random throw crit bonus (1 to 30%)
+	var/crit_bonus_value = rand(1, 30)
+	// Increase crit bonus for magic stones or high sharpness/bluntness
+	if(prob(5)) // Magic stone
 		filters += filter(type="drop_shadow", x=0, y=0, size=1, offset=2, color=rgb(rand(1,255),rand(1,255),rand(1,255)))
 		var/magic_force = rand(1,10) //Roll, we need this seperate for now otherwise people will know the blunt/sharp boosts too
 		stone_title = "[pick(GLOB.stone_magic_names)] [stone_title] +[magic_force]"
 		stone_desc += " [pick(GLOB.stone_magic_descs)]"
 		bonus_force += magic_force // Add on the magic force modifier
+		crit_bonus_value = clamp(crit_bonus_value + rand(5, 10), 1, 30) // Magic stones get +5-10% crit bonus
+	else if(sharpness_rating >= 9 || bluntness_rating >= 9)
+		crit_bonus_value = clamp(crit_bonus_value + rand(3, 8), 1, 30) // High sharpness/bluntness adds +3-8%
 
-	if(extra_intent_list.len)
-		for(var/i in 1 to min(4, extra_intent_list.len))
-			// No more than 4 bro, and if we are empty on intents just stop here
-			if(!length(extra_intent_list))
-				break
-			var/cock = pick(extra_intent_list) // We pick one
-			given_intent_list += cock // Add it to the list
-			extra_intent_list -= cock // Remove it from the prev list
-	
+	// Random thrown_bclass
+	var/list/valid_bclasses = list(BCLASS_BLUNT, BCLASS_CUT, BCLASS_CHOP, BCLASS_STAB, BCLASS_PICK)
+	var/selected_bclass = pick(valid_bclasses)
+
 	//Now that we have built the history and lore of this stone, we apply it to the main vars.
 	name = stone_title
 	desc = stone_desc
 	force += bonus_force // This will result in a stone that has only 40 max at a extremely low chance damage at this time of this PR.
 	throwforce += bonus_force // It gets added to throw damage too
+	crit_bonus = crit_bonus_value // Apply random crit bonus
+	thrown_bclass = selected_bclass // Apply random thrown_bclass
 	possible_item_intents = given_intent_list // And heres ur new extra intents too
 
 /obj/item/natural/stone/attackby(obj/item/W, mob/user, params)
@@ -342,7 +349,7 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 	slot_flags = ITEM_SLOT_MOUTH
 	w_class = WEIGHT_CLASS_TINY
 	mill_result = /obj/item/reagent_containers/powder/alch/stone
-
+/*
 /obj/item/attackby(obj/item/I, mob/user, params)
 	user.changeNext_move(user.used_intent.clickcd)
 	if(max_blade_int)
@@ -360,7 +367,7 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 				S.start()
 			return
 	. = ..()
-
+*/
 //begin ore loot rocks
 /obj/item/natural/rock/gold
 	mineralType = /obj/item/rogueore/gold
@@ -388,3 +395,6 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 
 /obj/item/natural/rock/gem
 	mineralType = /obj/item/roguegem/random
+
+/obj/item/natural/rock/moon
+	mineralType = /obj/item/rogueore/mooncrystal

@@ -549,8 +549,8 @@
 	if(!check_rights(0))
 		return
 
-	var/dat = {"
-		<center><B>Game Panel</B></center><hr>\n
+	var/dat = "<html><meta charset='UTF-8'><head><title>Game Panel</title></head><body>"
+	dat += {"		<center><B>Game Panel</B></center><hr>\n
 		<A href='?src=[REF(src)];[HrefToken()];c_mode=1'>Change Game Mode</A><br>
 		"}
 	if(GLOB.master_mode == "secret")
@@ -584,6 +584,7 @@
 	if(marked_datum && istype(marked_datum, /atom))
 		dat += "<A href='?src=[REF(src)];[HrefToken()];dupe_marked_datum=1'>Duplicate Marked Datum</A><br>"
 
+	dat += "</body></html>"
 	usr << browse(dat, "window=admin2;size=240x280")
 	return
 

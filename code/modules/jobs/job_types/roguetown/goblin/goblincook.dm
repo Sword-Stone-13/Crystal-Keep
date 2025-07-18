@@ -15,6 +15,7 @@
 	display_order = JDO_GOBLINCOOK
 	min_pq = 0
 	max_pq = null
+	associated_squad = /datum/antagonist/squad/none
 
 /datum/outfit/job/roguetown/goblincook/pre_equip(mob/living/carbon/human/H)
 	..()
