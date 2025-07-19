@@ -49,11 +49,18 @@
 	return TRUE
 
 /datum/alignment_aura/proc/apply_visual_effects(mob/living/parent)
+	// Ensure parent is a human with dna and species because alignments may go into creachers later
+	if(!istype(parent, /mob/living/carbon/human))
+		return
+	var/mob/living/carbon/human/H = parent
+	//for now, only aasimars and tieflings get auras. remove the next three lines and you'll get universal auras. Plans include... detect good and evil.
+	if(!((istype(H.dna.species, /datum/species/aasimar) && id == ALIGNMENT_LAWFUL_GOOD) || (istype(H.dna.species, /datum/species/tieberian) && id == ALIGNMENT_CHAOTIC_EVIL)))
+		return
 	if(color) // it won't show an outline if there's no color
 		var/filter_id = "alignment_aura_outline"
-		parent.remove_filter(filter_id)
-		parent.add_filter(filter_id, 2, list("type" = "outline", "color" = color, "size" = 1, "alpha" = 80))
-		animate(parent.get_filter(filter_id), alpha = 100, time = 20, loop = -1, easing = SINE_EASING)
+		H.remove_filter(filter_id)
+		H.add_filter(filter_id, 2, list("type" = "outline", "color" = color, "size" = 1, "alpha" = 80))
+		animate(H.get_filter(filter_id), alpha = 100, time = 20, loop = -1, easing = SINE_EASING)
 		animate(alpha = 80, time = 20)
 
 /datum/alignment_aura/proc/remove_visual_effects(mob/living/parent)
