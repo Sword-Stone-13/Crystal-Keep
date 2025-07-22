@@ -207,7 +207,6 @@
 		last_toxloss = owner.getToxLoss()
 		last_oxyloss = owner.getOxyLoss()
 		last_cloneloss = owner.getCloneLoss()
-		last_staminaloss = owner.getStaminaLoss()
 		owner.log_message("gained blood-drunk stun immunity", LOG_ATTACK)
 		owner.add_stun_absorption("blooddrunk", INFINITY, 4)
 		owner.playsound_local(get_turf(owner), 'sound/blank.ogg', 40, 1)
@@ -255,14 +254,14 @@
 			needs_health_update = TRUE
 		last_cloneloss = new_cloneloss
 
-		var/new_staminaloss = owner.getStaminaLoss()
+/*		var/new_staminaloss = owner.getStaminaLoss()
 		if(new_staminaloss < last_staminaloss)
 			var/heal_amount = (new_staminaloss - last_staminaloss) * 10
 			owner.adjustStaminaLoss(heal_amount, updating_health = FALSE)
 			new_staminaloss = owner.getStaminaLoss()
 			needs_health_update = TRUE
 		last_staminaloss = new_staminaloss
-
+*/
 		if(needs_health_update)
 			owner.updatehealth()
 			owner.playsound_local(get_turf(owner), 'sound/blank.ogg', 40, 1)
@@ -424,7 +423,7 @@
 			itemUser.adjustFireLoss(-1.5)
 			itemUser.adjustToxLoss(-1.5, forced = TRUE) //Because Slime People are people too
 			itemUser.adjustOxyLoss(-1.5)
-			itemUser.adjustStaminaLoss(-1.5)
+			//itemUser.adjustStaminaLoss(-1.5)
 			itemUser.adjustOrganLoss(ORGAN_SLOT_BRAIN, -1.5)
 			itemUser.adjustCloneLoss(-0.5) //Becasue apparently clone damage is the bastion of all health
 		//Heal all those around you, unbiased
@@ -436,7 +435,7 @@
 				L.adjustFireLoss(-3.5)
 				L.adjustToxLoss(-3.5, forced = TRUE) //Because Slime People are people too
 				L.adjustOxyLoss(-3.5)
-				L.adjustStaminaLoss(-3.5)
+				//L.adjustStaminaLoss(-3.5)
 				L.adjustOrganLoss(ORGAN_SLOT_BRAIN, -3.5)
 				L.adjustCloneLoss(-1) //Becasue apparently clone damage is the bastion of all health
 			else if(issilicon(L))

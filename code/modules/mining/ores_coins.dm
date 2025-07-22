@@ -115,7 +115,6 @@ GLOBAL_LIST_INIT(sand_recipes, list(\
 		C.visible_message(span_danger("[C]'s eye protection blocks the sand!"), span_warning("My eye protection blocks the sand!"))
 		return
 	C.adjust_blurriness(6)
-	C.adjustStaminaLoss(15)//the pain from my eyes burning does stamina damage
 	C.confused += 5
 	to_chat(C, span_danger("\The [src] gets into my eyes! The pain, it burns!"))
 	qdel(src)

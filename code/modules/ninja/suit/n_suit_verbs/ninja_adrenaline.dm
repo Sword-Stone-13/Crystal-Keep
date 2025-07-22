@@ -9,7 +9,7 @@
 		H.SetKnockdown(0)
 		H.SetImmobilized(0)
 		H.SetParalyzed(0)
-		H.adjustStaminaLoss(-75)
+		//H.adjustStaminaLoss(-75)
 		H.stuttering = 0
 		H.lying = 0
 		H.update_mobility()

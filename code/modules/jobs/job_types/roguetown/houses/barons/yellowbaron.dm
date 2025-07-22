@@ -14,7 +14,6 @@
 	min_pq = 0
 	max_pq = null
 	wanderer_examine = FALSE
-	always_show_on_latechoices = TRUE
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)
 	associated_squad = /datum/antagonist/squad/bravado/leader
 
@@ -62,9 +61,9 @@
 
 /obj/effect/proc_holder/spell/self/convertrole/bravado
 	name = "Draft Recruit"
-	new_role = "bravado Recruit"
+	new_role = "Bravado Warrior"
 	overlay_state = "recruit_bog"
-	recruitment_faction = "Bravado Recruit"
+	recruitment_faction = "Bravado Warrior"
 	recruitment_message = "Are you yellow, %RECRUIT?"
 	accept_message = "Yes!"
 	refuse_message = "No."
@@ -72,6 +71,17 @@
 /obj/effect/proc_holder/spell/self/convertrole/bravado/convert(mob/living/carbon/human/recruit, mob/living/carbon/human/recruiter)
 	. = ..()
 	if(!.)
-		return
+		return FALSE
+	if(!recruit.mind)
+		return FALSE
+	// Properly assign the job
+	var/datum/job/new_job = SSjob.GetJob(new_role)
+	if(new_job)
+		SSjob.AssignRole(recruit, new_job, TRUE) // Assign the job properly
+		// Manually apply the associated squad
+		if(new_job.associated_squad)
+			recruit.mind.add_antag_datum(new_job.associated_squad)
+	else
+		log_game("DEBUG: Failed to find job [new_role] for [recruit].")
 	recruit.verbs |= /mob/proc/haltyell
-
+	return TRUE

@@ -151,8 +151,7 @@
 //	var/encumbrance = 0
 
 	var/eyesclosed = 0
-	var/fallingas = 0
-
+	var/sleep_accumulation = 0
 	var/bleed_rate = 0 //how much are we bleeding
 	var/bleedsuppress = 0 //for stopping bloodloss, eventually this will be limb-based like bleeding
 

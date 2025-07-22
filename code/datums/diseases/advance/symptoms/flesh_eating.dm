@@ -56,8 +56,8 @@ Bonus
 /datum/symptom/flesh_eating/proc/Flesheat(mob/living/M, datum/disease/advance/A)
 	var/get_damage = rand(15,25) * power
 	M.take_overall_damage(brute = get_damage, required_status = BODYPART_ORGANIC)
-	if(pain)
-		M.adjustStaminaLoss(get_damage * 2)
+	//if(pain)
+		//M.adjustStaminaLoss(get_damage * 2)
 	if(bleed)
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M

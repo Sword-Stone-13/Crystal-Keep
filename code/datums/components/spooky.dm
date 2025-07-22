@@ -8,12 +8,8 @@
 	if(ishuman(user)) //this weapon wasn't meant for mortals.
 		var/mob/living/carbon/human/U = user
 		if(!istype(U.dna.species, /datum/species/skeleton))
-			U.adjustStaminaLoss(35) //Extra Damage
 			U.Jitter(35)
 			U.stuttering = 20
-			if(U.getStaminaLoss() > 95)
-				to_chat(U, "<font color ='red', size ='4'><B>My ears weren't meant for this spectral sound.</B></font>")
-				spectral_change(U)
 			return
 
 	if(ishuman(C))
@@ -21,19 +17,17 @@
 		if(istype(H.dna.species, /datum/species/skeleton))
 			return //undeads are unaffected by the spook-pocalypse.
 		if(istype(H.dna.species, /datum/species/zombie))
-			H.adjustStaminaLoss(25)
 			H.Paralyze(15) //zombies can't resist the doot
 		C.Jitter(35)
 		C.stuttering = 20
-		if((!istype(H.dna.species, /datum/species/skeleton)) && (!istype(H.dna.species, /datum/species/golem)) && (!istype(H.dna.species, /datum/species/android)) && (!istype(H.dna.species, /datum/species/jelly)))
-			C.adjustStaminaLoss(25) //boneless humanoids don't lose the will to live
-		to_chat(C, "<font color='red' size='4'><B>DOOT</B></font>")
-		spectral_change(H)
+	//	if((!istype(H.dna.species, /datum/species/skeleton)) && (!istype(H.dna.species, /datum/species/golem)) && (!istype(H.dna.species, /datum/species/android)) && (!istype(H.dna.species, /datum/species/jelly)))
+	//	to_chat(C, "<font color='red' size='4'><B>DOOT</B></font>")
+		//spectral_change(H)
 
-	else //the sound will spook monkeys.
-		C.Jitter(15)
-		C.stuttering = 20
-
+//	else //the sound will spook monkeys.
+//		C.Jitter(15)
+//		C.stuttering = 20
+/*
 /datum/component/spooky/proc/spectral_change(mob/living/carbon/human/H, mob/user)
 	if((H.getStaminaLoss() > 95) && (!istype(H.dna.species, /datum/species/skeleton)) && (!istype(H.dna.species, /datum/species/golem)) && (!istype(H.dna.species, /datum/species/android)) && (!istype(H.dna.species, /datum/species/jelly)))
 		H.Paralyze(20)
@@ -52,7 +46,7 @@
 		to_chat(H, span_boldnotice("I are the spooky skeleton!"))
 		to_chat(H, span_boldnotice("A new life and identity has begun. Help my fellow skeletons into bringing out the spooky-pocalypse. You haven't forgotten my past life, and are still beholden to past loyalties."))
 		change_name(H)	//time for a new name!
-
+*/
 /datum/component/spooky/proc/change_name(mob/living/carbon/human/H)
 	var/t = sanitize_name(stripped_input(H, "Enter my new skeleton name", H.real_name, null, MAX_NAME_LEN))
 	if(!t)

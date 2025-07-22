@@ -162,7 +162,7 @@
 
 /datum/reagent/medicine/C2/tirimol/on_mob_life(mob/living/carbon/human/M)
 	M.adjustOxyLoss(-3)
-	M.adjustStaminaLoss(2)
+	//M.adjustStaminaLoss(2)
 	if(drowsycd && (world.time > drowsycd))
 		M.drowsyness += 10
 		drowsycd = world.time + (45 SECONDS)

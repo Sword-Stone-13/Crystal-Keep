@@ -191,7 +191,7 @@
 			owner.say("Thank you for the fun ride, [clown.name]!")
 			last_thank_time = world.time
 			C.ThanksCounter()
-
+/*
 /datum/action/vehicle/ridden/scooter/skateboard/ollie
 	name = "Ollie"
 	desc = ""
@@ -206,8 +206,6 @@
 			return
 		var/mob/living/L = owner
 		var/turf/landing_turf = get_step(V.loc, V.dir)
-		L.adjustStaminaLoss(V.instability*2)
-		if (L.getStaminaLoss() >= 100)
 			playsound(src, 'sound/blank.ogg', 20, TRUE)
 			V.unbuckle_mob(L)
 			L.throw_at(landing_turf, 2, 2)
@@ -228,3 +226,4 @@
 			V.icon_state = "[V.board_icon]-grind"
 			addtimer(CALLBACK(V, TYPE_PROC_REF(/obj/vehicle/ridden/scooter/skateboard, grind)), 2)
 		next_ollie = world.time + 5
+*/

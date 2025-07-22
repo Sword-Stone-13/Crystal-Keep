@@ -9,7 +9,7 @@
 /datum/martial_art/boxing/grab_act(mob/living/carbon/human/A, mob/living/carbon/human/D)
 	to_chat(A, span_warning("Can't grab while boxing!"))
 	return 1
-
+/* //has stamina loss leftover from old boxing code
 /datum/martial_art/boxing/harm_act(mob/living/carbon/human/A, mob/living/carbon/human/D)
 
 	A.do_attack_animation(D, ATTACK_EFFECT_PUNCH)
@@ -50,7 +50,7 @@
 		else if(!(D.mobility_flags & MOBILITY_STAND))
 			D.forcesay(GLOB.hit_appends)
 	return 1
-
+*/
 /obj/item/clothing/gloves/boxing
 	var/datum/martial_art/boxing/style = new
 

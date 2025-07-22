@@ -66,10 +66,10 @@
 	id = "unconscious"
 	needs_update_stat = TRUE
 
-/datum/status_effect/incapacitating/unconscious/tick()
+/*/datum/status_effect/incapacitating/unconscious/tick()
 	if(owner.getStaminaLoss())
 		owner.adjustStaminaLoss(-0.3) //reduce stamina loss by 0.3 per tick, 6 per 2 seconds
-
+*/
 //SLEEPING
 /datum/status_effect/incapacitating/sleeping
 	id = "sleeping"
@@ -126,7 +126,7 @@
 			break //Only count the first bedsheet
 		if(health_ratio > 0.8)
 			owner.adjustToxLoss(healing * 0.5, FALSE, TRUE)
-		owner.adjustStaminaLoss(healing)
+		//owner.adjustStaminaLoss(healing)
 	if(human_owner && human_owner.drunkenness)
 		human_owner.drunkenness *= 0.997 //reduce drunkenness by 0.3% per tick, 6% per 2 seconds
 	if(prob(20))
