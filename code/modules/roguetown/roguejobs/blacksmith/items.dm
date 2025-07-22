@@ -11,7 +11,7 @@
 	desc = "Made of heavy, gleaming gold!"
 	icon_state = "gstatue1"
 	smeltresult = /obj/item/ingot/gold
-	sellprice = 120
+	sellprice = 180
 
 /obj/item/roguestatue/gold/Initialize()
 	. = ..()

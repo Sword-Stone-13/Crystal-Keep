@@ -239,3 +239,5 @@
 		H.cmode_music = 'sound/music/combat_amazunt.ogg'
 	else
 		H.cmode_music = 'sound/music/combat_gronn.ogg'
+	if(ismoth(H)) //aasimar lore
+		id = /obj/item/clothing/ring/gold/burial

@@ -50,10 +50,10 @@
 	specstats_m = list(
 		"strength" = 3,
 		"mageability" = 1,
-		"constitution" = 1,
+		"endurance" = 1,
 	)
 	specstats_f = list(
-		"strength" = 1,
+		"constitution" = 1,
 		"mageability" = 3,
 		"speed" = 1,
 	)

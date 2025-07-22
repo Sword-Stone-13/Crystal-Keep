@@ -168,7 +168,7 @@
 	name = "Gold Mask"
 	icon_state = "goldmask"
 	max_integrity = 150
-	sellprice = 100
+	sellprice = 170
 	smeltresult = /obj/item/ingot/gold
 
 //Crystallis keepus

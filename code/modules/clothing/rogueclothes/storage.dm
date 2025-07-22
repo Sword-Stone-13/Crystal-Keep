@@ -125,7 +125,7 @@
 	name = "plaque belt"
 	desc = "A belt with a golden plate on its front."
 	icon_state = "goldplaque"
-	sellprice = 50
+	sellprice = 170
 	sewrepair = FALSE
 	smeltresult = /obj/item/ingot/gold
 	anvilrepair = /datum/skill/craft/blacksmithing
@@ -445,4 +445,4 @@
 	item_state = "house_blue_witch"
 	heldz_items = 1
 	salvage_result = /obj/item/ingot/gold
-	sellprice = 120
+	sellprice = 170

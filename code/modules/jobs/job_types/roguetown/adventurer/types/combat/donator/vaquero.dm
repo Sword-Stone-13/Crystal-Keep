@@ -61,6 +61,7 @@
 	if(ismoth(H))
 		H.change_stat("faith", 3)
 		H.change_stat("mageability", -2)
+		id = /obj/item/clothing/ring/gold/burial
 	if(istiefling(H))
 		H.change_stat("faith", -3)
 		H.change_stat("mageability", 2)

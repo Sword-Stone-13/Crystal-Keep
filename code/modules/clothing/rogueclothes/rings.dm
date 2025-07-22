@@ -35,7 +35,12 @@
 /obj/item/clothing/ring/gold
 	name = "gold ring"
 	icon_state = "ring_g"
-	sellprice = 45
+	sellprice = 50
+
+/obj/item/clothing/ring/gold/burial
+	name = "inscribed gold ring"
+	desc = "an inscription inside reads 'bless who bury the former holder of this ring with proper rites.'"
+	sellprice = 50
 
 /obj/item/clothing/ring/lantern
 	parent_type = /obj/item/flashlight/flare/torch/lantern // Inherits parents properties from lantern
@@ -132,32 +137,32 @@
 /obj/item/clothing/ring/emerald
 	name = "gemerald ring"
 	icon_state = "g_ring_emerald"
-	sellprice = 195
+	sellprice = 225
 
 /obj/item/clothing/ring/ruby
 	name = "rontz ring"
 	icon_state = "g_ring_ruby"
-	sellprice = 255
+	sellprice = 285
 
 /obj/item/clothing/ring/topaz
 	name = "toper ring"
 	icon_state = "g_ring_topaz"
-	sellprice = 180
+	sellprice = 215
 
 /obj/item/clothing/ring/quartz
 	name = "blortz ring"
 	icon_state = "g_ring_quartz"
-	sellprice = 245
+	sellprice = 275
 
 /obj/item/clothing/ring/sapphire
 	name = "saffira ring"
 	icon_state = "g_ring_sapphire"
-	sellprice = 200
+	sellprice = 230
 
 /obj/item/clothing/ring/diamond
 	name = "dorpel ring"
 	icon_state = "g_ring_diamond"
-	sellprice = 270
+	sellprice = 300
 
 //silver rings
 /obj/item/clothing/ring/emeralds
@@ -501,3 +506,7 @@
 	anvilrepair = /datum/skill/craft/blacksmithing
 
 */
+/obj/item/clothing/ring/silver/burial
+	name = "inscribed silver ring"
+	desc = "an inscription inside reads 'bless who bury the former holder of this ring with proper rites.'"
+	sellprice = 33

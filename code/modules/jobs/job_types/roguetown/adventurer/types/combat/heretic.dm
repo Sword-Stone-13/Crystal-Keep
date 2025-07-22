@@ -210,6 +210,7 @@
 					backr = /obj/item/rogueweapon/shield/wood
 					beltr = /obj/item/rogueweapon/sword/iron/short
 					beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
+					id = /obj/item/clothing/ring/gold/burial
 					H.change_stat("strength", 1)
 					H.change_stat("endurance", 1)
 					H.change_stat("constitution", 1)
