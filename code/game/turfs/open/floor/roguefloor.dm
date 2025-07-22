@@ -1310,9 +1310,7 @@
 		/turf/closed/wall/mineral/rogue/wooddark,
 		/turf/closed/wall/mineral/rogue/stone,
 		/turf/closed/wall/mineral/rogue/stone/moss,
-		/turf/open/floor/rogue/cobble,
-		/turf/open/floor/rogue/dirt,
-		/turf/open/floor/rogue/grass
+		/turf/open/floor/rogue/cobble
 	)
 	damage_deflection = 10
 	max_integrity = 800
