@@ -124,6 +124,9 @@
 			GLOB.footstep[T.footstep][2],
 			FALSE,
 			GLOB.footstep[T.footstep][3] + e_range)
+		if(ismob(parent) || isobj(parent))
+			var/dir = H.dir
+			show_sensory_effect(parent, 5, "footstep", dir, ignore_self = TRUE)
 	else
 		//SANITY CHECK, WILL NOT PLAY A SOUND IF THE LIST IS INVALID
 		if(!GLOB.barefootstep[T.barefootstep] || (LAZYLEN(GLOB.barefootstep[T.barefootstep]) < 3))
@@ -141,3 +144,6 @@
 			GLOB.barefootstep[T.barefootstep][2],
 			TRUE,
 			GLOB.barefootstep[T.barefootstep][3] + e_range)
+		if(ismob(parent) || isobj(parent))
+			var/dir = H.dir
+			show_sensory_effect(parent, 5, "footstep", dir, ignore_self = TRUE)

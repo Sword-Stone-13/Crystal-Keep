@@ -165,6 +165,7 @@
 		playsound(user, suppressed_sound, suppressed_volume, vary_fire_sound, ignore_walls = FALSE)
 	else
 		playsound(user, fire_sound, fire_sound_volume, vary_fire_sound)
+		show_sensory_effect(user, 5, "gunfire", user.dir)
 		if(message)
 /*			if(pointblank)
 				user.visible_message(span_danger("[user] shoots [src] point blank at [pbtarget]!"), \
