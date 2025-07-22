@@ -83,7 +83,6 @@
 	D.visible_message(span_danger("[A] punches [D]'s neck!"), \
 					span_danger("My neck is punched by [A]!"), span_hear("I hear a sickening sound of flesh hitting flesh!"), COMBAT_MESSAGE_RANGE, A)
 	to_chat(A, span_danger("I punch [D]'s neck!"))
-	D.adjustStaminaLoss(60)
 	playsound(get_turf(A), 'sound/blank.ogg', 50, TRUE, -1)
 	return TRUE
 
@@ -97,7 +96,6 @@
 		D.visible_message(span_warning("[A] locks [D] into a restraining position!"), \
 						span_danger("You're locked into a restraining position by [A]!"), span_hear("I hear shuffling and a muffled groan!"), null, A)
 		to_chat(A, span_danger("I lock [D] into a restraining position!"))
-		D.adjustStaminaLoss(20)
 		D.Stun(100)
 		restraining = TRUE
 		addtimer(VARSET_CALLBACK(src, restraining, FALSE), 50, TIMER_UNIQUE)
@@ -115,7 +113,6 @@
 		var/obj/item/I = D.get_active_held_item()
 		if(I && D.temporarilyRemoveItemFromInventory(I))
 			A.put_in_hands(I)
-		D.adjustStaminaLoss(50)
 		D.apply_damage(25, A.dna.species.attack_type)
 	return TRUE
 

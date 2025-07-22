@@ -49,7 +49,6 @@
 				if(prob(3))
 					to_chat(H, span_danger("I feel very weak and dizzy..."))
 					H.confused += 8
-					H.adjustStaminaLoss(40)
 					H.emote("cough")
 			if(5)
 				H.stop_sound_channel(CHANNEL_HEARTBEAT)
@@ -57,7 +56,6 @@
 				if(H.stat == CONSCIOUS)
 					H.visible_message(span_danger("[H] clutches at [H.p_their()] chest as if [H.p_their()] heart is stopping!"), \
 						span_danger("I feel a terrible pain in your chest, as if your heart has stopped!"))
-				H.adjustStaminaLoss(60)
 				H.set_heartattack(TRUE)
 				H.reagents.add_reagent(/datum/reagent/medicine/C2/penthrite, 3) // To give the victim a final chance to shock their heart before losing consciousness
 				cure()

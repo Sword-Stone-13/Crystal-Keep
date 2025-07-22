@@ -186,7 +186,9 @@
 			M.drowsyness += 1
 			M.slurring += 3
 		if(5 to 8)
-			M.adjustStaminaLoss(40, 0)
+			M.confused += 2
+			M.drowsyness += 2
+			M.slurring += 3
 		if(9 to INFINITY)
 			fakedeath_active = TRUE
 			M.fakedeath(type)
@@ -367,7 +369,6 @@
 	toxpwr = 0
 
 /datum/reagent/toxin/staminatoxin/on_mob_life(mob/living/carbon/M)
-	M.adjustStaminaLoss(REM * data, 0)
 	data = max(data - 1, 3)
 	..()
 	. = 1
@@ -605,7 +606,6 @@
 /datum/reagent/toxin/sodium_thiopental/on_mob_life(mob/living/carbon/M)
 	if(current_cycle >= 10)
 		M.Sleeping(40, 0)
-	M.adjustStaminaLoss(10*REM, 0)
 	..()
 	return TRUE
 
@@ -879,7 +879,6 @@
 	M.say("oof ouch my bones", forced = /datum/reagent/toxin/bonehurtingjuice)
 
 /datum/reagent/toxin/bonehurtingjuice/on_mob_life(mob/living/carbon/M)
-	M.adjustStaminaLoss(7.5, 0)
 	if(prob(20))
 		switch(rand(1, 3))
 			if(1)

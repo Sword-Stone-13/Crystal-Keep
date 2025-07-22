@@ -483,7 +483,7 @@
 	busy = TRUE
 	M.visible_message(span_danger("[user] has touched [M] with [src]!"), \
 			span_danger("[user] has touched [M] with [src]!"))
-	M.adjustStaminaLoss(50)
+	//M.adjustStaminaLoss(50)
 	M.Paralyze(100)
 	M.updatehealth() //forces health update before next life tick //isn't this done by adjustStaminaLoss anyway?
 	playsound(src,  'sound/blank.ogg', 50, TRUE, -1)

@@ -242,7 +242,6 @@
 						span_danger("[user] [pick(fluffmessages)]s you with [src]!"), span_hear("I hear a sickening sound of flesh hitting flesh!"), null, user)
 		to_chat(user, span_danger("I [pick(fluffmessages)] [H] with [src]!"))
 		playsound(get_turf(user), 'sound/blank.ogg', 75, TRUE, -1)
-		H.adjustStaminaLoss(rand(13,20))
 		if(prob(10))
 			H.visible_message(span_warning("[H] collapses!"), \
 							span_danger("My legs give out!"))

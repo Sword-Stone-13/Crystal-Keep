@@ -350,8 +350,6 @@
 	to_chat(user, span_warning("I twirl around a bit before losing your balance and impaling myself on [src]."))
 	if (force_wielded)
 		user.take_bodypart_damage(20,25,check_armor = TRUE)
-	else
-		user.adjustStaminaLoss(25)
 
 /obj/item/twohanded/dualsaber/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
 	if(wielded)

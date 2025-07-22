@@ -82,11 +82,11 @@
 	if (grinding || world.time < next_crash)
 		return FALSE
 	return ..()
-
+/*
 /obj/vehicle/ridden/scooter/skateboard/generate_actions()
 	. = ..()
 	initialize_controller_action_type(/datum/action/vehicle/ridden/scooter/skateboard/ollie, VEHICLE_CONTROL_DRIVE)
-
+*/
 /obj/vehicle/ridden/scooter/skateboard/post_buckle_mob(mob/living/M)//allows skateboards to be non-dense but still allows 2 skateboarders to collide with each other
 	density = TRUE
 	playsound(src, 'sound/items/firelight.ogg', 50, TRUE)

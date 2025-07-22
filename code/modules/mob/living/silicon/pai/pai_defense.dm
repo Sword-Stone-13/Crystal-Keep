@@ -95,11 +95,7 @@
 /mob/living/silicon/pai/adjustCloneLoss(amount, updating_health = TRUE, forced = FALSE)
 	return FALSE
 
-/mob/living/silicon/pai/adjustStaminaLoss(amount, updating_health, forced = FALSE)
-	if(forced)
-		take_holo_damage(amount)
-	else
-		take_holo_damage(amount * 0.25)
+
 
 /mob/living/silicon/pai/getBruteLoss()
 	return emittermaxhealth - emitterhealth
@@ -116,14 +112,11 @@
 /mob/living/silicon/pai/getCloneLoss()
 	return FALSE
 
-/mob/living/silicon/pai/getStaminaLoss()
-	return FALSE
+
 
 /mob/living/silicon/pai/setCloneLoss()
 	return FALSE
 
-/mob/living/silicon/pai/setStaminaLoss(amount, updating_health = TRUE)
-	return FALSE
 
 /mob/living/silicon/pai/setToxLoss()
 	return FALSE

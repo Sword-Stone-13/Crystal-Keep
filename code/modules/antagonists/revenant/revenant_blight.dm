@@ -20,7 +20,7 @@
 		affected_mob.remove_atom_colour(TEMPORARY_COLOUR_PRIORITY, "#1d2953")
 		to_chat(affected_mob, "<span class='notice'>I feel better.</span>")
 	..()
-
+/*
 /datum/disease/revblight/stage_act()
 	if(!finalstage)
 		if(!(affected_mob.mobility_flags & MOBILITY_STAND) && prob(stage*6))
@@ -29,14 +29,12 @@
 		if(prob(stage*3))
 			to_chat(affected_mob, span_revennotice("I suddenly feel [pick("sick and tired", "disoriented", "tired and confused", "nauseated", "faint", "dizzy")]..."))
 			affected_mob.confused += 8
-			affected_mob.adjustStaminaLoss(20)
 			new /obj/effect/temp_visual/revenant(affected_mob.loc)
 		if(stagedamage < stage)
 			stagedamage++
 			affected_mob.adjustToxLoss(stage*2) //should, normally, do about 30 toxin damage.
 			new /obj/effect/temp_visual/revenant(affected_mob.loc)
 		if(prob(45))
-			affected_mob.adjustStaminaLoss(stage)
 	..() //So we don't increase a stage before applying the stage damage.
 	switch(stage)
 		if(2)
@@ -52,10 +50,10 @@
 			if(!finalstage)
 				finalstage = TRUE
 				to_chat(affected_mob, span_revenbignotice("I feel like [pick("nothing's worth it anymore", "nobody ever needed your help", "nothing you did mattered", "everything you tried to do was worthless")]."))
-				affected_mob.adjustStaminaLoss(45)
 				new /obj/effect/temp_visual/revenant(affected_mob.loc)
 				affected_mob.visible_message("<span class='warning'>[affected_mob] looks terrifyingly gaunt...</span>", "<span class='revennotice'>I suddenly feel like your skin is <i>wrong</i>...</span>")
 				affected_mob.add_atom_colour("#1d2953", TEMPORARY_COLOUR_PRIORITY)
 				addtimer(CALLBACK(src, PROC_REF(cure)), 100)
 		else
 			return
+*/

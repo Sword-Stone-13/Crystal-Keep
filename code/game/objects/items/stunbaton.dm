@@ -169,7 +169,7 @@
 	L.Jitter(20)
 	L.confused = max(10, L.confused)
 	L.stuttering = max(8, L.stuttering)
-	L.adjustStaminaLoss(60)
+	//L.adjustStaminaLoss(60)
 
 	SEND_SIGNAL(L, COMSIG_LIVING_MINOR_SHOCK)
 	addtimer(CALLBACK(src, PROC_REF(apply_stun_effect_end), L), 2 SECONDS)
