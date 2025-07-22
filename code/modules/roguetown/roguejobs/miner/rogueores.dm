@@ -131,7 +131,7 @@
 	icon_state = "ingotgold"
 	smeltresult = /obj/item/ingot/gold
 	grind_results = list(/datum/reagent/gold = 15)
-	sellprice = 100
+	sellprice = 150
 
 /obj/item/ingot/iron
 	name = "iron bar"

@@ -52,6 +52,7 @@
 	backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve/elfnut
 	backl = /obj/item/storage/backpack/rogue/satchel
 	beltr = /obj/item/rogueweapon/sword/short/elfnut
+	id = /obj/item/clothing/ring/gold/burial
 	backpack_contents = list(/obj/item/reagent_containers/glass/bottle/rogue/berrypoison, /obj/item/rogueweapon/huntingknife/idagger/silver/elvish = 1, /obj/item/flashlight/flare/torch/lantern = 1)
 	beltl = /obj/item/ammo_holder/quiver/arrows/
 	H.change_stat("skill", 5)

@@ -1,4 +1,4 @@
-/obj/item/dildo
+/*/obj/item/dildo
 	name = "unfinished dildo"
 	desc = "You have to finish it first."
 	icon = 'modular/icons/obj/lewd/dildo.dmi'
@@ -81,3 +81,4 @@
 	color = "#A0A075"
 	dildo_material = "golden"
 	sellprice = 50
+*/

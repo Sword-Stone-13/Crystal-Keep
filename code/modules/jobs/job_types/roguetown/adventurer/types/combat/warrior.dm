@@ -47,6 +47,7 @@
 			belt = /obj/item/storage/belt/rogue/leather
 			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
+			id = /obj/item/clothing/ring/gold/burial
 			if(prob(70))
 				armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
 			else if(prob(50))
@@ -100,6 +101,7 @@
 			belt = /obj/item/storage/belt/rogue/leather
 			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
+			id = /obj/item/clothing/ring/gold/burial
 			if(prob(40))
 				armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
 				H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)

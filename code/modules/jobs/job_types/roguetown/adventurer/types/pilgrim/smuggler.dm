@@ -27,6 +27,7 @@
 	backr = /obj/item/storage/backpack/rogue/satchel
 	beltr = /obj/item/rogueweapon/huntingknife/idagger/steel
 	beltl = /obj/item/rogueweapon/huntingknife/idagger/steel
+	id = /obj/item/clothing/ring/gold/burial
 	backpack_contents = list(/obj/item/reagent_containers/powder/spice = 3, /obj/item/reagent_containers/glass/bottle/mercury = 1, /obj/item/reagent_containers/glass/bottle/rogue/poison = 1, /obj/item/reagent_containers/glass/bottle/rogue/healthpot = 1, /obj/item/reagent_containers/glass/bottle/rogue/manapot = 2,)
 	
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)

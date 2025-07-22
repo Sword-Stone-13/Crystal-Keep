@@ -22,6 +22,10 @@
 	backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
 	backl = /obj/item/storage/backpack/rogue/satchel
 	beltr = /obj/item/flashlight/flare/torch/lantern
+	if (prob(50))
+		id = /obj/item/clothing/ring/gold/burial
+	else
+		id = /obj/item/clothing/ring/silver/burial
 	backpack_contents = list(/obj/item/bait = 1, /obj/item/rogueweapon/huntingknife = 1)
 	beltl = /obj/item/ammo_holder/quiver/arrows
 	H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)

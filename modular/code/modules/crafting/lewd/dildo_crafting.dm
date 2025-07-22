@@ -1,4 +1,4 @@
-/datum/crafting_recipe/roguetown/wood_dildo
+/*/datum/crafting_recipe/roguetown/wood_dildo
 	name = "wooden dildo"
 	result = /obj/item/dildo/wood
 	reqs = list(/obj/item/grown/log/tree/small = 1)
@@ -26,3 +26,4 @@
 	req_bar = /obj/item/ingot/gold
 	created_item = list(/obj/item/dildo/gold, /obj/item/dildo/gold, /obj/item/dildo/gold)
 	i_type = "General"
+*/

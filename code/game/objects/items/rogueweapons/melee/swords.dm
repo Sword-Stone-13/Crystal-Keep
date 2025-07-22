@@ -38,7 +38,7 @@
 	name = "engraved sword"
 	desc = "A valuable sword for celebrations and rites."
 	icon_state = "decsword1"
-	sellprice = 140
+	sellprice = 220
 
 /obj/item/rogueweapon/sword/decorated/Initialize()
 	. = ..()
@@ -480,7 +480,7 @@
 
 /obj/item/rogueweapon/sword/sabre/dec
 	icon_state = "decsaber"
-	sellprice = 140
+	sellprice = 200
 
 /obj/item/rogueweapon/sword/rapier
 	name = "rapier"
@@ -532,7 +532,7 @@
 	and its blade bears twin inscriptions on either side. One reads, 'CAST IN THE NAME OF GODS' while the \
 	obverse reads, 'YE NOT GUILTY'."
 	icon_state = "decrapier"
-	sellprice = 140
+	sellprice = 200
 
 /obj/item/rogueweapon/sword/rapier/lord
 	force = 20

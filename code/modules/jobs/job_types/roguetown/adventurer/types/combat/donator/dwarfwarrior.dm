@@ -21,6 +21,7 @@
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	backr = /obj/item/rogueweapon/shield/wood
 	backl = /obj/item/storage/backpack/rogue/satchel
+	id = /obj/item/clothing/ring/gold/burial
 	if(prob(25))
 		mask = /obj/item/clothing/mask/rogue/facemask
 	if(prob(25))
