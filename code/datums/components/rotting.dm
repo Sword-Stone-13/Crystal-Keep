@@ -2,7 +2,8 @@
 	var/amount = 0
 	var/last_process = 0
 	var/datum/looping_sound/fliesloop/soundloop
-
+	/// Stored skin tone to revert to before destroying if we don't zombify from rot.
+	var/skin_tone
 /datum/component/rot/Initialize(new_amount)
 	..()
 	if(!isatom(parent))
@@ -18,6 +19,9 @@
 /datum/component/rot/Destroy()
 	if(soundloop)
 		soundloop.stop()
+	if(ishuman(parent))
+		var/mob/living/carbon/human/H = parent
+		H.skin_tone = skin_tone
 	. = ..()
 
 /datum/component/rot/process()
@@ -31,6 +35,9 @@
 /datum/component/rot/corpse/Initialize()
 	if(!iscarbon(parent))
 		return COMPONENT_INCOMPATIBLE
+	if(ishuman(parent)) // Edge-case where rot would be removed from a body that had a head attached after it had rotted.
+		var/mob/living/carbon/human/H = parent
+		skin_tone = H.skin_tone
 	. = ..()
 
 /datum/component/rot/corpse/process()
@@ -89,7 +96,7 @@
 	if(findonerotten)
 		var/turf/open/T = C.loc
 		if(istype(T))
-			T.add_pollutants(/datum/pollutant/rot, 5)
+			//T.add_pollutants(/datum/pollutant/rot, 5) //disabled temporarily due to rot miasma gas //enable for ass blast USA around the 50 corpses in the keep
 			if(soundloop && soundloop.stopped && !is_zombie)
 				soundloop.start()
 		else
@@ -118,7 +125,7 @@
 			soundloop.start()
 		var/turf/open/T = get_turf(L)
 		if(istype(T))
-			T.add_pollutants(/datum/pollutant/rot, 5)
+			T.add_pollutants(/datum/pollutant/rot, 5) //I cannot comment this out or the next line becomes invalid for seemingly no reason. :fear:
 	if(amount > 25 MINUTES)
 		qdel(src)
 		return L.dust(drop_items=TRUE)
