@@ -627,7 +627,7 @@
 		if(!M || (ignore_self && (M == source)))
 			continue
 
-		if(!M.stat && !M.is_blind()) // If the mob is not unconscious and not blind, we don't show the effect.
+		if(!M.stat && !is_blind(M)) // If the mob is not unconscious and not blind, we don't show the effect.
 			continue
 
 		var/image/I = image('icons/effects/fov/fov_effects.dmi', T, icon_state, SENSORY_LAYER)
