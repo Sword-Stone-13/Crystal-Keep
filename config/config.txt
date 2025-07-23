@@ -16,22 +16,22 @@ $include crystalkeep.txt
 # There are various options which are hard-locked for security reasons.
 
 ## Server name: This appears at the top of the screen in-game and in the BYOND hub. Uncomment and replace 'tgstation' with the name of your choice.
-SERVERNAME Roguetown
+SERVERNAME Crystal Keep - Legend of the 13 Stone Swords [SFW]
 
 ## Server tagline: This will appear right below the server's title.
-# SERVERTAGLINE A generic TG-based server
+# SERVERTAGLINE Safe For Work Fantasy Whimsy Hopecore Server (+Tip :D)
 
 ## Server SQL name: This is the name used to identify the server to the SQL DB, distinct from SERVERNAME as it must be at most 32 characters.
 # SERVERSQLNAME tgstation
 
 ## Station name: The name of the station as it is referred to in-game. If commented out, the game will generate a random name instead.
-STATIONNAME Roguetown
+STATIONNAME Crystal Keep
 
 ## Put on byond hub: Uncomment this to put your server on the byond hub.
 #HUB
 
 ## Lobby time: This is the amount of time between rounds that players have to setup their characters and be ready.
-LOBBY_COUNTDOWN 600
+LOBBY_COUNTDOWN 900
 
 ## Round End Time: This is the amount of time after the round ends that players have to murder death kill each other.
 ROUND_END_COUNTDOWN 180
@@ -195,7 +195,7 @@ VOTE_PERIOD 1200
 # DONT_DEL_NEWMOB
 
 ## set a hosted by name for unix platforms
-HOSTEDBY k
+HOSTEDBY Crystal Keep
 
 ## Set to jobban "Guest-" accounts from Captain, HoS, HoP, CE, RD, CMO, Warden, Security, Detective, and AI positions.
 ## Set to 1 to jobban them from those positions, set to 0 to allow them.
@@ -238,16 +238,16 @@ USEBLACKLIST
 # SERVER ss13.example.com:2506
 
 ## Discod address
-DISCORDURL https://discord.gg/bx9c7ha5Qk
+DISCORDURL https://discord.gg/GFfT23A9JP
 
 ## Wiki address
-WIKIURL https://wiki.moviesfreepremium.xyz/blackstone
+WIKIURL https://forum.crystal-keep.com/
 
 ## Rules address
-RULESURL https://wiki.moviesfreepremium.xyz/blackstone/rules
+RULESURL https://forum.crystal-keep.com/
 
 ## Github address
-GITHUBURL https://github.com/Blackstone-SS13/BLACKSTONE
+GITHUBURL https://github.com/Sword-Stone-13/Crystal-Keep
 
 ## Round specific stats address
 ## Link to round specific parsed logs; IE statbus. It is appended with the RoundID automatically by ticker/Reboot()
@@ -325,7 +325,7 @@ NOTE_STALE_DAYS 365.2422
 SOFT_POPCAP_MESSAGE Be warned that the server is currently serving a high number of users, consider using alternative game servers.
 
 ## Uncomment for 'hard' population caps, players will not be allowed to spawn if the living crew exceeds the listed number, though they may still observe or wait for the living crew to decrease in size.
-HARD_POPCAP 100
+HARD_POPCAP 180
 
 ## Message for hard cap
 HARD_POPCAP_MESSAGE Too many people are alive. Wait for those living to die or donate to our patreon for a reserved slot.
@@ -356,7 +356,7 @@ BYOND_MEMBER_BYPASS_POPCAP
 #PANIC_BUNKER
 
 ## The message the Panic Bunker gives when someone is rejected by it
-#PANIC_BUNKER_MESSAGE Sorry, but the server is currently not accepting connections from never before seen players.
+#PANIC_BUNKER_MESSAGE Sorry, if you see this message, we've bunkered ourselves, likely from an overload of people. Send help.
 
 ## If panic bunker is on and a player is rejected (see above), attempt to send them to this connected server (see below) instead.
 ##	You probably want this to be the same as CROSS_SERVER_ADDRESS
