@@ -698,42 +698,32 @@
 	if(isliving(src))
 		L = src
 	var/client/client = L.client
-	if(L.IsSleeping() || L.surrendering)
-		if(cmode)
-			playsound_local(src, 'sound/misc/comboff.ogg', 100)
-			if(client)
-				SSdroning.kill_droning(client)  // Stop the combat music
-				SSdroning.play_area_sound(get_area(src), client)  // Play area sound after stopping combat music
-			set_cmode(FALSE)
-		if(!HAS_TRAIT(src, TRAIT_SILENT_FIGHTER))
-			visible_message("<span class='notice'>[src] relaxes their muscles.</span>")
-		if(hud_used)
-			if(hud_used.cmode_button)
-				hud_used.cmode_button.update_icon()
-		return
+	var/is_dead = (stat == DEAD) // Check if the mob is dead
+	var/can_show_message = !(is_dead || L.IsSleeping() || L.surrendering) && !HAS_TRAIT(src, TRAIT_SILENT_FIGHTER) // Determine if visible messages are allowed
+
 	if(cmode)
 		playsound_local(src, 'sound/misc/comboff.ogg', 100)
 		if(client)
 			SSdroning.kill_droning(client)  // Stop the combat music
 			SSdroning.play_area_sound(get_area(src), client)  // Play area sound after stopping combat music
 		set_cmode(FALSE)
-		if(!HAS_TRAIT(src, TRAIT_SILENT_FIGHTER))
+		if(can_show_message)
 			visible_message("<span class='notice'>[src] relaxes their muscles.</span>")
 		if(client && HAS_TRAIT(src, TRAIT_SCHIZO_AMBIENCE) && !HAS_TRAIT(src, TRAIT_SCREENSHAKE))
 			animate(client, pixel_y) // Stops screenshake if not on 4th wonder yet
 	else
 		set_cmode(TRUE)
 		playsound_local(src, 'sound/misc/combon.ogg', 100)
-		if(!HAS_TRAIT(src, TRAIT_SILENT_FIGHTER))
+		if(can_show_message)
 			visible_message("<span class='warning'>[src] tenses up, ready for combat!</span>")
-		if(L.cmode_music)
+		if(L?.cmode_music)
 			SSdroning.play_combat_music(L.cmode_music, client)
 		if(client && HAS_TRAIT(src, TRAIT_SCHIZO_AMBIENCE))
 			animate(client, pixel_y = 1, time = 1, loop = -1, flags = ANIMATION_RELATIVE)
 			animate(pixel_y = -1, time = 1, flags = ANIMATION_RELATIVE)
-	if(hud_used)
-		if(hud_used.cmode_button)
-			hud_used.cmode_button.update_icon()
+
+	if(hud_used?.cmode_button)
+		hud_used.cmode_button.update_icon()
 
 /mob/proc/set_cmode(var/new_cmode)
 	if(cmode == new_cmode)

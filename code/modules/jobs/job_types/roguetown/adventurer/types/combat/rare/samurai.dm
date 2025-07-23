@@ -52,3 +52,4 @@
 	H.change_stat("skill", 3)
 	H.change_stat("speed", 2)
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/secondwind)
+	ADD_TRAIT(H, TRAIT_SILENT_FIGHTER, TRAIT_GENERIC)
