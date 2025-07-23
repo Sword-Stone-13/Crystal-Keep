@@ -24,12 +24,7 @@
 	return ..()
 /datum/soliloquy/proc/set_doll(mob/living/carbon/human/H)
 	character = H
-	var/mob/living/carbon/human/dummy = generate_or_wait_for_human_dummy("soliloquy_[character]")
-	dummy.appearance = character.appearance
-	dummy.dir = SOUTH
-	name = H.real_name
-	character_image = getFlatIcon(dummy)
-	unset_busy_human_dummy("soliloquy_[character]")
+	character_image = getFlatIcon(H, defdir = SOUTH, no_anim = TRUE)
 	return TRUE
 /datum/soliloquy/proc/submit(mob/user)
 	if(!character)
@@ -59,7 +54,7 @@
 		dat += "<tr><td align='center'><hr style='border: 1px solid #704214; width: 50%; margin: auto;'></td></tr>"
 		dat += "<tr><td align='center'><b>[question_title]:</b></td></tr>"
 		dat += "<tr><td align='center'>[question_text]</td></tr>"
-		dat += "<tr><td align='center'><div style='width: 80%; background-color: #000000; border: 2px solid #704214; color: #FFFFFF; padding: 5px; display: inline-block;'>[responses[question_title] ? responses[question_title] : "No response yet"]</div><a href='?src=[REF(src)];action=edit;question=[question_title]' style='display: inline-block; padding: 5px 10px; margin-left: 5px; font-size: 14px; background-color: #704214; color: #FFFFFF; text-decoration: none; border-radius: 5px;'>🪶</a></td></tr>"
+		dat += "<tr><td align='center'><div style='width: 80%; background-color: #000000; border: 2px solid #704214; color: #FFFFFF; padding: 5px; display: inline-block;'>[responses[question_title] ? responses[question_title] : "No response yet"]</div><a href='?src=[REF(src)];action=edit;question=[question_title]' style='display: inline-block; padding: 5px 10px; margin-left: 5px; font-size: 14px; background-color: #704214; color: #FFFFFF; text-decoration: none; border-radius: 5px;'>✎</a></td></tr>"
 	dat += "</table></center>"	
 	dat += "<center><div style='margin-bottom: 10px;'><span style='color: [submitted ? "#00FF00" : "#FF0000"];'>[submitted ? "✓ Submitted" : "✗ Not Submitted"]</span></div>"
 	dat += "<a href='?src=[REF(src)];action=submit' style='display: inline-block; padding: 10px 20px; font-size: 16px; background-color: #704214; color: #FFFFFF; text-decoration: none; border-radius: 5px; margin-top: 10px;'>[submitted ? "Unsubmit" : "Submit"] Soliloquy</a></center>"
@@ -152,7 +147,7 @@
 		dat += "<div style='margin: 10px; padding: 10px; background-color: #1a1a1a; border: 1px solid #704214;'>"
 		dat += "<table style='width: 100%;'>"
 		dat += "<tr>"
-		dat += "<td style='text-align: center;'><div style='background-color: #3b230b; padding: 5px; border: 1px solid #704214; display: inline-block;'><img src='data:image/png;base64,[icon2base64(I)]' width='64' height='64' style='filter: drop-shadow(0 0 2px white) drop-shadow(0 0 2px white)'></div></td>"
+		dat += "<td style='text-align: center;'><div style='background-color: #3b230b; padding: 5px; border: 1px solid #704214; display: inline-block;'><img src='data:image/png;base64,[icon2base64(I)]' width='64' height='64' style='filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.2)) drop-shadow(0 0 2px rgba(255, 255, 255, 0.2))'></div></td>"
 		dat += "</tr>"		
 		dat += "<tr><td colspan='3'><div style='margin: 5px 0;'>"
 
@@ -231,7 +226,19 @@
 			S.character = H
 			S.set_doll(H)
 
-			S.character_image = icon('icons/mob/human.dmi', "human_basic")
+			var/app_choice = input(usr, "Do you want to select an appearance for the dummy soliloquy?", "Select Character") in \
+				list("Yes", "No")
+
+			if(app_choice == "Yes")
+				var/mob/living/carbon/human/selected_char = input(usr, "Select a character appearance for the dummy soliloquy.", "Select Character") as null|anything in GLOB.human_list
+				if(selected_char)
+					S.character_image = getFlatIcon(selected_char, defdir = SOUTH, no_anim = TRUE)
+				else
+					S.character_image = icon('icons/mob/mob.dmi', "m-none")
+			
+			else
+				S.character_image = icon('icons/mob/mob.dmi', "m-none")
+			
 			
 			to_chat(usr, span_notice("Added a dummy soliloquy."))
 			
@@ -504,7 +511,7 @@
 
 		<div style='background-color: #000000; padding: 5px; border: 1px solid #704214; display: inline-block; position: relative;'>
 		<div style='position: absolute; width: 0; height: 0; border-left: 75px solid transparent; border-right: 75px solid transparent; border-bottom: 150px solid rgba(255,255,255,0.1); filter: blur(10px); top: 50%; left: 50%; transform: translate(-50%, -50%);'></div>
-		<img src='data:image/png;base64,[icon2base64(S.character_image)]' style='width: 150px; height: 150px; display: block; margin: 0 auto; filter: drop-shadow(0 0 2px white) drop-shadow(0 0 2px white); position: relative; z-index: 2;'></div><br><br>"}
+		<img src='data:image/png;base64,[icon2base64(S.character_image)]' style='width: 150px; height: 150px; display: block; margin: 0 auto; filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.2)) drop-shadow(0 0 1px rgba(255, 255, 255, 0.2)); position: relative; z-index: 2;'></div><br><br>"}
 	for(var/question in S.questions)
 		html += "<div style='margin-bottom: 10px;'>"
 		html += "<b style='color: #b87333; font-family: Arial; font-size: 16px;'>[question]:</b><br>"
