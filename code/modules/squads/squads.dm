@@ -6,6 +6,7 @@
 	prevent_roundtype_conversion = FALSE
 	var/squad_leader = null
 	var/squad_type
+	show_in_roundend = FALSE
 
 /datum/antagonist/squad/none
 	name = "None"

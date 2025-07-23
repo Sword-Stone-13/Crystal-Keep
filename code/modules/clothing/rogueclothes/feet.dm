@@ -299,8 +299,8 @@
 /obj/item/clothing/shoes/roguetown/sandals/house
 	name = "anklet"
 	desc = ""
-	icon_state = "house_black_witch_boots"
-	item_state = "house_black_witch_boots"
+	icon_state = "house_black_witch_anklet"
+	item_state = "house_black_witch_anklet"
 	allowed_sex = list(FEMALE)
 
 ///STEPPE///

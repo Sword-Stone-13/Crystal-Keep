@@ -9,7 +9,7 @@
 	)
 	pickprob = 25
 	maximum_possible_slots = 2
-	traits_applied = list(TRAIT_DODGEEXPERT, TRAIT_SILENT_FIGHTER)
+	traits_applied = list(TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 	category_tags = list(CTAG_ADVENTURER)
 
 	outfit = /datum/outfit/job/roguetown/adventurer/assassin
@@ -69,3 +69,4 @@
 		beltr = /obj/item/cooking/pan
 		beltl = /obj/item/flint
 		backpack_contents = list(/obj/item/reagent_containers/glass/bottle/rogue/poison,/obj/item/rogueweapon/shovel/small=1, /obj/item/rogueweapon/huntingknife/idagger/silver/elvish/drow)
+	ADD_TRAIT(H, TRAIT_SILENT_FIGHTER, TRAIT_GENERIC)

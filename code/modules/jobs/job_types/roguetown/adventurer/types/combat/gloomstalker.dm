@@ -52,7 +52,7 @@
 		if(prob(50))
 			pants = /obj/item/clothing/under/roguetown/tights/black
 			gloves = /obj/item/clothing/gloves/roguetown/fingerless
-	
+	ADD_TRAIT(H, TRAIT_SILENT_FIGHTER, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 	if(prob(23))
