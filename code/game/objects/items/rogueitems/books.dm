@@ -258,8 +258,8 @@
 	bookfile = "knowledge.json"
 
 /obj/item/book/rogue/secret/xylix
-	name = "Book of Gold"
-	desc = "{<font color='red'><blink>An ominous book with untold powers.</blink></font>}"
+	name = "The King in Yellow"
+	desc = "{<font color='red'><blink>A pleasant looking book.</blink></font>}"
 	icon_state ="xylix_0"
 	base_icon_state = "xylix"
 	bookfile = "xylix.json"

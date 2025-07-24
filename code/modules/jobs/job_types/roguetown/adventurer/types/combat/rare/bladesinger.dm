@@ -25,7 +25,7 @@
 	armor = /obj/item/clothing/suit/roguetown/armor/chainmail
 	shoes = /obj/item/clothing/shoes/roguetown/armor
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
-	beltl = /obj/item/gun/magic/spellbook/crystalsword
+	//beltl = /obj/item/gun/magic/spellbook/crystalsword
 	head = /obj/item/clothing/head/roguetown/helmet/leather
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)

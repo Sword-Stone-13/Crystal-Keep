@@ -308,7 +308,8 @@
 	can_parry = FALSE
 	force = 10
 	minmag = 14
-	
+
+/*
 /obj/item/gun/magic/spellbook/crystalsword
 	name = "Shining sword"
 	desc = "A beautiful blue sword that glows in the night."
@@ -329,7 +330,7 @@
 	force_on = 25 // Ensure consistency when open
 	minmag = 11 //for now, just to test
 //more to come after tests
-
+*/
 // Frog Prince
 /obj/item/gun/magic/spellbook/frogprince
 	name = "Frog Prince tome"
