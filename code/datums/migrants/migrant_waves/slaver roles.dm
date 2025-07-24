@@ -1,6 +1,6 @@
 /datum/migrant_role/slaver/master
 	name = "Zybantynian Master"
-	greet_text = "The leader of the Zybantynian slave troup. You have came to the Isle of Enigma from the western deserts of Zybantine in the hopes of gathering wealth through the trade unfortunate laborers. The practice can be called despicable by some, but it is without a doubt efficient in filling your pockets before you return to Zybantine"
+	greet_text = "The leader of the Zybantynian slave troup. You have came to the Crystal Keep from the western deserts of Zybantine in the hopes of gathering wealth through the trade unfortunate laborers. The practice can be called despicable by some, but it is without a doubt efficient in filling your pockets before you return to Zybantine"
 	outfit = /datum/outfit/job/roguetown/slaver/master
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_TOLERATED_UP
@@ -211,7 +211,7 @@
 
 /datum/migrant_role/slaver/slavez
 	name = "Slave"
-	greet_text = "An unlucky slave, captured and trained for labor, now being transported from the western deserts of the Zybantines to the marsh filled Isle of Enigma."
+	greet_text = "An unlucky slave, captured and trained for labor, now being transported from the western deserts of the Zybantines to the beautiful Crystal Keep."
 	outfit = /datum/outfit/job/roguetown/slaver/slavez
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
