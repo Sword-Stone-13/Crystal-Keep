@@ -5498,6 +5498,8 @@
 /obj/item/candle/yellow,
 /obj/item/candle/yellow,
 /obj/item/candle/yellow,
+/obj/item/book/rogue/playerbook,
+/obj/item/book/rogue/playerbook,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town)
 "hSC" = (
@@ -6000,6 +6002,13 @@
 /obj/machinery/light/rogue/firebowl,
 /turf/open/floor/rogue/carpet/lord/center,
 /area/rogue/indoors/shelter/mountains)
+"iTL" = (
+/obj/structure/bookcase/random/archive,
+/obj/item/book/rogue/playerbook,
+/obj/item/book/rogue/playerbook,
+/obj/item/book/rogue/playerbook,
+/turf/open/floor/rogue/herringbone/dark,
+/area/rogue/under/town/basement)
 "iTS" = (
 /turf/closed/wall/mineral/rogue/stone/window,
 /area/rogue/indoors/town/magician)
@@ -7950,6 +7959,7 @@
 	pixel_x = -4;
 	pixel_y = 9
 	},
+/obj/item/book/rogue/playerbook,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town)
 "lAX" = (
@@ -85120,7 +85130,7 @@ cHK
 cHK
 cHK
 mXi
-hPU
+iTL
 xyx
 hPU
 xyx
