@@ -84,7 +84,7 @@
 			B.author	=	query_get_random_books.item[2]
 			B.title		=	query_get_random_books.item[3]
 			B.dat		=	query_get_random_books.item[4]
-			B.name		=	"Book: [B.title]"
+			B.name		=	"[B.title]"
 			B.icon_state=	"book[rand(1,8)]"
 	qdel(query_get_random_books)
 
@@ -94,17 +94,33 @@
 	for(var/b in 1 to amount)
 		if(prob(0.1))
 			new /obj/item/book_crafting_kit(location)
-		if(prob(clamp(length(player_book_titles), 10, 90)))
+		else if(prob(clamp(length(player_book_titles), 15, 90)))
 			var/obj/item/book/rogue/playerbook/newbook = new /obj/item/book/rogue/playerbook(location)
-			if(prob(33))
-				newbook.pages = SSlibrarian.file2playerbook("ruined")["text"]
+			var/picked_title = pick(player_book_titles)
+			var/book_data = SSlibrarian.file2playerbook(picked_title)
+			if(!book_data || !islist(book_data["text"]))
+				newbook.pages = list("Unspeakable runes have tainted this book. Xylix has obliterated the knowledge")
+				newbook.title = "Old Book"
+				newbook.author = "Unknown"
+				newbook.icon_state = "book1"
+				newbook.name = "Old Book"
+			else
+				newbook.title = book_data["book_title"]
+				newbook.author = book_data["author"]
+				newbook.player_book_author_ckey = book_data["author_ckey"]
+				newbook.icon_state = book_data["icon"]
+				newbook.pages = book_data["text"]
+				newbook.name = "[newbook.title]"
+				if(prob(33))
+					var/ruined_data = SSlibrarian.file2playerbook("ruined")
+					if(ruined_data && islist(ruined_data["text"]))
+						newbook.pages = ruined_data["text"]
+					else
+						newbook.pages = list("This book is too damaged to read.")
 		else
 			var/obj/item/book/rogue/addition = pick(possible_books)
 			var/obj/item/book/rogue/newbook = new addition(location)
-			if(istype(newbook, /obj/item/book/rogue/secret))
-				qdel(newbook)
-				continue
-			if(istype(newbook, /obj/item/book/rogue/bibble))
+			if(istype(newbook, /obj/item/book/rogue/secret) || istype(newbook, /obj/item/book/rogue/bibble))
 				qdel(newbook)
 				continue
 			if(prob(33))

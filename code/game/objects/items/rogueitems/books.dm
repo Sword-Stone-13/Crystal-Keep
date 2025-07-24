@@ -435,6 +435,12 @@
 	base_icon_state = "[player_book_icon]"
 	pages = list("<b3><h3>Title: [player_book_title]<br>Author: [player_book_author]</b><h3>[player_book_text]")
 
+/obj/item/book/rogue/playerbook/read(mob/user)
+	if(!islist(pages) || !length(pages))
+		to_chat(user, span_warning("This book is unreadable!"))
+		return
+	..()
+
 /obj/item/manuscript
 	name = "2 page manuscript"
 	desc = "A 2 page written piece, with aspirations of becoming a book."
