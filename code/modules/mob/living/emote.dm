@@ -90,15 +90,28 @@
 			L.forceMove(pickedturf)
 			return FALSE
 	if(length(message2recognize) > 15)
-		if(findtext(message2recognize, "[M.patron]"))
-			L.playsound_local(L, 'sound/misc/notice (2).ogg', 100, FALSE)
-			to_chat(L, "<font color='yellow'>I, [M.patron], have heard your prayer and yet cannot aid you.</font>")
-			/*var/obj/item/underworld/coin/C = new 
-			L.put_in_active_hand(C)*/
-			return TRUE
-		else
-			return TRUE
-	else 
+		var/coin_chance = FALSE
+		var/patron_message = "<font color='yellow'>I, [M.patron], have heard your prayer and yet cannot aid you.</font>" // Default message
+		var/give_coin = FALSE
+
+		switch(M.patron.type)
+			if(/datum/patron/divine/necra)
+				patron_message = "<font color='yellow'>I, [M.patron.name], have heard your prayer and grant you favor.</font>"
+				give_coin = TRUE
+			if(/datum/patron/godless, /datum/patron/divine/xylix, /datum/patron/zizo)
+				patron_message = "<font color='yellow'>HAHAHAHAHAHA!!</font>"
+				coin_chance = prob(50)
+				give_coin = coin_chance
+			if(/datum/patron/inhumen/psydon)
+				patron_message = "<font color='yellow'>You can find a coin. Go.</font>"
+
+		L.playsound_local(L, 'sound/misc/notice (2).ogg', 100, FALSE)
+		to_chat(L, patron_message)
+		if(give_coin)
+			var/obj/item/underworld/coin/C = new
+			L.put_in_active_hand(C)
+		return TRUE
+	else
 		to_chat(L, span_danger("My prayer was kinda short..."))
 
 /datum/emote/living/meditate
