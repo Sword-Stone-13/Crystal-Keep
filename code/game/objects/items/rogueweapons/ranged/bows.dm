@@ -200,7 +200,7 @@
 	name = "Elfnut Bow"
 	desc = "Elfnuts are usually empty inside, save for the ones who's waxy innards contort into string-like sinews."
 	icon_state = "elfnutlongbow"
-	icon = 'icons/roguetown/weapons/32.dmi'
+	icon = 'icons/roguetown/weapons/64.dmi'
 	possible_item_intents = list(/datum/intent/shoot/bow/recurve/elfnut, /datum/intent/arc/bow/recurve/elfnut, INTENT_GENERIC)
 	randomspread = 1
 	spread = 1
@@ -226,6 +226,7 @@
 /obj/item/gun/ballistic/revolver/grenadelauncher/bow/elvish
 	name = "Elvish Longbow"
 	desc = "An elvish warbow. Twisted steel-like threads like roots of a tree."
+	icon = 'icons/roguetown/weapons/64.dmi'
 	icon_state = "elfnutlongbowsilver"
 	possible_item_intents = list(/datum/intent/shoot/bow/elvish, /datum/intent/arc/bow/elvish,INTENT_GENERIC)
 	randomspread = 1

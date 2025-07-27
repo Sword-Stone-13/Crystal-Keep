@@ -164,7 +164,7 @@
 	smeltresult = /obj/item/ingot/bluesteel
 	damfactor = 1.5
 	mag_type = /obj/item/ammo_box/magazine/internal/shot/xbow/bluesteel
-	icon_state = "crossbow0_bluesteel"
+	icon_state = "crossbowbluesteel0"
 	item_state = "crossbow"
 
 /obj/item/ammo_box/magazine/internal/shot/xbow/bluesteel
@@ -189,7 +189,7 @@
 	smeltresult = /obj/item/ingot/redsteel
 	damfactor = 1.8
 	slot_flags = ITEM_SLOT_BACK|ITEM_SLOT_HIP
-	icon_state = "crossbow0_redsteel"
+	icon_state = "crossbowredsteel0"
 	item_state = "crossbow"
 
 /datum/intent/shoot/crossbow/bluesteel
