@@ -10,12 +10,12 @@
 		/datum/species/lizardfolk,
 	)
 	vampcompat = FALSE
-	outfit = /datum/outfit/job/roguetown/adventurer/cleric
+	outfit = /datum/outfit/job/roguetown/adventurer/shaman
 	category_tags = list(CTAG_ADVENTURER, CTAG_PILGRIM)
 
 	cmode_music = 'sound/music/combat_clergy.ogg'
 
-/datum/outfit/job/roguetown/adventurer/cleric
+/datum/outfit/job/roguetown/adventurer/shaman
 	allowed_patrons = ALL_CLERIC_PATRONS
 
 /datum/outfit/job/roguetown/adventurer/shaman/pre_equip(mob/living/carbon/human/H)

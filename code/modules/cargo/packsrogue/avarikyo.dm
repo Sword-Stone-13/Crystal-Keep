@@ -6,7 +6,7 @@
 
 /datum/supply_pack/rogue/avarikyo/kitsune
 	name = "Kitsune Kabuto and Armor"
-	cost = 800
+	cost = 200
 	contains = list(
 					/obj/item/clothing/head/roguetown/helmet/heavy/jadish/kitsune,
 					/obj/item/clothing/suit/roguetown/armor/plate/full/jadekingdom/kitsune
@@ -14,7 +14,7 @@
 
 /datum/supply_pack/rogue/avarikyo/neko
 	name = "Neko Kabuto and Armor"
-	cost = 1000
+	cost = 300
 	contains = list(
 					/obj/item/clothing/head/roguetown/helmet/heavy/jadish/neko,
 					/obj/item/clothing/suit/roguetown/armor/plate/full/jadekingdom/neko
@@ -22,7 +22,7 @@
 
 /datum/supply_pack/rogue/avarikyo/katana
 	name = "Premium Blades"
-	cost = 300
+	cost = 70
 	contains = list(
 					/obj/item/rogueweapon/sword/sabre/katana,
 					/obj/item/rogueweapon/sword/sabre/katana
@@ -31,7 +31,7 @@
 
 /datum/supply_pack/rogue/avarikyo/glaives
 	name = "Foreign Glaives"
-	cost = 300
+	cost = 70
 	contains = list(
 					/obj/item/rogueweapon/glaive/naginata,
 					/obj/item/rogueweapon/glaive/naginata,
@@ -44,7 +44,7 @@
 
 /datum/supply_pack/rogue/avarikyo/gronnhelm
 	name = "Gronn Style Helmets"
-	cost = 80
+	cost = 20
 	contains = list(
 					/obj/item/clothing/head/roguetown/helmet/nomadhelmet,
 					/obj/item/clothing/head/roguetown/helmet/nomadhelmet
@@ -53,7 +53,7 @@
 
 /datum/supply_pack/rogue/avarikyo/helmets
 	name = "Gronn Style Helmets"
-	cost = 80
+	cost = 20
 	contains = list(
 					/obj/item/clothing/head/roguetown/helmet/nomadhelmet,
 					/obj/item/clothing/head/roguetown/helmet/nomadhelmet

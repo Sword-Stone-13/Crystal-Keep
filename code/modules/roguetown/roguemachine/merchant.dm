@@ -245,19 +245,19 @@
 		if(!(upgrade_flags & UPGRADE_WARDROBE))
 			options += "Purchase Wardrobe License (50)"
 		if(!(upgrade_flags & UPGRADE_WALNUTIAN))
-			options += "Purchase Walnutian Imports License (350)"
+			options += "Purchase Walnutian Imports License (175)"
 		if(!(upgrade_flags & UPGRADE_AVARIKYO))
-			options += "Purchase Avarikyo Imports License (350)"
+			options += "Purchase Avarikyo Imports License (175)"
 		if(!(upgrade_flags & UPGRADE_ARTISANS))
-			options += "Purchase Commissioned Artisans Connection (200)"
+			options += "Purchase Commissioned Artisans Connection (100)"
 		if(!(upgrade_flags & UPGRADE_ZYBANTIUM))
-			options += "Purchase Zybantium Imports License (250)"
+			options += "Purchase Zybantium Imports License (100)"
 		if(!(upgrade_flags & UPGRADE_FENCER))
-			options += "Purchase Fencer Connection (500)"
+			options += "Purchase Fencer Connection (200)"
 		if(!(upgrade_flags & UPGRADE_MUNITIONS))
 			options += "Purchase Import Munitions License (100)"
 		if(!(upgrade_flags & UPGRADE_STEEL))
-			options += "Purchase Steel Imports License (1000)"
+			options += "Purchase Steel Imports License (300)"
 		var/select = input(usr, "Please select an option.", "", null) as null|anything in options
 		if(!select)
 			return
@@ -310,61 +310,51 @@
 				budget -= 50
 				upgrade_flags |= UPGRADE_WARDROBE
 				playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
-			if("Purchase Walnutian Imports License (350)")
+			if("Purchase Walnutian Imports License (175)")
 				if(upgrade_flags & UPGRADE_WALNUTIAN)
 					return
-				if(budget < 350)
+				if(budget < 175)
 					say("Ask again when you're serious.")
 					playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
 					return
-				budget -= 350
+				budget -= 175
 				upgrade_flags |= UPGRADE_WALNUTIAN
 				playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
-			if("Purchase Avarikyo Imports License (350)")
+			if("Purchase Avarikyo Imports License (175)")
 				if(upgrade_flags & UPGRADE_AVARIKYO)
 					return
-				if(budget < 350)
+				if(budget < 175)
 					say("Ask again when you're serious.")
 					playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
 					return
-				budget -= 350
+				budget -= 175
 				upgrade_flags |= UPGRADE_AVARIKYO
 				playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
-			if("Purchase Commissioned Artisans Connection (200)")
+			if("Purchase Commissioned Artisans Connection (100)")
 				if(upgrade_flags & UPGRADE_ARTISANS)
 					return
-				if(budget < 200)
+				if(budget < 100)
 					say("Ask again when you're serious.")
 					playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
 					return
-			if("Purchase Commissioned Artisans Connection (200)")
-				if(upgrade_flags & UPGRADE_ARTISANS)
+			if("Purchase Zybantium Imports License (100)")
+				if(upgrade_flags & UPGRADE_ZYBANTIUM)
+					return
+				if(budget < 100)
+					say("Ask again when you're serious.")
+					playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+					return
+				budget -= 100
+				upgrade_flags |= UPGRADE_ZYBANTIUM
+				playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
+			if("Purchase Fencer Connection (200)")
+				if(upgrade_flags & UPGRADE_FENCER)
 					return
 				if(budget < 200)
 					say("Ask again when you're serious.")
 					playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
 					return
 				budget -= 200
-				upgrade_flags |= UPGRADE_ARTISANS
-				playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
-			if("Purchase Zybantium Imports License (250)")
-				if(upgrade_flags & UPGRADE_ZYBANTIUM)
-					return
-				if(budget < 250)
-					say("Ask again when you're serious.")
-					playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
-					return
-				budget -= 250
-				upgrade_flags |= UPGRADE_ZYBANTIUM
-				playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
-			if("Purchase Fencer Connection (500)")
-				if(upgrade_flags & UPGRADE_FENCER)
-					return
-				if(budget < 500)
-					say("Ask again when you're serious.")
-					playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
-					return
-				budget -= 500
 				upgrade_flags |= UPGRADE_FENCER
 				playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
 			if("Purchase Import Munitions License (100)")
@@ -377,14 +367,14 @@
 				budget -= 100
 				upgrade_flags |= UPGRADE_MUNITIONS
 				playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
-			if("Purchase Steel Imports License (2000)")
+			if("Purchase Steel Imports License (300)")
 				if(upgrade_flags & UPGRADE_STEEL)
 					return
-				if(budget < 2000)
+				if(budget < 300)
 					say("Ask again when you're serious.")
 					playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
 					return
-				budget -= 2000
+				budget -= 300
 				upgrade_flags |= UPGRADE_STEEL
 				playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
 	return attack_hand(usr)

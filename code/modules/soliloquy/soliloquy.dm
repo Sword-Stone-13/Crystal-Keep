@@ -67,7 +67,7 @@
 
 /client/verb/soliloquy()
 	set name = "Set Soliloquy Doll"
-	set category = "OOC"
+	set category = "IC"
 	set desc = "Set up a soliloquy doll for the round."
 
 	if(!isliving(mob))
@@ -89,7 +89,7 @@
 
 /client/verb/view_soliloquys()
 	set name = "View Soliloquys"
-	set category = "OOC"
+	set category = "IC"
 	set desc = "View and vote on submitted soliloquys."
 
 	if(!isliving(mob))
@@ -435,7 +435,7 @@
 			continue
 		M.client.choosing_soliloquy = TRUE
 		to_chat(M, span_hierophant_warning("You are to choose a Soliloquy"))
-		to_chat(M, span_notice("<a href='?src=[REF(S)];action=view_available'>(View available Soliloquys.)</a> (You can also view soliloquys through OOC > View Soliloquys)"))
+		to_chat(M, span_notice("<a href='?src=[REF(S)];action=view_available'>(View available Soliloquys.)</a> (You can also view soliloquys through IC > View Soliloquys)"))
 		SEND_SOUND(M, 'sound/misc/updatebook.ogg')
 
 	return chosen	

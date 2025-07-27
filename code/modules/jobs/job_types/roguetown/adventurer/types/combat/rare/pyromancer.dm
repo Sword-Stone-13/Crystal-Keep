@@ -25,16 +25,12 @@
 	beltr = /obj/item/gun/magic/spellbook/firebolt
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor	
 	r_hand = /obj/item/rogueweapon/woodstaff
-	if(prob(25))
-		mask = /obj/item/clothing/mask/rogue/facemask
-	if(prob(25))
-		gloves = /obj/item/clothing/gloves/roguetown/leather
-	else
-		gloves = /obj/item/clothing/gloves/roguetown/angle
+	mask = /obj/item/clothing/mask/rogue/facemask
+	gloves = /obj/item/clothing/gloves/roguetown/angle
 	if(prob(50))
-		beltl = /obj/item/gun/magic/spellbook/dflame
-	else if(prob(50))
 		beltl = /obj/item/gun/magic/spellbook/fireball
+	else
+		beltl = /obj/item/gun/magic/spellbook/dflame
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, pick(0,1,1), TRUE)

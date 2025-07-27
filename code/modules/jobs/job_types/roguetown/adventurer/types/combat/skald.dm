@@ -41,9 +41,11 @@
 	if(prob(50))
 		cloak = /obj/item/clothing/cloak/raincloak/red
 	backl = /obj/item/storage/backpack/rogue/satchel
-	l_hand = /obj/item/rogueweapon/huntingknife/idagger
 	beltl = /obj/item/storage/belt/rogue/pouch/coins/mid
 	l_hand = /obj/item/rogueweapon/sword/iron
+	if(prob(50))
+		l_hand = /obj/item/rogueweapon/huntingknife/idagger
+
 	H.change_stat("constitution", 2)
 	H.change_stat("strength", 1)
 	H.change_stat("speed", 1)

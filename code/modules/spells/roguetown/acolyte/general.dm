@@ -69,20 +69,14 @@
 				target.visible_message(span_info("Without any particular cause or reason, [target] is healed!"), span_notice("My wounds evolve closed randomly."))
 			else
 				target.visible_message(span_info("A choral sound comes from above and [target] is healed!"), span_notice("I am bathed in healing choral hymns!"))
+		target.adjustBruteLoss(-10)
+		target.adjustFireLoss(-5)
+		target.adjustToxLoss(-5)
+		target.adjustOxyLoss(-5)
+		target.blood_volume += BLOOD_VOLUME_SURVIVE/4
 		if(iscarbon(target))
 			var/mob/living/carbon/C = target
-			var/obj/item/bodypart/affecting = C.get_bodypart(check_zone(user.zone_selected))
-			if(affecting)
-				if(affecting.heal_damage(25, 25))
-					C.update_damage_overlays()
-				if(affecting.heal_wounds(25))
-					C.update_damage_overlays()
-		else
-			target.adjustBruteLoss(-25)
-			target.adjustFireLoss(-25)
-		target.adjustToxLoss(-25)
-		target.adjustOxyLoss(-25)
-		target.blood_volume += BLOOD_VOLUME_SURVIVE/2
+			C.update_damage_overlays()
 		return TRUE
 	revert_cast()
 	return FALSE

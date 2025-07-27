@@ -6,7 +6,7 @@
 
 /datum/supply_pack/rogue/artisan/alrich
 	name = "Custom Made Alrich Knight Set"
-	cost = 800
+	cost = 200
 	contains = list(
 					/obj/item/clothing/head/roguetown/helmet/heavy/alrich,
 					/obj/item/clothing/suit/roguetown/armor/plate/full/alrich,
@@ -20,7 +20,7 @@
 
 /datum/supply_pack/rogue/artisan/bravado
 	name = "Custom Made Bravado Knight Set"
-	cost = 800
+	cost = 200
 	contains = list(
 					/obj/item/clothing/head/roguetown/helmet/heavy/bravado,
 					/obj/item/clothing/suit/roguetown/armor/plate/full/bravado,
@@ -35,7 +35,7 @@
 /datum/supply_pack/rogue/artisan/caesar
 
 	name = "Custom Made Caesar Knight Set"
-	cost = 800
+	cost = 200
 	contains = list(
 					/obj/item/clothing/head/roguetown/helmet/heavy/caesar,
 					/obj/item/clothing/suit/roguetown/armor/plate/full/caesar,
@@ -50,7 +50,7 @@
 /datum/supply_pack/rogue/artisan/deleon
 
 	name = "Custom Made Deleon Knight Set"
-	cost = 800
+	cost = 200
 	contains = list(
 					/obj/item/clothing/head/roguetown/helmet/heavy/knight/deleon,
 					/obj/item/clothing/suit/roguetown/armor/plate/full/deleon,

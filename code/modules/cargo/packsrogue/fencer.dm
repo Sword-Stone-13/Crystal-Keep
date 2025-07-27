@@ -26,21 +26,21 @@
 
 /datum/supply_pack/rogue/fencer/katar
 	name = "katar"
-	cost = 200
+	cost = 80
 	contains = list(
 					/obj/item/rogueweapon/katar
 				)
 
 /datum/supply_pack/rogue/fencer/aries
 	name = "'wooden staff'"
-	cost = 250
+	cost = 80
 	contains = list(
 					/obj/item/rogueweapon/woodstaff/aries
 				)
 
 /datum/supply_pack/rogue/fencer/goden
 	name = "Goden"
-	cost = 300
+	cost = 80
 	contains = list(
 					/obj/item/rogueweapon/mace/goden
 
@@ -48,14 +48,14 @@
 
 /datum/supply_pack/rogue/fencer/nitedagger
 	name = "Evil Twigga Dagger"
-	cost = 250
+	cost = 100
 	contains = list(
 					/obj/item/rogueweapon/huntingknife/idagger/silver/elvish/drow
 				)
 
 /datum/supply_pack/rogue/fencer/repenta
 	name = "Repent"
-	cost = 250
+	cost = 90
 	contains = list(
 					/obj/item/rogueweapon/whip/antique
 				)
@@ -72,7 +72,7 @@
 
 /datum/supply_pack/rogue/fencer/robes
 	name = "Fly Robes"
-	cost = 500
+	cost = 50
 	contains = list(
 					/obj/item/clothing/cloak/shadowwizard,
 					/obj/item/clothing/cloak/shadowwizard/green,
@@ -84,14 +84,14 @@
 
 /datum/supply_pack/rogue/fencer/shoes
 	name = "Fly Shoes"
-	cost = 300
+	cost = 100
 	contains = list(
 					/obj/item/clothing/shoes/roguetown/armor/leather/masterwork/wizard,
 				)
 
 /datum/supply_pack/rogue/fencer/bling
 	name = "Fly Bling"
-	cost = 610
+	cost = 200
 	contains = list(
 					/obj/item/clothing/neck/roguetown/bling,
 				)
@@ -99,7 +99,7 @@
 
 /datum/supply_pack/rogue/fencer/inquisitor
 	name = "'spare' inquisitor Fit"
-	cost = 500
+	cost = 100
 	contains = list(
 					/obj/item/clothing/head/roguetown/inqhat,
 					/obj/item/clothing/suit/roguetown/armor/plate/scale/inqcoat,
@@ -149,8 +149,8 @@
 				)
 
 /datum/supply_pack/rogue/fencer/lovepotion
-	name = "Love Potion"
-	cost = 300
+	name = "Funky Cold Medina"
+	cost = 100
 	contains = list(/obj/item/slimepotion/lovepotion)
 
 /datum/supply_pack/rogue/fencer/sleaf
@@ -175,7 +175,7 @@
 
 /datum/supply_pack/rogue/fencer/Parrows
 	name = "Poisoned Arrows"
-	cost = 200
+	cost = 100
 	contains = list(/obj/item/ammo_casing/caseless/rogue/arrow/poison,
 					/obj/item/ammo_casing/caseless/rogue/arrow/poison,
 					/obj/item/ammo_casing/caseless/rogue/arrow/poison,
@@ -196,7 +196,7 @@
 
 /datum/supply_pack/rogue/fencer/Pbolts
 	name = "Poisoned Bolts"
-	cost = 250
+	cost = 150
 	contains = list(/obj/item/ammo_casing/caseless/rogue/bolt/poison,
 					/obj/item/ammo_casing/caseless/rogue/bolt/poison,
 					/obj/item/ammo_casing/caseless/rogue/bolt/poison,
