@@ -70,7 +70,7 @@
 
 /datum/supply_pack/rogue/steel/halfplate
 	name = "Half-Plate Armor"
-	cost = 400
+	cost = 200
 	contains = list(
 					/obj/item/clothing/suit/roguetown/armor/plate/half,
 					/obj/item/clothing/suit/roguetown/armor/plate/half,
@@ -78,7 +78,7 @@
 
 /datum/supply_pack/rogue/steel/plate/full
 	name = "Full Plate"
-	cost = 400
+	cost = 200
 	contains = list(
 					/obj/item/clothing/suit/roguetown/armor/plate/full,
 				)
@@ -96,7 +96,7 @@
 
 /datum/supply_pack/rogue/steel/crossbow
 	name = "Crossbows"
-	cost = 300
+	cost = 100
 	contains = list(
 					/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow,
 					/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow,
@@ -113,14 +113,14 @@
 
 /datum/supply_pack/rogue/steel/bluesteel
 	name = "Bluesteel Ingot"
-	cost = 250
+	cost = 150
 	contains = list(
 					/obj/item/ingot/bluesteel,
 				)
 
 /datum/supply_pack/rogue/steel/redsteel
 	name = "Redsteel Ingot"
-	cost = 250
+	cost = 150
 	contains = list(
 					/obj/item/ingot/redsteel,
 				)

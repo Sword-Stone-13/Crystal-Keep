@@ -68,7 +68,7 @@
 
 /datum/supply_pack/rogue/zybantium/sword
 	name = "Curved Swords"
-	cost = 600
+	cost = 100
 	contains = list(
 					/obj/item/rogueweapon/sword/long/rider,
 					/obj/item/rogueweapon/sword/long/marlin,

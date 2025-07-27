@@ -5,12 +5,12 @@
 	allowed_races = list(
 		/datum/species/human/northern
 	)
-	outfit = /datum/outfit/job/roguetown/adventurer/shifter
+	outfit = /datum/outfit/job/roguetown/adventurer/beastshifter
 	category_tags = list(CTAG_ADVENTURER)
 	maximum_possible_slots = 2
 	pickprob = 11
 
-/datum/outfit/job/roguetown/adventurer/shifter
+/datum/outfit/job/roguetown/adventurer/beastshifter
 	allowed_patrons = list(/datum/patron/divine/noc, /datum/patron/divine/dendor)
 
 /datum/outfit/job/roguetown/adventurer/beastshifter/pre_equip(mob/living/carbon/human/H)

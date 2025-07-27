@@ -27,16 +27,15 @@
 	backr = /obj/item/rogueweapon/shield/heater
 	backl = /obj/item/storage/backpack/rogue/satchel
 	id = /obj/item/clothing/ring/gold/burial
+	r_hand = /obj/item/rogueweapon/glaive/elfnut
 	if(prob(25))
 		gloves = /obj/item/clothing/gloves/roguetown/chain
 	else
 		gloves = /obj/item/clothing/gloves/roguetown/angle
 	if(prob(50))
-		r_hand = /obj/item/rogueweapon/glaive/elfnut
-		beltl = /obj/item/rogueweapon/huntingknife
-	else if(prob(50))
-		r_hand = /obj/item/rogueweapon/glaive/elfnut
 		beltl = /obj/item/rogueweapon/huntingknife/idagger/steel
+	else
+		beltl = /obj/item/rogueweapon/huntingknife
 
 	
 

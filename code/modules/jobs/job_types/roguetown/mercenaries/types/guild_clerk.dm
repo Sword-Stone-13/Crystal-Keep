@@ -44,6 +44,6 @@
 	shoes = /obj/item/clothing/shoes/roguetown/armor/leather
 	belt = /obj/item/storage/belt/rogue/leather
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/rich//To pay out contracts, if the issuer flakes.
-	beltl = /obj/item/rogueweapon/mace
+	backl = /obj/item/rogueweapon/mace
 	beltl = /obj/item/keyring/mercenary_boss//So they can access the Captain's office.
 	backr = /obj/item/storage/backpack/rogue/satchel
