@@ -471,7 +471,7 @@ Difficulty: Hard
 /obj/effect/temp_visual/hierophant
 	name = "vortex energy"
 	layer = BELOW_MOB_LAYER
-	var/mob/living/caster //who made this, anyway
+	//var/mob/living/caster //who made this, anyway
 
 /obj/effect/temp_visual/hierophant/Initialize(mapload, new_caster)
 	. = ..()
@@ -713,3 +713,4 @@ Difficulty: Hard
 			to_chat(user, span_hierophant_warning("I touch the beacon with the club, but nothing happens."))
 	else
 		return ..()
+

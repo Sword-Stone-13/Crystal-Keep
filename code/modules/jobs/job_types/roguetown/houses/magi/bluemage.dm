@@ -45,4 +45,5 @@
 	H.change_stat("faith", 3)
 	H.change_stat("fortune", 1)
 	ADD_TRAIT(H, TRAIT_BEAUTIFUL, TRAIT_GENERIC)
+	H.mind.AddSpell(new  /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
 

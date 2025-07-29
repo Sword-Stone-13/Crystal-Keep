@@ -278,6 +278,10 @@
 #define COMSIG_ITEM_HIT_REACT "item_hit_react"					//from base of obj/item/hit_reaction(): (list/args)
 #define COMSIG_ITEM_WEARERCROSSED "wearer_crossed"                //called on item when crossed by something (): (/atom/movable, mob/living/crossed)
 
+//magic update
+#define COMSIG_ITEM_HIT_RESPONSE "item_hit_response"
+#define COMSIG_ITEM_ATTACK_TURF "item_attack_turf"
+
 // /obj/item/clothing signals
 #define COMSIG_ITEM_STEP_ACTION "item_step_action"					//from base of obj/item/proc/step_action(): ()
 #define COMSIG_CLOTHING_STEP_ACTION "clothing_step_action"			//from base of obj/item/clothing/shoes/proc/step_action(): ()

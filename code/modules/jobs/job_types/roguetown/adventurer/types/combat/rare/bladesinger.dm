@@ -52,3 +52,4 @@
 		H.change_stat("faith", 1)
 
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/learnspell)
+		H.mind.AddSpell(new  /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)

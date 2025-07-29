@@ -231,6 +231,14 @@
 			to_chat(src, span_warning("I can't move!"))
 			return TRUE
 
+	var/mob/living/simple_animal/bound = mob.pulling
+	if(bound)
+		if(bound.binded)
+			move_delay = world.time + 10
+			to_chat(src, span_warning("[bound] is bound in a summoning circle. I can't move them!"))
+			return TRUE
+
+
 /**
   * Allows mobs to ignore density and phase through objects
   *

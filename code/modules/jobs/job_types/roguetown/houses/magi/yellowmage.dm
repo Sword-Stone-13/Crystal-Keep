@@ -45,3 +45,4 @@
 	H.change_stat("mageability", 4)
 	H.change_stat("skill", 2)
 	H.change_stat("faith", 3)
+	H.mind.AddSpell(new  /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
