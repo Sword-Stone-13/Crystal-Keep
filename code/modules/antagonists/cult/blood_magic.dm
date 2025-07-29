@@ -1,3 +1,4 @@
+
 /datum/action/innate/cult/blood_magic //Blood magic handles the creation of blood spells (formerly talismans)
 	name = "Prepare Blood Magic"
 	button_icon_state = "carve"
@@ -831,3 +832,4 @@
 					else
 						to_chat(user, span_cultitalic("I need a free hand for this rite!"))
 						qdel(rite)
+

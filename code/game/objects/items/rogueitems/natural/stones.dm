@@ -142,6 +142,7 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 	w_class = WEIGHT_CLASS_TINY
 	mill_result = /obj/item/reagent_containers/powder/alch/stone
 	var/magicstone = FALSE
+	var/magic_power = 0
 
 /obj/item/natural/stone/Initialize()
 	. = ..()
@@ -205,16 +206,23 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 			stone_title = "[picked_name] [stone_title]" // Prefix and then stone
 			stone_desc += " [picked_desc]" // We put the descs after the original one
 
+	var/personality_modifier = 0
 	switch(stone_personality_rating)
 		if(10 to 22)
 			if(prob(3)) // Stone has a 3 percent chance to have a personality despite missing its roll
 				stone_title = "[stone_title] of [pick(GLOB.stone_personalities)]"
 				stone_desc += " [pick(GLOB.stone_personality_descs)]"
+				personality_modifier += rand(1,5) // Personality gives a stone some more power too
 				bonus_force += rand(1,5) // Personality gives a stone some more power too
 		if(23 to 25)
 			stone_title = "[stone_title] of [pick(GLOB.stone_personalities)]"
 			stone_desc += " [pick(GLOB.stone_personality_descs)]"
+			personality_modifier += rand(1,5) // Personality gives a stone some more power too
 			bonus_force += rand(1,5) // Personality gives a stone some more power too
+
+	if (personality_modifier)
+		bonus_force += personality_modifier
+		magic_power += personality_modifier
 
 	var/max_force_range = sharpness_rating + bluntness_rating // Add them together
 	//max_force_range = round(max_force_range/2) // Divide by 2 and round jus incase
@@ -230,6 +238,7 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 		stone_title = "[pick(GLOB.stone_magic_names)] [stone_title] +[magic_force]"
 		stone_desc += " [pick(GLOB.stone_magic_descs)]"
 		bonus_force += magic_force // Add on the magic force modifier
+		magic_power += magic_force
 		crit_bonus_value = clamp(crit_bonus_value + rand(5, 10), 1, 30) // Magic stones get +5-10% crit bonus
 	else if(sharpness_rating >= 9 || bluntness_rating >= 9)
 		crit_bonus_value = clamp(crit_bonus_value + rand(3, 8), 1, 30) // High sharpness/bluntness adds +3-8%
@@ -238,6 +247,15 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 	var/list/valid_bclasses = list(BCLASS_BLUNT, BCLASS_CUT, BCLASS_CHOP, BCLASS_STAB, BCLASS_PICK)
 	var/selected_bclass = pick(valid_bclasses)
 
+	if(extra_intent_list.len)
+		for(var/i in 1 to min(4, extra_intent_list.len))
+			// No more than 4 bro, and if we are empty on intents just stop here
+			if(!length(extra_intent_list))
+				break
+			var/cock = pick(extra_intent_list) // We pick one
+			given_intent_list += cock // Add it to the list
+			extra_intent_list -= cock // Remove it from the prev list
+	
 	//Now that we have built the history and lore of this stone, we apply it to the main vars.
 	name = stone_title
 	desc = stone_desc

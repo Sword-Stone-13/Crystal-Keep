@@ -343,13 +343,17 @@
 /turf/open/floor/rogue/dirt/get_slowdown(mob/user)
 	//No tile slowdown for fairies
 	var/mob/living/carbon/human/FM = user
-	if(isseelie(FM) && !(FM.resting))	//Add wingcheck
+	if(isseelie(FM) && !(FM.resting))    //Add wingcheck
 		return 0
 
 	var/returned = slowdown
-	for(var/obj/item/I in user.held_items)
-		if(I.walking_stick)
-			if(!I.wielded)
+	if(HAS_TRAIT(user, TRAIT_BOG_TREKKING))
+		var/mob/living/L = user
+		if(!L.cmode)
+			returned = max(returned-2, 0)
+	else
+		for(var/obj/item/I in user.held_items)
+			if(I.walking_stick && !I.wielded)
 				var/mob/living/L = user
 				if(!L.cmode)
 					returned = max(returned-2, 0)
@@ -733,6 +737,9 @@
 /turf/open/floor/rogue/greenstone/teal/Initialize()
 	. = ..()
 	icon_state = "tealstone"
+
+/turf/open/floor/rogue/greenstone/runed
+	icon_state = "greenstoneruned"
 
 /turf/open/floor/rogue/hexstone
 	icon_state = "hexstone"

@@ -103,6 +103,7 @@
 ///CRYSTAL KEEPO///
 #define TRAIT_SILENT_FIGHTER "Zanshin"
 #define TRAIT_LEAF_WALKER "Leaf Walker"
+#define TRAIT_BOG_TREKKING "bog_trekking"
 
 
 GLOBAL_LIST_INIT(roguetraits, list(
@@ -167,6 +168,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_NUDE_SLEEPER = span_warning("I can't fall asleep unless I'm nude and in bed."),
 	TRAIT_LEAF_WALKER = ("I can walk on leaves."),
 	TRAIT_TINY = span_info("I am tiny in size and quite fragile!"),
+	TRAIT_BOG_TREKKING = span_info("I can walk through bogs without slowing down."),
 ))
 
 // trait accessor defines

@@ -1,7 +1,8 @@
 GLOBAL_LIST_EMPTY(sacrificed) //a mixed list of minds and mobs
-GLOBAL_LIST(rune_types) //Every rune that can be drawn by ritual daggers
-GLOBAL_LIST_EMPTY(teleport_runes)
+GLOBAL_LIST(rune_types2)//added a 2 until I can get rid of old cult code, it was conflicting with the new teleport runes
+GLOBAL_LIST_EMPTY(teleport_runes2)//added a 2 until I can get rid of old cult code, it was conflicting with the new teleport runes
 GLOBAL_LIST_EMPTY(wall_runes)
+
 /*
 
 This file contains runes.
@@ -342,17 +343,17 @@ structure_check() searches for nearby cultist structures required for the invoca
 	var/area/A = get_area(src)
 	var/locname = initial(A.name)
 	listkey = set_keyword ? "[set_keyword] [locname]":"[locname]"
-	GLOB.teleport_runes += src
+	GLOB.teleport_runes2 += src
 
 /obj/effect/rune/teleport/Destroy()
-	GLOB.teleport_runes -= src
+	GLOB.teleport_runes2 -= src
 	return ..()
 
 /obj/effect/rune/teleport/invoke(list/invokers)
 	var/mob/living/user = invokers[1] //the first invoker is always the user
 	var/list/potential_runes = list()
 	var/list/teleportnames = list()
-	for(var/R in GLOB.teleport_runes)
+	for(var/R in GLOB.teleport_runes2)
 		var/obj/effect/rune/teleport/T = R
 		if(T != src && !is_away_level(T.z))
 			potential_runes[avoid_assoc_duplicate_keys(T.listkey, teleportnames)] = T
@@ -1066,3 +1067,4 @@ structure_check() searches for nearby cultist structures required for the invoca
 	if(istype(O, /obj/item/clothing/glasses/hud/security))
 		var/datum/atom_hud/AH = GLOB.huds[DATA_HUD_SECURITY_ADVANCED]
 		AH.add_hud_to(target)
+

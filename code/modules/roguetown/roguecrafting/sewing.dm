@@ -216,6 +216,28 @@
 				/obj/item/natural/fibers = 1)
 	craftdiff = 3
 
+/datum/crafting_recipe/roguetown/sewing/mageadept
+	name = "adept robe (mage) - (3 cloths, fiber; JOURNEYMAN)"
+	result = list(/obj/item/clothing/suit/roguetown/shirt/robe/newmage/adept)
+	reqs = list(/obj/item/natural/cloth = 3,
+				/obj/item/natural/fibers = 1)
+	craftdiff = 3
+
+/datum/crafting_recipe/roguetown/sewing/warlock
+	name = "warlock robe (mage) - (3 cloths, fiber; JOURNEYMAN)"
+	result = list(/obj/item/clothing/suit/roguetown/shirt/robe/newmage/warlock)
+	reqs = list(/obj/item/natural/cloth = 3,
+				/obj/item/natural/fibers = 1)
+	craftdiff = 3
+
+/datum/crafting_recipe/roguetown/sewing/magesorcerer
+	name = "sorcerer robe (mage) - (3 cloths, fiber; JOURNEYMAN)"
+	result = list(/obj/item/clothing/suit/roguetown/shirt/robe/newmage/sorcerer)
+	reqs = list(/obj/item/natural/cloth = 3,
+				/obj/item/natural/fibers = 1)
+	craftdiff = 3
+
+
 /datum/crafting_recipe/roguetown/sewing/stockings_white
 	name = "stockings (cloth, fiber; JOURNEYMAN)"
 	result = list(/obj/item/clothing/under/roguetown/tights/stockings/white)

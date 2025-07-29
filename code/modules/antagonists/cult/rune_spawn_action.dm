@@ -116,3 +116,4 @@
 	rune_innerring_type = /obj/effect/temp_visual/cult/rune_spawn/rune1/inner
 	rune_center_type = /obj/effect/temp_visual/cult/rune_spawn/rune1/center
 	rune_color = RUNE_COLOR_MEDIUMRED
+

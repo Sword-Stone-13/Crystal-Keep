@@ -42,8 +42,11 @@
 	minimum_distance = 10
 	dodge_sound = 'sound/combat/dodge.ogg'
 	dodge_prob = 0
+	candodge = TRUE
+	var/tier = 0
 	var/deaggroprob = 10
 	var/eat_forever
+	var/summon_primer = null
 	candodge = TRUE
 
 

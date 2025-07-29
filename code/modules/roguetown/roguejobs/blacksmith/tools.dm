@@ -7,6 +7,7 @@
 	icon_state = "hammer"
 	icon = 'icons/roguetown/weapons/tools.dmi'
 	sharpness = IS_BLUNT
+	var/quality = 1
 	//dropshrink = 0.8
 	wlength = 10
 	slot_flags = ITEM_SLOT_HIP

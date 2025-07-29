@@ -430,7 +430,7 @@ Difficulty: Medium
 	src.alpha = 63.75
 	animate(src, alpha = 255, time = duration)
 
-/obj/effect/temp_visual/lava_warning/proc/fall(reset_time)
+/obj/effect/temp_visual/lava_warning/proc/drakefall(reset_time)
 	var/turf/T = get_turf(src)
 	playsound(T,'sound/blank.ogg', 80, TRUE)
 	sleep(duration)
@@ -498,7 +498,7 @@ Difficulty: Medium
 	. = ..()
 	INVOKE_ASYNC(src, PROC_REF(flight), negative)
 
-/obj/effect/temp_visual/dragon_flight/proc/flight(negative)
+/obj/effect/temp_visual/dragon_flight/proc/drakeflight(negative)
 	if(negative)
 		animate(src, pixel_x = -DRAKE_SWOOP_HEIGHT*0.1, pixel_z = DRAKE_SWOOP_HEIGHT*0.15, time = 3, easing = BOUNCE_EASING)
 	else
@@ -549,7 +549,7 @@ obj/effect/temp_visual/fireball
 /obj/effect/temp_visual/target/Initialize(mapload, list/flame_hit)
 	. = ..()
 	INVOKE_ASYNC(src, PROC_REF(fall), flame_hit)
-
+/*
 /obj/effect/temp_visual/target/proc/fall(list/flame_hit)
 	var/turf/T = get_turf(src)
 	playsound(T,'sound/blank.ogg', 80, TRUE)
@@ -570,7 +570,7 @@ obj/effect/temp_visual/fireball
 			flame_hit[L] = TRUE
 		else
 			L.adjustFireLoss(10) //if we've already hit them, do way less damage
-
+*/
 /mob/living/simple_animal/hostile/megafauna/dragon/lesser
 	name = "lesser ash drake"
 	maxHealth = 200

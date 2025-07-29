@@ -1574,6 +1574,8 @@
 
 //Mobs on Fire
 /mob/living/proc/IgniteMob()
+	if (HAS_TRAIT(src, TRAIT_NOFIRE))
+		return
 	if(fire_stacks > 0 && !on_fire)
 		testing("ignis")
 		on_fire = 1
@@ -1610,6 +1612,8 @@
 //Called in MobBump() and Crossed()
 /mob/living/proc/spreadFire(mob/living/L)
 	if(!istype(L))
+		return
+	if(HAS_TRAIT(L, TRAIT_NOFIRE) || HAS_TRAIT(src, TRAIT_NOFIRE))
 		return
 
 	if(on_fire)
