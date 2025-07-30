@@ -2511,6 +2511,10 @@
 	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town)
+"dDq" = (
+/obj/item/kitchen/rollingpin,
+/turf/closed/wall/mineral/rogue/craftstone,
+/area/rogue/indoors/town/tavern)
 "dDT" = (
 /obj/effect/landmark/start/manorguardsman{
 	dir = 4
@@ -3493,6 +3497,11 @@
 	},
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors)
+"eMz" = (
+/obj/structure/chair/stool/rogue,
+/obj/item/kitchen/rollingpin,
+/turf/open/floor/rogue/wood,
+/area/rogue/indoors/town/tavern)
 "eML" = (
 /obj/structure/mineral_door/wood/towner/generic,
 /turf/open/floor/rogue/ruinedwood,
@@ -5624,6 +5633,14 @@
 /obj/item/flint,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors)
+"hSF" = (
+/obj/structure/table/wood{
+	dir = 1;
+	icon_state = "longtable_mid"
+	},
+/obj/item/kitchen/rollingpin,
+/turf/open/floor/rogue/wood,
+/area/rogue/indoors/town/manor)
 "hTb" = (
 /turf/open/water/swamp,
 /area/rogue/outdoors/bog)
@@ -15838,6 +15855,10 @@
 "wQp" = (
 /turf/closed/wall/mineral/rogue/decowood,
 /area/rogue/outdoors/bog)
+"wQB" = (
+/obj/machinery/light/rogue/firebowl/standing,
+/turf/open/floor/rogue/carpet/lord/center,
+/area/rogue/indoors/town/manor)
 "wQL" = (
 /obj/item/roguestatue/iron,
 /turf/open/floor/rogue/carpet/house/white/gold/diagonal,
@@ -16220,6 +16241,10 @@
 /obj/structure/fluff/clock,
 /turf/open/floor/rogue/carpet/house/black/silver/diagonal,
 /area/rogue/indoors/town/manor)
+"xqN" = (
+/obj/effect/landmark/start/barkeep,
+/turf/open/floor/rogue/tile,
+/area/rogue/indoors/town/tavern)
 "xrj" = (
 /obj/structure/fluff/railing/wood{
 	dir = 1;
@@ -133951,7 +133976,7 @@ vLW
 vLW
 vLW
 vLW
-gtx
+hSF
 akl
 akl
 fEM
@@ -138652,9 +138677,9 @@ wPy
 wPy
 wPy
 hiC
-dzs
+eMz
 wSx
-cVL
+xqN
 cVL
 cVL
 cVL
@@ -138910,7 +138935,7 @@ euf
 mMD
 wPy
 xUG
-xUG
+dDq
 lky
 cVL
 cVL
@@ -183995,7 +184020,7 @@ lPA
 lPA
 xnL
 pRC
-vDZ
+hyP
 vDZ
 vDZ
 hhW
@@ -184768,8 +184793,8 @@ xnL
 xnL
 xnL
 xnL
-oDs
-lRa
+pRC
+wQB
 lRa
 lRa
 pRC

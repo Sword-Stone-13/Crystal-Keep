@@ -540,6 +540,8 @@
 		stat("CON: \Roman [STACON]")
 		stat("END: \Roman [STAEND]")
 		stat("SPD: \Roman [STASPD]")
+		stat("FTH: \Roman [STAFTH]")
+
 		stat("PATRON: [patron]")
 
 /mob/living/carbon/Stat()
