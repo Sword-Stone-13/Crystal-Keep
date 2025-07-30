@@ -718,6 +718,8 @@
 	name = "haubergeon"
 	desc = "Although it looks rusty, it's smooth, and has a beautiful red sheen."
 	body_parts_covered = CHEST|GROIN|ARMS|VITALS
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/shirts.dmi'
+	icon = 'icons/roguetown/clothing/shirts.dmi'
 	icon_state = "elfnut_shirt"
 	item_state = "elfnut_shirt"
 	armor = list("blunt" = 60, "slash" = 100, "stab" = 80, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
