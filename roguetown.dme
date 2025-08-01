@@ -1869,6 +1869,7 @@
 #include "code\modules\cargo\packsrogue\fencer.dm"
 #include "code\modules\cargo\packsrogue\food.dm"
 #include "code\modules\cargo\packsrogue\luxury.dm"
+#include "code\modules\cargo\packsrogue\munitions.dm"
 #include "code\modules\cargo\packsrogue\seeds.dm"
 #include "code\modules\cargo\packsrogue\steel.dm"
 #include "code\modules\cargo\packsrogue\tools.dm"

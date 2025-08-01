@@ -1,6 +1,6 @@
 
 /datum/supply_pack/rogue/artisan
-	group = "Artisans"
+	group = "Artisan Goods"
 	crate_name = "merchant guild's crate"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 

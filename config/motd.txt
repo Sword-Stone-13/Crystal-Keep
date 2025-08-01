@@ -1,4 +1,4 @@
 <!-- Most valid html will work in here, excluding images. -->
-Roguetown Discord Server: <a href="https://discord.gg/9uYTPsRMKa">discord.gg/RogueTown</a>
-Roguetown Patreon: <a href="https://www.patreon.com/user?u=58204426">patreon.com/ROGUETOWN</a>
-<center>* Unstable Playtest - Expect Restarts *</center>
+Roguetown Discord Server: <a href="https://discord.gg/rmZt9h7gKy">discord.gg/CrystalKeep</a>
+Roguetown Patreon: <a href="https://forum.crystal-keep.com/">Crystal Keep Forums</a>
+<center>* Unstable Playtests - Expect Restarts *</center>
