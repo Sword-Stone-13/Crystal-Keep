@@ -1,25 +1,25 @@
 
 /datum/supply_pack/rogue/fencer
-	group = "Fencer"
+	group = "Fencer Goods"
 	crate_name = "Evil n'wah's guild's crate"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
-/datum/supply_pack/rogue/luxury/coolersigs
+/datum/supply_pack/rogue/fencer/coolersigs
 	name = "Swamp Weed Zig"
 	cost = 8
 	contains = list(/obj/item/clothing/mask/cigarette/rollie/cannabis)
 
-/datum/supply_pack/rogue/luxury/ozium
+/datum/supply_pack/rogue/fencer/ozium
 	name = "Ozium"
 	cost = 5
 	contains = list(/obj/item/reagent_containers/powder/ozium)
 
-/datum/supply_pack/rogue/luxury/moondust
+/datum/supply_pack/rogue/fencer/moondust
 	name = "Moon Dust"
 	cost = 30
 	contains = list(/obj/item/reagent_containers/powder/moondust)
 
-/datum/supply_pack/rogue/luxury/spice
+/datum/supply_pack/rogue/fencer/spice
 	name = "Spice"
 	cost = 20
 	contains = list(/obj/item/reagent_containers/powder/spice)

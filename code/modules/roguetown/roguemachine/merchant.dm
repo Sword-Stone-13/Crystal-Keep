@@ -255,7 +255,7 @@
 		if(!(upgrade_flags & UPGRADE_FENCER))
 			options += "Purchase Fencer Connection (200)"
 		if(!(upgrade_flags & UPGRADE_MUNITIONS))
-			options += "Purchase Import Munitions License (100)"
+			options += "Purchase Import Munitions License (50)"
 		if(!(upgrade_flags & UPGRADE_STEEL))
 			options += "Purchase Steel Imports License (300)"
 		var/select = input(usr, "Please select an option.", "", null) as null|anything in options
@@ -360,11 +360,11 @@
 			if("Purchase Import Munitions License (100)")
 				if(upgrade_flags & UPGRADE_MUNITIONS)
 					return
-				if(budget < 100)
+				if(budget < 50)
 					say("Ask again when you're serious.")
-					playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+					playsound(src, 'sound/misc/machinetalk.ogg', 50, FALSE, -1)
 					return
-				budget -= 100
+				budget -= 50
 				upgrade_flags |= UPGRADE_MUNITIONS
 				playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
 			if("Purchase Steel Imports License (300)")

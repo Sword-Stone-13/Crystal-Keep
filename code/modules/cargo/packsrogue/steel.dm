@@ -1,6 +1,6 @@
 
 /datum/supply_pack/rogue/steel/
-	group = "Steel"
+	group = "Steel Imports"
 	crate_name = "merchant guild's crate"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 

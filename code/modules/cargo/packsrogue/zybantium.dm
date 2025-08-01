@@ -1,6 +1,6 @@
 
 /datum/supply_pack/rogue/zybantium
-	group = "Zybantium"
+	group = "Zybantium Imports"
 	crate_name = "merchant guild's crate"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 

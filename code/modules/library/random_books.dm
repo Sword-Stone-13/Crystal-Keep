@@ -91,6 +91,7 @@
 /proc/create_random_books_rogue(amount = 2, location)
 	var/list/possible_books = subtypesof(/obj/item/book/rogue/)
 	var/list/possible_spellbooks = subtypesof(/obj/item/gun/magic/spellbook)
+	var/list/possible_wizbooks = subtypesof(/obj/item/book/granter/spellbook)
 	var/list/player_book_titles = SSlibrarian.pull_player_book_titles()
 	for(var/b in 1 to amount)
 		if(prob(0.1)) // 0.1% chance for a crafting kit
@@ -98,6 +99,9 @@
 		else if(prob(0.01))
 			var/obj/item/gun/magic/spellbook/spellbook_type = pick(possible_spellbooks)
 			new spellbook_type(location)
+		else if(prob(0.2))
+			var/obj/item/book/granter/spellbook/wizbook_type = pick(possible_wizbooks)
+			new wizbook_type(location)
 		else if(prob(clamp(length(player_book_titles), 15, 90)))
 			var/obj/item/book/rogue/playerbook/newbook = new /obj/item/book/rogue/playerbook(location)
 			var/picked_title = pick(player_book_titles)
