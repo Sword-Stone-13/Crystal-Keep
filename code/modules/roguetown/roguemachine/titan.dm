@@ -63,6 +63,7 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 	var/notlord
 	if(SSticker.rulermob != H)
 		notlord = TRUE
+	var/isjester = (SSticker.thefool == H)
 	var/message2recognize = sanitize_hear_message(original_message)
 
 	if(mode)
@@ -70,6 +71,14 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 			mode = 0
 			return
 	if(findtext(message2recognize, "summon crown")) //This must never fail, thus place it before all other modestuffs.
+		if(notlord)
+			say("Only the [TITLE_LORD] may summon the crown!")
+			playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
+			return
+		if(nocrown)
+			say("You need the crown.")
+			playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
+			return
 		if(!SSroguemachine.crown)
 			new /obj/item/clothing/head/roguetown/crown/serpcrown(src.loc)
 			say("The crown is summoned!")
@@ -103,12 +112,42 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 			say("The crown is summoned!")
 			playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
 			playsound(src, 'sound/misc/hiss.ogg', 100, FALSE, -1)
+	if(findtext(message2recognize, "summon the fool"))
+		if(notlord)
+			say("Only the [TITLE_LORD] may summon the jester!")
+			playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
+			return
+		if(nocrown)
+			say("You need the crown.")
+			playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
+			return
+		if(!SSticker.thefool)
+			say("The fool is gone!")
+			playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
+			return
+		var/mob/living/carbon/human/J = SSticker.thefool
+		if(J.stat == DEAD)
+			say("Alas Poor [J.real_name]!")
+			playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
+			return
+		J.forceMove(src.loc)
+		say("[J.real_name] has been summoned!")
+		playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+		playsound(src, 'sound/misc/hiss.ogg', 100, FALSE, -1)
+		return
 	switch(mode)
 		if(0)
 			if(findtext(message2recognize, "help"))
-				say("My commands are: Make Decree, Make Announcement, Set Taxes, Declare Outlaw, Summon Crown, Make Law, Remove Law, Purge Laws, Nevermind")
+				if(isjester)
+					say("My commands are: Make Decree, Make Announcemen, Declare Outlaw, Make Law, Nevermind")
+				else
+					say("My commands are: Make Decree, Make Announcement, Set Taxes, Declare Outlaw, Summon Crown, Summon Jester, Make Law, Remove Law, Purge Laws, Nevermind")
 				playsound(src, 'sound/misc/machinelong.ogg', 100, FALSE, -1)
 			if(findtext(message2recognize, "make announcement"))
+				if(notlord && !isjester)
+					say("You are not my master!")
+					playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
+					return
 				if(nocrown)
 					say("You need the crown.")
 					playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
@@ -124,12 +163,16 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 				mode = 1
 				return
 			if(findtext(message2recognize, "make decree"))
-				if(!SScommunications.can_announce(H))
-					say("I must gather my strength!")
+				if(notlord && !isjester)
+					say("You are not my master!")
 					playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
 					return
-				if(notlord || nocrown)
-					say("You are not my master!")
+				if(nocrown)
+					say("You need the crown.")
+					playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
+					return
+				if(!SScommunications.can_announce(H))
+					say("I must gather my strength!")
 					playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
 					return
 				say("Speak and they will obey.")
@@ -137,12 +180,16 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 				mode = 2
 				return
 			if(findtext(message2recognize, "make law"))
-				if(!SScommunications.can_announce(H))
-					say("I must gather my strength!")
+				if(notlord && !isjester)
+					say("You are not my master!")
 					playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
 					return
-				if(notlord || nocrown)
-					say("You are not my master!")
+				if(nocrown)
+					say("You need the crown.")
+					playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
+					return
+				if(!SScommunications.can_announce(H))
+					say("I must gather my strength!")
 					playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
 					return
 				say("Speak and they will obey.")
@@ -150,12 +197,16 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 				mode = 4
 				return
 			if(findtext(message2recognize, "remove law"))
-				if(!SScommunications.can_announce(H))
-					say("I must gather my strength!")
+				if(notlord)
+					say("Only the [TITLE_LORD] may remove laws!")
 					playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
 					return
-				if(notlord || nocrown)
-					say("You are not my master!")
+				if(nocrown)
+					say("You need the crown.")
+					playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
+					return
+				if(!SScommunications.can_announce(H))
+					say("I must gather my strength!")
 					playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
 					return
 				var/message_clean = replacetext(message2recognize, "remove law", "")
@@ -168,12 +219,16 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 				remove_law(law_index)
 				return
 			if(findtext(message2recognize, "purge laws"))
-				if(!SScommunications.can_announce(H))
-					say("I must gather my strength!")
+				if(notlord)
+					say("Only the [TITLE_LORD] may purge laws!")
 					playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
 					return
-				if(notlord || nocrown)
-					say("You are not my master!")
+				if(nocrown)
+					say("You need the crown.")
+					playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
+					return
+				if(!SScommunications.can_announce(H))
+					say("I must gather my strength!")
 					playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
 					return
 				say("All laws shall be purged!")
@@ -181,8 +236,16 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 				purge_laws()
 				return
 			if(findtext(message2recognize, "declare outlaw"))
-				if(notlord || nocrown)
+				if(notlord && !isjester)
 					say("You are not my master!")
+					playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
+					return
+				if(nocrown)
+					say("You need the crown.")
+					playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
+					return
+				if(!SScommunications.can_announce(H))
+					say("I must gather my strength!")
 					playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
 					return
 				say("Who should be outlawed?")
@@ -190,8 +253,16 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 				mode = 3
 				return
 			if(findtext(message2recognize, "set taxes"))
-				if(notlord || nocrown)
-					say("You are not my master!")
+				if(notlord)
+					say("Only the [TITLE_LORD] may purge laws!")
+					playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
+					return
+				if(nocrown)
+					say("You need the crown.")
+					playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
+					return
+				if(!SScommunications.can_announce(H))
+					say("I must gather my strength!")
 					playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
 					return
 				say("The new tax percent shall be...")

@@ -356,7 +356,7 @@
 	if(ismob(target))
 		var/mob/M = target
 		var/list/targetl = list(target)
-		user.visible_message(span_warning("[user] bites his thumb at [M]!"), span_warning("I taunt [M]!"), ignored_mobs = targetl)
+		user.visible_message(span_warning("[user] bites his thumb at [M]!"), span_warning("I bite my thumb at [M]!"), ignored_mobs = targetl)
 		user.emote("taunt")
 		if(M.client)
 			if(M.can_see_cone(user))
