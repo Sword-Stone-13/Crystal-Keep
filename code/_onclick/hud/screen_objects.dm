@@ -606,17 +606,19 @@
 
 /atom/movable/screen/def_intent/Click(location, control, params)
 	var/_y = text2num(params2list(params)["icon-y"])
-
-	if(_y>=0 && _y<17)
-		if(usr.d_intent == INTENT_DODGE)
-			usr.def_intent_change(INTENT_NODEF)
+	var/mob/living/L = usr
+	if(!istype(L))
+		return
+	if(_y >= 0 && _y < 17) // Dodge section
+		if(L.d_intent != INTENT_DODGE)
+			L.def_intent_change(INTENT_DODGE)
 		else
-			usr.def_intent_change(INTENT_DODGE)
-	else if(_y>16 && _y<=32)
-		if(usr.d_intent == INTENT_PARRY)
-			usr.def_intent_change(INTENT_NODEF)
+			L.def_intent_change(INTENT_PARRY)
+	else if(_y > 16 && _y <= 32) // Parry section
+		if(L.d_intent != INTENT_PARRY)
+			L.def_intent_change(INTENT_PARRY)
 		else
-			usr.def_intent_change(INTENT_PARRY)
+			L.def_intent_change(INTENT_DODGE)
 
 
 /atom/movable/screen/cmode

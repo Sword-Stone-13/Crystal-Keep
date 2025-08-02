@@ -183,8 +183,6 @@
 	switch(L.d_intent)
 		if(INTENT_DODGE)
 			L.def_intent_change(INTENT_PARRY)
-		if(INTENT_PARRY)
-			L.def_intent_change(INTENT_NODEF)
 		else
 			L.def_intent_change(INTENT_DODGE)
 
