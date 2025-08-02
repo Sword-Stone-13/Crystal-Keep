@@ -71,14 +71,6 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 			mode = 0
 			return
 	if(findtext(message2recognize, "summon crown")) //This must never fail, thus place it before all other modestuffs.
-		if(notlord)
-			say("Only the [TITLE_LORD] may summon the crown!")
-			playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
-			return
-		if(nocrown)
-			say("You need the crown.")
-			playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
-			return
 		if(!SSroguemachine.crown)
 			new /obj/item/clothing/head/roguetown/crown/serpcrown(src.loc)
 			say("The crown is summoned!")
@@ -115,10 +107,6 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 	if(findtext(message2recognize, "summon the fool"))
 		if(notlord)
 			say("Only the [TITLE_LORD] may summon the jester!")
-			playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
-			return
-		if(nocrown)
-			say("You need the crown.")
 			playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
 			return
 		if(!SSticker.thefool)
