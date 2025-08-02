@@ -71,6 +71,7 @@ SUBSYSTEM_DEF(ticker)
 	var/rulermob = null // reports what the ruling mob is.
 	var/failedstarts = 0
 	var/list/manualmodes = list()
+	var/thefool = null // The fool is the person who has been chosen to be the king's fool
 
 	//**ROUNDEND STATS**
 	var/deaths = 0			//total deaths in the round
