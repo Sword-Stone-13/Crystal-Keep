@@ -1343,3 +1343,77 @@
 	L.unignore_slowdown(type)
 	L.Dizzy(0)
 	L.Jitter(0)
+
+//lazarus bean juice
+
+/datum/reagent/medicine/lazarus
+	name = "Lazarus Extract"
+	description = "A miracle drug capable of bringing the dead back to life and mending the wounds of the living with holy vitality."
+	reagent_state = LIQUID
+	color = "#1e7bb1"
+	metabolization_rate = 0.5 * REAGENTS_METABOLISM
+	taste_description = "life"
+
+/datum/reagent/medicine/lazarus/reaction_mob(mob/living/M, method = TOUCH, reac_volume)
+	if(M.stat == DEAD)
+		M.visible_message(span_warning("[M]'s body starts convulsing!"))
+		M.do_jitter_animation(100)
+		addtimer(CALLBACK(M, TYPE_PROC_REF(/mob/living/carbon, do_jitter_animation), 10), 40)
+		addtimer(CALLBACK(M, TYPE_PROC_REF(/mob/living/carbon, do_jitter_animation), 10), 80)
+		// Handle undead case
+		if(M.mob_biotypes & MOB_UNDEAD)
+			M.visible_message(span_danger("[M] is unmade by holy light!"), span_userdanger("I'm unmade by holy light!"))
+			M.gib()
+			return
+		// Attempt to revive
+		if(!M.revive(full_heal = FALSE, admin_revive = FALSE))
+			M.visible_message(span_warning("[M]'s body fails to respond to the extract!"))
+			return
+		// Handle spirit/ghost repossession
+		var/mob/living/carbon/spirit/underworld_spirit = M.get_spirit()
+		if(underworld_spirit)
+			var/mob/dead/observer/ghost = underworld_spirit.ghostize()
+			qdel(underworld_spirit)
+			ghost.mind.transfer_to(M, TRUE)
+		M.grab_ghost(force = TRUE)
+		// Handle seelie-specific wing restoration
+		if(isseelie(M))
+			var/mob/living/carbon/human/fairy_target = M
+			fairy_target.set_heartattack(FALSE)
+			var/obj/item/organ/wings/Wing = fairy_target.getorganslot(ORGAN_SLOT_WINGS)
+			if(!Wing)
+				var/wing_type = fairy_target.dna.species.organs[ORGAN_SLOT_WINGS]
+				var/obj/item/organ/wings/seelie/new_wings = new wing_type()
+				new_wings.Insert(fairy_target)
+		// Restore blood and organs
+		if(iscarbon(M))
+			var/mob/living/carbon/C = M
+			if(!(C.dna && C.dna.species && (NOBLOOD in C.dna.species.species_traits)))
+				C.blood_volume = max(C.blood_volume, BLOOD_VOLUME_NORMAL)
+			for(var/organ in C.internal_organs)
+				var/obj/item/organ/O = organ
+				O.setOrganDamage(0)
+		M.adjustOxyLoss(-20, 0)
+		M.adjustToxLoss(-20, 0)
+		M.updatehealth()
+		M.update_body()
+		M.emote("breathgasp")
+		M.visible_message(span_notice("[M] is revived by holy light!"), span_green("I awake from the void."))
+		if(M.mind)
+			ADD_TRAIT(M, TRAIT_IWASREVIVED, "[type]")
+			M.mind.remove_antag_datum(/datum/antagonist/zombie)
+		log_combat(M, M, "revived", src)
+	else if(M.stat != DEAD)
+		M.visible_message(span_notice("[M]'s wounds begin to mend under holy light!"))
+		M.adjustBruteLoss(-2 * reac_volume, 0) // Heal 2 brute per unit (10 per bite)
+		M.adjustFireLoss(-2 * reac_volume, 0) // Heal 2 burn per unit (10 per bite)
+		M.adjustOxyLoss(-2 * reac_volume, 0) // Heal 2 oxy per unit (10 per bite)
+		M.adjustToxLoss(-2 * reac_volume, 0) // Heal 2 tox per unit (10 per bite)
+		M.updatehealth()
+	..()
+
+/datum/reagent/medicine/lazarus/on_mob_life(mob/living/carbon/M)
+	M.adjustBruteLoss(-0.5 * REM, 0)
+	M.adjustFireLoss(-0.5 * REM, 0)
+	..()
+	. = TRUE

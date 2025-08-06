@@ -542,3 +542,32 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/toxin/urushiol = 4)
 	grind_results = list(/datum/reagent/toxin/urushiol = 8)
 	rotprocess = 20 MINUTES
+
+
+//senzu beans 
+/obj/item/reagent_containers/food/snacks/grown/lazarus_beans
+	name = "Lazarus beans"
+	seed = /obj/item/seeds/bean //for now, unobtainable as it's too damn strong.... except there's a chest with three beans in the vault
+	icon_state = "lbean1"
+	filling_color = "#1e7bb1"
+	bitesize = 3
+	foodtype = FRUIT
+	tastes = list("life" = 1)
+	list_reagents = list(/datum/reagent/medicine/lazarus = 15)
+	grind_results = list(/datum/reagent/clf3 = 5)
+	rotprocess = FALSE // these beans do not rot, they are too strong for that
+
+
+/obj/item/reagent_containers/food/snacks/grown/lazarus_beans/On_Consume(mob/living/eater)
+    ..()
+    update_icon() // Update icon after each bite
+
+/obj/item/reagent_containers/food/snacks/grown/lazarus_beans/update_icon()
+    cut_overlays()
+    var/used_state = "lbean1"
+    if(bitecount == 1)
+        used_state = "lbean2"
+    if(bitecount == 2)
+        used_state = "lbean3"
+    var/image/item_overlay = image(icon, used_state)
+    add_overlay(item_overlay)
