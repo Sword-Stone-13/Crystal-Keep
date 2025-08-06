@@ -49,9 +49,9 @@
 			armor = /obj/item/clothing/suit/roguetown/armor/leather
 			cloak = /obj/item/clothing/cloak/raincloak/mortus
 			backl = /obj/item/storage/backpack/rogue/satchel
+			r_hand = /obj/item/storage/roguebag/rogueration
 			beltr = /obj/item/rogueweapon/huntingknife/idagger
 			beltl = /obj/item/rogueweapon/huntingknife/idagger
-			backpack_contents = list(/obj/item/storage/roguebag/rogueration)
 			H.change_stat("strength", -1)
 			H.change_stat("skill", 2)
 			H.change_stat("speed", pick(3,4))

@@ -2511,10 +2511,6 @@
 	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town)
-"dDq" = (
-/obj/item/kitchen/rollingpin,
-/turf/closed/wall/mineral/rogue/craftstone,
-/area/rogue/indoors/town/tavern)
 "dDT" = (
 /obj/effect/landmark/start/manorguardsman{
 	dir = 4
@@ -3500,11 +3496,6 @@
 	},
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors)
-"eMz" = (
-/obj/structure/chair/stool/rogue,
-/obj/item/kitchen/rollingpin,
-/turf/open/floor/rogue/wood,
-/area/rogue/indoors/town/tavern)
 "eML" = (
 /obj/structure/mineral_door/wood/towner/generic,
 /turf/open/floor/rogue/ruinedwood,
@@ -8091,9 +8082,9 @@
 /turf/open/floor/rogue/carpet/house/green/gold/diagonal,
 /area/rogue/indoors/town/manor)
 "luQ" = (
-/obj/item/key/lord,
-/turf/open/transparent/openspace,
-/area/rogue/indoors/town/manor)
+/obj/item/reagent_containers/food/snacks/grown/lazarus_beans,
+/turf/open/floor/rogue/carpet/house/white/gold/fancy,
+/area/rogue/indoors/town/vault)
 "lwU" = (
 /obj/structure/flora/roguegrass/bush/wall/tall,
 /turf/open/floor/rogue/dirt/road,
@@ -138706,7 +138697,7 @@ wPy
 wPy
 wPy
 hiC
-eMz
+dzs
 wSx
 xqN
 cVL
@@ -138964,7 +138955,7 @@ euf
 mMD
 wPy
 xUG
-dDq
+xUG
 lky
 cVL
 cVL
@@ -181745,7 +181736,7 @@ nSj
 pTB
 nSj
 nSj
-luQ
+nSj
 nSj
 nSj
 nSj
@@ -230495,7 +230486,7 @@ lph
 lph
 owd
 clC
-uxg
+luQ
 eEU
 cKo
 eEU
