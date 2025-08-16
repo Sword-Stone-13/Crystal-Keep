@@ -220,7 +220,7 @@
 	no_early_release = TRUE
 	movement_interrupt = TRUE
 	chargedloop = /datum/looping_sound/invokegen
-	cost = 10	//Court mage starts with this, If they want a /second/ they can pay the massive price for it.
+	cost = 13	//3 more than the tome cost.
 	xp_gain = TRUE
 
 /obj/projectile/magic/aoe/fireball/rogue/great
@@ -567,7 +567,6 @@
 	var/list/spell_choices = list(
 		
 		/obj/effect/proc_holder/spell/invoked/projectile/fireball/greater,// 10 cost
-		/obj/effect/proc_holder/spell/invoked/meteor_storm,
 		/obj/effect/proc_holder/spell/invoked/sundering_lightning,
 		/obj/effect/proc_holder/spell/invoked/projectile/frostbolt,// 3 cost
 		/obj/effect/proc_holder/spell/targeted/lightninglure,
@@ -1377,7 +1376,7 @@
 /obj/effect/proc_holder/spell/invoked/meteor_storm
 	name = "Meteor storm"
 	desc = "Summons forth dangerous meteors from the sky to scatter and smash foes."
-	cost = 13
+	cost = 18
 	releasedrain = 50
 	chargedrain = 1
 	chargetime = 50
@@ -1647,7 +1646,7 @@ obj/effect/proc_holder/spell/targeted/summonweapon/cast(list/targets,mob/user = 
 	associated_skill = /datum/skill/magic/arcane
 	charge_max = 15 SECONDS
 	xp_gain = TRUE
-	cost = 2 //Weaker than Eyebite and thus 2 not 3
+	cost = 4 
 /obj/effect/proc_holder/spell/invoked/mageblindness/cast(list/targets, mob/user = usr)
 	if(isliving(targets[1]))
 		var/mob/living/target = targets[1]
@@ -1674,7 +1673,7 @@ obj/effect/proc_holder/spell/targeted/summonweapon/cast(list/targets,mob/user = 
 	invocation_type = "whisper"
 	sound = 'sound/misc/area.ogg' //This sound doesnt play for some reason. Fix me.
 	associated_skill = /datum/skill/magic/arcane
-	cost = 2
+	cost = 4
 	chargedloop = /datum/looping_sound/invokegen
 /obj/effect/proc_holder/spell/invoked/mageinvisibility/cast(list/targets, mob/living/user)
 	if(isliving(targets[1]))

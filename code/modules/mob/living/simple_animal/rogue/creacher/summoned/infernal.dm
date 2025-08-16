@@ -71,7 +71,7 @@
 	health = 70
 	maxHealth = 70
 	ranged = TRUE
-	projectiletype = /obj/projectile/magic/firebolt
+	projectiletype = /obj/projectile/magic/impbolt
 	melee_damage_lower = 15
 	melee_damage_upper = 17
 	vision_range = 8
@@ -102,7 +102,7 @@
 	summon_primer = "You are an imp, a small creature spending it's time in the infernal plane amusing itself and eating meat. Now you've been pulled from your home into a new world, that is decidedly lacking in fire. How you react to these events, only time can tell."
 	tier = 1
 
-/obj/projectile/magic/firebolt
+/obj/projectile/magic/impbolt
 	name = "ball of fire"
 	icon_state = "firebolt"
 	damage = 20
@@ -112,7 +112,7 @@
 	flag = "magic"
 	hitsound = 'sound/blank.ogg'
 
-/obj/projectile/magic/firebolt/on_hit(target)
+/obj/projectile/magic/impbolt/on_hit(target)
 	if(ismob(target))
 		var/mob/M = target
 		if(M.anti_magic_check())

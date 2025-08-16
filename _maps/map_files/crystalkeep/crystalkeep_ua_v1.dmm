@@ -102,6 +102,7 @@
 /obj/item/flashlight/flare/torch/metal,
 /obj/item/flashlight/flare/torch/metal,
 /obj/item/flashlight/flare/torch/metal,
+/obj/item/gun/ballistic/hookclaw,
 /turf/open/floor/rogue/woodturned/hickory,
 /area/rogue/indoors/town/shop)
 "afc" = (
@@ -4791,6 +4792,7 @@
 /obj/item/needle/pestra,
 /obj/item/needle/pestra,
 /obj/item/needle/pestra,
+/obj/item/gun/ballistic/hookclaw,
 /turf/open/floor/rogue/woodturned/hickory,
 /area/rogue/indoors/town/shop)
 "gLO" = (
@@ -7774,6 +7776,7 @@
 	icon_state = "largetable"
 	},
 /obj/item/flashlight/flare/torch/lantern,
+/obj/item/gun/ballistic/hookclaw,
 /turf/open/floor/rogue/woodturned/hickory,
 /area/rogue/indoors/town/shop)
 "ldZ" = (
@@ -8021,6 +8024,7 @@
 	},
 /obj/item/cooking/pan,
 /obj/item/cooking/pan,
+/obj/item/gun/ballistic/hookclaw,
 /turf/open/floor/rogue/woodturned/hickory,
 /area/rogue/indoors/town/shop)
 "lqD" = (
@@ -10511,7 +10515,9 @@
 /area/rogue/indoors/town/shop)
 "oMv" = (
 /obj/effect/landmark/start/prince,
-/turf/open/floor/rogue/carpet/house/white/gold/diagonal,
+/turf/open/floor/rogue/tile{
+	icon_state = "bfloorz"
+	},
 /area/rogue/indoors/town/manor)
 "oME" = (
 /obj/effect/decal/cobbleedge{
@@ -135281,7 +135287,7 @@ bnS
 hRj
 hRj
 ddQ
-iVf
+oMv
 iVf
 hTq
 ddQ
@@ -179415,7 +179421,7 @@ amZ
 eJs
 aFg
 asy
-oMv
+mtT
 jHt
 jHt
 jHt
@@ -179931,7 +179937,7 @@ eJs
 eJs
 aFg
 lof
-oMv
+mtT
 mtT
 jHt
 mtT

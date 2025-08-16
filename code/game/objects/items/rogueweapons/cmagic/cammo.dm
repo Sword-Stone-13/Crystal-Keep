@@ -6,17 +6,14 @@
 	projectile_type = /obj/projectile/magic/frostbite
 	spell_element = STYPE_FROST
 
-/obj/item/ammo_casing/magic/firebolt
-	projectile_type = /obj/projectile/magic/firebolt
+/obj/item/ammo_casing/magic/lightning
+	projectile_type = /obj/projectile/magic/lightning
 	spell_element = STYPE_LIGHTNING
 
 /obj/item/ammo_casing/magic/crystalpeep
 	projectile_type = /obj/projectile/magic/crystalpeep
 	spell_element = STYPE_CRYSTAL
 
-/obj/item/ammo_casing/magic/firebolt
-	projectile_type = /obj/projectile/magic/firebolt
-	spell_element = STYPE_FIRE
 
 /obj/item/ammo_casing/magic/dflame
 	projectile_type = /obj/projectile/magic/divine_flame
@@ -45,3 +42,7 @@
 /obj/item/ammo_casing/magic/freeze
 	projectile_type = /obj/projectile/temp
 	spell_element = STYPE_FROST
+
+/obj/item/ammo_casing/magic/greaterfireball
+	projectile_type = /obj/projectile/magic/aoe/fireball/rogue/great
+	spell_element = STYPE_FIRE
