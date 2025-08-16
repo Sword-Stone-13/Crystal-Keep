@@ -87,6 +87,10 @@
 	var/can_be_sawn_off  = FALSE
 	var/verbage = "load"
 
+	// New variables for hookshot
+	var/casingless = FALSE // Prevents casing ejection if TRUE
+	var/rackless = FALSE // Prevents racking message if TRUE
+
 	/// Damage multiplyer for guns, this will multiply bullet damage by THIS much.
 	var/damfactor = 1
 
@@ -147,10 +151,10 @@
 /obj/item/gun/ballistic/process_chamber(empty_chamber = TRUE, from_firing = TRUE, chamber_next_round = TRUE)
 	if(!semi_auto && from_firing)
 		return
-	var/obj/item/ammo_casing/AC = chambered //Find chambered round
-	if(istype(AC)) //there's a chambered round
-		if(casing_ejector || !from_firing)
-			AC.forceMove(drop_location()) //Eject casing onto ground.
+	var/obj/item/ammo_casing/AC = chambered // Find chambered round
+	if(istype(AC)) // There's a chambered round
+		if((casing_ejector || !from_firing) && !casingless) // Skip casing ejection if casingless
+			AC.forceMove(drop_location()) // Eject casing onto ground
 			AC.bounce_away(TRUE)
 			chambered = null
 		else if(empty_chamber)
@@ -169,15 +173,15 @@
 
 ///updates a bunch of racking related stuff and also handles the sound effects and the like
 /obj/item/gun/ballistic/proc/rack(mob/user = null)
-	if (bolt_type == BOLT_TYPE_NO_BOLT) //If there's no bolt, nothing to rack
+	if (bolt_type == BOLT_TYPE_NO_BOLT) // If there's no bolt, nothing to rack
 		return
 	if (bolt_type == BOLT_TYPE_OPEN)
-		if(!bolt_locked)	//If it's an open bolt, racking again would do nothing
+		if(!bolt_locked) // If it's an open bolt, racking again would do nothing
 			if (user)
 				to_chat(user, span_notice("\The [src]'s [bolt_wording] is already cocked!"))
 			return
 		bolt_locked = FALSE
-	if (user)
+	if (user && !rackless) // Skip message if rackless
 		to_chat(user, span_notice("I rack the [bolt_wording] of \the [src]."))
 	process_chamber(!chambered, FALSE)
 	if (bolt_type == BOLT_TYPE_LOCKING && !chambered)

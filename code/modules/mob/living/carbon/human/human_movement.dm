@@ -112,20 +112,6 @@
 					if(effective > STASTR)
 						if(prob(effective))
 							dropItemToGround(I, silent = FALSE)
-		if(held_items.len)
-			for(var/obj/item/I in held_items)
-				if(I.minmag)
-					var/effective = I.minmag
-					if(effective > STAMAG)
-						if(prob(effective))
-							dropItemToGround(I, silent = FALSE)
-		if(held_items.len)
-			for(var/obj/item/I in held_items)
-				if(I.minfth)
-					var/effective = I.minfth
-					if(effective > STAFTH)
-						if(prob(effective))
-							dropItemToGround(I, silent = FALSE)
 
 /mob/living/carbon/human/Process_Spacemove(movement_dir = 0) //Temporary laziness thing. Will change to handles by species reee.
 	if(dna.species.space_move(src))

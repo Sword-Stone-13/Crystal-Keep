@@ -5,7 +5,6 @@
 	firing_effect_type = /obj/effect/temp_visual/dir_setting/firing_effect/magic
 	heavy_metal = FALSE
 	var/spell_element = null
-	var/damage_multiplier = 1
 
 /obj/item/ammo_casing/magic/change
 	projectile_type = /obj/projectile/magic/change
