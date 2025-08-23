@@ -223,6 +223,11 @@
 						thrown_speed = 1
 						thrown_range = max(round((STASTR/throwable_mob.STACON)*2), 1)
 						stop_pulling()
+						if(G.grab_state < GRAB_AGGRESSIVE)		//If we have the Giant Virtue, and aren't throwing another Giant, we can do it w/o aggro grab
+							if(HAS_TRAIT(throwable_mob, TRAIT_BIGGUY))
+								return
+							if(!HAS_TRAIT(src,TRAIT_BIGGUY))
+								return
 						if(G.grab_state < GRAB_AGGRESSIVE)
 							return
 						if(HAS_TRAIT(src, TRAIT_PACIFISM))

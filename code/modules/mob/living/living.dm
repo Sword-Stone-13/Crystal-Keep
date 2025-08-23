@@ -53,7 +53,13 @@
 /mob/living/onZImpact(turf/T, levels)
 	if(HAS_TRAIT(src, TRAIT_NOFALLDAMAGE1))
 		if(levels <= 2 || isseelie(src))	
-			return 
+			return
+	if(HAS_TRAIT(src, TRAIT_CATLANDING))
+		if(levels >= 2 && prob(33))
+			Immobilize(15)
+			if(m_intent == MOVE_INTENT_RUN)
+				toggle_rogmove_intent(MOVE_INTENT_WALK)
+			return
 	var/points
 	for(var/i in 2 to levels)
 		i++
@@ -1604,9 +1610,15 @@
 		update_fire()
 
 /mob/living/proc/adjust_fire_stacks(add_fire_stacks) //Adjusting the amount of fire_stacks we have on person
-	fire_stacks = CLAMP(fire_stacks + add_fire_stacks, -20, 20)
-	if(on_fire && fire_stacks <= 0)
-		ExtinguishMob()
+    var/final_amount = add_fire_stacks
+    if(istype(src, /mob/living/carbon/human))
+        var/mob/living/carbon/human/H = src
+        if(istype(H.dna?.species, /datum/species/tieberian)) //Tieflings get halved fire_stacks
+            final_amount *= 0.5
+
+    fire_stacks = CLAMP(fire_stacks + final_amount, -20, 20)
+    if(on_fire && fire_stacks <= 0)
+        ExtinguishMob()
 
 //Share fire evenly between the two mobs
 //Called in MobBump() and Crossed()

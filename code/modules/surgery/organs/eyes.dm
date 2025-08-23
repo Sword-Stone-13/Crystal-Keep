@@ -459,6 +459,7 @@
 	desc = ""
 	flash_protect = FLASH_PROTECTION_SENSITIVE
 	accessory_type = /datum/sprite_accessory/eyes/moth
+	see_in_dark = 4
 	eye_color = "000000"
 	second_color = "000000"
 

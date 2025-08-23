@@ -338,6 +338,7 @@
 
 /datum/special_trait/backproblems/on_apply(mob/living/carbon/human/character)
 	character.mob_size += 1
+	ADD_TRAIT(character, TRAIT_BIGGUY, "[type]")
 	character.change_stat("strength", 2)
 	character.change_stat("constitution", 2)
 	character.change_stat("speed", -2)

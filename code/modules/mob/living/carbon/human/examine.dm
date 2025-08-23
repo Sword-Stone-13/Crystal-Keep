@@ -17,9 +17,17 @@
 		user.add_stress(/datum/stressevent/jesterphobia)
 	if(HAS_TRAIT(src, TRAIT_BEAUTIFUL))
 		user.add_stress(/datum/stressevent/beautiful)
+	if(HAS_TRAIT(user, TRAIT_PACKTACTICS) && isliving(src))
+		if(dna.species.name == user.dna.species.name && user != src)
+			user.add_stress(/datum/stressevent/packtactics)
+			user.apply_status_effect(/datum/status_effect/buff/packtactics)
 
 /mob/living/carbon/human/examine(mob/user)
 	var/observer_privilege = isobserver(user)
+	if(user != src && ishuman(user) && HAS_TRAIT(user, TRAIT_PACKTACTICS) && isliving(src))
+		var/mob/living/carbon/human/H = user
+		if(src.dna.species.name == H.dna.species.name)
+			. += span_nicegreen("Kin!")
 	var/aghost_privilege = isadminobserver(user)
 	var/t_He = p_they(TRUE)
 	var/t_his = p_their()

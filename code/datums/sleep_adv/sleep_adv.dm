@@ -97,6 +97,13 @@
 	var/dream_dust = retained_dust
 	dream_dust += BASE_DREAM_DUST
 
+	var/mob/living/carbon/human/H = mind.current
+	if(istype(H) && H.dna?.species && istype(H.dna.species, /datum/species/nuppies)) //nuppy bonus
+		dream_dust *= 1.5
+		to_chat(mind.current, span_notice("My dreams are varied and mirthful..."))
+	if(istype(H) && H.dna?.species && istype(H.dna.species, /datum/species/aasimar)) //for my favorite :)
+		dream_dust *= 1.1
+		to_chat(mind.current, span_notice("I'm walking along a beach..."))
 	var/int = mind.current.STASKL
 	dream_dust += mind.current.STASKL * DREAM_DUST_PER_SKL //25% dream points for each SKL
 	if(int < 10)
@@ -115,6 +122,10 @@
 		// Stressed, unhappy
 		to_chat(mind.current, span_boldwarning("Bothered by the stresses of the day my dreams are short..."))
 		dream_dust -= 100
+
+	if(istype(H) && H.dna?.species && istype(H.dna.species, /datum/species/human/northern))
+		inspirations++  
+		to_chat(mind.current, span_notice("Eora's favor expands the breadth of my imagination..."))
 
 	grant_inspiration_xp(inspirations)
 

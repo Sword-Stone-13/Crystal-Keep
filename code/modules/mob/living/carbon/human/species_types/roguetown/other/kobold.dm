@@ -115,6 +115,7 @@
 /datum/species/kobold/on_species_gain(mob/living/carbon/C, datum/species/old_species)
 	..()
 	RegisterSignal(C, COMSIG_MOB_SAY, PROC_REF(handle_speech))
+	ADD_TRAIT(C, TRAIT_PACKTACTICS, TRAIT_GENERIC)
 
 /datum/species/kobold/on_species_loss(mob/living/carbon/C)
 	. = ..()

@@ -583,6 +583,7 @@
 		/obj/effect/proc_holder/spell/invoked/push_spell,
 		/obj/effect/proc_holder/spell/targeted/touch/darkvision,// 2 cost
 		/obj/effect/proc_holder/spell/invoked/haste,
+		/obj/effect/proc_holder/spell/invoked/enlarge,
 		/obj/effect/proc_holder/spell/invoked/message,
 		/obj/effect/proc_holder/spell/invoked/blade_burst,
 		/obj/effect/proc_holder/spell/invoked/projectile/fetch,
@@ -1105,6 +1106,50 @@
 		user.visible_message("[user] mutters an incantation and they briefly shine yellow.")
 
 	return TRUE
+
+
+/obj/effect/proc_holder/spell/invoked/enlarge
+	name = "Enlarge"
+	desc = "Cause a target to be magically enlarged."
+	cost = 2
+	xp_gain = TRUE
+	releasedrain = 50
+	chargedrain = 1
+	chargetime = 2 SECONDS
+	charge_max = 2.5 MINUTES
+	warnie = "spellwarning"
+	school = "transmutation"
+	no_early_release = TRUE
+	movement_interrupt = FALSE
+	charging_slowdown = 2
+	chargedloop = /datum/looping_sound/invokegen
+	associated_skill = /datum/skill/magic/arcane
+	invocation = "Su Magnus!"
+	invocation_type = "shout"
+
+/obj/effect/proc_holder/spell/invoked/enlarge/cast(list/targets, mob/user)
+	var/atom/A = targets[1]
+	if(!isliving(A))
+		revert_cast()
+		return
+
+	var/mob/living/spelltarget = A
+	spelltarget.apply_status_effect(/datum/status_effect/buff/enlarge)
+
+	if(spelltarget != user)
+		if(!(isseelie(spelltarget)))
+			user.visible_message("[user] mutters an incantation and [spelltarget] starts to rapidly grow in size.")
+		else
+			user.visible_message("[user] mutters an incantation and [spelltarget]'s muscles bulge and grow on their tiny frame.")
+	else
+		if(!(isseelie(spelltarget)))
+			user.visible_message("[user] mutters an incantation and they rapidly start to grow in size.")
+		else
+			user.visible_message("[user] mutters an incantation and their muscles bulge and grow on their tiny frame.")
+
+	return TRUE
+
+
 
 /obj/effect/proc_holder/spell/invoked/findfamiliar
 	name = "Find Familiar"

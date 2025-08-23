@@ -36,11 +36,16 @@
 		if(msg)
 			L.whisper(msg)
 			L.roguepray(msg)
-//			for(var/obj/structure/fluff/psycross/P in view(7, get_turf(L)) ) // We'll reenable this later when the patron statues are more fleshed out.
-//				if(P.obj_broken)
-//					continue
-//				P.check_prayer(L,msg)
-//				break
+			if(istype(L, /mob/living/carbon/human))
+				var/mob/living/carbon/human/H = L
+				if(istype(H.dna?.species, /datum/species/aasimar)) // Aasimar get buffies for successful prayers
+					H.apply_status_effect(/datum/status_effect/buff/godspeak)
+			// We'll reenable this later when the patron statues are more fleshed out.
+			// for(var/obj/structure/fluff/psycross/P in view(7, get_turf(L)))
+			// 	if(P.obj_broken)
+			// 		continue
+			// 	P.check_prayer(L,msg)
+			// 	break
 			if(istype(C, /area/rogue/underworld))
 				L.check_prayer_underworld(L,msg)
 				return

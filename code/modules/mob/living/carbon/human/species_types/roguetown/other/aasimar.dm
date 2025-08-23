@@ -144,6 +144,7 @@
 /datum/species/aasimar/on_species_gain(mob/living/carbon/C, datum/species/old_species)
 	. = ..()
 	RegisterSignal(C, COMSIG_MOB_SAY, PROC_REF(handle_speech))
+	C.mind?.AddSpell(new /obj/effect/proc_holder/spell/invoked/seektruth)
 
 /datum/species/aasimar/after_creation(mob/living/carbon/C)
 	..()
@@ -204,6 +205,41 @@
 
 /datum/species/aasimar/random_surname()
 	return
+
+/obj/effect/proc_holder/spell/invoked/seektruth
+	name = "Seek Truth"
+	overlay_state = "darkvision"
+	releasedrain = 100 //gotta rest your sharingan
+	chargedrain = 0
+	chargetime = 0
+	range = 2 //gotta really stare at 'em
+	warnie = "sydwarning"
+	movement_interrupt = FALSE
+	invocation_type = "none"
+	antimagic_allowed = TRUE
+	charge_max = 3000
+	//recharge_time = 5 MINUTES //will port recharge time later
+	miracle = FALSE
+	var/list/fake_vices = list()
+
+/obj/effect/proc_holder/spell/invoked/seektruth/cast(list/targets, mob/living/user)
+    if(ishuman(targets[1]))
+        var/vice_found
+        var/mob/living/carbon/human/H = targets[1]
+
+        if(HAS_TRAIT(H, TRAIT_DECEIVING_MEEKNESS) && prob(50)) 
+            if(!(H in fake_vices))
+                fake_vices[H] = pick(GLOB.character_flaws)
+                vice_found = fake_vices[H]
+            else
+                vice_found = fake_vices[H]
+        else
+            vice_found = H.charflaw.name
+
+        to_chat(user, span_info("You peer past the mortal shell and find... [span_warning("a [vice_found]!")]"))
+        return TRUE
+    revert_cast()
+    return FALSE
 
 /datum/species/aasimar/get_random_body_markings(list/passed_features)
 	return assemble_body_markings_from_set(GLOB.body_marking_sets_by_type[pick(body_marking_sets)], passed_features, src)

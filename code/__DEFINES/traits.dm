@@ -99,12 +99,15 @@
 #define TRAIT_STRONGTHROW "Strong Throw" // 1.5x throw distance and force
 #define TRAIT_MARTIALARTIST "Martial Artist" //pretty much just lets you kick heads
 #define TRAIT_ROTMAN "rotman" //you are a rotman and need occasional maintenance
+#define TRAIT_PACKTACTICS "Pack Tactics"
+#define TRAIT_DRUNK_HEALING "Drunk Healing"
+#define TRAIT_CATLANDING "Graceful Landing"
 
 ///CRYSTAL KEEPO///
 #define TRAIT_SILENT_FIGHTER "Zanshin"
 #define TRAIT_LEAF_WALKER "Leaf Walker"
 #define TRAIT_BOG_TREKKING "bog_trekking"
-
+#define TRAIT_BIGGUY "Giant"
 
 GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_LEPROSY = span_necrosis("I'm a disgusting leper..."),
@@ -169,6 +172,10 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_LEAF_WALKER = ("I can walk on leaves."),
 	TRAIT_TINY = span_info("I am tiny in size and quite fragile!"),
 	TRAIT_BOG_TREKKING = span_info("I can walk through bogs without slowing down."),
+	TRAIT_PACKTACTICS = span_info("My confidence is bolstered when I see my own kin."),
+	TRAIT_CATLANDING = span_info("I can land safely from any height... Occasionally!"),
+	TRAIT_DRUNK_HEALING = span_info("Alcohol helps my body recover from injury."),
+	TRAIT_BIGGUY = span_info("My large frame allows me a few benifits."),
 ))
 
 // trait accessor defines
@@ -360,7 +367,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_SKITTISH			"skittish"
 #define TRAIT_POOR_AIM			"poor_aim"
 #define TRAIT_PROSOPAGNOSIA		"prosopagnosia"
-#define TRAIT_DRUNK_HEALING		"drunk_healing"
 #define TRAIT_TAGGER			"tagger"
 #define TRAIT_PHOTOGRAPHER		"photographer"
 #define TRAIT_MUSICIAN			"musician"

@@ -59,6 +59,8 @@
 	damage_deflection = 10
 	leanable = TRUE
 
+	var/smashable = FALSE
+
 	var/repairable = FALSE
 	var/repair_state = 0
 	var/obj/item/repair_cost_first = null
@@ -724,6 +726,7 @@
 	repair_cost_second = /obj/item/grown/log/tree/small	
 	repair_skill = /datum/skill/craft/carpentry
 	metalizer_result = /obj/structure/mineral_door/wood/donjon
+	smashable = TRUE
 
 /obj/structure/mineral_door/wood/Initialize()
 	if(icon_state == "woodhandle" && icon_state != "wcv")
@@ -813,6 +816,7 @@
 	repair_cost_first = /obj/item/grown/log/tree/small
 	repair_cost_second = /obj/item/grown/log/tree/small	
 	repair_skill = /datum/skill/craft/carpentry
+	smashable = TRUE
 
 /obj/structure/mineral_door/wood/window
 	opacity = FALSE
@@ -974,6 +978,7 @@
 	repair_cost_first = /obj/item/ingot/iron
 	repair_cost_second = /obj/item/ingot/iron
 	repair_skill = /datum/skill/craft/blacksmithing
+	
 
 /obj/structure/mineral_door/barsold
 	name = "iron door"
