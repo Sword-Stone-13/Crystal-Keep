@@ -148,3 +148,8 @@
 	timer = 999 MINUTES
 	stressadd = -5
 	desc = span_green("I am a heretic under Ten's gaze... My patron is proud of me!")
+
+/datum/stressevent/packtactics
+	stressadd = -2
+	desc = span_green("I just saw my kin, and know I am not alone.")
+	timer = 5 MINUTES

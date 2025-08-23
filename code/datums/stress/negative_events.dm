@@ -122,6 +122,11 @@
 	stressadd = 4
 	desc = span_red("YUCK!")
 
+/datum/stressevent/evileye
+	timer = 30 MINUTES
+	stressadd = 5
+	desc = span_red("That tiefling's gaze has left me disturbed...")
+
 /datum/stressevent/psycurse
 	timer = 999 MINUTES
 	stressadd = 5

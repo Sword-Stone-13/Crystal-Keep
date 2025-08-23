@@ -13,6 +13,16 @@
 	desc = ""
 	icon_state = "drunk"
 
+/datum/status_effect/buff/drunk/on_apply()
+	. = ..()
+	if(HAS_TRAIT(owner, TRAIT_DRUNK_HEALING))
+		owner.reagents.add_reagent(/datum/reagent/medicine/healthpot,6)//a sip of weak red every 30 seconds whilst drunk
+		addtimer(CALLBACK(src, PROC_REF(top_up_healing)), 30 SECONDS)
+
+/datum/status_effect/buff/drunk/proc/top_up_healing()//this is hacky as fuck but it doesn't throw up runtimes and just werks so
+	if(!QDELETED(src) && owner && HAS_TRAIT(owner, TRAIT_DRUNK_HEALING))
+		owner.reagents.add_reagent(/datum/reagent/medicine/healthpot,6)
+		addtimer(CALLBACK(src, PROC_REF(top_up_healing)), 30 SECONDS)
 
 /datum/status_effect/buff/foodbuff
 	id = "foodbuff"
@@ -24,6 +34,59 @@
 	name = "Great Meal"
 	desc = ""
 	icon_state = "foodbuff"
+
+/datum/status_effect/buff/packtactics
+	id = "packtacktics"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/packtactics
+	effectedstats = list("fortune" = 1, "strength" = 1)
+	duration = 5 MINUTES 
+
+/atom/movable/screen/alert/status_effect/buff/packtactics
+	name = "Pack Tactics"
+	desc = "I just saw my kin, and know I am not alone."
+	icon_state = "buff"
+
+/datum/status_effect/buff/burstofspeed
+	id = "burstofspeed"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/burstofspeed
+	duration = 0.5 SECONDS
+	var/speed_modifier_id
+
+/datum/status_effect/buff/burstofspeed/on_apply()
+	. = ..()
+	speed_modifier_id = "burstofspeed"
+	owner.add_movespeed_modifier(speed_modifier_id, TRUE, 100, override = TRUE, multiplicative_slowdown = -1)
+
+/datum/status_effect/buff/burstofspeed/on_remove()
+	owner.remove_movespeed_modifier(speed_modifier_id)
+	return ..()	
+
+/atom/movable/screen/alert/status_effect/buff/burstofspeed
+	name = "Burst of speed"
+	desc = "I am the fastest!"
+	icon_state = "buff"
+
+/datum/status_effect/buff/godspeak
+	id = "godspeak"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/godspeak
+	effectedstats = list("strength" = 1)
+	duration = 30 MINUTES
+
+/atom/movable/screen/alert/status_effect/buff/godspeak
+	name = "Godspeak"
+	desc = "I feel closer to divinity."
+	icon_state = "buff"
+
+/datum/status_effect/buff/mothfire
+	id = "mothfire"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/mothfire
+	effectedstats = list("endurance" = 1, "faith" = 1)
+	duration = 15 MINUTES //short enough to encourage moths looking at fires here and there, long enough to be usable
+
+/atom/movable/screen/alert/status_effect/buff/mothfire
+	name = "Fire-trance"
+	desc = "How the flames dance... "
+	icon_state = "buff"
 
 /datum/status_effect/buff/druqks
 	id = "druqks"
@@ -197,6 +260,44 @@
 	alert_type = /atom/movable/screen/alert/status_effect/buff/haste
 	effectedstats = list("speed" = 3)
 	duration = 1.5 MINUTES
+
+/atom/movable/screen/alert/status_effect/buff/enlarge
+	name = "Enlarged"
+	desc = "I am magically enlarged."
+	icon_state = "buff"
+
+/datum/status_effect/buff/enlarge
+	id = "enlarge"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/enlarge
+	effectedstats = list("strength" = 2,"constitution" = 2, "speed" = -2)
+	duration = 1.5 MINUTES
+
+/datum/status_effect/buff/enlarge/on_apply()
+	. = ..()
+	if(!(isseelie(owner)))
+		to_chat(owner, span_warning("I feel myself growing leaps and bounds!"))
+		ADD_TRAIT(owner, TRAIT_BIGGUY, MAGIC_TRAIT)
+		owner.transform = owner.transform.Scale(1.25, 1.25)
+		owner.transform = owner.transform.Translate(0, (0.25 * 16))
+		owner.mob_size += 1
+		owner.update_transform()
+	else
+		to_chat(owner, span_warning("I can feel arcyne magick supplement my tiny frame!"))
+
+
+
+
+/datum/status_effect/buff/enlarge/on_remove()
+	. = ..()   
+	if(!(isseelie(owner)))
+		to_chat(owner, span_warning("I feel myself shrinking again.."))
+		REMOVE_TRAIT(owner, TRAIT_BIGGUY, MAGIC_TRAIT) 
+		owner.transform = owner.transform.Translate(0, -(0.25 * 16))
+		owner.transform = owner.transform.Scale(1/1.25, 1/1.25)
+		owner.mob_size -= 1  
+		owner.update_transform()
+	else
+		to_chat(owner, span_warning("I can feel the strengthening magicks fade from my small body.."))
 
 /datum/status_effect/buff/seelie_drugs
 	id = "seelie drugs"

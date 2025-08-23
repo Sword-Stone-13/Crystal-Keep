@@ -5,7 +5,7 @@
 	allowed_sexes = list(FEMALE)
 	allowed_races = list(/datum/species/lizardfolk)
 	outfit = /datum/outfit/job/roguetown/adventurer/berserker
-	traits_applied = list(TRAIT_CRITICAL_RESISTANCE, TRAIT_NOPAINSTUN, TRAIT_NASTY_EATER, TRAIT_MEDIUMARMOR) //experimental, but this should be a monster
+	traits_applied = list(TRAIT_CRITICAL_RESISTANCE, TRAIT_NOPAINSTUN, TRAIT_NASTY_EATER, TRAIT_MEDIUMARMOR, TRAIT_GIANT) //experimental, but this should be a monster
 	cmode_music = 'sound/music/combat_gronn.ogg'
 	category_tags = list(CTAG_ADVENTURER)
 

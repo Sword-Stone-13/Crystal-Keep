@@ -279,6 +279,11 @@
 	///Adjust experience of a specific skill
 /datum/mind/proc/adjust_experience(skill, amt, silent = FALSE)
 	var/datum/skill/S = GetSkillRef(skill)
+	var/mob/living/carbon/human/H = current
+	if(istype(H) && istype(H.dna?.species, /datum/species/human/halfelf)) //half elf xp bonus
+		amt *= 1.1
+	if(istype(H) && istype(H.dna?.species, /datum/species/nuppies)) //nuppy xp bonus
+		amt *= 1.3
 	skill_experience[S] = max(0, skill_experience[S] + amt) //Prevent going below 0
 	var/old_level = known_skills[S]
 	switch(skill_experience[S])

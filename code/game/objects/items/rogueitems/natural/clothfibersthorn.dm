@@ -197,6 +197,37 @@
 	else
 		user.visible_message(span_notice("[user] bandages [M]'s [affecting]."), span_notice("I bandage [M]'s [affecting]."))
 
+// EATING (MOTHSIMARS)
+/obj/item/natural/cloth/onbite(mob/user)
+	if(isliving(user) && istype(user, /mob/living/carbon/human))
+		var/mob/living/carbon/human/H = user
+		if(!istype(H.dna?.species, /datum/species/aasimar))
+			return
+		if(iscarbon(user))
+			var/mob/living/carbon/C = user
+			if(C.is_mouth_covered())
+				return
+		user.visible_message(span_info("[user] starts to munch on the [src]."))
+		eat_cloth(user, H)
+		return
+	..()
+
+/obj/item/natural/cloth/proc/eat_cloth(mob/user, mob/living/L)
+	playsound(user, pick('sound/gore/flesh_eat_02.ogg'), 100, FALSE) //close enough
+	if(L.stat != CONSCIOUS)
+		return
+	if(do_after(L, 25, target = src))
+		if(istype(src, /obj/item/natural/cloth))
+			take_damage(10, BRUTE)
+			if(obj_integrity <= 0)
+				qdel(src)
+				return
+
+		var/list/yummycloth = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
+		var/datum/reagents/reagents = new()
+		reagents.add_reagent_list(yummycloth)
+		reagents.trans_to(L, reagents.total_volume, transfered_by = user, method = INGEST)
+
 /obj/item/natural/thorn
 	name = "thorn"
 	icon_state = "thorn"
@@ -291,6 +322,20 @@
 	icon1step = 5
 	icon2 = "clothroll2"
 	icon2step = 10
+
+/obj/item/natural/bundle/cloth/onbite(mob/user) //more aasimar nonsense, please ignore
+	if(isliving(user) && istype(user, /mob/living/carbon/human))
+		var/mob/living/carbon/human/H = user
+		if(!istype(H.dna?.species, /datum/species/aasimar))
+			return
+		if(iscarbon(user))
+			var/mob/living/carbon/C = user
+			if(C.is_mouth_covered())
+				return
+		to_chat(user, span_warning("You can't eat that much cloth at once!")) //separate it into strips, fatass
+		return
+	..()
+
 
 /obj/item/natural/bundle/stick
 	name = "bundle of sticks"

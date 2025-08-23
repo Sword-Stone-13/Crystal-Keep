@@ -1082,6 +1082,40 @@
 	name = "Baum"
 	icon_state = "baum"
 
+//Crystal Keep Hair
+/datum/sprite_accessory/hair/head/floorlength_braid
+	name = "Floor Length Braid"
+	icon_state = "floorlength_braid"
+
+/datum/sprite_accessory/hair/head/beauty
+	name = "beauty"
+	icon_state = "beauty"
+
+/datum/sprite_accessory/hair/head/marisa
+	name = "red knot"
+	icon_state = "marisa"
+
+/datum/sprite_accessory/hair/head/objection
+	name = "objectionable"
+	icon_state = "objection"
+
+/datum/sprite_accessory/hair/head/edge
+	name = "edgeworthy"
+	icon_state = "edge"
+
+/datum/sprite_accessory/hair/head/afro_huge
+	name = "afro (huge)"
+	icon_state = "afro_huge"
+
+/datum/sprite_accessory/hair/head/allthefuzz
+	name = "winged mess"
+	icon_state = "allthefuzz"
+
+/datum/sprite_accessory/hair/head/fastline
+	name = "obscene pompadour"
+	icon_state = "fastline"
+
+
 /datum/sprite_accessory/hair/head/vulpkian
 	abstract_type = /datum/sprite_accessory/hair/head/vulpkian
 	icon = 'icons/mob/sprite_accessory/hair/vulpkian_hair.dmi'

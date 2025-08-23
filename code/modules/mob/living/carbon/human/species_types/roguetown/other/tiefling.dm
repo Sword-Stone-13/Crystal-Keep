@@ -131,6 +131,7 @@
 /datum/species/tieberian/after_creation(mob/living/carbon/C)
 	..()
 	to_chat(C, "<span class='info'>I can speak Infernal with ,h before my speech.</span>")
+	C.mind?.AddSpell(new /obj/effect/proc_holder/spell/invoked/evileye)
 
 /datum/species/tieberian/on_species_loss(mob/living/carbon/C)
 	. = ..()
@@ -181,6 +182,35 @@
 /datum/species/tieberian/random_surname()
 	return " [pick(world.file2list("strings/rt/names/other/tieflast.txt"))]"
 
+// Evil eye racial ability, debuffs someone's mood decently hard
+/obj/effect/proc_holder/spell/invoked/evileye
+	name = "Evil Eye"
+	overlay_state = "transfixmaster" // might sprite something unique but tbh this fits well
+	releasedrain = 50
+	chargetime = 10
+	range = 7
+	warnie = "sydwarning"
+	movement_interrupt = FALSE
+	chargedloop = null
+	sound = 'sound/magic/churn.ogg'
+	//sound = 'sound/magic/necra_sight.ogg' //change to bye bye mog later
+	antimagic_allowed = TRUE
+	charge_max = 18000
+	//recharge_time = 30 MINUTES //will port recharge time later
+	miracle = FALSE
+
+/obj/effect/proc_holder/spell/invoked/evileye/cast(list/targets, mob/living/user)
+	if(user.is_eyes_covered())
+		revert_cast()
+		to_chat(user, span_info("They cannot see my eyes!"))
+		return FALSE
+	if(isliving(targets[1]))
+		var/mob/living/carbon/target = targets[1]
+		target.add_stress(/datum/stressevent/evileye)
+		target.visible_message("<span class='info'>[user] stares at [target] with seething fury!</span>", "<span class='notice'>I feel a great, unknowing dread...</span>")
+		return TRUE
+	revert_cast()
+	return FALSE
 //some moutbreathing poo huffer commented out spanish tieflings. Throw him in the nut smacking device. He'd probably like it, so put it on light smack mode.
 
 /datum/species/tieberian/get_accent(mob/living/carbon/human/H)
