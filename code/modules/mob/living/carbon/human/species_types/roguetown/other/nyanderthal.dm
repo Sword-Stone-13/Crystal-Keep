@@ -92,6 +92,7 @@
 /datum/species/human/nyanderthal/on_species_gain(mob/living/carbon/C, datum/species/old_species)
 	..()
 	var/mob/living/carbon/human/H = C
+	ADD_TRAIT(C, TRAIT_CATLANDING, TRAIT_GENERIC)
 	if(H.age == AGE_YOUTH)
 		offset_features = list(
 			OFFSET_ID = list(0,-1), OFFSET_GLOVES = list(0,-1), OFFSET_WRISTS = list(0,-1),\
