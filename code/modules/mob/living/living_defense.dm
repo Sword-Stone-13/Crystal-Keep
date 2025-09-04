@@ -116,7 +116,7 @@
 		return CLAMP(w_class * 8, 20, 100) // Multiply the item's weight class by 8, then clamp the value between 20 and 100
 	else
 		return 0
-
+/*
 /mob/living/hitby(atom/movable/AM, skipcatch, hitpush = TRUE, blocked = FALSE, datum/thrownthing/throwingdatum, d_type = "blunt")
 	if(istype(AM, /obj/item))
 		var/obj/item/I = AM
@@ -151,7 +151,7 @@
 	else
 		playsound(loc, 'sound/blank.ogg', 50, TRUE, -1) //Item sounds are handled in the item itself
 	..()
-
+*/ //backup
 
 /mob/living/mech_melee_attack(obj/mecha/M)
 	if(M.occupant.used_intent.type == INTENT_HARM)
@@ -612,21 +612,35 @@
 	if(istype(AM, /obj/item))
 		var/obj/item/I = AM
 		var/dtype = BRUTE
-		var/zone = ran_zone(BODY_ZONE_CHEST, 65)//Hits a random part of the body, geared towards the chest
+		var/zone
+		var/mob/living/thrower = throwingdatum?.thrower
+		if(thrower && isliving(thrower) && throwingdatum?.target_zone) // Check if a specific zone was aimed
+			var/accuracy_chance
+			if(thrower.STASKL >= 10)
+				accuracy_chance = 100 // 100% chance at STASKL=10
+			else if(thrower.STASKL >= 7)
+				accuracy_chance = 80 // 80% chance at STASKL=7 to 9
+			else
+				accuracy_chance = 60 // 60% chance at STASKL < 7
+			if(rand(1, 100) <= accuracy_chance) // Skill-based accuracy check
+				zone = throwingdatum.target_zone // Use aimed zone (e.g., BODY_ZONE_HEAD)
+			else
+				zone = ran_zone(BODY_ZONE_CHEST, 65) // Fall back to random zone on miss
+		else
+			zone = ran_zone(BODY_ZONE_CHEST, 65) // Default to random zone with chest bias
 		SEND_SIGNAL(I, COMSIG_MOVABLE_IMPACT_ZONE, src, zone)
 		dtype = I.damtype
 		if(!blocked)
-			var/mob/living/thrower = throwingdatum?.thrower
 			var/is_crit = FALSE
 			var/crit_multiplier = 1.0
 			var/force_crit = FALSE
 
 			// Critical hit check
 			if(thrower && isliving(thrower) && I.can_crit_throw)
-				var/crit_chance = (thrower.STALUC * 1) + (thrower.STASKL * 0.5) + I.crit_bonus // 10% at STALUC=10, +5% at STASKL=10, +item bonus
+				var/crit_chance = (thrower.STALUC * 1) + (thrower.STASKL * 0.5) + I.crit_bonus
 				if(rand(1, 100) <= crit_chance)
 					is_crit = TRUE
-					crit_multiplier = 2.0 // Double damage on crit
+					crit_multiplier = 2.0
 					force_crit = TRUE
 					if(thrower.client?.prefs.showrolls)
 						to_chat(thrower, span_boldwarning("Critical throw!"))
@@ -634,7 +648,7 @@
 									span_danger("I'm critically struck by [I]!"), \
 									null, COMBAT_MESSAGE_RANGE)
 
-			var/armor = run_armor_check(zone, d_type, "", "",I.armor_penetration, damage = I.throwforce * crit_multiplier)
+			var/armor = run_armor_check(zone, d_type, "", "", I.armor_penetration, damage = I.throwforce * crit_multiplier)
 			next_attack_msg.Cut()
 			var/nodmg = FALSE
 			if(!apply_damage(I.throwforce * crit_multiplier, dtype, zone, armor))
@@ -658,5 +672,6 @@
 		else
 			return 1
 	else
-		playsound(loc, 'sound/blank.ogg', 50, TRUE, -1) //Item sounds are handled in the item itself
+		playsound(loc, 'sound/blank.ogg', 50, TRUE, -1) // Item sounds are handled in the item itself
 	..()
+//End CKEEP Stone toss competition code

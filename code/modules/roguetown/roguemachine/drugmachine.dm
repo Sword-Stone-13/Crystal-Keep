@@ -231,6 +231,8 @@
 	held_items[/obj/item/reagent_containers/powder/spice] = list("PRICE" = rand(35,50),"NAME" = "spice")
 	held_items[/obj/item/reagent_containers/powder/ozium] = list("PRICE" = rand(17,40),"NAME" = "ozium")
 	held_items[/obj/item/reagent_containers/powder/moondust] = list("PRICE" = rand(45,70),"NAME" = "moondust")
+	held_items[/obj/item/reagent_containers/powder/moondust/laced] = list("PRICE" = rand(15,30),"NAME" = "bargain moondust")
+	held_items[/obj/item/reagent_containers/powder/fentanyl] = list("PRICE" = rand(90,200),"NAME" = "dream dust")
 	held_items[/obj/item/clothing/mask/cigarette/rollie/cannabis] = list("PRICE" = rand(17,30),"NAME" = "swampweed zig")
 	held_items[/obj/item/storage/box/matches] = list("PRICE" = rand(15,25),"NAME" = "tinderbox")
 	held_items[/obj/item/reagent_containers/hypospray/medipen/sty/detox] = list("PRICE" = rand(35,70),"NAME" = "DETOX")

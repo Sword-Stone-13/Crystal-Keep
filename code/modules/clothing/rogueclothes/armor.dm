@@ -115,7 +115,6 @@
 	unequip_delay_self = 40
 	armor_class = ARMOR_CLASS_HEAVY
 	w_class = WEIGHT_CLASS_BULKY
-	clothing_flags = CANT_SLEEP_IN
 
 /obj/item/clothing/suit/roguetown/armor/plate/half
 	slot_flags = ITEM_SLOT_ARMOR
@@ -183,7 +182,6 @@
 	smeltresult = /obj/item/ingot/steel
 	armor_class = ARMOR_CLASS_HEAVY
 	w_class = WEIGHT_CLASS_BULKY
-	clothing_flags = CANT_SLEEP_IN
 
 /obj/item/clothing/suit/roguetown/armor/jadekingdom/shogun
 	slot_flags = ITEM_SLOT_ARMOR
@@ -202,7 +200,6 @@
 	smeltresult = /obj/item/ingot/steel
 	armor_class = ARMOR_CLASS_HEAVY
 	w_class = WEIGHT_CLASS_BULKY
-	clothing_flags = CANT_SLEEP_IN
 
 /obj/item/clothing/suit/roguetown/armor/brigandine
 	slot_flags = ITEM_SLOT_ARMOR
@@ -221,7 +218,6 @@
 	equip_delay_self = 40
 	armor_class = ARMOR_CLASS_HEAVY
 	w_class = WEIGHT_CLASS_BULKY
-	clothing_flags = CANT_SLEEP_IN
 
 /obj/item/clothing/suit/roguetown/armor/brigandine/Initialize()
 	. = ..()
@@ -297,7 +293,6 @@
 	equip_delay_self = 40
 	armor_class = ARMOR_CLASS_MEDIUM
 	w_class = WEIGHT_CLASS_BULKY
-	clothing_flags = CANT_SLEEP_IN
 	resistance_flags = FIRE_PROOF
 
 /obj/item/clothing/suit/roguetown/armor/armordress
@@ -672,7 +667,6 @@
 	unequip_delay_self = 40
 	armor_class = ARMOR_CLASS_LIGHT
 	w_class = WEIGHT_CLASS_BULKY
-	clothing_flags = CANT_SLEEP_IN
 
 /obj/item/clothing/suit/roguetown/armor/plate/elfnut/silver
 	name = "elvish halfplate armor"
@@ -757,7 +751,6 @@
 	unequip_delay_self = 40
 	armor_class = ARMOR_CLASS_HEAVY
 	w_class = WEIGHT_CLASS_BULKY
-	clothing_flags = CANT_SLEEP_IN
 
 /*
 /obj/item/clothing/suit/roguetown/armor/chainmail/bluesteel

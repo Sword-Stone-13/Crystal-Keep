@@ -19,6 +19,17 @@
 	cost = 30
 	contains = list(/obj/item/reagent_containers/powder/moondust)
 
+/datum/supply_pack/rogue/fencer/moondust
+	name = "Cheap Bulk Moon Dust"
+	cost = 40
+	contains = list(
+					/obj/item/reagent_containers/powder/moondust,
+					/obj/item/reagent_containers/powder/moondust,
+					/obj/item/reagent_containers/powder/moondust/laced,
+					/obj/item/reagent_containers/powder/moondust,
+				)
+
+
 /datum/supply_pack/rogue/fencer/spice
 	name = "Spice"
 	cost = 20

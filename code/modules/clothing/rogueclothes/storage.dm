@@ -295,7 +295,7 @@
 			if(1)
 				new /obj/item/reagent_containers/powder/moondust_purest(src)
 			if(2)
-				new /obj/item/reagent_containers/powder/moondust_purest(src)
+				new /obj/item/reagent_containers/powder/moondust/laced(src)
 			if(3)
 				new /obj/item/reagent_containers/powder/ozium(src)
 			if(4)

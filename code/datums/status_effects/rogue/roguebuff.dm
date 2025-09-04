@@ -506,3 +506,22 @@
 	name = "Noc's blessing"
 	desc = "Gazing Noc helps me think."
 	icon_state = "buff"
+
+/datum/status_effect/buff/fentanyl
+	id = "dream fold"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/druqks
+	effectedstats = list("endurance" = 4, "speed" = -3, "strength" = -3)
+	duration = 5 MINUTES
+
+/datum/status_effect/buff/fentanyl/nextmove_modifier()
+	return 2
+
+/datum/status_effect/buff/fentanyl/on_apply()
+	. = ..()
+	owner.add_stress(/datum/stressevent/ozium)
+	ADD_TRAIT(owner, TRAIT_NOPAIN, TRAIT_GENERIC)
+
+/datum/status_effect/buff/fentanyl/on_remove()
+	owner.remove_stress(/datum/stressevent/ozium)
+	REMOVE_TRAIT(owner, TRAIT_NOPAIN, TRAIT_GENERIC)
+	. = ..()

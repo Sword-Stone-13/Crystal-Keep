@@ -273,3 +273,85 @@
 			"The testicles are destroyed!",
 			"The testicles are eviscerated!",
 		)
+
+/datum/wound/head_explosion
+	name = "exploded head"
+	check_name = span_danger("<B>AAAAH-</B>")
+	severity = WOUND_SEVERITY_FATAL
+	crit_message = list("%VICTIM's %BODYPART explodes!")
+	sound_effect = "headcrush" // Maps to 'sound/combat/fracture/headcrush (3).ogg'
+	mob_overlay = "dis_head" // Visual for neck stump
+	critical = TRUE
+	can_sew = TRUE // Allows sewing a new head
+	can_cauterize = TRUE // Allows cauterizing
+	disabling = TRUE // Disables head
+	qdel_on_droplimb = TRUE // Wound removed if head dismembered again
+	whp = 75 // Hard to heal
+	sewn_whp = 25
+	bleed_rate = 25 // Heavy bleeding
+	sewn_bleed_rate = 0.25
+	clotting_threshold = null // No clotting
+	sewn_clotting_threshold = null
+	woundpain = 100 // Severe pain
+	sewn_woundpain = 20
+	sew_threshold = 100 // Hard to sew
+	sleep_healing = 0 // No passive healing0
+
+/datum/wound/head_explosion/can_apply_to_bodypart(obj/item/bodypart/affected)
+	if(affected.body_zone != BODY_ZONE_HEAD)
+		return FALSE
+	return ..()
+
+/datum/wound/head_explosion/can_stack_with(datum/wound/other)
+	if(istype(other, /datum/wound/dismemberment/head) || istype(other, /datum/wound/head_explosion))
+		return FALSE
+	return ..()
+
+/datum/wound/head_explosion/on_bodypart_gain(obj/item/bodypart/affected)
+	..()
+	if(!owner || !affected)
+		return
+	playsound(owner, 'sound/combat/fracture/headcrush (3).ogg', 100, vary = TRUE)
+	owner.visible_message(
+		span_danger("<B>[owner]'s head explodes, leaving a bleeding stump!</B>"),
+		span_danger("<B>Your mind is blown!</B>")
+	)
+	if(affected)
+		var/obj/item/bodypart/limb = affected
+		limb.dismember(dam_type = BRUTE) // Drops and dismembers head
+		qdel(limb) // Deletes head
+	// Wound persists for bleeding stump
+
+/datum/wound/head_explosion/on_mob_gain(mob/living/affected)
+	// Skip overlay update to avoid null error
+	if(zombie_infection_timer)
+		deltimer(zombie_infection_timer)
+		zombie_infection_timer = null
+		zombie_infect_attempt()
+	if(werewolf_infection_timer)
+		deltimer(werewolf_infection_timer)
+		werewolf_infection_timer = null
+		werewolf_infect_attempt()
+
+/datum/wound/head_explosion/apply_to_bodypart(obj/item/bodypart/affected, silent = FALSE, crit_message = FALSE)
+	if(QDELETED(affected) || QDELETED(affected.owner))
+		return FALSE
+	if(bodypart_owner)
+		remove_from_bodypart()
+	else if(owner)
+		remove_from_mob()
+	LAZYADD(affected.wounds, src)
+	sortTim(affected.wounds, GLOBAL_PROC_REF(cmp_wound_severity_dsc))
+	bodypart_owner = affected
+	owner = bodypart_owner.owner
+	on_bodypart_gain(affected)
+	on_mob_gain(affected.owner)
+	if(crit_message && owner && !QDELETED(owner)) // Check owner validity
+		var/message = get_crit_message(affected.owner, affected)
+		if(message)
+			owner.next_attack_msg += " [message]"
+	if(!silent && owner && !QDELETED(owner)) // Check owner validity
+		var/sounding = get_sound_effect(affected.owner, affected)
+		if(sounding)
+			playsound(owner, sounding, 100, vary = FALSE)
+	return TRUE

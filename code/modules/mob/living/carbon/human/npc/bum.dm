@@ -50,7 +50,7 @@ GLOBAL_LIST_INIT(bum_aggro, world.file2list("strings/rt/bumaggrolines.txt"))
 		head = null
 
 	if(prob(5))
-		beltr = /obj/item/reagent_containers/powder/moondust
+		beltr = /obj/item/reagent_containers/powder/fentanyl
 	else
 		beltr = null
 

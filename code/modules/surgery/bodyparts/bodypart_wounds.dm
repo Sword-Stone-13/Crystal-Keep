@@ -357,6 +357,19 @@
 	if ((bclass == BCLASS_PUNCH) && (user && dam))
 		if(user && HAS_TRAIT(user, TRAIT_CIVILIZEDBARBARIAN))
 			dam += 20
+		// Head explosion crit for punches
+		if(dam >= 30) // High damage threshold
+			var/strength_check = FALSE
+			if(user && user.STASTR && owner.STACON)
+				strength_check = (user.STASTR >= owner.STACON + 5) // Preferred: 5 more strength than their CON
+			else if(user && user.STASTR)
+				strength_check = (user.STASTR >= 15) // Fallback: 15 strength
+			if(strength_check)
+				var/explosion_chance = 5 // Base 5% chance
+				if(HAS_TRAIT(src, TRAIT_BRITTLE))
+					explosion_chance *= 2 // 10% if brittle
+				if(prob(explosion_chance))
+					attempted_wounds += /datum/wound/head_explosion
 	if((bclass in GLOB.dislocation_bclasses) && (total_dam >= max_damage))
 		used = round(damage_dividend * ((user.STASTR * 0.3) + (dam * 0.3)), 1)
 		used *= ((user?.mind?.get_skill_level(/datum/skill/combat/wrestling) * 0.2) + 1)
@@ -457,8 +470,14 @@
 				else if(!zone_precise in knockout_zones)
 					attempted_wounds += /datum/wound/fracture/head/brain
 
+	// Apply wounds, replacing fractures with head explosion at 5% chance
 	for(var/wound_type in shuffle(attempted_wounds))
-		var/datum/wound/applied = add_wound(wound_type, silent, crit_message)
+		var/apply_wound = wound_type
+		// Check if the wound is a fracture and replace with head_explosion at 5% chance
+		if(ispath(wound_type, /datum/wound/fracture))
+			if(prob(5))
+				apply_wound = /datum/wound/head_explosion
+		var/datum/wound/applied = add_wound(apply_wound, silent, crit_message)
 		if(applied)
 			return applied
 	return FALSE

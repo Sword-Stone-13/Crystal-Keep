@@ -900,7 +900,6 @@ GLOBAL_LIST_INIT(ballmer_windows_me_msg, list("Yo man, what if, we like, uh, put
 *
 *	Accounts for...
 *	TRAIT_NOSLEEP
-*	CANT_SLEEP_IN
 *	TRAIT_NUDE_SLEEPER
 *	Hunger and Hydration.
 */
@@ -910,11 +909,6 @@ GLOBAL_LIST_INIT(ballmer_windows_me_msg, list("Yo man, what if, we like, uh, put
 	var/can_sleep = TRUE
 	var/bleedrate
 	var/cause = list("I can't sleep because...")
-	for(var/obj/item/clothing/thing in get_equipped_items(FALSE))
-		if(thing.clothing_flags & CANT_SLEEP_IN)
-			can_sleep = FALSE
-			cause += " \n\The [thing] bothers me..."
-
 	if(HAS_TRAIT(src, TRAIT_NUDE_SLEEPER))
 		if(length(get_equipped_items()))
 			cause += "I need to be nude to be comfortable..."

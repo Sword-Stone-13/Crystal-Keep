@@ -89,7 +89,7 @@
 		if(canconsume(C, silent = TRUE))
 			if(reagents.total_volume)
 				playsound(C, 'sound/items/sniff.ogg', 100, FALSE)
-				reagents.trans_to(C, 1, transfered_by = thrownthing.thrower, method = "swallow")
+				reagents.trans_to(C, 5, transfered_by = thrownthing.thrower, method = "swallow")
 	qdel(src)
 
 /obj/item/reagent_containers/powder/attack(mob/M, mob/user, def_zone)
@@ -459,3 +459,67 @@
 //		if(M.client.screen && M.client.screen.len)
 ///			var/atom/movable/screen/plane_master/game_world/PM = locate(/atom/movable/screen/plane_master/game_world) in M.client.screen
 //			PM.backdrop(M.client.mob)
+
+/obj/item/reagent_containers/powder/moondust/laced
+	name = "moondust" //fooolish samooorai, I laced your shit
+	desc = ""
+	volume = 15
+	list_reagents = list(/datum/reagent/moondust = 10, /datum/reagent/fentanyl = 5)
+	grind_results = list(/datum/reagent/moondust = 10, /datum/reagent/fentanyl = 5)
+
+
+
+
+/obj/item/reagent_containers/powder/fentanyl
+	name = "dream dust"//
+	desc = "pure Avarikyan powder"
+	icon = 'icons/roguetown/items/produce.dmi'
+	icon_state = "moondust"
+	possible_transfer_amounts = list()
+	volume = 15
+	list_reagents = list(/datum/reagent/fentanyl = 15)
+	grind_results = list(/datum/reagent/fentanyl = 15)
+	sellprice = 30
+
+/datum/reagent/fentanyl
+	name = "dream dust"
+	description = ""
+	color = "#bfc3b5"
+	overdose_threshold = 5
+	metabolization_rate = 0.2
+
+/datum/reagent/fentanyl/overdose_process(mob/living/M)
+	//M.adjustToxLoss(0.25*REM, 0)
+	..()
+	. = 1
+
+/datum/reagent/fentanyl/on_mob_metabolize(mob/living/M)
+	narcolepsy_drug_up(M)
+	M.overlay_fullscreen("purest_kaif", /atom/movable/screen/fullscreen/purest)
+	animate(M.client, pixel_y = 1, time = 1, loop = -1, flags = ANIMATION_RELATIVE)
+	animate(pixel_y = -1, time = 1, flags = ANIMATION_RELATIVE)
+
+/datum/reagent/fentanyl/on_mob_end_metabolize(mob/living/M)
+	animate(M.client)
+	M.clear_fullscreen("purest_kaif")
+
+/datum/reagent/fentanyl/on_mob_life(mob/living/carbon/M)
+	narcolepsy_drug_up(M)
+	if(M.has_flaw(/datum/charflaw/addiction/junkie))
+		M.sate_addiction()
+	M.apply_status_effect(/datum/status_effect/buff/fentanyl)
+	..()
+
+/datum/reagent/fentanyl/overdose_start(mob/living/M)
+	M.playsound_local(M, 'sound/misc/heroin_rush.ogg', 100, FALSE)
+	M.visible_message(span_warning("[M] folds in half while standing!"))
+	M.adjustOxyLoss(2, 0)
+
+/datum/reagent/fentanyl/overdose_process(mob/living/M)
+	M.adjustToxLoss(3, 0) //
+	M.adjustOxyLoss(3, 0) // Severe respiratory depression
+	M.Sleeping(50, 0)
+	if(prob(20))
+		M.emote("gasp")
+	..()
+	. = 1

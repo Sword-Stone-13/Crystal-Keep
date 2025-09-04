@@ -61,8 +61,8 @@
 	)
 	sound_effect = "headcrush"
 	whp = 150
-	sleep_healing = 0
-	/// Most head fractures are serious enough to cause paralysis
+	sleep_healing = 1 //allowed sleep healing because we don't get healers often
+
 	var/paralysis = TRUE
 	/// Some head fractures are so serious they cause instant death
 	var/mortal = FALSE
