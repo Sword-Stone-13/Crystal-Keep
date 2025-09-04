@@ -144,7 +144,7 @@
 			zone = BODY_ZONE_CHEST
 		if(facing_zone == BODY_ZONE_FACING_R_LEG)
 			chance2hit = (chance2hit / 2)
-	
+
 	if(zone == BODY_ZONE_HEAD)										//Head is the smallest of the Major Body Zones
 		chance2hit *= 0.8
 
@@ -269,21 +269,12 @@
 	var/facing = relative_angular_facing(projlast, target)			//Which side of the target you are attacking
 	var/dist = abs(P.range - P.decayedRange)
 
-	if(P.ricochets >= 1)											//In the event of a ricochet hit
-		var/luck = (rand(1, 20) + (user.STALUC))					//Opposed 1d20+Luck rolls
-		var/luckcheck = (rand(1, 20) + (target.STALUC))
-		if(luck < luckcheck)
-			hit = "Hit"
-			zone = zone_simpmob_target(zone)						//Random body part hit by ricochet strikes
-			return list(zone, hit)
-		else
-			hit = "Miss"
-			zone = check_zone(zone)
-			return list(zone, hit)
+	if(P.ricochets >= 1)
+		zone = zone_simpmob_target(zone) // Random body part for ricochet
+		return list(zone, hit) // Always hit for ricochet
 
-	if(user.mind)													//12 points per skill level, 72 bonus at Legendary
+	if(user.mind)
 		chance2hit += (user.mind.get_skill_level(associated_skill) * 12)
-
 	if(user.mob_size != target.mob_size)							//Size modifier. Easier to hit bigger enemies, harder to hit smaller enemies.
 		chance2hit += ((target.mob_size - user.mob_size) * 10)
 
@@ -302,7 +293,7 @@
 
 	if(istype(user.used_intent, /datum/intent/arc))
 		dist *= 1.5
-	
+
 	chance2hit -= (dist * (6 - ((user.mind.get_skill_level(associated_skill)) * 1)))
 
 	var/facing_zone = facing_zone(zone)
@@ -381,14 +372,12 @@
 				if(!subzone)
 					to_chat(user, span_nicegreen("Hit!"))
 				to_chat(user, span_smallgreen("Roll under [chance2acehit] to Ace Hit... [tohit]"))
-		hit = "Hit"
 		return list(zone, hit)
 	else
 		if(tohit <= chance2hit)
 			if(user.client?.prefs.showrolls && GLOB.Debug2)
 				to_chat(user, span_nicegreen("Hit!"))
 				to_chat(user, span_smallgreen("Roll under [chance2hit] to Hit... [tohit]"))
-			hit = "Hit"
 			zone = check_zone(zone)
 			return list(zone, hit)
 		else
@@ -397,17 +386,16 @@
 					to_chat(user, span_smallgreen("I managed to hit them."))
 					if(GLOB.Debug2)
 						to_chat(user, span_smallgreen("Roll under [scatterhit] to Scatter: [tohit]"))
-				hit = "Hit"
-				zone = zone_simpmob_target(zone)
-				return list(zone, hit)
-			else
+			zone = zone_simpmob_target(zone)
+			return list(zone, hit)
+			/*else
 				if(user.client?.prefs.showrolls)
 					to_chat(user, span_warning("Missed!!"))
 					if(GLOB.Debug2)
 						to_chat(user, span_smallgreen("Roll under [chance2hit] to Hit: [tohit]"))
 				hit = "Miss"
 				zone = check_zone(zone)
-				return list(zone, hit)
+				return list(zone, hit)*/ //projectiles missing if they hit seemed... unfun in practice.
 
 /mob/proc/get_generic_parry_drain()
 	return 30

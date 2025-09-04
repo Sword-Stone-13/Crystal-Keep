@@ -980,7 +980,7 @@
 							I += /obj/item/storage/backpack/rogue/backpack
 						if(2)
 							I += /obj/item/reagent_containers/powder/moondust
-							I += /obj/item/reagent_containers/powder/moondust
+							I += /obj/item/reagent_containers/powder/moondust/laced
 							I += /obj/item/reagent_containers/powder/moondust
 							I += /obj/item/bomb
 						if(3)

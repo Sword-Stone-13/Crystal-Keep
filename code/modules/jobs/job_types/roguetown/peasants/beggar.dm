@@ -51,7 +51,7 @@
 	// guaranteed full beggar gear + random stats
 	if(is_wise)
 		head = /obj/item/clothing/head/roguetown/wizhat/gen/wise //wise hat
-		beltr = /obj/item/reagent_containers/powder/moondust
+		beltr = /obj/item/reagent_containers/powder/fentanyl 
 		beltl = /obj/item/clothing/mask/cigarette/rollie/cannabis
 		cloak = /obj/item/clothing/cloak/raincloak/brown
 		gloves = /obj/item/clothing/gloves/roguetown/fingerless

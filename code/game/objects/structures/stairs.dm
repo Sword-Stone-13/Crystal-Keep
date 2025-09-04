@@ -151,3 +151,11 @@
 			var/mob/living/pulled_mob = pulling
 			pulled_mob.grippedby(L, TRUE)
 			L.buckle_mob(pulling, TRUE, TRUE, 90, 0, 0)
+
+
+//Ramps for people to walk up
+/obj/structure/stairs/ramp
+	name = "sloped rock"
+	icon = 'icons/obj/stairs.dmi'
+	icon_state = "stonestairs"
+	max_integrity = 600
