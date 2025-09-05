@@ -64,7 +64,7 @@
 		covered = "headgear"
 	else if(C.is_mouth_covered(mask_only = 1))
 		covered = "mask"
-	if(C != user)
+	if(user && C != user)
 		if(C.mobility_flags & MOBILITY_STAND)
 			if(get_dir(eater, user) != eater.dir)
 				to_chat(user, span_warning("I must stand in front of [C.p_them()]."))

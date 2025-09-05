@@ -17,6 +17,7 @@
 	resistance_flags = FIRE_PROOF
 	body_parts_covered = EYES
 	anvilrepair = /datum/skill/craft/blacksmithing
+	flags_cover = MASKCOVERSEYES
 //	block2add = FOV_BEHIND
 
 /obj/item/clothing/mask/rogue/spectacles/golden
@@ -93,6 +94,8 @@
 	experimental_onhip = TRUE
 	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/iron
+	flags_cover = MASKCOVERSEYES | MASKCOVERSMOUTH
+
 
 /obj/item/clothing/mask/rogue/facemask/hound
 	name = "iron hound mask"
@@ -134,6 +137,7 @@
 	experimental_onhip = TRUE
 	sewrepair = TRUE
 	salvage_amount = 1
+	flags_cover = MASKCOVERSMOUTH
 
 /obj/item/clothing/mask/rogue/shepherd/AdjustClothes(mob/user)
 	if(loc == user)
@@ -163,6 +167,7 @@
 	body_parts_covered = FACE|EARS|EYES|MOUTH|NECK
 	slot_flags = ITEM_SLOT_MASK|ITEM_SLOT_HIP
 	sewrepair = TRUE
+	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
 
 /obj/item/clothing/mask/rogue/facemask/goldmask
 	name = "Gold Mask"
