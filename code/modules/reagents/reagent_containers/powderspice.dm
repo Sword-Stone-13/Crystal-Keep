@@ -86,6 +86,8 @@
 		return
 	if(iscarbon(hit_atom))
 		var/mob/living/carbon/C = hit_atom
+		if(thrownthing.init_dir == C.dir)
+			return
 		if(canconsume(C, silent = TRUE))
 			if(reagents.total_volume)
 				playsound(C, 'sound/items/sniff.ogg', 100, FALSE)
@@ -464,8 +466,8 @@
 	name = "moondust" //fooolish samooorai, I laced your shit
 	desc = ""
 	volume = 15
-	list_reagents = list(/datum/reagent/moondust = 10, /datum/reagent/fentanyl = 5)
-	grind_results = list(/datum/reagent/moondust = 10, /datum/reagent/fentanyl = 5)
+	list_reagents = list(/datum/reagent/moondust = 10, /datum/reagent/fentanyl = 4)
+	grind_results = list(/datum/reagent/moondust = 10, /datum/reagent/fentanyl = 4)
 
 
 
@@ -479,7 +481,7 @@
 	volume = 15
 	list_reagents = list(/datum/reagent/fentanyl = 15)
 	grind_results = list(/datum/reagent/fentanyl = 15)
-	sellprice = 30
+	sellprice = 50
 
 /datum/reagent/fentanyl
 	name = "dream dust"
@@ -512,12 +514,12 @@
 
 /datum/reagent/fentanyl/overdose_start(mob/living/M)
 	M.playsound_local(M, 'sound/misc/heroin_rush.ogg', 100, FALSE)
-	M.visible_message(span_warning("[M] folds in half while standing!"))
 	M.adjustOxyLoss(2, 0)
 
 /datum/reagent/fentanyl/overdose_process(mob/living/M)
-	M.adjustToxLoss(3, 0) //
-	M.adjustOxyLoss(3, 0) // Severe respiratory depression
+	M.adjustToxLoss(3, 0) 
+	M.adjustOxyLoss(3, 0) // Won't kill you from 100%, but it'll be close
+	M.visible_message(span_warning("[M] folds in half!"))
 	M.Sleeping(50, 0)
 	if(prob(20))
 		M.emote("gasp")

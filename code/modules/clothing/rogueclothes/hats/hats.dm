@@ -220,6 +220,7 @@
 	item_state = "priesthead"
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
 	dynamic_hair_suffix = ""
+	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
 
 /obj/item/clothing/head/roguetown/priestmask/pickup(mob/living/user)
 	if(!HAS_TRAIT(user, TRAIT_CHOSEN))
@@ -275,6 +276,7 @@
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
 	dynamic_hair_suffix = ""
 	fiber_salvage = FALSE
+	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
 
 /obj/item/clothing/head/roguetown/menacing/bandit
 	icon_state = "bandithood"
@@ -287,6 +289,7 @@
 	anvilrepair = null
 	max_integrity = 200
 	blocksound = SOFTHIT
+	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
 
 /obj/item/clothing/head/roguetown/jester
 	name = "jester's hat"
