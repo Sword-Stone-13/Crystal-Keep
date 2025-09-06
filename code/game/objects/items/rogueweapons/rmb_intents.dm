@@ -34,9 +34,9 @@
 
 
 	if(L.d_intent == INTENT_DODGE)
-		perc = 0
-	if(!L.cmode)
-		perc = 0
+		perc = 30
+	//if(!L.cmode)
+	//	perc = 0
 	if(L.has_status_effect(/datum/status_effect/debuff/feinted))
 		perc = 0
 	if(user.has_status_effect(/datum/status_effect/debuff/feintcd))

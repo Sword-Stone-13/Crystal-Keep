@@ -3,16 +3,13 @@
 	if(mind)
 		athletics_skill = mind.get_skill_level(/datum/skill/misc/athletics)
 	maxrogfat = (STAEND + athletics_skill) * 10 //This here is the calculation for max FATIGUE / GREEN
-	if(world.time > last_fatigued + 50) //regen fatigue
-		var/added = rogstam / maxrogstam
-		added = round(-10 + (added * -40) + (STACON * 0.5))// added a CON scaling. 
-		if(HAS_TRAIT(src, TRAIT_MISSING_NOSE))
-			added = round(added * 0.5, 1)
-		if(rogfat >= 1)
-			rogfat_add(added)
-		else
-			rogfat = 0
-
+	if(world.time > last_fatigued + (rogfat <= 0 ? 25 : 10)) // 25 ticks at 0 stamina, 10 ticks otherwise
+		var/regen = round((STAEND * 0.5) + (athletics_skill)) // Regeneration formula I have an alt formula if needed //round((STAEND) * (athletics_skill)). This makes things faster paced. 
+		if(rogstam < maxrogstam) // Only regenerate if not at max fatigue
+			rogfat_add(-regen) // Regenerate green bar (negative to increase rogfat)
+		last_fatigued = world.time // Update timer for continuous regen
+	else if(rogfat < 1)
+		rogfat = 0
 	update_health_hud()
 
 /mob/living/proc/update_rogstam()
@@ -20,9 +17,9 @@
 	if(mind)
 		athletics_skill = mind.get_skill_level(/datum/skill/misc/athletics)
 	maxrogstam = (STAEND + athletics_skill) * 100 // STAMINA / BLUE
-	if(cmode)
-		if(!HAS_TRAIT(src, TRAIT_BREADY))
-			rogstam_add(-2)
+	if(cmode && !HAS_TRAIT(src, TRAIT_BREADY))
+		rogstam_add(-2) // Reduced drain for balance (was -2, optional)
+
 
 /mob/proc/rogstam_add(added as num)
 	return
@@ -57,18 +54,16 @@
 /mob/living/rogfat_add(added as num, emote_override, force_emote = TRUE) //call update_rogfat here and set last_fatigued, return false when not enough fatigue left
 	if(HAS_TRAIT(src, TRAIT_NOROGSTAM))
 		return TRUE
-	rogfat = CLAMP(rogfat+added, 0, maxrogfat)
+	rogfat = CLAMP(rogfat + added, 0, maxrogfat)
 	if(added > 0)
 		rogstam_add(added * -1)
-	if(added >= 5)
-		if(rogstam <= 0)
-			if(iscarbon(src))
-				var/mob/living/carbon/C = src
-				if(!HAS_TRAIT(C, TRAIT_NOHUNGER))
-					if(C.nutrition <= 0)
-						if(C.hydration <= 0)
-							C.heart_attack()
-							return FALSE
+	if(added >= 5 && rogstam <= 0)
+		if(iscarbon(src))
+			var/mob/living/carbon/C = src
+			if(!HAS_TRAIT(C, TRAIT_NOHUNGER))
+				if(C.nutrition <= 0 && C.hydration <= 0)
+					C.heart_attack()
+					return FALSE
 	if(rogfat >= maxrogfat)
 		rogfat = maxrogfat
 		update_health_hud()
@@ -79,27 +74,24 @@
 		else
 			emote(emote_override, forced = force_emote)
 		blur_eyes(2)
-		last_fatigued = world.time + 30 //extra time before fatigue regen sets in
+		last_fatigued = world.time + 30 //30 ticks delay before regen starts
 		stop_attack()
 		changeNext_move(CLICK_CD_EXHAUSTED)
 		flash_fullscreen("blackflash")
 		if(rogstam <= 0)
 			addtimer(CALLBACK(src, PROC_REF(Knockdown), 30), 10)
-		addtimer(CALLBACK(src, PROC_REF(Immobilize), 30), 10)
+			addtimer(CALLBACK(src, PROC_REF(Immobilize), 30), 10)
 		if(iscarbon(src))
 			var/mob/living/carbon/C = src
-			if(isseelie(C))  //Add wingcheck here
+			if(isseelie(C))
 				C.visible_message(span_warning("[C] falls from the air!"), span_warning("I fall down in exhaustion!"))
 				addtimer(CALLBACK(C, TYPE_PROC_REF(/mob/living/carbon/human, Knockdown), 10), 10)
-			if(C.get_stress_amount() >= 30)
+			if(C.get_stress_amount() >= 30 || (!HAS_TRAIT(C, TRAIT_NOHUNGER) && C.nutrition <= 0 && C.hydration <= 0))
 				C.heart_attack()
-			if(!HAS_TRAIT(C, TRAIT_NOHUNGER))
-				if(C.nutrition <= 0)
-					if(C.hydration <= 0)
-						C.heart_attack()
 		return FALSE
 	else
-		last_fatigued = world.time
+		if(added > 0)
+			last_fatigued = world.time // Only reset fatigue timer when fatigue increases
 		update_health_hud()
 		return TRUE
 
