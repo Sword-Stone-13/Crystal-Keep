@@ -9959,10 +9959,6 @@
 /obj/machinery/light/rogue/firebowl/standing/blue,
 /turf/open/floor/rogue/carpet/house/black/gold/fancy,
 /area/rogue/outdoors/mountains)
-"jlL" = (
-/mob/living/simple_animal/hostile/retaliate/frog,
-/turf/open/floor/rogue/grass,
-/area/rogue/outdoors/bog)
 "jlN" = (
 /turf/open/floor/rogue/carpet/lord/right,
 /area/rogue/outdoors/mountains)
@@ -25306,10 +25302,6 @@
 	pixel_y = 7
 	},
 /turf/open/water/swamp,
-/area/rogue/outdoors/bog)
-"xmW" = (
-/mob/living/simple_animal/hostile/retaliate/frog,
-/turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/bog)
 "xnh" = (
 /obj/structure/stairs{
@@ -131319,7 +131311,7 @@ hTb
 pcX
 pcX
 uke
-jlL
+jjX
 jjX
 uMy
 uke
@@ -131572,7 +131564,7 @@ pcX
 pcX
 gru
 hTb
-jlL
+jjX
 uke
 hTb
 pcX
@@ -132608,7 +132600,7 @@ jjX
 jjX
 jjX
 jjX
-xmW
+uke
 jjX
 jjX
 uke
@@ -134154,7 +134146,7 @@ jjX
 jjX
 jjX
 jjX
-jlL
+jjX
 jjX
 jjX
 jjX
@@ -135184,7 +135176,7 @@ pcX
 lZb
 uke
 jjX
-jlL
+jjX
 hTb
 hTb
 kyj
